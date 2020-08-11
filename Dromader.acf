@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27212.070312500
-P _gear/0/_stat_def 0.187487483
+P _gear/0/_stat_def 0.187487438
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27212.070312500
-P _gear/1/_stat_def 0.187487483
+P _gear/1/_stat_def 0.187487438
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -196,7 +196,7 @@ P _gear/2/_axiE 0.0
 P _gear/2/_axiN 0.0
 P _gear/2/_axiR 0.0
 P _gear/2/_cyc_time 5.0
-P _gear/2/_damp 170.0
+P _gear/2/_damp 280.0
 P _gear/2/_eagle_claw_deg 0.0
 P _gear/2/_gear_brakes 0
 P _gear/2/_gear_can_retract 0
@@ -414,6 +414,17 @@ P _obja/10/_v10_att_y_acf_prt_ref 0.0
 P _obja/10/_v10_att_z_acf_prt_ref 0.0
 P _obja/10/_v10_is_internal -1982793600
 P _obja/10/_v10_steers_with_gear 0
+P _obja/11/_obj_flags 20
+P _obja/11/_v10_att_file_stl water_disp.obj
+P _obja/11/_v10_att_part -1
+P _obja/11/_v10_att_phi_ref 0.0
+P _obja/11/_v10_att_psi_ref 0.0
+P _obja/11/_v10_att_the_ref 0.0
+P _obja/11/_v10_att_x_acf_prt_ref 0.0
+P _obja/11/_v10_att_y_acf_prt_ref 0.0
+P _obja/11/_v10_att_z_acf_prt_ref 0.0
+P _obja/11/_v10_is_internal -1879443808
+P _obja/11/_v10_steers_with_gear 0
 P _obja/2/_obj_flags 20
 P _obja/2/_v10_att_file_stl Propeller.obj
 P _obja/2/_v10_att_part -1
@@ -447,8 +458,8 @@ P _obja/4/_v10_att_y_acf_prt_ref 0.0
 P _obja/4/_v10_att_z_acf_prt_ref 0.0
 P _obja/4/_v10_is_internal -337037894
 P _obja/4/_v10_steers_with_gear 0
-P _obja/5/_obj_flags 4
-P _obja/5/_v10_att_file_stl Gear.obj
+P _obja/5/_obj_flags 13
+P _obja/5/_v10_att_file_stl Cockpit.obj
 P _obja/5/_v10_att_part -1
 P _obja/5/_v10_att_phi_ref 0.0
 P _obja/5/_v10_att_psi_ref 0.0
@@ -456,10 +467,10 @@ P _obja/5/_v10_att_the_ref 0.0
 P _obja/5/_v10_att_x_acf_prt_ref 0.0
 P _obja/5/_v10_att_y_acf_prt_ref 0.0
 P _obja/5/_v10_att_z_acf_prt_ref 0.0
-P _obja/5/_v10_is_internal -337037894
+P _obja/5/_v10_is_internal 1141716410
 P _obja/5/_v10_steers_with_gear 0
-P _obja/6/_obj_flags 13
-P _obja/6/_v10_att_file_stl Cockpit.obj
+P _obja/6/_obj_flags 28
+P _obja/6/_v10_att_file_stl Doors.obj
 P _obja/6/_v10_att_part -1
 P _obja/6/_v10_att_phi_ref 0.0
 P _obja/6/_v10_att_psi_ref 0.0
@@ -469,8 +480,8 @@ P _obja/6/_v10_att_y_acf_prt_ref 0.0
 P _obja/6/_v10_att_z_acf_prt_ref 0.0
 P _obja/6/_v10_is_internal 1141716410
 P _obja/6/_v10_steers_with_gear 0
-P _obja/7/_obj_flags 28
-P _obja/7/_v10_att_file_stl Doors.obj
+P _obja/7/_obj_flags 4
+P _obja/7/_v10_att_file_stl Gear.obj
 P _obja/7/_v10_att_part -1
 P _obja/7/_v10_att_phi_ref 0.0
 P _obja/7/_v10_att_psi_ref 0.0
@@ -478,10 +489,10 @@ P _obja/7/_v10_att_the_ref 0.0
 P _obja/7/_v10_att_x_acf_prt_ref 0.0
 P _obja/7/_v10_att_y_acf_prt_ref 0.0
 P _obja/7/_v10_att_z_acf_prt_ref 0.0
-P _obja/7/_v10_is_internal 1141716410
+P _obja/7/_v10_is_internal -337037894
 P _obja/7/_v10_steers_with_gear 0
 P _obja/8/_obj_flags 13
-P _obja/8/_v10_att_file_stl akg-49.obj
+P _obja/8/_v10_att_file_stl Gagues.obj
 P _obja/8/_v10_att_part -1
 P _obja/8/_v10_att_phi_ref 0.0
 P _obja/8/_v10_att_psi_ref 0.0
@@ -502,7 +513,7 @@ P _obja/9/_v10_att_y_acf_prt_ref 0.0
 P _obja/9/_v10_att_z_acf_prt_ref 0.0
 P _obja/9/_v10_is_internal 1693383328
 P _obja/9/_v10_steers_with_gear 0
-P _obja/count 11
+P _obja/count 12
 P _panel_inst_3d 1
 P _part/0/_bot_s1 0.0
 P _part/0/_bot_s2 0.015625000
@@ -25729,7 +25740,7 @@ P acf/_bouncer_spring_k/9,2 0.0
 P acf/_bouncer_spring_k/i_count 14
 P acf/_bouncer_spring_k/j_count 3
 P acf/_brake_co 1.0
-P acf/_brake_to_steer_power 5.0
+P acf/_brake_to_steer_power 0.0
 P acf/_burner_inc 0.0
 P acf/_bus_bat_is_on/0 0
 P acf/_bus_bat_is_on/1 0
@@ -27272,8 +27283,8 @@ P acf/_jett_is_slung 0
 P acf/_jett_is_water 1
 P acf/_jett_the 0.0
 P acf/_jett_xyz/0 0.0
-P acf/_jett_xyz/1 -2.500000000
-P acf/_jett_xyz/2 9.899999619
+P acf/_jett_xyz/1 -2.700000048
+P acf/_jett_xyz/2 8.789999962
 P acf/_jett_xyz/count 3
 P acf/_lo_speed_is_position 0
 P acf/_load_alt_presel_on_alt_hit 0
@@ -27920,8 +27931,8 @@ P acf/_warn_stall 1
 P acf/_warn_transonic_EQ 0
 P acf/_warn_verbal_500_agl 0
 P acf/_wate_xyz/0 0.0
-P acf/_wate_xyz/1 -2.170000076
-P acf/_wate_xyz/2 8.760000229
+P acf/_wate_xyz/1 -2.0
+P acf/_wate_xyz/2 8.789999962
 P acf/_wate_xyz/count 3
 P acf/_water_drop_dep_time 0.010000000
 P acf/_water_rud_Z 0.0
@@ -28069,18 +28080,8 @@ vvi_adap vvi_adap.png
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 1.000000 1.000000
 
-ins_chrono_GA chrono_GA.png
-  POS 2357.000000 3653.000000
-  DATAREF 
-  SIZE 3.000000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-  KEY_FRAME 0.000000 0.000000 1.000000
-  KEY_FRAME 1.000000 1.000000
-
 ins_clock_GA clock_GA.png
-  POS 1021.000000 2069.000000
+  POS 1021.500000 2069.500000
   DATAREF 
   SIZE 3.000000
   LIGHT_MODE MECHANICAL
@@ -28090,19 +28091,9 @@ ins_clock_GA clock_GA.png
   KEY_FRAME 1.000000 1.000000
 
 water_quan Water.png
-  POS 2082.000000 3584.285645
+  POS 2082.000000 3584.000000
   DATAREF 
   SIZE 4.000000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-  KEY_FRAME 0.000000 0.000000 1.000000
-  KEY_FRAME 1.000000 1.000000
-
-compass_GA compass_GA.png
-  POS 2723.000000 3224.428467
-  DATAREF 
-  SIZE 3.000000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
@@ -28208,15 +28199,18 @@ ann_generator_off ann_generator.png
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 1.000000 1.000000
 
-flap_ind_rnd indicate_flap_round
-  POS 2356.000000 3401.000000
-  DATAREF 
-  SIZE 2.000000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  KEY_FRAME 0.000000 0.000000 1.000000
-  KEY_FRAME 1.000000 1.000000
+GROUP New Group
+  GROUP_OPEN
+  flap_ind_rnd indicate_flap_round
+    POS 1878.857178 3685.000000
+    DATAREF 
+    SIZE 3.000000
+    LIGHT_MODE MECHANICAL
+    LIGHT_RHEOSTAT 0
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
 
+END_GROUP
 ins_stall stall_GA.png
   POS 434.500000 2666.000000
   DATAREF 
@@ -28247,21 +28241,11 @@ eng_rnd_gen_amp engine_gen_AMPS.png
   KEY_FRAME 1.000000 1.000000
 
 han_tail_lock han_tailwheel_lock.
-  POS 2314.857178 1710.000122
+  POS 2314.000000 1710.000000
   DATAREF 
   SIZE 3.000000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
-  KEY_FRAME 0.000000 0.000000 1.000000
-  KEY_FRAME 1.000000 1.000000
-
-ins_DG DG.png
-  POS 2722.000000 3597.285645
-  DATAREF 
-  SIZE 3.000000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 1.000000 1.000000
 
