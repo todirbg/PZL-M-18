@@ -3,6 +3,8 @@
  
  Contributors please fork and create pull requests.
  
+ Sounds courtesy of Dataroots from x-plane.org. Originaly created for Jacques Braults PZL M18A Dromader.
+ 
  Paintig with Armour Paint
  https://armorpaint.org/
  https://github.com/armory3d/armorpaint
