@@ -2,6 +2,7 @@ I
 800
 OBJ
 
+GLOBAL_cockpit_lit
 TEXTURE	Fuselage_base.png
 TEXTURE_NORMAL	Fuselage_nor.png
 NORMAL_METALNESS
@@ -9579,4 +9580,4 @@ IDX10	6815	6816	6827	6815	6791	6734	6827	6816	6791	6827
 			TRIS	8154 11532
 		ANIM_end
 
-# Build with Blender 2.82 (sub 7) (build b'77d23b0bd76f'). Exported with XPlane2Blender 4.0.0-rc.1+89.20200910152046
+# Build with Blender 2.82 (sub 7) (build b'77d23b0bd76f'). Exported with XPlane2Blender 4.1.0-beta.1+101.20201117225215
