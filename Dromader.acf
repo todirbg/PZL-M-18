@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27454.333984375
-P _gear/0/_stat_def 0.185970083
+P _gear/0/_stat_def 0.185970068
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27454.333984375
-P _gear/1/_stat_def 0.185970083
+P _gear/1/_stat_def 0.185970068
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27454.333984375
-P _gear/2/_stat_def 0.053648829
+P _gear/2/_stat_def 0.053648837
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -30377,9 +30377,9 @@ P acf/_green_lo_pwr 0.0
 P acf/_green_lo_vac 0.0
 P acf/_green_lo_xmsn_P 0.0
 P acf/_green_lo_xmsn_T 0.0
-P acf/_ground_pwr/0 0.0
-P acf/_ground_pwr/1 0.0
-P acf/_ground_pwr/2 0.0
+P acf/_ground_pwr/0 -1.200000048
+P acf/_ground_pwr/1 0.699999988
+P acf/_ground_pwr/2 18.500000000
 P acf/_ground_pwr/count 3
 P acf/_h_eqlbm 4.308029175
 P acf/_has_ADG 0
@@ -30412,7 +30412,7 @@ P acf/_has_full_bleed_air 0
 P acf/_has_get_tow 0
 P acf/_has_get_tow_new 0
 P acf/_has_give_tow 0
-P acf/_has_ground_pwr 0
+P acf/_has_ground_pwr 1
 P acf/_has_hsi 0
 P acf/_has_pre_rotate 0
 P acf/_has_push_back 0
