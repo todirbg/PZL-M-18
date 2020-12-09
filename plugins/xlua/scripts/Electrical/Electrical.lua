@@ -18,6 +18,11 @@ starter_fail = find_dataref("sim/operation/failures/rel_startr0")
 --sim/operation/failures/rel_startr0
 --custom/dromader/electrical/starter_fuse_tog --command
 --custom/dromader/electrical/starter_fuse
+--custom/dromader/electrical/stall_fuse
+stall_fuse = create_dataref("custom/dromader/electrical/stall_fuse","number")
+stall_fail = find_dataref("sim/operation/failures/rel_stall_warn")
+inst_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")
+heater_sw = create_dataref("custom/dromader/electrical/heater","number")
 
 local volt_but = 0
 
@@ -26,6 +31,39 @@ function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
   animated_VALUE = animated_VALUE + ((reference_value - animated_VALUE) * (anim_speed * SIM_PERIOD))
   return animated_VALUE
 end
+
+function cmd_heater_sw_up(phase, duration)
+	if phase == 0 then
+		heater_sw = heater_sw + 1
+		if heater_sw < 3 then bus_load_add = bus_load_add + 10 end
+		if heater_sw > 2 then heater_sw = 2 end
+	end
+end
+
+function cmd_heater_sw_dwn(phase, duration)
+	if phase == 0 then
+		heater_sw = heater_sw - 1
+		if heater_sw > -1 then bus_load_add = bus_load_add - 10 end
+		if heater_sw < 0 then heater_sw = 0 end		
+	end
+end
+
+cmdcustomheaterswup = create_command("custom/dromader/electrical/heater_sw_up","Toggle heater up",cmd_heater_sw_up)
+cmdcustomheaterswdwn = create_command("custom/dromader/electrical/heater_sw_dwn","Toggle heater dwn",cmd_heater_sw_dwn)
+
+function cmd_stall_fuse_tog(phase, duration)
+	if phase == 0 then
+		if stall_fuse == 0 then
+			stall_fuse = 1
+			stall_fail = 0
+		else
+			stall_fuse = 0
+			stall_fail = 6
+		end
+	end
+end
+
+cmdcustomstalltog = create_command("custom/dromader/electrical/stall_fuse_tog","Toggle stall warning fuse",cmd_stall_fuse_tog)
 
 function cmd_start_fuse_tog(phase, duration)
 	if phase == 0 then
@@ -39,7 +77,7 @@ function cmd_start_fuse_tog(phase, duration)
 	end
 end
 
-cmdcustomfueltog = create_command("custom/dromader/electrical/starter_fuse_tog","Toggle starter fuse",cmd_start_fuse_tog)
+cmdcustomstarttog = create_command("custom/dromader/electrical/starter_fuse_tog","Toggle starter fuse",cmd_start_fuse_tog)
 
 function cmd_fuel_fuse_tog(phase, duration)
 	if phase == 0 then
@@ -130,16 +168,20 @@ function flight_start()
 
 	starter_fuse = 0
 	starter_fail = 6
+	inst_brt = 0
 	if startup_running == 1 then
 		bat_sel = 0
 		batt = 1
 		gpu = 0
 		bus_load_add = bus_load_add + 2
+		stall_fuse = 0
+		stall_fail = 6
 	else
 		bat_sel = 1
 		batt = 0
 		gpu = 0
-		
+		stall_fuse = 1
+		stall_fail = 0
 	end
 end
 

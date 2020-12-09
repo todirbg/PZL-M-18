@@ -5,7 +5,7 @@ startup_running = find_dataref("sim/operation/prefs/startup_running")
 fuel_press = find_dataref("sim/cockpit2/fuel/tank_pump_pressure_psi[0]")
 ovveride_fuel = find_dataref("sim/operation/override/override_fuel_system")
 bus_volts = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
-
+throttle_ratio = find_dataref("sim/flightmodel2/engines/throttle_used_ratio[0]")
 fuel_flow_before_engine = find_dataref("sim/flightmodel2/engines/has_fuel_flow_before_mixture[0]")
 fuel_flow = find_dataref("sim/flightmodel/engine/ENGN_FF_[0]")
 engn_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
@@ -19,7 +19,7 @@ fuel_fuse = find_dataref("custom/dromader/electrical/fuel_fuse")
 fuel_burning = find_dataref("sim/flightmodel2/engines/engine_is_burning_fuel[0]")
 
 
-local cutoff = 1
+local cutoff = 0
 local press = 0
 local man_press = 0
 local flooded = 0
@@ -42,7 +42,7 @@ fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector",
 
 local prev = 0 
 function man_fuel_pump_handler()
-	if manual_fuel_pump < prev then
+	if manual_fuel_pump < prev and cutoff == 0 then
 		press = press + 20*SIM_PERIOD
 	end
 	prev = manual_fuel_pump
@@ -136,8 +136,8 @@ function update_fuel_press()
 	if cutoff == 0 and nofuel == 0 then 
 		press = math.max(press, math.sqrt(6*math.abs(engn_tacrad)))
 	end
-	if fuel_burning == 1 then 
-	press = math.max(0, press - fuel_flow)
+	if engn_tacrad > 1 then 
+	press = math.max(0, press - engn_tacrad/10*throttle_ratio* SIM_PERIOD)
 	end
 	fuel_press_dromader = press
 	if press > 50 then flooded = 1 end
