@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27454.333984375
-P _gear/2/_stat_def 0.053648837
+P _gear/2/_stat_def 0.053648829
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -29933,7 +29933,7 @@ P acf/_esys_amperage/rel_dice_wing_heat_1 0.0
 P acf/_esys_amperage/rel_dme 0.0
 P acf/_esys_amperage/rel_efis_1 0.0
 P acf/_esys_amperage/rel_efis_2 0.0
-P acf/_esys_amperage/rel_ele_fp0 5.0
+P acf/_esys_amperage/rel_ele_fp0 0.0
 P acf/_esys_amperage/rel_ele_fp1 0.0
 P acf/_esys_amperage/rel_ele_fp2 0.0
 P acf/_esys_amperage/rel_ele_fp3 0.0
@@ -30112,7 +30112,7 @@ P acf/_esys_bus_bit_add/rel_dice_wing_heat_1 0
 P acf/_esys_bus_bit_add/rel_dme 0
 P acf/_esys_bus_bit_add/rel_efis_1 0
 P acf/_esys_bus_bit_add/rel_efis_2 0
-P acf/_esys_bus_bit_add/rel_ele_fp0 1
+P acf/_esys_bus_bit_add/rel_ele_fp0 0
 P acf/_esys_bus_bit_add/rel_ele_fp1 0
 P acf/_esys_bus_bit_add/rel_ele_fp2 0
 P acf/_esys_bus_bit_add/rel_ele_fp3 0

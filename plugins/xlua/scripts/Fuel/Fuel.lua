@@ -20,6 +20,7 @@ fuel_pump_spinning = find_dataref("sim/flightmodel2/engines/fuel_pump_spinning[0
 
 local cutoff = 1
 local press = 0
+local man_press = 0
 local flooded = 0
 function fuel_cutoff_handler()
 	if fuel_cutoff_selector > 0.7 then
@@ -42,10 +43,10 @@ fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector",
 local prev = 0 --manual_fuel_pump
 function man_fuel_pump_handler()
 	if manual_fuel_pump < prev then
-		press = press + 10*SIM_PERIOD
+		press = press + 20*SIM_PERIOD
 	end
 	prev = manual_fuel_pump
-	if press > 50 then flooded = 1 end
+	if man_press > 50 then flooded = 1 end
 end
 
 manual_fuel_pump = create_dataref("custom/dromader/electrical/fuel_pump","number", man_fuel_pump_handler)
@@ -98,36 +99,34 @@ end
 
 
 
--- function cmd_fuel_cutoff(phase, duration)
-	-- if phase == 0 then
-		-- if fuel_cutoff_selector == 0 then
-			-- fuel_cutoff_selector = 1
-			-- fuel_block1 = 1
-			-- fuel_block2 = 1
-		-- else
-			-- fuel_cutoff_selector = 0
-			-- fuel_block1 = 0
-			-- fuel_block2 = 0
-		-- end
-	-- end
--- end
+function cmd_fuel_cutoff(phase, duration)
+	if phase == 0 then
+		if fuel_cutoff_selector == 0 then
+			fuel_cutoff_selector = 1
+			cutoff = 1
+		else
+			fuel_cutoff_selector = 0
+			cutoff = 0
+		end
+	end
+end
 
 cmdcustomfuelup = create_command("custom/dromader/fuel/fuel_selector_up","Move the fuel selector up one",cmd_fuel_selector_up)
 cmdcustomfueldwn = create_command("custom/dromader/fuel/fuel_selector_dwn","Move the fuel selector down one",cmd_fuel_selector_dwn)
---cmdcustomfuelshutoff = create_command("custom/dromader/fuel/shut_down","Toggle fuel valve",cmd_fuel_cutoff)
+cmdcustomfuelshutoff = create_command("custom/dromader/fuel/shut_down","Toggle fuel valve",cmd_fuel_cutoff)
 
 
 function flight_start()
 	ovveride_fuel = 1
 
 	if startup_running == 1 then
-		fuel_cutoff_selector = 0
+		--fuel_cutoff_selector = 0
 		fuel_tank_selector_handle = 2
 		fuel_fuse = 1
 		bus_load_add = bus_load_add + 2
-		press = 35
+		press = 20
 	else
-		fuel_cutoff_selector = 1
+		--fuel_cutoff_selector = 1
 		fuel_tank_selector_handle = 2
 		fuel_fuse = 0
 		press = 0
@@ -149,13 +148,14 @@ end
 function update_fuel_press()
 
 	
-	if engn_tacrad > 35 then 
-		press = math.max(25, math.min(35, engn_tacrad / 5))
-	elseif engn_tacrad < 35 then
-		press = math.max(0, press - (engn_tacrad/10)* SIM_PERIOD)
+	if cutoff == 0 and nofuel == 0 then 
+		press = math.max(press, math.sqrt(6*math.abs(engn_tacrad)))
+		press = math.max(0, press - fuel_flow)
+	else
+		press = math.max(0, press - fuel_flow)
 		
 	end
-	fuel_press_dromader = press --math.min(55, engn_tacrad / 2)
+	fuel_press_dromader = press
 end
 
 function after_physics()
@@ -175,7 +175,7 @@ function after_physics()
 			tank_check_empty(fuel_quantity_right)
 		end
 	end
-	if cutoff==1 or nofuel==1 or press < 20 then
+	if cutoff==1 or nofuel==1 or press < 15 then
 		fuel_flow_before_engine = 0
 	else
 		fuel_flow_before_engine = 1
