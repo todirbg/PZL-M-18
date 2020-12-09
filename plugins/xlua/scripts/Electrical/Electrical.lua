@@ -10,6 +10,14 @@ startup_running = find_dataref("sim/operation/prefs/startup_running")
 bus_amp = find_dataref("sim/cockpit2/electrical/bus_load_amps[0]")
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 bat_volt =  find_dataref("sim/cockpit2/electrical/battery_voltage_indicated_volts[0]")
+bus_load_add = find_dataref("sim/cockpit2/electrical/plugin_bus_load_amps[0]")
+
+fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number")
+starter_fuse = create_dataref("custom/dromader/electrical/starter_fuse","number")
+starter_fail = find_dataref("sim/operation/failures/rel_startr0")
+--sim/operation/failures/rel_startr0
+--custom/dromader/electrical/starter_fuse_tog --command
+--custom/dromader/electrical/starter_fuse
 
 local volt_but = 0
 
@@ -18,6 +26,34 @@ function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
   animated_VALUE = animated_VALUE + ((reference_value - animated_VALUE) * (anim_speed * SIM_PERIOD))
   return animated_VALUE
 end
+
+function cmd_start_fuse_tog(phase, duration)
+	if phase == 0 then
+		if starter_fuse == 0 then
+			starter_fuse = 1
+			starter_fail = 0
+		else
+			starter_fuse = 0
+			starter_fail = 6
+		end
+	end
+end
+
+cmdcustomfueltog = create_command("custom/dromader/electrical/starter_fuse_tog","Toggle starter fuse",cmd_start_fuse_tog)
+
+function cmd_fuel_fuse_tog(phase, duration)
+	if phase == 0 then
+		if fuel_fuse == 0 then
+			fuel_fuse = 1
+			bus_load_add = bus_load_add + 2
+		else
+			fuel_fuse = 0
+			bus_load_add = bus_load_add - 2
+		end
+	end
+end
+
+cmdcustomfueltog = create_command("custom/dromader/electrical/fuel_fuse_tog","Toggle fuel needles fuse",cmd_fuel_fuse_tog)
 
 function cmd_bat_selector_up(phase, duration)
 	if phase == 0 then
@@ -92,17 +128,18 @@ cmdcustomvoltbutpress = create_command("custom/dromader/electrical/volt_but","Pr
 
 function flight_start()
 
-
+	starter_fuse = 0
+	starter_fail = 6
 	if startup_running == 1 then
 		bat_sel = 0
 		batt = 1
 		gpu = 0
-		--avionics = 1
+		bus_load_add = bus_load_add + 2
 	else
 		bat_sel = 1
 		batt = 0
 		gpu = 0
-		--avionics = 0
+		
 	end
 end
 

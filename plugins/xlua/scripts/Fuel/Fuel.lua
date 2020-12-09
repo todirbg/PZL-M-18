@@ -5,7 +5,6 @@ startup_running = find_dataref("sim/operation/prefs/startup_running")
 fuel_press = find_dataref("sim/cockpit2/fuel/tank_pump_pressure_psi[0]")
 ovveride_fuel = find_dataref("sim/operation/override/override_fuel_system")
 bus_volts = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
-bus_load_add = find_dataref("sim/cockpit2/electrical/plugin_bus_load_amps[0]")
 
 fuel_flow_before_engine = find_dataref("sim/flightmodel2/engines/has_fuel_flow_before_mixture[0]")
 fuel_flow = find_dataref("sim/flightmodel/engine/ENGN_FF_[0]")
@@ -16,6 +15,8 @@ engn_tacrad = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
 
 fuel_pump_spinning = find_dataref("sim/flightmodel2/engines/fuel_pump_spinning[0]")
 
+fuel_fuse = find_dataref("custom/dromader/electrical/fuel_fuse")
+fuel_burning = find_dataref("sim/flightmodel2/engines/engine_is_burning_fuel[0]")
 
 
 local cutoff = 1
@@ -35,35 +36,20 @@ fuel_cutoff_selector = create_dataref("custom/dromader/fuel/fuel_valve_handle","
 fuel_quantity_dromader_L = create_dataref("custom/dromader/fuel/fuel_quantity_L","number")
 fuel_quantity_dromader_R = create_dataref("custom/dromader/fuel/fuel_quantity_R","number")
 
-fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number")
-fuel_press_dromader = create_dataref("custom/dromader/electrical/fuel_press","number")
+fuel_press_dromader = create_dataref("custom/dromader/fuel/fuel_press","number")
 fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector","number") -- (1=left,2=all,3=right)
 
 
-local prev = 0 --manual_fuel_pump
+local prev = 0 
 function man_fuel_pump_handler()
 	if manual_fuel_pump < prev then
 		press = press + 20*SIM_PERIOD
 	end
 	prev = manual_fuel_pump
-	if man_press > 50 then flooded = 1 end
 end
 
-manual_fuel_pump = create_dataref("custom/dromader/electrical/fuel_pump","number", man_fuel_pump_handler)
+manual_fuel_pump = create_dataref("custom/dromader/fuel/fuel_pump","number", man_fuel_pump_handler)
 
-function cmd_fuel_fuse_tog(phase, duration)
-	if phase == 0 then
-		if fuel_fuse == 0 then
-			fuel_fuse = 1
-			bus_load_add = bus_load_add + 2
-		else
-			fuel_fuse = 0
-			bus_load_add = bus_load_add - 2
-		end
-	end
-end
-
-cmdcustomfueltog = create_command("custom/dromader/fuel/fuel_fuse_tog","Toggle fuel needles fuse",cmd_fuel_fuse_tog)
 
 function update_fuel_needles()
 	if fuel_fuse == 1 and bus_volts > 18 then
@@ -120,13 +106,12 @@ function flight_start()
 	ovveride_fuel = 1
 
 	if startup_running == 1 then
-		--fuel_cutoff_selector = 0
+		fuel_flow_before_engine = 1
 		fuel_tank_selector_handle = 2
 		fuel_fuse = 1
-		bus_load_add = bus_load_add + 2
 		press = 20
 	else
-		--fuel_cutoff_selector = 1
+		fuel_flow_before_engine = 0
 		fuel_tank_selector_handle = 2
 		fuel_fuse = 0
 		press = 0
@@ -150,12 +135,15 @@ function update_fuel_press()
 	
 	if cutoff == 0 and nofuel == 0 then 
 		press = math.max(press, math.sqrt(6*math.abs(engn_tacrad)))
-		press = math.max(0, press - fuel_flow)
-	else
-		press = math.max(0, press - fuel_flow)
-		
+	end
+	if fuel_burning == 1 then 
+	press = math.max(0, press - fuel_flow)
 	end
 	fuel_press_dromader = press
+	if press > 50 then flooded = 1 end
+	if flooded == 1 then
+		if press < 20 then flooded = 0 end
+	end
 end
 
 function after_physics()
@@ -175,7 +163,7 @@ function after_physics()
 			tank_check_empty(fuel_quantity_right)
 		end
 	end
-	if cutoff==1 or nofuel==1 or press < 15 then
+	if cutoff==1 or nofuel==1 or press < 15 or flooded == 1 then
 		fuel_flow_before_engine = 0
 	else
 		fuel_flow_before_engine = 1

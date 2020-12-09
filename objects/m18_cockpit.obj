@@ -4611,7 +4611,7 @@ IDX10	4120	4121	4118	4120	4122	4123	4124	4125	4122	4124
 		ANIM_rotate	0	1	0	-6.7213679	-6.7213679
 		ANIM_rotate	0	0	-1	2.9988611	2.9988611
 		ANIM_rotate	1	0	0	89.929164	89.929164
-		ANIM_rotate_begin	1	0	-0	
+		ANIM_rotate_begin	1	0	-0	CMND=sim/starters/engage_starter_1
 		ANIM_rotate_key	0	-30.000069
 		ANIM_rotate_key	1	30.000069
 		ANIM_rotate_end
@@ -4623,16 +4623,11 @@ IDX10	4120	4121	4118	4120	4122	4123	4124	4125	4122	4124
 		ANIM_rotate	0	1	0	-6.7213679	-6.7213679
 		ANIM_rotate	0	0	-1	2.9988611	2.9988611
 		ANIM_rotate	1	0	0	89.929164	89.929164
-		ANIM_rotate_begin	1	0	-0	sim/operation/failures/rel_startr0
+		ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/starter_fuse
 		ANIM_rotate_key	0	-30.000069
-		ANIM_rotate_key	1	-30.000069
-		ANIM_rotate_key	2	-30.000069
-		ANIM_rotate_key	3	-30.000069
-		ANIM_rotate_key	4	-30.000069
-		ANIM_rotate_key	5	-30.000069
-		ANIM_rotate_key	6	30.000069
+		ANIM_rotate_key	1	30.000069
 		ANIM_rotate_end
-			ATTR_manip_axis_switch_up_down	hand	0	6	6	0	sim/operation/failures/rel_startr0	Starter fuse
+			ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/starter_fuse_tog	Starter fuse
 			TRIS	414 36
 		ANIM_end
 		ANIM_begin
@@ -4785,10 +4780,9 @@ IDX10	4120	4121	4118	4120	4122	4123	4124	4125	4122	4124
 	ANIM_begin
 	ANIM_trans	-0	0	-0.037760001	-0	0	-0.037760001
 	ANIM_rotate	1	0	0	90.00021	90.00021
-	ANIM_rotate_begin	0	1	-0	sim/flightmodel2/engines/prop_no_disc_rotation_angle_deg[0]
+	ANIM_rotate_begin	0	1	-0	sim/flightmodel2/engines/prop_rotation_angle_deg[0]
 	ANIM_rotate_key	0	0
 	ANIM_rotate_key	360	360.00026
-		ANIM_keyframe_loop	360.0
 	ANIM_rotate_end
 		ANIM_begin
 		ANIM_rotate	1	0	0	-90.00021	-90.00021
@@ -4811,7 +4805,6 @@ IDX10	4120	4121	4118	4120	4122	4123	4124	4125	4122	4124
 		ANIM_rotate_end
 			ANIM_begin
 			ANIM_hide	0.0099999998	1	sim/flightmodel/engine/ENGN_running[0]
-			ATTR_manip_drag_rotate	hand	-0.00000025	0.00000003	-0.037759908	0	1	-0	0	90.000207	0	0	90	0	0	sim/flightmodel2/engines/prop_rotation_angle_deg[0]	none	
 			TRIS	450 6
 			ANIM_end
 		ANIM_end
@@ -4996,7 +4989,7 @@ IDX10	4120	4121	4118	4120	4122	4123	4124	4125	4122	4124
 				ANIM_rotate_key	0	-30.000069
 				ANIM_rotate_key	1	30.000069
 				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/fuel/fuel_fuse_tog	
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/fuel_fuse_tog	
 					TRIS	900 36
 				ANIM_end
 				ANIM_begin
@@ -5421,11 +5414,11 @@ IDX10	4120	4121	4118	4120	4122	4123	4124	4125	4122	4124
 		ANIM_rotate	0	1	0	43.162057	43.162057
 		ANIM_rotate	0	0	-1	-84.997716	-84.997716
 		ANIM_rotate	1	0	0	130.22414	130.22414
-		ANIM_rotate_begin	0	1	-0	custom/dromader/electrical/fuel_pump
+		ANIM_rotate_begin	0	1	-0	custom/dromader/fuel/fuel_pump
 		ANIM_rotate_key	0	45.000104
 		ANIM_rotate_key	1	-45.000104
 		ANIM_rotate_end
-			ATTR_manip_drag_rotate	hand	0.45222285	0.56881428	4.3016024	0	1	-0	45.000104	-45.000104	0	0	1	0	0	custom/dromader/electrical/fuel_pump	none	
+			ATTR_manip_drag_rotate	hand	0.45222285	0.56881428	4.3016024	0	1	-0	45.000104	-45.000104	0	0	1	0	0	custom/dromader/fuel/fuel_pump	none	
 			TRIS	3174 240
 		ANIM_end
 
