@@ -12,20 +12,35 @@ bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 bat_volt =  find_dataref("sim/cockpit2/electrical/battery_voltage_indicated_volts[0]")
 bus_load_add = find_dataref("sim/cockpit2/electrical/plugin_bus_load_amps[0]")
 
+
 fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number")
+
 starter_fuse = create_dataref("custom/dromader/electrical/starter_fuse","number")
 starter_fail = find_dataref("sim/operation/failures/rel_startr0")
---sim/operation/failures/rel_startr0
---custom/dromader/electrical/starter_fuse_tog --command
---custom/dromader/electrical/starter_fuse
---custom/dromader/electrical/stall_fuse
+
 stall_fuse = create_dataref("custom/dromader/electrical/stall_fuse","number")
 stall_fail = find_dataref("sim/operation/failures/rel_stall_warn")
+
 inst_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")
+
 heater_sw = create_dataref("custom/dromader/electrical/heater","number")
+
 vent_fuse = create_dataref("custom/dromader/electrical/vent","number")
 
+wiper_fuse = create_dataref("custom/dromader/electrical/wiper","number")
+wiper_speed = find_dataref("sim/cockpit2/switches/wiper_speed")
+
+inst_light_fuse = create_dataref("custom/dromader/electrical/instruments_light","number")
+inst_light_fail = find_dataref("sim/operation/failures/rel_lites_ins")
+
+agk49_fuse = create_dataref("custom/dromader/electrical/agk49_power","number")
+agk49_fail = find_dataref("sim/operation/failures/rel_elec_gyr")
+
 local volt_but = 0
+
+function dummy()
+--do nothing
+end
 
 function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
   if math.abs(reference_value - animated_VALUE) < 0.1 then return reference_value end
@@ -65,6 +80,62 @@ function cmd_stall_fuse_tog(phase, duration)
 end
 
 cmdcustomstalltog = create_command("custom/dromader/electrical/stall_fuse_tog","Toggle stall warning fuse",cmd_stall_fuse_tog)
+
+function cmd_agk49_fuse_tog(phase, duration)
+	if phase == 0 then
+		if agk49_fuse == 0 then
+			agk49_fuse = 1
+			agk49_fail = 0
+			bus_load_add = bus_load_add + 2
+		else
+			agk49_fuse = 0
+			agk49_fail = 6
+			bus_load_add = bus_load_add - 2
+		end
+	end
+end
+
+cmdcustomagk49tog = create_command("custom/dromader/electrical/agk49_pwr_cmd","Toggle AGK-49 fuse",cmd_agk49_fuse_tog)
+
+function cmd_inst_light_fuse_tog(phase, duration)
+	if phase == 0 then
+		if inst_light_fuse == 0 then
+			inst_light_fuse = 1
+			inst_light_fail = 0
+		else
+			inst_light_fuse = 0
+			inst_light_fail = 6
+		end
+	end
+end
+
+cmdcustominstlighttog = create_command("custom/dromader/electrical/inst_light_cmd","Toggle instruments light fuse",cmd_inst_light_fuse_tog)
+
+
+
+function cmd_wiper_fuse_tog(phase, duration)
+	if phase == 0 then
+		if wiper_fuse == 0 then
+			wiper_fuse = 1
+		else
+			wiper_fuse = 0
+			wiper_speed = 0
+		end
+	end
+end
+
+function cmd_wiper_wrap_handler(phase, duration)
+	if phase == 0 then
+		if wiper_fuse == 0 then
+			wiper_speed = 0
+		end
+	end
+end
+
+
+cmdcustomwiperdn = wrap_command("sim/systems/wipers_dn", dummy, cmd_wiper_wrap_handler)
+cmdcustomwiperup = wrap_command("sim/systems/wipers_up", dummy, cmd_wiper_wrap_handler)
+cmdcustomwipertog = create_command("custom/dromader/electrical/wiper_fuse_tog","Toggle stall warning fuse",cmd_wiper_fuse_tog)
 
 function cmd_vent_fuse_tog(phase, duration)
 	if phase == 0 then
@@ -191,12 +262,18 @@ function flight_start()
 		bus_load_add = bus_load_add + 2
 		stall_fuse = 0
 		stall_fail = 6
+		inst_light_fuse = 0
+		inst_light_fail = 6
+		agk49_fuse = 1
+		agk49_fail = 0
 	else
 		bat_sel = 1
 		batt = 0
 		gpu = 0
 		stall_fuse = 1
 		stall_fail = 0
+		agk49_fuse = 0
+		agk49_fail = 6		
 	end
 end
 

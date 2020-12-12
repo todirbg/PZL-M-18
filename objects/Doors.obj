@@ -9570,10 +9570,13 @@ IDX10	6815	6816	6827	6815	6791	6734	6827	6816	6791	6827
 				ANIM_rotate	0	1	0	-85.342637	-85.342637
 				ANIM_rotate	0	0	-1	0.0022918312	0.0022918312
 				ANIM_rotate	1	0	0	-2.8304115	-2.8304115
-				ANIM_rotate_begin	1	0	-0	sim/cockpit2/gauges/indicators/water_ratio
-				ANIM_rotate_key	1	0
-				ANIM_rotate_key	0.1	12.000028
-				ANIM_rotate_key	0	8.00021
+				ANIM_rotate_begin	1	0	-0	custom/dromader/water/water_drop_anim
+				ANIM_rotate_key	0	0
+				ANIM_rotate_key	1	12.000028
+				ANIM_rotate_end
+				ANIM_rotate_begin	1	0	-0	custom/dromader/water/water_drop_em_anim
+				ANIM_rotate_key	0	0
+				ANIM_rotate_key	1	12.000028
 				ANIM_rotate_end
 					TRIS	19686 1632
 				ANIM_end

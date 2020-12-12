@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27454.333984375
-P _gear/2/_stat_def 0.053648822
+P _gear/2/_stat_def 0.053648826
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -31272,4 +31272,33 @@ flap_slat_ind_rnd indicate_flap_slat_
 
 PANEL_2D_END
 PANEL_3D_BEGIN
+gen_LED Foam_qty
+  POS 403.500000 184.500000
+  IMAGE LED/gen_LED_1
+  DATAREF custom/dromader/water/foaming_quantity
+  SIZE 6.000000
+  LIGHT_MODE BACK_LIT_AUTO
+  LIGHT_RHEOSTAT 0
+  CORNERS 0.000000 0.000000  0.000000 0.000000  0.000094 0.000015  0.000000 0.000000
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 60.000000 60.000000
+  DIGITS 4
+  DECIMALS 2
+  PERIOD_WIDTH 0
+  LED_ROWS 0
+
+gen_LED Water_qty
+  POS 556.500000 62.500000
+  IMAGE LED/gen_LED_1
+  DATAREF sim/flightmodel/weight/m_jettison
+  SIZE 6.000000
+  LIGHT_MODE BACK_LIT_MANUAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 2200.000000 2200.000000
+  DIGITS 6
+  DECIMALS 2
+  PERIOD_WIDTH 0
+  LED_ROWS 0
+
 PANEL_3D_END

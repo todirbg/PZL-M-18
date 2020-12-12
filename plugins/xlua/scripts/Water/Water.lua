@@ -1,4 +1,5 @@
 water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
+water_quantity_max = find_dataref("sim/aircraft/weight/acf_m_jettison")
 acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
 hyd_press_1 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_1")
 hyd_press_2 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_2")
@@ -23,8 +24,15 @@ function foaming_quantity_handler()
 
 end
 
+function foaming_quantity_handler()
 
-function foam_add_handler()
+end
+
+function foam_qty_handle_handler()
+
+end
+
+function water_qty_handle_handler()
 
 end
 
@@ -43,6 +51,9 @@ foam_add = create_dataref("custom/dromader/water/foam_add","number", foam_add_ha
 water_drop_anim = create_dataref("custom/dromader/water/water_drop_anim","number")
 water_drop_em_anim = create_dataref("custom/dromader/water/water_drop_em_anim","number")
 hyd_dump_fuse = create_dataref("custom/dromader/water/hyd_dump_fuse","number")
+
+foam_quantity_handle = create_dataref("custom/dromader/water/foam_quantity_handle","number", foam_qty_handle_handler)
+water_quantity_handle = create_dataref("custom/dromader/water/water_quantity_handle","number", water_qty_handle_handler)
 
 function hyd_drop_toggle_cmd(phase, duration)
 	if phase == 1 then
@@ -209,5 +220,12 @@ end
 function after_physics()
 	hydraulic_drop()
 	emergency_drop()
+	if water_quantity_handle > 0.1 and em_drop == 0 and hyd_drop == 0 then
+		water_quantity =  math.min(water_quantity_max, water_quantity + 50*water_quantity_handle*SIM_PERIOD)
+	end
+	if foam_quantity_handle > 0.1 and em_drop == 0 and hyd_drop == 0 then
+		foaming_quantity =  math.min(60, foaming_quantity + 3*foam_quantity_handle*SIM_PERIOD)
+		acf_weight = acf_weight + 3*foam_quantity_handle*SIM_PERIOD
+	end
 		
 end
