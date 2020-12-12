@@ -23,6 +23,7 @@ stall_fuse = create_dataref("custom/dromader/electrical/stall_fuse","number")
 stall_fail = find_dataref("sim/operation/failures/rel_stall_warn")
 inst_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")
 heater_sw = create_dataref("custom/dromader/electrical/heater","number")
+vent_fuse = create_dataref("custom/dromader/electrical/vent","number")
 
 local volt_but = 0
 
@@ -64,6 +65,20 @@ function cmd_stall_fuse_tog(phase, duration)
 end
 
 cmdcustomstalltog = create_command("custom/dromader/electrical/stall_fuse_tog","Toggle stall warning fuse",cmd_stall_fuse_tog)
+
+function cmd_vent_fuse_tog(phase, duration)
+	if phase == 0 then
+		if vent_fuse == 0 then
+			vent_fuse = 1
+			bus_load_add = bus_load_add + 3
+		else
+			vent_fuse = 0
+			bus_load_add = bus_load_add - 3
+		end
+	end
+end
+
+ventfusetogcmd = create_command("custom/dromader/electrical/vent_fuse_tog","Toggle vent fuse",cmd_vent_fuse_tog)
 
 function cmd_start_fuse_tog(phase, duration)
 	if phase == 0 then
@@ -206,7 +221,7 @@ local tmpval
 	else 
 		tmpval = bus_volt
 	end
-	volt_needle = func_animate_slowly(tmpval, volt_needle, 5)
+	volt_needle = func_animate_slowly(tmpval, volt_needle, 3)
 end
 
 function after_physics()

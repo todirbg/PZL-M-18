@@ -1,0 +1,213 @@
+water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
+acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
+hyd_press_1 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_1")
+hyd_press_2 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_2")
+
+function hyd_drop_handler()
+
+end
+
+function em_drop_handler()
+
+end
+
+function em_drop_handle_handler()
+
+end
+
+function water_drop_speed_handler()
+
+end
+
+function foaming_quantity_handler()
+
+end
+
+
+function foam_add_handler()
+
+end
+
+
+local dropping_water_hyd = 0
+local dropping_water_em = 0
+
+hyd_drop = create_dataref("custom/dromader/water/hyd_drop","number", hyd_drop_handler)
+
+em_drop = create_dataref("custom/dromader/water/emergency_drop","number", em_drop_handler)
+em_drop_handle = create_dataref("custom/dromader/water/emergency_drop_handle","number", em_drop_handle_handler)
+water_drop_speed = create_dataref("custom/dromader/water/water_drop_speed","number", water_drop_speed_handler)
+foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", foaming_quantity_handler)
+foaming_fuse = create_dataref("custom/dromader/water/foaming_fuse","number")
+foam_add = create_dataref("custom/dromader/water/foam_add","number", foam_add_handler)
+water_drop_anim = create_dataref("custom/dromader/water/water_drop_anim","number")
+water_drop_em_anim = create_dataref("custom/dromader/water/water_drop_em_anim","number")
+hyd_dump_fuse = create_dataref("custom/dromader/water/hyd_dump_fuse","number")
+
+function hyd_drop_toggle_cmd(phase, duration)
+	if phase == 1 then
+		dropping_water_hyd = 1
+		if foaming_fuse == 1 and foaming_quantity > 0 then
+			foam_add = 1
+		else 
+			foam_add = 0
+		end
+	else 
+		dropping_water_hyd = 0
+		foam_add = 0
+	end
+end
+
+dropwatercmd = create_command("custom/dromader/water/hyd_drop_toggle","Drop water hydraulic", hyd_drop_toggle_cmd)
+
+function foaming_fuse_toggle_cmd(phase, duration)
+	if phase == 0 then
+		if foaming_fuse == 0 then
+			foaming_fuse = 1
+		else
+			foaming_fuse = 0
+		end
+	end
+end
+
+foamingcmd = create_command("custom/dromader/water/foaming_fuse_cmd","Toggle foaming agent", foaming_fuse_toggle_cmd)
+
+function water_drop_toggle_cmd(phase, duration)
+	if phase == 0 then
+		if dropping_water_em == 0 then
+			dropping_water_em = 1
+			if foaming_fuse == 1 and foaming_quantity > 0 then
+				foam_add = 1
+			else 
+				foam_add = 0
+			end
+		elseif dropping_water_em == 1 and water_quantity == 0 and em_drop <= 0.1 then
+			dropping_water_em = 0
+			foam_add = 0
+		end
+	end
+end
+
+customjetisoncmd = replace_command("sim/flight_controls/jettison_payload", water_drop_toggle_cmd)
+
+function water_dump_dwn_cmd(phase, duration)
+	if phase == 0 then
+		if dropping_water_em == 0 then
+			dropping_water_em = 1
+			if foaming_fuse == 1 and foaming_quantity > 0 then
+				foam_add = 1
+			else 
+				foam_add = 0
+			end
+		end
+	end
+end
+
+function water_dump_up_cmd(phase, duration)
+	if phase == 0 then
+		if water_quantity == 0 and em_drop <= 0.1 then
+			dropping_water_em = 0
+			foam_add = 0
+		end
+	end
+end
+
+customjetisonupcmd = create_command("custom/dromader/water/jettison_payload_up", "Close emergency water dump",water_dump_up_cmd)
+customjetisondwncmd = create_command("custom/dromader/water/jettison_payload_dwn", "Open emergency water dump",water_dump_dwn_cmd)
+
+function hyd_dump_fuse_toggle_cmd(phase, duration)
+	if phase == 0 then
+		if hyd_dump_fuse == 0 then
+			hyd_dump_fuse = 1
+		else
+			hyd_dump_fuse = 0
+		end
+	end
+end
+
+hyddumpfusecmd = create_command("custom/dromader/water/hyd_dump_fuse_cmd","Toggle foaming agent", hyd_dump_fuse_toggle_cmd)
+
+function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
+  if math.abs(reference_value - animated_VALUE) < 0.01 then return reference_value end
+  animated_VALUE = animated_VALUE + ((reference_value - animated_VALUE) * (anim_speed * SIM_PERIOD))
+  return animated_VALUE
+end
+
+function flight_start()
+	foaming_quantity = 60
+	acf_weight = acf_weight + foaming_quantity
+	if startup_running == 1 then
+		foaming_fuse = 1
+		hyd_dump_fuse = 1
+	else
+		foaming_fuse = 0
+		hyd_dump_fuse = 1
+	end
+end
+
+function hydraulic_drop()
+		if hyd_drop ~= dropping_water_hyd and (hyd_press_1 > 80 or hyd_press_2 > 80) and em_drop == 0 and hyd_dump_fuse == 1 then
+			hyd_drop = func_animate_slowly(dropping_water_hyd, hyd_drop, 5)
+		end
+		if hyd_drop > 0 and em_drop == 0 then 
+			water_drop_speed = math.min(1, hyd_drop*SIM_PERIOD)
+			water_quantity = math.max(0 ,water_quantity - water_drop_speed*200)
+			if foaming_fuse == 1 and water_quantity > 0  then
+				foaming_quantity = math.max(0 ,foaming_quantity - water_drop_speed)
+				if foaming_quantity > 0 then
+					acf_weight = acf_weight - water_drop_speed
+				end
+			end
+			if water_quantity > 0 and hyd_drop > 0 then
+				water_drop_anim = hyd_drop
+			else
+				water_drop_anim = 0
+			end			
+		end
+end
+
+function emergency_drop()
+		if dropping_water_em == 1 then
+			
+			if em_drop_handle < 0.1 then
+				em_drop_handle = func_animate_slowly(dropping_water_em, em_drop_handle, 10)
+				em_drop = em_drop_handle * 0.1
+			elseif em_drop_handle > 0.1 then
+				
+				em_drop_handle = func_animate_slowly(dropping_water_em, em_drop_handle, 10)
+				if water_quantity < 200 and em_drop_handle > 0 then
+					em_drop = func_animate_slowly(0.1, em_drop, 4)
+				else 
+					em_drop = func_animate_slowly(dropping_water_em, em_drop, 10)
+				end
+			end
+		elseif dropping_water_em == 0 and em_drop_handle > 0 then
+				em_drop_handle = func_animate_slowly(dropping_water_em, em_drop_handle, 10)
+				if water_quantity == 0 and em_drop <= 0.1 then
+					if em_drop_handle < 1 then 
+						em_drop = em_drop_handle*0.1
+					end
+				end			
+		end
+		if em_drop > 0 then 
+			water_drop_speed = math.min(1, em_drop*SIM_PERIOD)
+			water_quantity = math.max(0 ,water_quantity - water_drop_speed*2000)
+			if foaming_fuse == 1 and water_quantity > 0 then
+				foaming_quantity = math.max(0 ,foaming_quantity - water_drop_speed*10)
+				if foaming_quantity > 0 then
+					acf_weight = acf_weight - water_drop_speed
+				end
+			end
+			if water_quantity > 0 and em_drop > 0 then
+				water_drop_em_anim = em_drop
+			else
+				water_drop_em_anim = 0
+			end			
+		end
+end
+
+function after_physics()
+	hydraulic_drop()
+	emergency_drop()
+		
+end

@@ -12,8 +12,8 @@ engn_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 fuel_quantity_left = find_dataref("sim/flightmodel/weight/m_fuel[0]")
 fuel_quantity_right = find_dataref("sim/flightmodel/weight/m_fuel[1]")
 engn_tacrad = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
+primer_ratio = find_dataref("sim/cockpit2/engine/actuators/primer_ratio")
 
-fuel_pump_spinning = find_dataref("sim/flightmodel2/engines/fuel_pump_spinning[0]")
 
 fuel_fuse = find_dataref("custom/dromader/electrical/fuel_fuse")
 fuel_burning = find_dataref("sim/flightmodel2/engines/engine_is_burning_fuel[0]")
@@ -53,11 +53,11 @@ manual_fuel_pump = create_dataref("custom/dromader/fuel/fuel_pump","number", man
 
 function update_fuel_needles()
 	if fuel_fuse == 1 and bus_volts > 18 then
-		fuel_quantity_dromader_L = func_animate_slowly(fuel_quantity_left, fuel_quantity_dromader_L, 5)
-		fuel_quantity_dromader_R = func_animate_slowly(fuel_quantity_right, fuel_quantity_dromader_R, 5)
+		fuel_quantity_dromader_L = func_animate_slowly(fuel_quantity_left, fuel_quantity_dromader_L, 2)
+		fuel_quantity_dromader_R = func_animate_slowly(fuel_quantity_right, fuel_quantity_dromader_R, 2)
 	else
-		fuel_quantity_dromader_L = func_animate_slowly(0, fuel_quantity_dromader_L, 5)
-		fuel_quantity_dromader_R = func_animate_slowly(0, fuel_quantity_dromader_R, 5)	
+		fuel_quantity_dromader_L = func_animate_slowly(0, fuel_quantity_dromader_L, 2)
+		fuel_quantity_dromader_R = func_animate_slowly(0, fuel_quantity_dromader_R, 2)	
 	end
 end
 
