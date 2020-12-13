@@ -3,6 +3,7 @@ water_quantity_max = find_dataref("sim/aircraft/weight/acf_m_jettison")
 acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
 hyd_press_1 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_1")
 hyd_press_2 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_2")
+bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 
 function hyd_drop_handler()
 
@@ -48,8 +49,12 @@ water_drop_speed = create_dataref("custom/dromader/water/water_drop_speed","numb
 foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", foaming_quantity_handler)
 foaming_fuse = create_dataref("custom/dromader/water/foaming_fuse","number")
 foam_add = create_dataref("custom/dromader/water/foam_add","number", foam_add_handler)
+
+foaming_qty_ind = create_dataref("custom/dromader/water/foaming_qty_ind","array[7]")
+
 water_drop_anim = create_dataref("custom/dromader/water/water_drop_anim","number")
 water_drop_em_anim = create_dataref("custom/dromader/water/water_drop_em_anim","number")
+
 hyd_dump_fuse = create_dataref("custom/dromader/water/hyd_dump_fuse","number")
 
 foam_quantity_handle = create_dataref("custom/dromader/water/foam_quantity_handle","number", foam_qty_handle_handler)
@@ -226,6 +231,31 @@ function after_physics()
 	if foam_quantity_handle > 0.1 and em_drop == 0 and hyd_drop == 0 then
 		foaming_quantity =  math.min(60, foaming_quantity + 3*foam_quantity_handle*SIM_PERIOD)
 		acf_weight = acf_weight + 3*foam_quantity_handle*SIM_PERIOD
+	end
+	if bus_volt > 18 then
+		for i = 0, 6 do
+			local fq = math.floor(foaming_quantity/10 + 0.5)
+			if fq == i then 
+				foaming_qty_ind[i] = 1
+			else
+				foaming_qty_ind[i] = 0
+			end
+		end
+		-- if foaming_quantity < 5 then
+			-- foaming_qty_ind[0] = 1
+		-- elseif foaming_quantity > 5 and foaming_quantity < 15 then
+			-- foaming_qty_ind[1] = 1
+		-- elseif foaming_quantity > 15 and foaming_quantity < 25 then
+			-- foaming_qty_ind[2] = 1
+		-- elseif foaming_quantity > 25 and foaming_quantity < 35 then
+			-- foaming_qty_ind[3] = 1
+		-- elseif foaming_quantity > 35 and foaming_quantity < 45 then
+			-- foaming_qty_ind[4] = 1
+		-- elseif foaming_quantity > 45 and foaming_quantity < 55 then
+			-- foaming_qty_ind[5] = 1
+		-- elseif foaming_quantity > 55 then
+			-- foaming_qty_ind[6] = 1
+		-- end
 	end
 		
 end

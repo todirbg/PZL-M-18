@@ -36,6 +36,9 @@ fuel_cutoff_selector = create_dataref("custom/dromader/fuel/fuel_valve_handle","
 fuel_quantity_dromader_L = create_dataref("custom/dromader/fuel/fuel_quantity_L","number")
 fuel_quantity_dromader_R = create_dataref("custom/dromader/fuel/fuel_quantity_R","number")
 
+fuel_low_dromader_L = create_dataref("custom/dromader/fuel/fuel_low_L","number")
+fuel_low_dromader_R = create_dataref("custom/dromader/fuel/fuel_low_R","number")
+
 fuel_press_dromader = create_dataref("custom/dromader/fuel/fuel_press","number")
 fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector","number") -- (1=left,2=all,3=right)
 
@@ -55,6 +58,16 @@ function update_fuel_needles()
 	if fuel_fuse == 1 and bus_volts > 18 then
 		fuel_quantity_dromader_L = func_animate_slowly(fuel_quantity_left, fuel_quantity_dromader_L, 2)
 		fuel_quantity_dromader_R = func_animate_slowly(fuel_quantity_right, fuel_quantity_dromader_R, 2)
+		if fuel_quantity_dromader_L < 30 then
+			fuel_low_dromader_L = 1
+		else 
+			fuel_low_dromader_L = 0
+		end
+		if fuel_quantity_dromader_R < 30 then
+			fuel_low_dromader_R = 1
+		else 
+			fuel_low_dromader_R = 0
+		end
 	else
 		fuel_quantity_dromader_L = func_animate_slowly(0, fuel_quantity_dromader_L, 2)
 		fuel_quantity_dromader_R = func_animate_slowly(0, fuel_quantity_dromader_R, 2)	
@@ -101,9 +114,11 @@ cmdcustomfuelup = create_command("custom/dromader/fuel/fuel_selector_up","Move t
 cmdcustomfueldwn = create_command("custom/dromader/fuel/fuel_selector_dwn","Move the fuel selector down one",cmd_fuel_selector_dwn)
 cmdcustomfuelshutoff = create_command("custom/dromader/fuel/shut_down","Toggle fuel valve",cmd_fuel_cutoff)
 
+function aircraft_load()
+	ovveride_fuel = 1
+end
 
 function flight_start()
-	ovveride_fuel = 1
 
 	if startup_running == 1 then
 		fuel_flow_before_engine = 1
@@ -116,6 +131,7 @@ function flight_start()
 		fuel_fuse = 0
 		press = 0
 	end
+	
 end
 
 function aircraft_unload()
@@ -163,6 +179,7 @@ function after_physics()
 			tank_check_empty(fuel_quantity_right)
 		end
 	end
+
 	if cutoff==1 or nofuel==1 or press < 15 or flooded == 1 then
 		fuel_flow_before_engine = 0
 	else

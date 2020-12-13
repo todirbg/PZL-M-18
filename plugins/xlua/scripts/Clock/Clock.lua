@@ -1,8 +1,3 @@
---custom/dromader/clock/elapsed_timer_cycle
---custom/dromader/clock/elapsed_time_hours
---custom/dromader/clock/elapsed_time_minutes
---custom/dromader/clock/elapsed_time_seconds
---sim/time/total_flight_time_sec
 
 time_sec = create_dataref("custom/dromader/clock/elapsed_time_seconds","number")
 time_min = create_dataref("custom/dromader/clock/elapsed_time_minutes","number")

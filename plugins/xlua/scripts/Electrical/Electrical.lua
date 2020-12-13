@@ -36,6 +36,8 @@ inst_light_fail = find_dataref("sim/operation/failures/rel_lites_ins")
 agk49_fuse = create_dataref("custom/dromader/electrical/agk49_power","number")
 agk49_fail = find_dataref("sim/operation/failures/rel_elec_gyr")
 
+com1_pwr = find_dataref("sim/cockpit2/radios/actuators/com1_power")
+
 local volt_but = 0
 
 function dummy()
@@ -250,28 +252,41 @@ end
 
 cmdcustomvoltbutpress = create_command("custom/dromader/electrical/volt_but","Press voltmeter button",cmd_volt_but_press)
 
+
+function com_power_toggle_cmd(phase, duration)
+	if phase == 0 then
+		if com1_pwr == 0 then
+			com1_pwr = 1
+		else
+			com1_pwr = 0
+		end
+	end
+end
+
+compowertogcmd = create_command("custom/dromader/electrical/com_power_toggle_cmd","Toggle com1 power", com_power_toggle_cmd)
+
 function flight_start()
 
 	starter_fuse = 0
 	starter_fail = 6
 	inst_brt = 0
+	inst_light_fuse = 0
+	inst_light_fail = 6
 	if startup_running == 1 then
 		bat_sel = 0
 		batt = 1
 		gpu = 0
 		bus_load_add = bus_load_add + 2
-		stall_fuse = 0
-		stall_fail = 6
-		inst_light_fuse = 0
-		inst_light_fail = 6
+		stall_fuse = 1
+		stall_fail = 0
 		agk49_fuse = 1
 		agk49_fail = 0
 	else
 		bat_sel = 1
 		batt = 0
 		gpu = 0
-		stall_fuse = 1
-		stall_fail = 0
+		stall_fuse = 0
+		stall_fail = 6
 		agk49_fuse = 0
 		agk49_fail = 6		
 	end

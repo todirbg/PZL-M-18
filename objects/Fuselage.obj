@@ -33429,7 +33429,7 @@ IDX	23135
 		ANIM_trans	-0	1.2780401	8.3418303	-0	1.2780401	8.3418303
 		ANIM_rotate	1	0	0	176.31917	176.31917
 		ANIM_rotate_begin	0	1	-0	sim/flightmodel/controls/vstab1_rud1def
-		ANIM_rotate_key	0	-0
+		ANIM_rotate_key	0	0
 		ANIM_rotate_key	23	-23.000245
 		ANIM_rotate_key	-23	23.000245
 		ANIM_rotate_end
