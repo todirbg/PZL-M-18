@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27454.333984375
-P _gear/0/_stat_def 0.185970053
+P _gear/0/_stat_def 0.185970068
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27454.333984375
-P _gear/1/_stat_def 0.185970053
+P _gear/1/_stat_def 0.185970068
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -19536,7 +19536,7 @@ P _part/85/_part_specs_invis 1
 P _part/85/_part_tex 0
 P _part/85/_part_the 0.0
 P _part/85/_part_x -5.948614120
-P _part/85/_part_y -5.784405231
+P _part/85/_part_y -5.784404755
 P _part/85/_part_z 7.210092545
 P _part/85/_patt_con 0
 P _part/85/_patt_prt 0
@@ -21006,7 +21006,7 @@ P _part/86/_part_specs_invis 1
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 5.948614120
-P _part/86/_part_y -5.784405231
+P _part/86/_part_y -5.784404755
 P _part/86/_part_z 7.210092545
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -30505,8 +30505,8 @@ P acf/_jett_is_slung 0
 P acf/_jett_is_water 0
 P acf/_jett_the 0.0
 P acf/_jett_xyz/0 0.0
-P acf/_jett_xyz/1 -2.700000048
-P acf/_jett_xyz/2 8.789999962
+P acf/_jett_xyz/1 -2.799999952
+P acf/_jett_xyz/2 9.489999771
 P acf/_jett_xyz/count 3
 P acf/_lo_speed_is_position 0
 P acf/_load_alt_presel_on_alt_hit 0
@@ -31153,8 +31153,8 @@ P acf/_warn_stall 1
 P acf/_warn_transonic_EQ 0
 P acf/_warn_verbal_500_agl 0
 P acf/_wate_xyz/0 0.0
-P acf/_wate_xyz/1 -2.0
-P acf/_wate_xyz/2 8.789999962
+P acf/_wate_xyz/1 -2.799999952
+P acf/_wate_xyz/2 9.489999771
 P acf/_wate_xyz/count 3
 P acf/_water_drop_dep_time 0.010000000
 P acf/_water_rud_Z 0.0
