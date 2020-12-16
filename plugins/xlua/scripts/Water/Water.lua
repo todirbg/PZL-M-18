@@ -63,14 +63,8 @@ water_quantity_handle = create_dataref("custom/dromader/water/water_quantity_han
 function hyd_drop_toggle_cmd(phase, duration)
 	if phase == 1 then
 		dropping_water_hyd = 1
-		if foaming_fuse == 1 and foaming_quantity > 0 then
-			foam_add = 1
-		else 
-			foam_add = 0
-		end
 	else 
 		dropping_water_hyd = 0
-		foam_add = 0
 	end
 end
 
@@ -92,14 +86,8 @@ function water_drop_toggle_cmd(phase, duration)
 	if phase == 0 then
 		if dropping_water_em == 0 then
 			dropping_water_em = 1
-			if foaming_fuse == 1 and foaming_quantity > 0 then
-				foam_add = 1
-			else 
-				foam_add = 0
-			end
 		elseif dropping_water_em == 1 and water_quantity == 0 and em_drop <= 0.1 then
 			dropping_water_em = 0
-			foam_add = 0
 		end
 	end
 end
@@ -110,11 +98,6 @@ function water_dump_dwn_cmd(phase, duration)
 	if phase == 0 then
 		if dropping_water_em == 0 then
 			dropping_water_em = 1
-			if foaming_fuse == 1 and foaming_quantity > 0 then
-				foam_add = 1
-			else 
-				foam_add = 0
-			end
 		end
 	end
 end
@@ -123,7 +106,6 @@ function water_dump_up_cmd(phase, duration)
 	if phase == 0 then
 		if water_quantity == 0 and em_drop <= 0.1 then
 			dropping_water_em = 0
-			foam_add = 0
 		end
 	end
 end
@@ -241,21 +223,12 @@ function after_physics()
 				foaming_qty_ind[i] = 0
 			end
 		end
-		-- if foaming_quantity < 5 then
-			-- foaming_qty_ind[0] = 1
-		-- elseif foaming_quantity > 5 and foaming_quantity < 15 then
-			-- foaming_qty_ind[1] = 1
-		-- elseif foaming_quantity > 15 and foaming_quantity < 25 then
-			-- foaming_qty_ind[2] = 1
-		-- elseif foaming_quantity > 25 and foaming_quantity < 35 then
-			-- foaming_qty_ind[3] = 1
-		-- elseif foaming_quantity > 35 and foaming_quantity < 45 then
-			-- foaming_qty_ind[4] = 1
-		-- elseif foaming_quantity > 45 and foaming_quantity < 55 then
-			-- foaming_qty_ind[5] = 1
-		-- elseif foaming_quantity > 55 then
-			-- foaming_qty_ind[6] = 1
-		-- end
+	end
+	
+	if foaming_fuse == 1 and foaming_quantity > 0 then
+		foam_add = 1
+	else 
+		foam_add = 0
 	end
 		
 end
