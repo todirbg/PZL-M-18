@@ -269,7 +269,6 @@ function flight_start()
 
 	starter_fuse = 0
 	starter_fail = 6
-	inst_brt = 0
 	inst_light_fuse = 0
 	inst_light_fail = 6
 	if startup_running == 1 then

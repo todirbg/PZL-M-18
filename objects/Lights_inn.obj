@@ -29,10 +29,7 @@ POINT_COUNTS	0	0	0	0
 		ANIM_end
 	ANIM_begin
 	ANIM_hide	0	0.89999998	sim/cockpit2/switches/spot_light_on
-	ANIM_begin
-	ANIM_rotate	-1	0	-0	90	90
-	LIGHT_PARAM	airplane_spot_sp 0.00000465 -4.5154409 1.726397 1 0.85227197 0.54477167 0 3 0.0026180277
-	ANIM_end
+	LIGHT_PARAM	airplane_spot_sp 0.00000465 1.7263967 4.5154409 1 0.85227197 0.54477167 0 3 1
 	ANIM_end
 
 # Build with Blender 2.82 (sub 7) (build b'77d23b0bd76f'). Exported with XPlane2Blender 4.1.0-beta.1+101.20201117225215
