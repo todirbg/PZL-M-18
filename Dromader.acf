@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27454.333984375
-P _gear/0/_stat_def 0.185970038
+P _gear/0/_stat_def 0.185970098
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27454.333984375
-P _gear/1/_stat_def 0.185970038
+P _gear/1/_stat_def 0.185970098
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27454.333984375
-P _gear/2/_stat_def 0.053648822
+P _gear/2/_stat_def 0.053648829
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -19558,7 +19558,7 @@ P _part/85/_part_specs_invis 1
 P _part/85/_part_tex 0
 P _part/85/_part_the 0.0
 P _part/85/_part_x -5.948614120
-P _part/85/_part_y -5.784405231
+P _part/85/_part_y -5.784404755
 P _part/85/_part_z 7.210092545
 P _part/85/_patt_con 0
 P _part/85/_patt_prt 0
@@ -21028,7 +21028,7 @@ P _part/86/_part_specs_invis 1
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 5.948614120
-P _part/86/_part_y -5.784405231
+P _part/86/_part_y -5.784404755
 P _part/86/_part_z 7.210092545
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -22498,7 +22498,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.276216745
+P _part/87/_part_y -2.276216507
 P _part/87/_part_z 25.603040695
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -29899,8 +29899,8 @@ P acf/_esys_amperage/199 0.0
 P acf/_esys_amperage/200 0.0
 P acf/_esys_amperage/201 0.0
 P acf/_esys_amperage/204 0.0
-P acf/_esys_amperage/215 0.500000000
-P acf/_esys_amperage/30 1.0
+P acf/_esys_amperage/215 1.0
+P acf/_esys_amperage/30 2.0
 P acf/_esys_amperage/31 0.0
 P acf/_esys_amperage/32 0.0
 P acf/_esys_amperage/33 0.0
@@ -29908,7 +29908,7 @@ P acf/_esys_amperage/34 0.0
 P acf/_esys_amperage/35 0.0
 P acf/_esys_amperage/36 5.0
 P acf/_esys_amperage/37 0.0
-P acf/_esys_amperage/38 15.0
+P acf/_esys_amperage/38 10.0
 P acf/_esys_amperage/42 0.500000000
 P acf/_esys_amperage/48 0.0
 P acf/_esys_amperage/492 2.0
@@ -29916,15 +29916,15 @@ P acf/_esys_amperage/493 1.0
 P acf/_esys_amperage/51 0.0
 P acf/_esys_amperage/52 0.0
 P acf/_esys_amperage/53 0.0
-P acf/_esys_amperage/54 0.500000000
+P acf/_esys_amperage/54 1.500000000
 P acf/_esys_amperage/56 5.0
 P acf/_esys_amperage/57 0.0
-P acf/_esys_amperage/58 1.0
+P acf/_esys_amperage/58 0.0
 P acf/_esys_amperage/59 0.0
 P acf/_esys_amperage/60 0.0
 P acf/_esys_amperage/61 0.0
 P acf/_esys_amperage/62 0.0
-P acf/_esys_amperage/66 2.0
+P acf/_esys_amperage/66 6.0
 P acf/_esys_amperage/67 0.0
 P acf/_esys_amperage/74 7.0
 P acf/_esys_amperage/75 7.0
@@ -29933,16 +29933,16 @@ P acf/_esys_amperage/80 0.0
 P acf/_esys_amperage/81 0.0
 P acf/_esys_amperage/88 0.0
 P acf/_esys_amperage/rel_AOA 0.0
-P acf/_esys_amperage/rel_HVAC 15.0
+P acf/_esys_amperage/rel_HVAC 10.0
 P acf/_esys_amperage/rel_adc_comp 0.0
-P acf/_esys_amperage/rel_adf1 1.0
+P acf/_esys_amperage/rel_adf1 0.0
 P acf/_esys_amperage/rel_adf2 0.0
 P acf/_esys_amperage/rel_ail_trim 7.0
 P acf/_esys_amperage/rel_auto_comp 0.0
 P acf/_esys_amperage/rel_auto_servos 0.0
 P acf/_esys_amperage/rel_avionics_fan 1.0
-P acf/_esys_amperage/rel_bad_fuel 0.500000000
-P acf/_esys_amperage/rel_bus0 1.0
+P acf/_esys_amperage/rel_bad_fuel 1.0
+P acf/_esys_amperage/rel_bus0 2.0
 P acf/_esys_amperage/rel_bus1 0.0
 P acf/_esys_amperage/rel_bus2 0.0
 P acf/_esys_amperage/rel_bus3 0.0
@@ -29974,7 +29974,7 @@ P acf/_esys_amperage/rel_ele_fp4 0.0
 P acf/_esys_amperage/rel_ele_fp5 0.0
 P acf/_esys_amperage/rel_ele_fp6 0.0
 P acf/_esys_amperage/rel_ele_fp7 0.0
-P acf/_esys_amperage/rel_elec_gyr0 1.0
+P acf/_esys_amperage/rel_elec_gyr0 3.0
 P acf/_esys_amperage/rel_elec_gyr1 0.0
 P acf/_esys_amperage/rel_elv_trim 7.0
 P acf/_esys_amperage/rel_engn_sync 0.0
@@ -30030,7 +30030,7 @@ P acf/_esys_amperage/rel_rud_trim 7.0
 P acf/_esys_amperage/rel_servo_thro 0.0
 P acf/_esys_amperage/rel_slats 0.0
 P acf/_esys_amperage/rel_stab_aug 0.0
-P acf/_esys_amperage/rel_stall_warn 0.500000000
+P acf/_esys_amperage/rel_stall_warn 1.500000000
 P acf/_esys_amperage/rel_startr0 60.0
 P acf/_esys_amperage/rel_startr1 0.0
 P acf/_esys_amperage/rel_startr2 0.0
@@ -30039,7 +30039,7 @@ P acf/_esys_amperage/rel_startr4 0.0
 P acf/_esys_amperage/rel_startr5 0.0
 P acf/_esys_amperage/rel_startr6 0.0
 P acf/_esys_amperage/rel_startr7 0.0
-P acf/_esys_amperage/rel_xpndr 2.0
+P acf/_esys_amperage/rel_xpndr 6.0
 P acf/_esys_amperage/rel_yaw_damp 0.0
 P acf/_esys_bus_bit_add/110 0
 P acf/_esys_bus_bit_add/112 0
@@ -30080,7 +30080,7 @@ P acf/_esys_bus_bit_add/201 0
 P acf/_esys_bus_bit_add/204 0
 P acf/_esys_bus_bit_add/215 1
 P acf/_esys_bus_bit_add/30 1
-P acf/_esys_bus_bit_add/31 0
+P acf/_esys_bus_bit_add/31 2
 P acf/_esys_bus_bit_add/32 0
 P acf/_esys_bus_bit_add/33 0
 P acf/_esys_bus_bit_add/34 0
@@ -30096,14 +30096,14 @@ P acf/_esys_bus_bit_add/51 0
 P acf/_esys_bus_bit_add/52 0
 P acf/_esys_bus_bit_add/53 0
 P acf/_esys_bus_bit_add/54 1
-P acf/_esys_bus_bit_add/56 1
+P acf/_esys_bus_bit_add/56 2
 P acf/_esys_bus_bit_add/57 0
-P acf/_esys_bus_bit_add/58 1
+P acf/_esys_bus_bit_add/58 0
 P acf/_esys_bus_bit_add/59 0
 P acf/_esys_bus_bit_add/60 0
 P acf/_esys_bus_bit_add/61 0
 P acf/_esys_bus_bit_add/62 0
-P acf/_esys_bus_bit_add/66 1
+P acf/_esys_bus_bit_add/66 2
 P acf/_esys_bus_bit_add/67 0
 P acf/_esys_bus_bit_add/74 1
 P acf/_esys_bus_bit_add/75 1
@@ -30114,7 +30114,7 @@ P acf/_esys_bus_bit_add/88 0
 P acf/_esys_bus_bit_add/rel_AOA 0
 P acf/_esys_bus_bit_add/rel_HVAC 1
 P acf/_esys_bus_bit_add/rel_adc_comp 0
-P acf/_esys_bus_bit_add/rel_adf1 1
+P acf/_esys_bus_bit_add/rel_adf1 0
 P acf/_esys_bus_bit_add/rel_adf2 0
 P acf/_esys_bus_bit_add/rel_ail_trim 1
 P acf/_esys_bus_bit_add/rel_auto_comp 0
@@ -30122,7 +30122,7 @@ P acf/_esys_bus_bit_add/rel_auto_servos 0
 P acf/_esys_bus_bit_add/rel_avionics_fan 1
 P acf/_esys_bus_bit_add/rel_bad_fuel 1
 P acf/_esys_bus_bit_add/rel_bus0 1
-P acf/_esys_bus_bit_add/rel_bus1 0
+P acf/_esys_bus_bit_add/rel_bus1 2
 P acf/_esys_bus_bit_add/rel_bus2 0
 P acf/_esys_bus_bit_add/rel_bus3 0
 P acf/_esys_bus_bit_add/rel_bus4 0
@@ -30202,7 +30202,7 @@ P acf/_esys_bus_bit_add/rel_lites_pan 1
 P acf/_esys_bus_bit_add/rel_lites_strobe 1
 P acf/_esys_bus_bit_add/rel_lites_taxi 1
 P acf/_esys_bus_bit_add/rel_marker 0
-P acf/_esys_bus_bit_add/rel_navcom1 1
+P acf/_esys_bus_bit_add/rel_navcom1 2
 P acf/_esys_bus_bit_add/rel_navcom2 0
 P acf/_esys_bus_bit_add/rel_pil_tsi 1
 P acf/_esys_bus_bit_add/rel_rud_trim 1
@@ -30218,7 +30218,7 @@ P acf/_esys_bus_bit_add/rel_startr4 0
 P acf/_esys_bus_bit_add/rel_startr5 0
 P acf/_esys_bus_bit_add/rel_startr6 0
 P acf/_esys_bus_bit_add/rel_startr7 0
-P acf/_esys_bus_bit_add/rel_xpndr 1
+P acf/_esys_bus_bit_add/rel_xpndr 2
 P acf/_esys_bus_bit_add/rel_yaw_damp 0
 P acf/_exhaust_hp_to_lb 0.0
 P acf/_exhaust_rat 4.0
@@ -30389,7 +30389,7 @@ P acf/_green_hi_pwr 0.0
 P acf/_green_hi_vac 0.0
 P acf/_green_hi_xmsn_P 0.0
 P acf/_green_hi_xmsn_T 0.0
-P acf/_green_lo_CHT 100.0
+P acf/_green_lo_CHT 120.0
 P acf/_green_lo_EGT 600.0
 P acf/_green_lo_EPR 0.0
 P acf/_green_lo_FF 0.0
@@ -30405,7 +30405,7 @@ P acf/_green_lo_fuelP 25.0
 P acf/_green_lo_gen_amp 0.0
 P acf/_green_lo_gen_volt 19.0
 P acf/_green_lo_oilP 50.0
-P acf/_green_lo_oilT 40.0
+P acf/_green_lo_oilT 50.0
 P acf/_green_lo_pwr 0.0
 P acf/_green_lo_vac 0.0
 P acf/_green_lo_xmsn_P 0.0
@@ -30601,12 +30601,12 @@ P acf/_no_default_wing_fx 0
 P acf/_no_hydro_force_mult_brakes 1.0
 P acf/_no_hydro_force_mult_flcons 1.0
 P acf/_nom_bat_volt 24.0
-P acf/_nom_fuelP 40.0
+P acf/_nom_fuelP 35.0
 P acf/_nom_gen_volt 28.500000000
 P acf/_nom_oilP 75.0
 P acf/_num_batteries 1
 P acf/_num_braking_wheels 0.0
-P acf/_num_buses 1
+P acf/_num_buses 2
 P acf/_num_engn 1
 P acf/_num_generators 1
 P acf/_num_inverters 1
@@ -30760,7 +30760,7 @@ P acf/_red_lo_fuelP 20.0
 P acf/_red_lo_gen_amp 0.0
 P acf/_red_lo_gen_volt 0.0
 P acf/_red_lo_oilP 50.0
-P acf/_red_lo_oilT 40.0
+P acf/_red_lo_oilT 50.0
 P acf/_red_lo_pwr 0.0
 P acf/_red_lo_vac 0.0
 P acf/_red_lo_xmsn_P 0.0
@@ -30986,7 +30986,7 @@ P acf/_stab_trim_dn 0.0
 P acf/_stab_trim_up 0.0
 P acf/_stab_with_Vind 0.0
 P acf/_stab_with_flap 0.0
-P acf/_stall_warn_aoa 15.0
+P acf/_stall_warn_aoa 14.0
 P acf/_stall_warn_is_variable 0
 P acf/_start_on_water 0
 P acf/_starter_engages_fuel 0
@@ -31167,7 +31167,7 @@ P acf/_warn_alt_dep_300 0
 P acf/_warn_alt_dep_mode 0
 P acf/_warn_fighter 0
 P acf/_warn_fire_EQ 0
-P acf/_warn_fuelP 20.0
+P acf/_warn_fuelP 15.0
 P acf/_warn_gear 0
 P acf/_warn_hirot_EQ 0
 P acf/_warn_lorot_EQ 0
@@ -31327,7 +31327,7 @@ gen_LED com_frq_act
   DATAREF sim/cockpit2/radios/actuators/com1_frequency_hz_833
   LIGHT_MODE GLASS_TRANS_AUOTO
   LIGHT_RHEOSTAT 0
-  BUS_SRC 1073741825
+  BUS_SRC 1073741826
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 1.000000 0.001000
   DIGITS 6
@@ -31341,7 +31341,7 @@ gen_LED com_frq_stby
   DATAREF sim/cockpit2/radios/actuators/com1_standby_frequency_hz_833
   LIGHT_MODE GLASS_TRANS_AUOTO
   LIGHT_RHEOSTAT 0
-  BUS_SRC 1073741825
+  BUS_SRC 1073741826
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 1.000000 0.001000
   DIGITS 6
@@ -31355,7 +31355,7 @@ gen_LED nav_frq_act
   DATAREF sim/cockpit2/radios/actuators/nav1_frequency_hz
   LIGHT_MODE GLASS_TRANS_AUOTO
   LIGHT_RHEOSTAT 1
-  BUS_SRC 1073741825
+  BUS_SRC 1073741826
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 1.000000 0.010000
   DIGITS 5
@@ -31369,7 +31369,7 @@ gen_LED nav_frq_stby
   DATAREF sim/cockpit2/radios/actuators/nav1_standby_frequency_hz
   LIGHT_MODE GLASS_TRANS_AUOTO
   LIGHT_RHEOSTAT 1
-  BUS_SRC 1073741825
+  BUS_SRC 1073741826
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 1.000000 0.010000
   DIGITS 5
@@ -31389,7 +31389,7 @@ GROUP Transponder
     CLIP
     LIGHT_MODE GLASS_TRANS_AUOTO
     LIGHT_RHEOSTAT 2
-    BUS_SRC 1073741825
+    BUS_SRC 1073741826
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 0.010000
     DIGITS 3
@@ -31404,7 +31404,7 @@ GROUP Transponder
     SHOW_GREATER 1.000000 sim/cockpit2/radios/actuators/transponder_mode
     LIGHT_MODE GLASS_TRANS_AUOTO
     LIGHT_RHEOSTAT 2
-    BUS_SRC 1073741825
+    BUS_SRC 1073741826
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
     DIGITS 4
@@ -31420,7 +31420,7 @@ GROUP Transponder
     SIZE 0.350000
     LIGHT_MODE GLASS_TRANS_AUOTO
     LIGHT_RHEOSTAT 2
-    BUS_SRC 1073741825
+    BUS_SRC 1073741826
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
     OFFSET_X -50
@@ -31434,7 +31434,7 @@ GROUP Transponder
     SIZE 0.350000
     LIGHT_MODE GLASS_TRANS_AUOTO
     LIGHT_RHEOSTAT 2
-    BUS_SRC 1073741825
+    BUS_SRC 1073741826
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
     OFFSET_X -50
@@ -31448,7 +31448,7 @@ GROUP Transponder
     SIZE 0.350000
     LIGHT_MODE GLASS_TRANS_AUOTO
     LIGHT_RHEOSTAT 2
-    BUS_SRC 1073741825
+    BUS_SRC 1073741826
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
     OFFSET_X -50
@@ -31466,7 +31466,7 @@ GROUP Transponder
       SIZE 0.350000
       LIGHT_MODE GLASS_TRANS_AUOTO
       LIGHT_RHEOSTAT 2
-      BUS_SRC 1073741825
+      BUS_SRC 1073741826
       KEY_FRAME 0.000000 0.000000 1.000000
       KEY_FRAME 1.000000 1.000000
       OFFSET_X -50
@@ -31481,7 +31481,7 @@ GROUP Transponder
     SIZE 0.500000
     LIGHT_MODE GLASS_TRANS_AUOTO
     LIGHT_RHEOSTAT 2
-    BUS_SRC 1073741825
+    BUS_SRC 1073741826
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
     OFFSET_X -50
@@ -31495,7 +31495,7 @@ GROUP Transponder
     SIZE 0.350000
     LIGHT_MODE GLASS_TRANS_AUOTO
     LIGHT_RHEOSTAT 2
-    BUS_SRC 1073741825
+    BUS_SRC 1073741826
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
     OFFSET_X -50

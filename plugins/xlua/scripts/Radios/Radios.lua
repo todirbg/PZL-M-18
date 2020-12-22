@@ -206,25 +206,25 @@ cmdcsutomnavfineup = wrap_command("sim/radios/stby_nav1_fine_up", dummy, navfine
 cmdcsutomnavfinedn = wrap_command("sim/radios/stby_nav1_fine_down", dummy, navfine_dn_cmd_after)
 
 function cmd_compwr_up(phase, duration)
-	if phase == 0 then
-		if com_pwr_konb < 1 then
-			com_pwr_konb = com_pwr_konb + 0.1
-			if com_pwr_konb >= 0.1 then
+	if phase == 0 or phase == 1 then
+		if com_pwr_konb < 0.8 then
+			com_pwr_konb = com_pwr_konb + 0.05
+			if com_pwr_konb >= 0.05 then
 				com_pwr = 1
 			end
-			com_brt = com_pwr_konb
+			com_brt = com_pwr_konb + 0.15
 		end
 	end
 end
 
 function cmd_compwr_dn(phase, duration)
-	if phase == 0 then
-		if com_pwr_konb > 0 then
-			com_pwr_konb = com_pwr_konb - 0.1
+	if phase == 0 or phase == 1 then
+		if com_pwr_konb >= 0.05 then
+			com_pwr_konb = com_pwr_konb - 0.05
 			if com_pwr_konb == 0 then
 				com_pwr = 0
 			end
-			com_brt = com_pwr_konb
+			com_brt = com_pwr_konb + 0.15
 		end
 	end
 end
@@ -234,25 +234,25 @@ cmdcsutomcompwrup = create_command("custom/dromader/radios/comm_pwr_up","Comm po
 cmdcsutomcompwrdwn = create_command("custom/dromader/radios/comm_pwr_dwn","Comm power knob up",cmd_compwr_dn)
 
 function cmd_navpwr_up(phase, duration)
-	if phase == 0 then
-		if nav_pwr_konb < 0.9 then
-			nav_pwr_konb = nav_pwr_konb + 0.1
-			if nav_pwr_konb >= 0.1 then
+	if phase == 0 or phase == 1 then
+		if nav_pwr_konb < 0.8 then
+			nav_pwr_konb = nav_pwr_konb + 0.05
+			if nav_pwr_konb >= 0.05 then
 				nav_pwr = 1
 			end
-			nav_brt = nav_pwr_konb
+			nav_brt = nav_pwr_konb + 0.15
 		end
 	end
 end
 
 function cmd_navpwr_dn(phase, duration)
-	if phase == 0 then
-		if nav_pwr_konb > 0.1 then
-			nav_pwr_konb = nav_pwr_konb - 0.1
+	if phase == 0 or phase == 1 then
+		if nav_pwr_konb >= 0.05 then
+			nav_pwr_konb = nav_pwr_konb - 0.05
 			if nav_pwr_konb == 0 then
 				nav_pwr = 0
 			end
-			nav_brt = nav_pwr_konb
+			nav_brt = nav_pwr_konb + 0.15
 		end
 	end
 end
