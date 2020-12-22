@@ -7265,7 +7265,7 @@ IDX	4992
 				ANIM_rotate_key	-20	20.000238
 				ANIM_rotate_key	-30	30.000069
 				ANIM_rotate_end
-					ATTR_light_level	0	1	sim/cockpit2/electrical/instrument_brightness_ratio_manual[0]
+					ATTR_light_level	0	1	sim/cockpit2/electrical/panel_brightness_ratio_manual[0]
 					TRIS	12306 1278
 				ANIM_end
 			TRIS	7890 3348

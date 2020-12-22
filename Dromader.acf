@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27454.333984375
-P _gear/0/_stat_def 0.185970068
+P _gear/0/_stat_def 0.185970038
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27454.333984375
-P _gear/1/_stat_def 0.185970068
+P _gear/1/_stat_def 0.185970038
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27454.333984375
-P _gear/2/_stat_def 0.053648833
+P _gear/2/_stat_def 0.053648822
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -314,7 +314,7 @@ P _obja/14/_v10_att_y_acf_prt_ref 0.0
 P _obja/14/_v10_att_z_acf_prt_ref 0.0
 P _obja/14/_v10_is_internal 1917547616
 P _obja/14/_v10_steers_with_gear 0
-P _obja/15/_obj_flags 0
+P _obja/15/_obj_flags 4
 P _obja/15/_v10_att_file_stl Water_dump_emitter.obj
 P _obja/15/_v10_att_part -1
 P _obja/15/_v10_att_phi_ref 0.0
@@ -347,6 +347,28 @@ P _obja/17/_v10_att_y_acf_prt_ref 0.0
 P _obja/17/_v10_att_z_acf_prt_ref 0.0
 P _obja/17/_v10_is_internal -1771006432
 P _obja/17/_v10_steers_with_gear 0
+P _obja/18/_obj_flags 13
+P _obja/18/_v10_att_file_stl kx155.obj
+P _obja/18/_v10_att_part -1
+P _obja/18/_v10_att_phi_ref 0.0
+P _obja/18/_v10_att_psi_ref 0.0
+P _obja/18/_v10_att_the_ref 0.0
+P _obja/18/_v10_att_x_acf_prt_ref 0.0
+P _obja/18/_v10_att_y_acf_prt_ref 0.0
+P _obja/18/_v10_att_z_acf_prt_ref 0.0
+P _obja/18/_v10_is_internal 1873253920
+P _obja/18/_v10_steers_with_gear 0
+P _obja/19/_obj_flags 13
+P _obja/19/_v10_att_file_stl kt70.obj
+P _obja/19/_v10_att_part -1
+P _obja/19/_v10_att_phi_ref 0.0
+P _obja/19/_v10_att_psi_ref 0.0
+P _obja/19/_v10_att_the_ref 0.0
+P _obja/19/_v10_att_x_acf_prt_ref 0.0
+P _obja/19/_v10_att_y_acf_prt_ref 0.0
+P _obja/19/_v10_att_z_acf_prt_ref 0.0
+P _obja/19/_v10_is_internal -650406368
+P _obja/19/_v10_steers_with_gear 0
 P _obja/2/_obj_flags 20
 P _obja/2/_v10_att_file_stl Propeller.obj
 P _obja/2/_v10_att_part -1
@@ -435,7 +457,7 @@ P _obja/9/_v10_att_y_acf_prt_ref 0.0
 P _obja/9/_v10_att_z_acf_prt_ref 0.0
 P _obja/9/_v10_is_internal 1693383328
 P _obja/9/_v10_steers_with_gear 0
-P _obja/count 18
+P _obja/count 20
 P _panel_inst_3d 1
 P _part/0/_bot_s1 0.0
 P _part/0/_bot_s2 0.015625000
@@ -19536,7 +19558,7 @@ P _part/85/_part_specs_invis 1
 P _part/85/_part_tex 0
 P _part/85/_part_the 0.0
 P _part/85/_part_x -5.948614120
-P _part/85/_part_y -5.784404755
+P _part/85/_part_y -5.784405231
 P _part/85/_part_z 7.210092545
 P _part/85/_patt_con 0
 P _part/85/_patt_prt 0
@@ -21006,7 +21028,7 @@ P _part/86/_part_specs_invis 1
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 5.948614120
-P _part/86/_part_y -5.784404755
+P _part/86/_part_y -5.784405231
 P _part/86/_part_z 7.210092545
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -22476,7 +22498,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.276216507
+P _part/87/_part_y -2.276216745
 P _part/87/_part_z 25.603040695
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -31273,11 +31295,10 @@ flap_slat_ind_rnd indicate_flap_slat_
 PANEL_2D_END
 PANEL_3D_BEGIN
 gen_LED Foam_qty
-  POS 403.500000 184.500000
-  IMAGE LED/gen_LED_1
+  POS 759.000000 -108.000000
+  IMAGE LED/LED_nav_com
   DATAREF custom/dromader/water/foaming_quantity
-  SIZE 6.000000
-  LIGHT_MODE BACK_LIT_AUTO
+  LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   CORNERS 0.000000 0.000000  0.000000 0.000000  0.000094 0.000015  0.000000 0.000000
   KEY_FRAME 0.000000 0.000000 1.000000
@@ -31285,20 +31306,200 @@ gen_LED Foam_qty
   DIGITS 4
   DECIMALS 2
   PERIOD_WIDTH 0
-  LED_ROWS 0
+  LED_ROWS 1
 
 gen_LED Water_qty
-  POS 556.500000 62.500000
-  IMAGE LED/gen_LED_1
+  POS 260.000000 -108.000000
+  IMAGE LED/LED_nav_com
   DATAREF sim/flightmodel/weight/m_jettison
-  SIZE 6.000000
-  LIGHT_MODE BACK_LIT_MANUAL
+  LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   KEY_FRAME 0.000000 0.000000 1.000000
   KEY_FRAME 2200.000000 2200.000000
   DIGITS 6
   DECIMALS 2
   PERIOD_WIDTH 0
-  LED_ROWS 0
+  LED_ROWS 1
 
+gen_LED com_frq_act
+  POS 161.000000 673.000000
+  IMAGE LED/LED_nav_com
+  DATAREF sim/cockpit2/radios/actuators/com1_frequency_hz_833
+  LIGHT_MODE GLASS_TRANS_AUOTO
+  LIGHT_RHEOSTAT 0
+  BUS_SRC 1073741825
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 0.001000
+  DIGITS 6
+  DECIMALS 3
+  PERIOD_WIDTH 0
+  LED_ROWS 1
+
+gen_LED com_frq_stby
+  POS 402.285706 673.857117
+  IMAGE LED/LED_nav_com
+  DATAREF sim/cockpit2/radios/actuators/com1_standby_frequency_hz_833
+  LIGHT_MODE GLASS_TRANS_AUOTO
+  LIGHT_RHEOSTAT 0
+  BUS_SRC 1073741825
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 0.001000
+  DIGITS 6
+  DECIMALS 3
+  PERIOD_WIDTH 0
+  LED_ROWS 1
+
+gen_LED nav_frq_act
+  POS 161.000000 483.000000
+  IMAGE LED/LED_nav_com
+  DATAREF sim/cockpit2/radios/actuators/nav1_frequency_hz
+  LIGHT_MODE GLASS_TRANS_AUOTO
+  LIGHT_RHEOSTAT 1
+  BUS_SRC 1073741825
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 0.010000
+  DIGITS 5
+  DECIMALS 2
+  PERIOD_WIDTH 0
+  LED_ROWS 1
+
+gen_LED nav_frq_stby
+  POS 402.285706 483.857117
+  IMAGE LED/LED_nav_com
+  DATAREF sim/cockpit2/radios/actuators/nav1_standby_frequency_hz
+  LIGHT_MODE GLASS_TRANS_AUOTO
+  LIGHT_RHEOSTAT 1
+  BUS_SRC 1073741825
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 0.010000
+  DIGITS 5
+  DECIMALS 2
+  PERIOD_WIDTH 0
+  LED_ROWS 1
+
+GROUP Transponder
+  SHOW_GREATER 1.000000 sim/cockpit2/radios/actuators/transponder_mode
+  CHAINED
+  GROUP_OPEN
+  gen_LED transponder_FL
+    POS 146.000000 291.000000
+    IMAGE LED/LED_nav_com
+    DATAREF sim/cockpit2/gauges/indicators/altitude_ft_pilot
+    SHOW_EQUAL 3.000000 sim/cockpit2/radios/actuators/transponder_mode
+    CLIP
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741825
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 0.010000
+    DIGITS 3
+    DECIMALS 0
+    PERIOD_WIDTH 0
+    LED_ROWS 1
+
+  gen_LED transponder
+    POS 389.000000 291.000000
+    IMAGE LED/LED_nav_com
+    DATAREF sim/cockpit2/radios/actuators/transponder_code
+    SHOW_GREATER 1.000000 sim/cockpit2/radios/actuators/transponder_mode
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741825
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+    DIGITS 4
+    DECIMALS 0
+    PERIOD_WIDTH 0
+    LED_ROWS 1
+
+  gen_text SBY
+    POS 269.500000 278.500000
+    IMAGE LED/LED_text
+    DATAREF custom/dromader/radios/string_sby
+    SHOW_EQUAL 1.000000 sim/cockpit/radios/transponder_mode
+    SIZE 0.350000
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741825
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+    OFFSET_X -50
+    OFFSET_Y -30.000000
+
+  gen_text ALT
+    POS 230.071472 304.071411
+    IMAGE LED/LED_text
+    DATAREF custom/dromader/radios/string_alt
+    SHOW_EQUAL 3.000000 sim/cockpit/radios/transponder_mode
+    SIZE 0.350000
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741825
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+    OFFSET_X -50
+    OFFSET_Y -30.000000
+
+  gen_text ON
+    POS 277.357178 304.357147
+    IMAGE LED/LED_text
+    DATAREF custom/dromader/radios/string_on
+    SHOW_EQUAL 2.000000 sim/cockpit/radios/transponder_mode
+    SIZE 0.350000
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741825
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+    OFFSET_X -50
+    OFFSET_Y -30.000000
+
+  GROUP New Group
+    SHOW_GREATER 2.000000 sim/cockpit/radios/transponder_mode
+    CHAINED
+    GROUP_OPEN
+    gen_text R
+      POS 317.071411 304.214264
+      IMAGE LED/LED_text
+      DATAREF custom/dromader/radios/string_r
+      SHOW_EQUAL 1.000000 sim/cockpit/radios/transponder_light
+      SIZE 0.350000
+      LIGHT_MODE GLASS_TRANS_AUOTO
+      LIGHT_RHEOSTAT 2
+      BUS_SRC 1073741825
+      KEY_FRAME 0.000000 0.000000 1.000000
+      KEY_FRAME 1.000000 1.000000
+      OFFSET_X -50
+      OFFSET_Y -30.000000
+
+  END_GROUP
+  gen_text FL
+    POS 103.500000 265.500000
+    IMAGE LED/LED_text
+    DATAREF custom/dromader/radios/string_fl
+    SHOW_EQUAL 3.000000 sim/cockpit/radios/transponder_mode
+    SIZE 0.500000
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741825
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+    OFFSET_X -50
+    OFFSET_Y -30.000000
+
+  gen_text GND
+    POS 230.500000 278.500000
+    IMAGE LED/LED_text
+    DATAREF custom/dromader/radios/string_gnd
+    SHOW_EQUAL 5.000000 sim/cockpit/radios/transponder_mode
+    SIZE 0.350000
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741825
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+    OFFSET_X -50
+    OFFSET_Y -30.000000
+
+END_GROUP
 PANEL_3D_END

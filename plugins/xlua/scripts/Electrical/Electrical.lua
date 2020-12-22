@@ -31,12 +31,13 @@ wiper_fuse = create_dataref("custom/dromader/electrical/wiper","number")
 wiper_speed = find_dataref("sim/cockpit2/switches/wiper_speed")
 
 inst_light_fuse = create_dataref("custom/dromader/electrical/instruments_light","number")
-inst_light_fail = find_dataref("sim/operation/failures/rel_lites_ins")
+inst_light_fail = find_dataref("sim/operation/failures/rel_clights")
 
 agk49_fuse = create_dataref("custom/dromader/electrical/agk49_power","number")
 agk49_fail = find_dataref("sim/operation/failures/rel_elec_gyr")
 
-com1_pwr = find_dataref("sim/cockpit2/radios/actuators/com1_power")
+com1_pwr_fail = find_dataref("sim/operation/failures/rel_navcom1")
+com1_pwr = create_dataref("custom/dromader/electrical/radio_fuse","number")
 
 local volt_but = 0
 
@@ -257,8 +258,10 @@ function com_power_toggle_cmd(phase, duration)
 	if phase == 0 then
 		if com1_pwr == 0 then
 			com1_pwr = 1
+			com1_pwr_fail = 0
 		else
 			com1_pwr = 0
+			com1_pwr_fail = 6
 		end
 	end
 end
@@ -280,6 +283,8 @@ function flight_start()
 		stall_fail = 0
 		agk49_fuse = 1
 		agk49_fail = 0
+		com1_pwr = 1
+		com1_pwr_fail = 0
 	else
 		bat_sel = 1
 		batt = 0
@@ -287,7 +292,9 @@ function flight_start()
 		stall_fuse = 0
 		stall_fail = 6
 		agk49_fuse = 0
-		agk49_fail = 6		
+		agk49_fail = 6	
+		com1_pwr = 0
+		com1_pwr_fail = 6		
 	end
 end
 
