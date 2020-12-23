@@ -27,6 +27,15 @@ tension_handle = create_dataref("custom/dromader/misc/tension_handle","number", 
 audio_sw = create_dataref("custom/dromader/misc/audio_sw","number")
 audio_vol = create_dataref("custom/dromader/misc/audio_vol","number", audio_vol_handler)
 
+compass_lock_knob = create_dataref("custom/dromader/compass/compass_lock_knob","number")
+compass_heading_dromader = create_dataref("custom/dromader/compass/compass_heading","number")
+compass_g_side_dromader = create_dataref("custom/dromader/compass/compass_g_side","number")
+compass_g_nrml_dromader= create_dataref("custom/dromader/compass/compass_g_nrml","number")
+
+compass_heading = find_dataref("sim/cockpit2/gauges/indicators/compass_heading_deg_mag")
+compass_g_side = find_dataref("sim/flightmodel/forces/g_side")
+compass_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml")
+
 function cmd_audiosw_up(phase, duration)
 	if phase == 0 then
 		audio_sw = math.min(2, audio_sw + 1)
@@ -57,6 +66,32 @@ end
 cmdcsutomaudioswup = create_command("custom/dromader/misc/audio_sw_up","Audio switch up",cmd_audiosw_up)
 cmdcsutomaudioswdwn = create_command("custom/dromader/misc/audio_sw_dwn","Audio switch down",cmd_audiosw_dn)
 
+function cmd_compasslock(phase, duration)
+	if phase == 0 then
+		compass_lock_knob = 1
+	end
+end
+
+function cmd_compassunlock(phase, duration)
+	if phase == 0 then
+		compass_lock_knob = 0
+	end
+end
+
+function cmd_compasslock_tog(phase, duration)
+	if phase == 0 then
+		if compass_lock_knob == 0 then
+			compass_lock_knob = 1
+		else
+			compass_lock_knob = 0
+		end
+	end
+end
+
+cmdcsutomcompasslock = create_command("custom/dromader/compass/compass_lock","Compass lock",cmd_compasslock)
+cmdcsutomcompassunlock = create_command("custom/dromader/compass/compass_unlock","Compass unlock",cmd_compassunlock)
+cmdcsutomcompasslocktog = create_command("custom/dromader/compass/compass_lock_tog","Compass lock toggle",cmd_compasslock_tog)
+
 local fires_temp = draw_fires
 
 function aircraft_load()
@@ -73,8 +108,20 @@ function flight_start()
 	audio_vol = 0.8
 	audio_vol_com1 = audio_vol
 	audio_vol_nav1 = audio_vol
+	compass_lock_knob = 0
 end
 
 function aircraft_unload()
 	draw_fires = fires_temp
+end
+
+function after_physics()
+	if compass_lock_knob == 1 then
+		compass_g_side_dromader = 0
+		compass_g_nrml_dromader = 0
+	else
+		compass_g_side_dromader = compass_g_side
+		compass_g_nrml_dromader = compass_g_nrml
+		compass_heading_dromader = compass_heading
+	end
 end
