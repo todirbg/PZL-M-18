@@ -6071,6 +6071,7 @@ IDX10	5350	5351	5348	5350	5352	5353	5354	5355	5352	5354
 		ANIM_rotate_key	1	-270.00006
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.48727331	0.67205286	4.2413673	0	1	-0	0	-270.00006	0	0	1	0	0	custom/dromader/misc/audio_vol	none	Audio volume
+			ATTR_manip_wheel	0.05
 			TRIS	3912 84
 		ANIM_end
 		ANIM_begin
@@ -6100,9 +6101,9 @@ IDX10	5350	5351	5348	5350	5352	5353	5354	5355	5352	5354
 		ANIM_rotate_end
 			ANIM_begin
 			ATTR_manip_drag_rotate	hand	0.42477828	0.65468639	4.2018862	1	0	-0	-56.963463	47.972609	0	3	0	0	0	sim/cockpit2/engine/actuators/ignition_on[0]	none	Magnetos
+			ATTR_manip_wheel	1
 			ATTR_manip_keyframe	2	-22.49948
 			ATTR_manip_keyframe	1	14.00137
-			ATTR_manip_wheel	1
 			TRIS	684 108
 			ANIM_end
 		ANIM_end
