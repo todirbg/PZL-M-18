@@ -6095,8 +6095,8 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 		ANIM_rotate_key	0	47.972609
 		ANIM_rotate_end
 			ANIM_begin
-			ATTR_manip_wheel	1
 			ATTR_manip_drag_rotate	hand	0.42477828	0.65468639	4.2018862	1	0	-0	-56.963463	47.972609	0	3	0	0	0	sim/cockpit2/engine/actuators/ignition_on[0]	none	Magnetos
+			ATTR_manip_wheel	1
 			ATTR_manip_keyframe	2	-22.49948
 			ATTR_manip_keyframe	1	14.00137
 			TRIS	684 108
@@ -6359,7 +6359,7 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 			ANIM_trans_key	1	0	-0	0.059999995
 			ANIM_trans_end
 				ATTR_manip_drag_axis	hand	0	-0	0.059999999	0	1	sim/cockpit2/engine/actuators/mixture_ratio_all	Mixture
-				ATTR_manip_wheel	0.0099999998
+				ATTR_manip_wheel	0.01
 				TRIS	2988 84
 			ANIM_end
 		ANIM_begin
@@ -6375,8 +6375,8 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 		ANIM_rotate_key	4	-149.99978
 		ANIM_rotate_end
 			ANIM_begin
-			ATTR_manip_wheel	1
 			ATTR_manip_command_knob	rotate_medium	custom/dromader/electrical/volt_selector_up	custom/dromader/electrical/volt_selector_dwn	Voltmeter selector
+			ATTR_manip_wheel	1
 			TRIS	3744 84
 			ANIM_end
 		ANIM_end
@@ -6669,8 +6669,8 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 				ANIM_keyframe_loop	5.0
 			ANIM_rotate_end
 				ANIM_begin
-				ATTR_manip_wheel	0.01
 				ATTR_manip_drag_rotate	rotate_medium	-0.36215365	0.82189512	3.7938192	0	1	-0	0	-3599.9997	0	27.834999	32.007999	0	0	sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot	none	
+				ATTR_manip_wheel	0.01
 				TRIS	3576 84
 				ANIM_end
 			ANIM_end
@@ -6684,8 +6684,8 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 		ANIM_rotate_key	1	109.79627
 		ANIM_rotate_end
 			ANIM_begin
-			ATTR_manip_wheel	0.1
 			ATTR_manip_drag_rotate	rotate_medium	-0.5425579	0.79138964	3.8462873	-1	-0.00000001	0.00000002	0	109.79627	0	0	1	0	0	sim/cockpit2/switches/panel_brightness_ratio[0]	none	
+			ATTR_manip_wheel	0.1
 			TRIS	3660 84
 			ANIM_end
 		ANIM_end
@@ -6840,8 +6840,8 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 	ANIM_rotate_key	20	-170.00002
 	ANIM_rotate_end
 		ANIM_begin
-		ATTR_manip_wheel	0.5
 		ATTR_manip_drag_rotate	rotate_medium	-0.36527732	1.0643967	3.7640896	0	1	-0	170.00002	-170.00002	0	-20	20	0	0	sim/cockpit2/gauges/actuators/artificial_horizon_adjust_deg_pilot	none	Artificial horizon adjust
+		ATTR_manip_wheel	0.5
 		ATTR_manip_keyframe	0	0
 		TRIS	3492 84
 		ANIM_end
@@ -6881,8 +6881,8 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 				ANIM_rotate_key	1	270.00006
 				ANIM_rotate_end
 					ANIM_begin
-					ATTR_manip_wheel	0.1
 					ATTR_manip_drag_rotate	rotate_medium	0.13755172	1.562047	4.1573153	1	0	-0	0	270.00006	0	0	1	0	0	sim/cockpit2/switches/generic_lights_switch[0]	none	Light intensity
+					ATTR_manip_wheel	0.1
 					TRIS	4314 84
 					ANIM_end
 				ANIM_end
@@ -6926,8 +6926,8 @@ IDX10	5346	5347	5344	5346	5348	5349	5350	5351	5348	5350
 			TRIS	2652 84
 		ANIM_end
 	ANIM_begin
-	ATTR_manip_wheel	1
 	ATTR_manip_command_knob	rotate_medium	sim/systems/wipers_up	sim/systems/wipers_dn	
+	ATTR_manip_wheel	1
 	TRIS	3996 66
 	ANIM_end
 		ANIM_begin
