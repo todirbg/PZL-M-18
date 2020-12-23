@@ -312,7 +312,30 @@ local tmpval
 	volt_needle = func_animate_slowly(tmpval, volt_needle, 3)
 end
 
+function monitor_failures()
+	
+	if starter_fail == 6 then
+		starter_fuse = 0
+	end
+	
+	if inst_light_fail == 6 then
+		inst_light_fuse = 0
+	end
+	
+	if stall_fail == 6 then
+		stall_fuse = 0
+	end
+	
+	if agk49_fail == 6 then
+		if agk_49_fuse == 1 then
+			bus_load_add = bus_load_add - 2
+		end
+		agk49_fuse = 0
+	end
+	
+end
+
 function after_physics()
 	update_volt_needle()
-	
+	monitor_failures()
 end
