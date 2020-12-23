@@ -4,6 +4,7 @@ acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
 hyd_press_1 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_1")
 hyd_press_2 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressure_2")
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
+startup_running = find_dataref("sim/operation/prefs/startup_running")
 
 function hyd_drop_handler()
 

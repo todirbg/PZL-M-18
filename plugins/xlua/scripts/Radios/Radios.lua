@@ -28,6 +28,8 @@ nav_pwr = find_dataref("sim/cockpit2/radios/actuators/nav1_power")
 com_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")
 nav_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[1]")
 
+startup_running = find_dataref("sim/operation/prefs/startup_running")
+
 function cmd_transponder_up(phase, duration)
 	if phase == 0 then
 		if transp_mode_dromader < 5 then
@@ -259,7 +261,7 @@ end
 
 
 cmdcsutomnavpwrup = create_command("custom/dromader/radios/nav_pwr_up","Nav power knob up",cmd_navpwr_up)
-cmdcsutomnavpwrdwn = create_command("custom/dromader/radios/nav_pwr_down","Nav power knob up",cmd_navpwr_dn)
+cmdcsutomnavpwrdwn = create_command("custom/dromader/radios/nav_pwr_down","Nav power knob down",cmd_navpwr_dn)
 
 function flight_start()
 			-- if transp_mode == 0 then
