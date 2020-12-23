@@ -1,3 +1,8 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2020
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+----------------------------------------------------------------------------------------------------------
 
 time_sec = create_dataref("custom/dromader/clock/elapsed_time_seconds","number")
 time_min = create_dataref("custom/dromader/clock/elapsed_time_minutes","number")

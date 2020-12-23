@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2020
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+----------------------------------------------------------------------------------------------------------
+
 water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
 water_quantity_max = find_dataref("sim/aircraft/weight/acf_m_jettison")
 acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")

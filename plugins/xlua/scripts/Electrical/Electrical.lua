@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2020
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+----------------------------------------------------------------------------------------------------------
+
 bat_sel = create_dataref("custom/dromader/electrical/battery_sw","number")
 volt_sel = create_dataref("custom/dromader/electrical/volt_src","number")
 volt_needle = create_dataref("custom/dromader/electrical/volt_needle","number")

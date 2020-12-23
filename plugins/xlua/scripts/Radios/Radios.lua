@@ -1,3 +1,8 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2020
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+----------------------------------------------------------------------------------------------------------
 
 transp_code = find_dataref("sim/cockpit/radios/transponder_code")
 transp_mode = find_dataref("sim/cockpit/radios/transponder_mode")
@@ -89,13 +94,13 @@ end
 
 function thou_up_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[0] = transp_knob[0] + 1
+		transp_knob[0] = transp_knob[0] + 1
 	end
 end
 
 function thou_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[0] = transp_knob[0] - 1
+		transp_knob[0] = transp_knob[0] - 1
 	end
 end
 
@@ -104,13 +109,13 @@ cmdcsutomtransthoudn = wrap_command("sim/transponder/transponder_thousands_down"
 
 function hun_up_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[1] = transp_knob[1] + 1
+		transp_knob[1] = transp_knob[1] + 1
 	end
 end
 
 function hun_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[1] = transp_knob[1] - 1
+		transp_knob[1] = transp_knob[1] - 1
 	end
 end
 
@@ -119,13 +124,13 @@ cmdcsutomtranshundn = wrap_command("sim/transponder/transponder_hundreds_down", 
 
 function ten_up_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[2] = transp_knob[2] + 1
+		transp_knob[2] = transp_knob[2] + 1
 	end
 end
 
 function ten_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[2] = transp_knob[2] - 1
+		transp_knob[2] = transp_knob[2] - 1
 	end
 end
 
@@ -134,13 +139,13 @@ cmdcsutomtranstendn = wrap_command("sim/transponder/transponder_tens_down", dumm
 
 function one_up_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[3] = transp_knob[3] + 1
+		transp_knob[3] = transp_knob[3] + 1
 	end
 end
 
 function one_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	transp_knob[3] = transp_knob[3] - 1
+		transp_knob[3] = transp_knob[3] - 1
 	end
 end
 
@@ -149,13 +154,13 @@ cmdcsutomtransonedn = wrap_command("sim/transponder/transponder_ones_down", dumm
 
 function comcoarse_up_cmd_after(phase, duration)
 	if phase == 0 then
-	comm_coarse_knob = comm_coarse_knob + 1
+		comm_coarse_knob = comm_coarse_knob + 1
 	end
 end
 
 function comcoarse_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	comm_coarse_knob = comm_coarse_knob - 1
+		comm_coarse_knob = comm_coarse_knob - 1
 	end
 end
 
@@ -164,13 +169,13 @@ cmdcsutomcomcoarsedn = wrap_command("sim/radios/stby_com1_coarse_down", dummy, c
 
 function comfine_up_cmd_after(phase, duration)
 	if phase == 0 then
-	comm_fine_knob = comm_fine_knob + 1
+		comm_fine_knob = comm_fine_knob + 1
 	end
 end
 
 function comfine_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	comm_fine_knob = comm_fine_knob - 1
+		comm_fine_knob = comm_fine_knob - 1
 	end
 end
 
@@ -179,13 +184,13 @@ cmdcsutomcomfinedn = wrap_command("sim/radios/stby_com1_fine_down", dummy, comfi
 
 function navcoarse_up_cmd_after(phase, duration)
 	if phase == 0 then
-	nav_coarse_knob = nav_coarse_knob + 1
+		nav_coarse_knob = nav_coarse_knob + 1
 	end
 end
 
 function navcoarse_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	nav_coarse_knob = nav_coarse_knob - 1
+		nav_coarse_knob = nav_coarse_knob - 1
 	end
 end
 
@@ -194,13 +199,13 @@ cmdcsutomnavcoarsedn = wrap_command("sim/radios/stby_nav1_coarse_down", dummy, n
 
 function navfine_up_cmd_after(phase, duration)
 	if phase == 0 then
-	nav_fine_knob = nav_fine_knob + 1
+		nav_fine_knob = nav_fine_knob + 1
 	end
 end
 
 function navfine_dn_cmd_after(phase, duration)
 	if phase == 0 then
-	nav_fine_knob = nav_fine_knob - 1
+		nav_fine_knob = nav_fine_knob - 1
 	end
 end
 
@@ -264,19 +269,6 @@ cmdcsutomnavpwrup = create_command("custom/dromader/radios/nav_pwr_up","Nav powe
 cmdcsutomnavpwrdwn = create_command("custom/dromader/radios/nav_pwr_down","Nav power knob down",cmd_navpwr_dn)
 
 function flight_start()
-			-- if transp_mode == 0 then
-				-- transp_mode_dromader = 0
-			-- elseif transp_mode == 1 then
-				-- transp_mode_dromader = 1
-			-- elseif transp_mode == 2 then
-				-- transp_mode_dromader = 4
-			-- elseif transp_mode == 3 then
-				-- transp_mode_dromader = 5
-			-- elseif transp_mode == 4 then
-				-- transp_mode_dromader = 2
-			-- elseif transp_mode == 5 then
-				-- transp_mode_dromader = 3
-			-- end
 
 	if startup_running == 1 then
 		nav_brt = 0.7

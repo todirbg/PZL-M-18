@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2020
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+----------------------------------------------------------------------------------------------------------
+
 function tension_handle_handler()
 
 end
@@ -25,11 +31,11 @@ function cmd_audiosw_up(phase, duration)
 	if phase == 0 then
 		audio_sw = math.min(2, audio_sw + 1)
 		if audio_sw == 1 then
-		audio_com1 = 0
-		audio_nav1 = 0		
+			audio_com1 = 0
+			audio_nav1 = 0		
 		elseif audio_sw == 2 then
-		audio_com1 = 0
-		audio_nav1 = 1
+			audio_com1 = 0
+			audio_nav1 = 1
 		end
 	end
 end
@@ -38,11 +44,11 @@ function cmd_audiosw_dn(phase, duration)
 	if phase == 0 then
 		audio_sw = math.max(0, audio_sw - 1)
 		if audio_sw == 0 then
-		audio_com1 = 1
-		audio_nav1 = 0
+			audio_com1 = 1
+			audio_nav1 = 0
 		elseif audio_sw == 1 then
-		audio_com1 = 0
-		audio_nav1 = 0		
+			audio_com1 = 0
+			audio_nav1 = 0		
 		end
 	end
 end
