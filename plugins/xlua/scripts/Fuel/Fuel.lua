@@ -158,7 +158,7 @@ function update_fuel_press()
 		press = math.max(press, math.sqrt(6*math.abs(engn_tacrad)))
 	end
 	if engn_tacrad > 1 then 
-	press = math.max(0, press - engn_tacrad/10*throttle_ratio* SIM_PERIOD)
+	press = math.max(0, press - engn_tacrad/10*(throttle_ratio + 0.2)* SIM_PERIOD)
 	end
 	fuel_press_dromader = press
 	if press > 50 then flooded = 1 end

@@ -21,8 +21,6 @@ bus_load_add = find_dataref("sim/cockpit2/electrical/plugin_bus_load_amps[0]")
 
 fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number")
 
-starter_fuse = create_dataref("custom/dromader/electrical/starter_fuse","number")
-starter_fail = find_dataref("sim/operation/failures/rel_startr0")
 
 stall_fuse = create_dataref("custom/dromader/electrical/stall_fuse","number")
 stall_fail = find_dataref("sim/operation/failures/rel_stall_warn")
@@ -40,9 +38,15 @@ inst_light_fuse = create_dataref("custom/dromader/electrical/instruments_light",
 inst_light_fail = find_dataref("sim/operation/failures/rel_clights")
 
 agk49_fuse = create_dataref("custom/dromader/electrical/agk49_power","number")
-agk49_fail = find_dataref("sim/operation/failures/rel_elec_gyr")
+agk49_fail = find_dataref("sim/operation/failures/rel_invert0")
 
-radio_fuse = find_dataref("sim/cockpit2/electrical/cross_tie")
+radio_fuse = create_dataref("custom/dromader/electrical/radio_power","number")
+radio_fail = find_dataref("sim/operation/failures/rel_esys2")
+
+transponder_fuse = create_dataref("custom/dromader/electrical/transponder_power","number")
+transponder_fail = find_dataref("sim/operation/failures/rel_esys3")
+inverter_on = find_dataref("sim/cockpit2/electrical/inverter_on[0]")
+
 
 
 local volt_but = 0
@@ -95,16 +99,50 @@ function cmd_agk49_fuse_tog(phase, duration)
 		if agk49_fuse == 0 then
 			agk49_fuse = 1
 			agk49_fail = 0
+			inverter_on = 1
 			bus_load_add = bus_load_add + 2
 		else
 			agk49_fuse = 0
 			agk49_fail = 6
+			inverter_on = 0
 			bus_load_add = bus_load_add - 2
 		end
 	end
 end
 
 cmdcustomagk49tog = create_command("custom/dromader/electrical/agk49_pwr_cmd","Toggle AGK-49 fuse",cmd_agk49_fuse_tog)
+
+function cmd_radio_fuse_tog(phase, duration)
+	if phase == 0 then
+		if radio_fuse == 0 then
+			radio_fuse = 1
+			radio_fail = 0
+			bus_load_add = bus_load_add + 5
+		else
+			radio_fuse = 0
+			radio_fail = 6
+			bus_load_add = bus_load_add - 5
+		end
+	end
+end
+
+cmdcustomradiotog = create_command("custom/dromader/electrical/radio_pwr_cmd","Toggle radio fuse",cmd_radio_fuse_tog)
+
+function cmd_transponder_fuse_tog(phase, duration)
+	if phase == 0 then
+		if transponder_fuse == 0 then
+			transponder_fuse = 1
+			transponder_fail = 0
+			bus_load_add = bus_load_add + 5
+		else
+			transponder_fuse = 0
+			transponder_fail = 6
+			bus_load_add = bus_load_add - 5
+		end
+	end
+end
+
+cmdcustomtranspondertog = create_command("custom/dromader/electrical/transponder_pwr_cmd","Toggle transponder fuse",cmd_transponder_fuse_tog)
 
 function cmd_inst_light_fuse_tog(phase, duration)
 	if phase == 0 then
@@ -160,19 +198,6 @@ end
 
 ventfusetogcmd = create_command("custom/dromader/electrical/vent_fuse_tog","Toggle vent fuse",cmd_vent_fuse_tog)
 
-function cmd_start_fuse_tog(phase, duration)
-	if phase == 0 then
-		if starter_fuse == 0 then
-			starter_fuse = 1
-			starter_fail = 0
-		else
-			starter_fuse = 0
-			starter_fail = 6
-		end
-	end
-end
-
-cmdcustomstarttog = create_command("custom/dromader/electrical/starter_fuse_tog","Toggle starter fuse",cmd_start_fuse_tog)
 
 function cmd_fuel_fuse_tog(phase, duration)
 	if phase == 0 then
@@ -262,20 +287,21 @@ cmdcustomvoltbutpress = create_command("custom/dromader/electrical/volt_but","Pr
 
 function flight_start()
 
-	starter_fuse = 0
-	starter_fail = 6
 	inst_light_fuse = 0
 	inst_light_fail = 6
 	if startup_running == 1 then
 		bat_sel = 0
 		batt = 1
 		gpu = 0
-		bus_load_add = bus_load_add + 2
+		bus_load_add = bus_load_add + 12
 		stall_fuse = 1
 		stall_fail = 0
 		agk49_fuse = 1
 		agk49_fail = 0
 		radio_fuse = 1
+		radio_fail = 0
+		transponder_fuse = 1
+		transponder_fail = 0
 	else
 		bat_sel = 1
 		batt = 0
@@ -285,37 +311,46 @@ function flight_start()
 		agk49_fuse = 0
 		agk49_fail = 6	
 		radio_fuse = 0
+		radio_fail = 6
+		transponder_fuse = 0
+		transponder_fail = 6
 	end
 end
 
 function update_volt_needle()
 local tmpval
-	if volt_but == 0 then
-		if volt_sel == 0 then
-			tmpval = bus_amp/4
-		elseif volt_sel == 1 then
-			tmpval = bus_volt
-		elseif volt_sel == 2 then
-			tmpval = bus_volt
-		elseif volt_sel == 3 then
-			tmpval = bat_volt
-		elseif volt_sel == 4 then
-			if gpu == 1 then
+	if batt == 1 or gpu == 1 then
+		if volt_but == 0 then
+			if volt_sel == 0 then
+				tmpval = bus_amp/4
+			elseif volt_sel == 1 then
 				tmpval = bus_volt
-			else 
-				tmpval = 0
+			elseif volt_sel == 2 then
+				tmpval = bus_volt
+			elseif volt_sel == 3 then
+				tmpval = bat_volt
+			elseif volt_sel == 4 then
+				if gpu == 1 then
+					tmpval = bus_volt
+				else 
+					tmpval = 0
+				end
 			end
+		else 
+			tmpval = bus_volt
 		end
 	else 
-		tmpval = bus_volt
+		tmpval = 0
 	end
 	volt_needle = func_animate_slowly(tmpval, volt_needle, 3)
 end
 
 function monitor_failures()
 	
-	if starter_fail == 6 then
-		starter_fuse = 0
+	if bus_amp > 100 then
+		bat_sel = 1
+		batt = 0
+		gpu = 0
 	end
 	
 	if inst_light_fail == 6 then
@@ -331,6 +366,20 @@ function monitor_failures()
 			bus_load_add = bus_load_add - 2
 		end
 		agk49_fuse = 0
+	end
+	
+	if radio_fail == 6 then
+		if radio_fuse == 1 then
+			bus_load_add = bus_load_add - 5
+		end
+		radio_fuse = 0
+	end
+	
+	if transponder_fail == 6 then
+		if transponder_fuse == 1 then
+			bus_load_add = bus_load_add - 5
+		end
+		transponder_fuse = 0
 	end
 	
 end

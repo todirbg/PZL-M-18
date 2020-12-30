@@ -269,7 +269,7 @@ cmdcsutomnavpwrup = create_command("custom/dromader/radios/nav_pwr_up","Nav powe
 cmdcsutomnavpwrdwn = create_command("custom/dromader/radios/nav_pwr_down","Nav power knob down",cmd_navpwr_dn)
 
 function flight_start()
-
+	starter_fuse = 0
 	if startup_running == 1 then
 		nav_brt = 0.7
 		nav_pwr = 1

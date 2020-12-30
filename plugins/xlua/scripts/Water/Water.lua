@@ -230,6 +230,10 @@ function after_physics()
 				foaming_qty_ind[i] = 0
 			end
 		end
+	else 
+		for i = 0, 6 do
+			foaming_qty_ind[i] = 0
+		end
 	end
 	
 	if foaming_fuse == 1 and foaming_quantity > 0 then
