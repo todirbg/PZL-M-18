@@ -4,17 +4,9 @@
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
 
-
---sim/flightmodel/engine/ENGN_CHT_c
---sim/flightmodel/engine/ENGN_oil_temp_c
---sim/aircraft/limits/red_lo_CHT
---sim/aircraft/limits/red_lo_oilT
---sim/weather/temperature_ambient_c
---sim/cockpit2/engine/indicators/carburetor_temperature_C
 eng_cyl_temp = find_dataref("sim/flightmodel/engine/ENGN_CHT_c[0]")
 eng_carb_temp = find_dataref("sim/cockpit2/engine/indicators/carburetor_temperature_C[0]")
 eng_cyl_temp_lim = find_dataref("sim/aircraft/limits/red_lo_CHT")
-eng_oil_temp_lim = find_dataref("sim/aircraft/limits/red_lo_oilT")
 eng_speed = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
 eng_throt = find_dataref("sim/flightmodel/engine/ENGN_thro[0]")
 eng_fail = find_dataref("sim/operation/failures/rel_engfai0")
