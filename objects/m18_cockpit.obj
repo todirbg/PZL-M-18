@@ -6268,7 +6268,7 @@ IDX10	5350	5351	5348	5350	5352	5353	5354	5355	5352	5354
 	ANIM_rotate_end
 		ANIM_begin
 		ANIM_hide	0.0099999998	1	sim/flightmodel/engine/ENGN_running[0]
-		ATTR_manip_drag_rotate	hand	-0.00000025	0.00000003	-0.037759908	0	1	-0	0	360.00026	0	0	360	0	0	sim/flightmodel2/engines/prop_rotation_angle_deg[0]	none	
+		ATTR_manip_drag_rotate	hand	-0.00000025	0.00000003	-0.037759908	0	1	-0	0	360.00026	0	0	360	0	0	custom/dromader/engine/prop_angle_deg	none	
 		TRIS	1056 6
 		ANIM_end
 		ANIM_begin

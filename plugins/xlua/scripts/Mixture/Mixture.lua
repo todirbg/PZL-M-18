@@ -1,3 +1,9 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2020
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+----------------------------------------------------------------------------------------------------------
+
 local power_last = 0
 local power_slope = 1
 local egt_last = 0
@@ -13,6 +19,12 @@ function mixture_handle_handler()
 end
 
 mixture_handle = create_dataref("custom/dromader/fuel/mixture_handle","number", mixture_handle_handler)
+
+function primed_ratio_handler()
+
+end
+
+primed_ratio = create_dataref("custom/dromader/engine/primed_ratio","number", primed_ratio_handler)
 
 mixture_eng = find_dataref("sim/flightmodel/engine/ENGN_mixt[0]")
 power_eng = find_dataref("sim/flightmodel/engine/ENGN_power[0]")
@@ -86,5 +98,7 @@ end
 function aircraft_unload()
   ovrd_mix = 0
 end
+
+
 
 run_at_interval(set_mixture,(1/10))

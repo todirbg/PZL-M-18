@@ -4,6 +4,34 @@
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
 
+
+--sim/flightmodel/engine/ENGN_CHT_c
+--sim/flightmodel/engine/ENGN_oil_temp_c
+--sim/aircraft/limits/red_lo_CHT
+--sim/aircraft/limits/red_lo_oilT
+--sim/weather/temperature_ambient_c
+--sim/cockpit2/engine/indicators/carburetor_temperature_C
+eng_cyl_temp = find_dataref("sim/flightmodel/engine/ENGN_CHT_c[0]")
+eng_carb_temp = find_dataref("sim/cockpit2/engine/indicators/carburetor_temperature_C[0]")
+eng_cyl_temp_lim = find_dataref("sim/aircraft/limits/red_lo_CHT")
+eng_oil_temp_lim = find_dataref("sim/aircraft/limits/red_lo_oilT")
+eng_speed = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
+eng_throt = find_dataref("sim/flightmodel/engine/ENGN_thro[0]")
+eng_fail = find_dataref("sim/operation/failures/rel_engfai0")
+oat = find_dataref("sim/weather/temperature_ambient_c")
+
+prop_angle = find_dataref("sim/flightmodel2/engines/prop_rotation_angle_deg[0]")
+function prop_angle_handler()
+	if prop_angle_dromader == 360 then 
+		prop_angle_dromader = 0
+	elseif prop_angle_dromader == 0 then
+		prop_angle_dromader = 360
+	end
+		prop_angle = prop_angle_dromader
+end
+
+prop_angle_dromader = create_dataref("custom/dromader/engine/prop_angle_deg","number", prop_angle_handler)
+
 eng_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
@@ -61,7 +89,29 @@ end
 
 cmdcsutomspinflywheel = create_command("custom/dromader/engine/spin_flywheel","Starter spin flywheel",cmd_spin_flywheel)
 
+local rough = 0
+function check_eng()
+	if eng_cyl_temp < eng_cyl_temp_lim and oat < 5 then
+		rough = 1
+	else
+		rough = 0
+	end
+	if rough == 1 then
+		toggle_eng_fail()
+	end
+end
 
+function toggle_eng_fail()
+	if eng_fail == 6 then
+		eng_fail = 0
+	else 
+		eng_fail = 6
+	end
+end
+
+local timer = 0
 function after_physics()
 	flywheel_rpm = math.max(0, flywheel_rpm - 2*SIM_PERIOD)	
+	prop_angle_dromader = prop_angle
+	--check_eng()
 end
