@@ -14,10 +14,20 @@ startup_running = find_dataref("sim/operation/prefs/startup_running")
 
 
 bus_amp = find_dataref("sim/cockpit2/electrical/bus_load_amps[0]")
+bus_amp2 = find_dataref("sim/cockpit2/electrical/bus_load_amps[1]")
+bus_amp3 = find_dataref("sim/cockpit2/electrical/bus_load_amps[2]")
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 bat_volt =  find_dataref("sim/cockpit2/electrical/battery_voltage_indicated_volts[0]")
 bus_load_add = find_dataref("sim/cockpit2/electrical/plugin_bus_load_amps[0]")
 
+ldg_lt = find_dataref("sim/cockpit2/switches/landing_lights_on")
+taxi_lt = find_dataref("sim/cockpit2/switches/taxi_light_on")
+nav_lt = find_dataref("sim/cockpit2/switches/navigation_lights_on")
+strobe_lt = find_dataref("sim/cockpit2/switches/strobe_lights_on")
+beacon_lt = find_dataref("sim/cockpit2/switches/beacon_on")
+
+elec_hyd = find_dataref("sim/cockpit2/switches/electric_hydraulic_pump_on")
+stat_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 
 fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number")
 
@@ -100,12 +110,10 @@ function cmd_agk49_fuse_tog(phase, duration)
 			agk49_fuse = 1
 			agk49_fail = 0
 			inverter_on = 1
-			bus_load_add = bus_load_add + 2
 		else
 			agk49_fuse = 0
 			agk49_fail = 6
 			inverter_on = 0
-			bus_load_add = bus_load_add - 2
 		end
 	end
 end
@@ -284,6 +292,63 @@ end
 
 cmdcustomvoltbutpress = create_command("custom/dromader/electrical/volt_but","Press voltmeter button",cmd_volt_but_press)
 
+function auto_start_after()
+		inst_light_fuse = 0
+		inst_light_fail = 6
+		bat_sel = 0
+		batt = 1
+		gpu = 0
+		stall_fuse = 1
+		stall_fail = 0
+		agk49_fuse = 1
+		agk49_fail = 0
+		radio_fuse = 1
+		radio_fail = 0
+		transponder_fuse = 1
+		transponder_fail = 0
+		fuel_fuse = 1
+		heater_sw = 0
+		vent_fuse = 0
+		ldg_lt = 0
+		taxi_lt = 0
+		nav_lt = 0
+		strobe_lt = 0
+		beacon_lt = 0	
+		elec_hyd = 1
+		stat_heat = 0
+end
+
+function auto_board_after()
+		inst_light_fuse = 0
+		inst_light_fail = 6
+		bat_sel = 0
+		batt = 1
+		gpu = 0
+		stall_fuse = 1
+		stall_fail = 0
+		agk49_fuse = 1
+		agk49_fail = 0
+		radio_fuse = 1
+		radio_fail = 0
+		transponder_fuse = 1
+		transponder_fail = 0
+		fuel_fuse = 1
+		heater_sw = 0
+		vent_fuse = 0
+		ldg_lt = 0
+		taxi_lt = 0
+		nav_lt = 0
+		strobe_lt = 0
+		beacon_lt = 0	
+		elec_hyd = 1
+		stat_heat = 0
+end
+
+
+quickstart = wrap_command("sim/operation/quick_start", dummy, auto_start_after)
+autostart = wrap_command("sim/operation/auto_start", dummy, auto_start_after)
+autoboard = wrap_command("sim/operation/auto_board", dummy, auto_board_after)
+
 
 function flight_start()
 
@@ -293,7 +358,6 @@ function flight_start()
 		bat_sel = 0
 		batt = 1
 		gpu = 0
-		bus_load_add = bus_load_add + 12
 		stall_fuse = 1
 		stall_fail = 0
 		agk49_fuse = 1
@@ -302,6 +366,8 @@ function flight_start()
 		radio_fail = 0
 		transponder_fuse = 1
 		transponder_fail = 0
+		fuel_fuse = 1
+		elec_hyd = 1
 	else
 		bat_sel = 1
 		batt = 0
@@ -314,6 +380,7 @@ function flight_start()
 		radio_fail = 6
 		transponder_fuse = 0
 		transponder_fail = 6
+		elec_hyd = 0
 	end
 end
 
@@ -322,7 +389,7 @@ local tmpval
 	if batt == 1 or gpu == 1 then
 		if volt_but == 0 then
 			if volt_sel == 0 then
-				tmpval = bus_amp/4
+				tmpval = (bus_amp + bus_amp2 + bus_amp3 + bus_load_add)/4
 			elseif volt_sel == 1 then
 				tmpval = bus_volt
 			elseif volt_sel == 2 then
@@ -362,24 +429,22 @@ function monitor_failures()
 	end
 	
 	if agk49_fail == 6 then
-		if agk_49_fuse == 1 then
-			bus_load_add = bus_load_add - 2
+		if agk49_fuse == 1 then
+			agk49_fuse = 0
+			inverter_on = 0
 		end
-		agk49_fuse = 0
 	end
 	
 	if radio_fail == 6 then
 		if radio_fuse == 1 then
-			bus_load_add = bus_load_add - 5
+			radio_fuse = 0
 		end
-		radio_fuse = 0
 	end
 	
 	if transponder_fail == 6 then
 		if transponder_fuse == 1 then
-			bus_load_add = bus_load_add - 5
+			transponder_fuse = 0
 		end
-		transponder_fuse = 0
 	end
 	
 end

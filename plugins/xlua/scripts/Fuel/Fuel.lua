@@ -63,12 +63,12 @@ function update_fuel_needles()
 	if fuel_fuse == 1 and bus_volts > 18 then
 		fuel_quantity_dromader_L = func_animate_slowly(fuel_quantity_left, fuel_quantity_dromader_L, 2)
 		fuel_quantity_dromader_R = func_animate_slowly(fuel_quantity_right, fuel_quantity_dromader_R, 2)
-		if fuel_quantity_dromader_L < 30 then
+		if fuel_quantity_dromader_L < 35 then
 			fuel_low_dromader_L = 1
 		else 
 			fuel_low_dromader_L = 0
 		end
-		if fuel_quantity_dromader_R < 30 then
+		if fuel_quantity_dromader_R < 35 then
 			fuel_low_dromader_R = 1
 		else 
 			fuel_low_dromader_R = 0
@@ -166,6 +166,19 @@ function update_fuel_press()
 		if press < 20 then flooded = 0 end
 	end
 end
+
+function auto_start_before()
+	press = 35
+end
+
+function dummy()
+--do nothing
+end
+
+------------------------------- LOCATE AND/OR CREATE COMMANDS -------------------------------
+
+quickstart = wrap_command("sim/operation/quick_start", auto_start_before, dummy)
+autostart = wrap_command("sim/operation/auto_start", auto_start_before, dummy)
 
 function after_physics()
 	update_fuel_needles()

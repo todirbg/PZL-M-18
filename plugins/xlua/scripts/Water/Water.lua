@@ -146,7 +146,7 @@ function flight_start()
 		hyd_dump_fuse = 1
 	else
 		foaming_fuse = 0
-		hyd_dump_fuse = 1
+		hyd_dump_fuse = 0
 	end
 end
 
