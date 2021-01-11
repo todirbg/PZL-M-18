@@ -4,6 +4,10 @@
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
 
+function dummy()
+--do nothing
+end
+
 fuel_tank_selector = find_dataref("sim/cockpit2/fuel/fuel_tank_selector") -- (0=none,1=left,2=center,3=right,4=all)
 startup_running = find_dataref("sim/operation/prefs/startup_running")
 
@@ -25,7 +29,6 @@ fuel_burning = find_dataref("sim/flightmodel2/engines/engine_is_burning_fuel[0]"
 
 
 local cutoff = 0
-local press = 0
 local man_press = 0
 local flooded = 0
 function fuel_cutoff_handler()
@@ -44,14 +47,14 @@ fuel_quantity_dromader_R = create_dataref("custom/dromader/fuel/fuel_quantity_R"
 fuel_low_dromader_L = create_dataref("custom/dromader/fuel/fuel_low_L","number")
 fuel_low_dromader_R = create_dataref("custom/dromader/fuel/fuel_low_R","number")
 
-fuel_press_dromader = create_dataref("custom/dromader/fuel/fuel_press","number")
+fuel_press_dromader = create_dataref("custom/dromader/fuel/fuel_press","number", dummy)
 fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector","number") -- (1=left,2=all,3=right)
 
 
 local prev = 0 
 function man_fuel_pump_handler()
 	if manual_fuel_pump < prev and cutoff == 0 then
-		press = press + (prev - manual_fuel_pump)
+		fuel_press_dromader = fuel_press_dromader + (prev - manual_fuel_pump)
 	end
 	prev = manual_fuel_pump
 end
@@ -155,25 +158,21 @@ function update_fuel_press()
 
 	
 	if cutoff == 0 and nofuel == 0 then 
-		press = math.max(press, math.sqrt(6*math.abs(engn_tacrad)))
+		fuel_press_dromader = math.max(fuel_press_dromader, math.sqrt(6*math.abs(engn_tacrad)))
 	end
 	if engn_tacrad > 1 then 
-	press = math.max(0, press - engn_tacrad/10*(throttle_ratio + 0.2)* SIM_PERIOD)
+	fuel_press_dromader = math.max(0, fuel_press_dromader - engn_tacrad/10*(throttle_ratio + 0.2)* SIM_PERIOD)
 	end
-	fuel_press_dromader = press
-	if press > 50 then flooded = 1 end
+	if fuel_press_dromader > 50 then flooded = 1 end
 	if flooded == 1 then
-		if press < 20 then flooded = 0 end
+		if fuel_press_dromader < 20 then flooded = 0 end
 	end
 end
 
 function auto_start_before()
-	press = 35
+	fuel_press_dromader = 35
 end
 
-function dummy()
---do nothing
-end
 
 ------------------------------- LOCATE AND/OR CREATE COMMANDS -------------------------------
 
@@ -198,7 +197,7 @@ function after_physics()
 		end
 	end
 
-	if cutoff==1 or nofuel==1 or press < 15 or flooded == 1 then
+	if cutoff==1 or nofuel==1 or fuel_press_dromader < 15 or flooded == 1 then
 		fuel_flow_before_engine = 0
 	else
 		fuel_flow_before_engine = 1

@@ -12,8 +12,14 @@ eng_throt = find_dataref("sim/flightmodel/engine/ENGN_thro[0]")
 eng_fail = find_dataref("sim/operation/failures/rel_engfai0")
 oat = find_dataref("sim/weather/temperature_ambient_c")
 
+fuel_press_dromader = find_dataref("custom/dromader/fuel/fuel_press")
+throttle_ratio = find_dataref("sim/flightmodel2/engines/throttle_used_ratio[0]")
+
 prop_angle = find_dataref("sim/flightmodel2/engines/prop_rotation_angle_deg[0]")
 function prop_angle_handler()
+	if prop_angle_dromader < prop_angle then
+		fuel_press_dromader = math.max(0, fuel_press_dromader - (prop_angle - prop_angle_dromader)*throttle_ratio/90)
+	end
 	if prop_angle_dromader == 360 then 
 		prop_angle_dromader = 0
 	elseif prop_angle_dromader == 0 then
