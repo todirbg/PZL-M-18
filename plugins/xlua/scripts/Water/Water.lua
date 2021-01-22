@@ -12,6 +12,10 @@ hyd_press_2 = find_dataref("sim/cockpit2/hydraulics/indicators/hydraulic_pressur
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 startup_running = find_dataref("sim/operation/prefs/startup_running")
 
+function dummy()
+
+end
+
 function hyd_drop_handler()
 
 end
@@ -54,15 +58,15 @@ em_drop = create_dataref("custom/dromader/water/emergency_drop","number", em_dro
 em_drop_handle = create_dataref("custom/dromader/water/emergency_drop_handle","number", em_drop_handle_handler)
 water_drop_speed = create_dataref("custom/dromader/water/water_drop_speed","number", water_drop_speed_handler)
 foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", foaming_quantity_handler)
-foaming_fuse = create_dataref("custom/dromader/water/foaming_fuse","number")
-foam_add = create_dataref("custom/dromader/water/foam_add","number", foam_add_handler)
+foaming_fuse = create_dataref("custom/dromader/water/foaming_fuse","number", dummy)
+foam_add = create_dataref("custom/dromader/water/foam_add","number", dummy)
 
-foaming_qty_ind = create_dataref("custom/dromader/water/foaming_qty_ind","array[7]")
+foaming_qty_ind = create_dataref("custom/dromader/water/foaming_qty_ind","array[7]", dummy)
 
-water_drop_anim = create_dataref("custom/dromader/water/water_drop_anim","number")
-water_drop_em_anim = create_dataref("custom/dromader/water/water_drop_em_anim","number")
+water_drop_anim = create_dataref("custom/dromader/water/water_drop_anim","number", dummy)
+water_drop_em_anim = create_dataref("custom/dromader/water/water_drop_em_anim","number", dummy )
 
-hyd_dump_fuse = create_dataref("custom/dromader/water/hyd_dump_fuse","number")
+hyd_dump_fuse = create_dataref("custom/dromader/water/hyd_dump_fuse","number", dummy)
 
 foam_quantity_handle = create_dataref("custom/dromader/water/foam_quantity_handle","number", foam_qty_handle_handler)
 water_quantity_handle = create_dataref("custom/dromader/water/water_quantity_handle","number", water_qty_handle_handler)

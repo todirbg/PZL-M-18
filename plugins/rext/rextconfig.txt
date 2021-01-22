@@ -1,0 +1,85 @@
+##########################################
+#ATTENTION!!!DANGEROUS!!!
+#RECORD INTERVAL SETTING
+#THIS IS A ROPE GIVEN TO LET ONE HANG HIMSELF!!!
+#SET IT TO 0.0 TO RECORD EVERY FLIGHT LOOP
+#DEFAULT SET TO 0.1s
+%0.1
+##########################################
+##############DATAREFS SECTION############
+#It is planes author responsibility not to record datarefs already saved for replay by X-Plane
+#Add your datarefs here. Only float and int types are supported. Array datarefs must be accessed by index.
+#Only writable datarefs can be recorded/replayed. Read only drefs will be disregarded.
+#Dararef orded is not important or guaranteed, but generaly add default drefs before custom ones.
+#sim default datarefs
+sim/flightmodel/weight/m_jettison
+sim/cockpit2/switches/electric_hydraulic_pump_on
+sim/flightmodel/controls/tail_lock_rat
+sim/cockpit2/engine/actuators/ignition_on[0]
+sim/cockpit2/gauges/actuators/artificial_horizon_adjust_deg_pilot
+#sim/flightmodel2/misc/door_open_ratio[0]
+#sim/flightmodel2/misc/door_open_ratio[1]
+#sim/flightmodel2/misc/door_open_ratio[2]
+sim/cockpit2/switches/instrument_brightness_ratio[0]
+sim/cockpit2/switches/instrument_brightness_ratio[1]
+sim/cockpit2/switches/wiper_speed
+#custom datarefs
+#water
+custom/dromader/water/water_drop_em_anim
+custom/dromader/water/water_drop_anim
+custom/dromader/water/emergency_drop
+custom/dromader/water/water_quantity_handle
+custom/dromader/water/foam_quantity_handle
+custom/dromader/water/hyd_drop
+custom/dromader/water/water_drop_speed
+custom/dromader/water/foam_add
+custom/dromader/water/emergency_drop_handle
+custom/dromader/water/foaming_fuse
+custom/dromader/water/hyd_dump_fuse
+custom/dromader/water/foaming_qty_ind[0]
+custom/dromader/water/foaming_qty_ind[1]
+custom/dromader/water/foaming_qty_ind[2]
+custom/dromader/water/foaming_qty_ind[3]
+custom/dromader/water/foaming_qty_ind[4]
+custom/dromader/water/foaming_qty_ind[5]
+custom/dromader/water/foaming_qty_ind[6]
+#electrical
+custom/dromader/electrical/volt_needle
+custom/dromader/electrical/battery_sw
+custom/dromader/electrical/volt_src
+custom/dromader/electrical/volt_needle
+custom/dromader/electrical/fuel_fuse
+custom/dromader/electrical/stall_fuse
+custom/dromader/electrical/heater
+custom/dromader/electrical/vent
+custom/dromader/electrical/wiper
+custom/dromader/electrical/instruments_light
+custom/dromader/electrical/agk49_power
+custom/dromader/electrical/transponder_power
+#fuel
+custom/dromader/fuel/fuel_valve_handle
+custom/dromader/fuel/fuel_quantity_L
+custom/dromader/fuel/fuel_quantity_R
+custom/dromader/fuel/fuel_low_L
+custom/dromader/fuel/fuel_low_R
+custom/dromader/fuel/fuel_press
+custom/dromader/fuel/fuel_selector
+custom/dromader/fuel/fuel_pump
+#clock
+custom/dromader/clock/elapsed_time_seconds
+custom/dromader/clock/elapsed_time_minutes
+custom/dromader/clock/elapsed_time_hours
+#radio
+custom/dromader/electrical/radio_power
+#engine
+custom/dromader/electrical/starter_fuse
+#mixture
+custom/dromader/fuel/mixture_handle
+#comapass
+custom/dromader/compass/compass_heading
+custom/dromader/compass/compass_g_side
+custom/dromader/compass/compass_g_nrml
+custom/dromader/compass/compass_lock_knob
+#audio
+custom/dromader/misc/audio_sw
+custom/dromader/misc/audio_vol

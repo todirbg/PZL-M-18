@@ -3,6 +3,9 @@
 -- Licnsed under Creative Commons CC BY-NC 4.0
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
+function dummy()
+
+end
 
 eng_cyl_temp = find_dataref("sim/flightmodel/engine/ENGN_CHT_c[0]")
 eng_carb_temp = find_dataref("sim/cockpit2/engine/indicators/carburetor_temperature_C[0]")
@@ -34,7 +37,7 @@ eng_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 
-starter_fuse = create_dataref("custom/dromader/electrical/starter_fuse","number")
+starter_fuse = create_dataref("custom/dromader/electrical/starter_fuse","number", dummy)
 starter_fail = find_dataref("sim/operation/failures/rel_startr0")
 
 flywheel_rpm = create_dataref("custom/dromader/engine/flywheel_rpm","number")

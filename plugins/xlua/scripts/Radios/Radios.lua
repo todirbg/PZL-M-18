@@ -3,12 +3,15 @@
 -- Licnsed under Creative Commons CC BY-NC 4.0
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
+function dummy()
+
+end
 
 transp_code = find_dataref("sim/cockpit/radios/transponder_code")
 transp_mode = find_dataref("sim/cockpit/radios/transponder_mode")
-transp_mode_dromader = create_dataref("custom/dromader/radios/transponder_mode","number")
+transp_mode_dromader = create_dataref("custom/dromader/radios/transponder_mode","number", dummy)
 
-transp_knob = create_dataref("custom/dromader/radios/transponder_rot","array[4]")
+transp_knob = create_dataref("custom/dromader/radios/transponder_rot","array[4]", dummy)
 transp_str_FL = create_dataref("custom/dromader/radios/string_fl","string")
 transp_str_ALT = create_dataref("custom/dromader/radios/string_alt","string")
 transp_str_SBY = create_dataref("custom/dromader/radios/string_sby","string")
@@ -22,12 +25,12 @@ transp_str_ON = "ON"
 transp_str_R = "R"
 transp_str_GND = "GND"
 
-comm_coarse_knob = create_dataref("custom/dromader/radios/comm_coarse_knob","number")
-comm_fine_knob = create_dataref("custom/dromader/radios/comm_fine_knob","number")
-nav_coarse_knob = create_dataref("custom/dromader/radios/nav_coarse_knob","number")
-nav_fine_knob = create_dataref("custom/dromader/radios/nav_fine_knob","number")
-com_pwr_konb = create_dataref("custom/dromader/radios/com_pwr_konb","number")
-nav_pwr_konb = create_dataref("custom/dromader/radios/nav_pwr_knob","number")
+comm_coarse_knob = create_dataref("custom/dromader/radios/comm_coarse_knob","number", dummy)
+comm_fine_knob = create_dataref("custom/dromader/radios/comm_fine_knob","number", dummy)
+nav_coarse_knob = create_dataref("custom/dromader/radios/nav_coarse_knob","number", dummy)
+nav_fine_knob = create_dataref("custom/dromader/radios/nav_fine_knob","number", dummy)
+com_pwr_konb = create_dataref("custom/dromader/radios/com_pwr_konb","number", dummy)
+nav_pwr_konb = create_dataref("custom/dromader/radios/nav_pwr_knob","number", dummy)
 com_pwr = find_dataref("sim/cockpit2/radios/actuators/com1_power")
 nav_pwr = find_dataref("sim/cockpit2/radios/actuators/nav1_power")
 com_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")

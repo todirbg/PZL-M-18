@@ -3,10 +3,13 @@
 -- Licnsed under Creative Commons CC BY-NC 4.0
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
+function dummy()
+--do nothing
+end
 
-time_sec = create_dataref("custom/dromader/clock/elapsed_time_seconds","number")
-time_min = create_dataref("custom/dromader/clock/elapsed_time_minutes","number")
-time_hr = create_dataref("custom/dromader/clock/elapsed_time_hours","number")
+time_sec = create_dataref("custom/dromader/clock/elapsed_time_seconds","number", dummy)
+time_min = create_dataref("custom/dromader/clock/elapsed_time_minutes","number", dummy)
+time_hr = create_dataref("custom/dromader/clock/elapsed_time_hours","number", dummy)
 sim_time = find_dataref("sim/time/total_flight_time_sec")
 local timer_state = 2
 local timer_running = 0

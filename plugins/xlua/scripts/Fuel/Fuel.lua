@@ -41,14 +41,14 @@ end
 
 fuel_cutoff_selector = create_dataref("custom/dromader/fuel/fuel_valve_handle","number", fuel_cutoff_handler) -- (0=none,1=fuel cutoff)
 
-fuel_quantity_dromader_L = create_dataref("custom/dromader/fuel/fuel_quantity_L","number")
-fuel_quantity_dromader_R = create_dataref("custom/dromader/fuel/fuel_quantity_R","number")
+fuel_quantity_dromader_L = create_dataref("custom/dromader/fuel/fuel_quantity_L","number", dummy)
+fuel_quantity_dromader_R = create_dataref("custom/dromader/fuel/fuel_quantity_R","number", dummy)
 
-fuel_low_dromader_L = create_dataref("custom/dromader/fuel/fuel_low_L","number")
-fuel_low_dromader_R = create_dataref("custom/dromader/fuel/fuel_low_R","number")
+fuel_low_dromader_L = create_dataref("custom/dromader/fuel/fuel_low_L","number", dummy)
+fuel_low_dromader_R = create_dataref("custom/dromader/fuel/fuel_low_R","number", dummy)
 
 fuel_press_dromader = create_dataref("custom/dromader/fuel/fuel_press","number", dummy)
-fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector","number") -- (1=left,2=all,3=right)
+fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector","number", dummy) -- (1=left,2=all,3=right)
 
 
 local prev = 0 

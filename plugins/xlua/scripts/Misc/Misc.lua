@@ -3,6 +3,9 @@
 -- Licnsed under Creative Commons CC BY-NC 4.0
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
+function dummy()
+
+end
 
 function tension_handle_handler()
 
@@ -24,13 +27,13 @@ audio_nav1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_nav1")
 
 tension_handle = create_dataref("custom/dromader/misc/tension_handle","number", tension_handle_handler)
 
-audio_sw = create_dataref("custom/dromader/misc/audio_sw","number")
+audio_sw = create_dataref("custom/dromader/misc/audio_sw","number", dummy)
 audio_vol = create_dataref("custom/dromader/misc/audio_vol","number", audio_vol_handler)
 
-compass_lock_knob = create_dataref("custom/dromader/compass/compass_lock_knob","number")
-compass_heading_dromader = create_dataref("custom/dromader/compass/compass_heading","number")
-compass_g_side_dromader = create_dataref("custom/dromader/compass/compass_g_side","number")
-compass_g_nrml_dromader= create_dataref("custom/dromader/compass/compass_g_nrml","number")
+compass_lock_knob = create_dataref("custom/dromader/compass/compass_lock_knob","number", dummy)
+compass_heading_dromader = create_dataref("custom/dromader/compass/compass_heading","number", dummy)
+compass_g_side_dromader = create_dataref("custom/dromader/compass/compass_g_side","number", dummy)
+compass_g_nrml_dromader= create_dataref("custom/dromader/compass/compass_g_nrml","number", dummy)
 
 compass_heading = find_dataref("sim/cockpit2/gauges/indicators/compass_heading_deg_mag")
 compass_g_side = find_dataref("sim/flightmodel/forces/g_side")

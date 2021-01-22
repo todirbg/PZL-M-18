@@ -3,10 +3,13 @@
 -- Licnsed under Creative Commons CC BY-NC 4.0
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
+function dummy()
+--do nothing
+end
 
-bat_sel = create_dataref("custom/dromader/electrical/battery_sw","number")
-volt_sel = create_dataref("custom/dromader/electrical/volt_src","number")
-volt_needle = create_dataref("custom/dromader/electrical/volt_needle","number")
+bat_sel = create_dataref("custom/dromader/electrical/battery_sw","number", dummy)
+volt_sel = create_dataref("custom/dromader/electrical/volt_src","number", dummy)
+volt_needle = create_dataref("custom/dromader/electrical/volt_needle","number", dummy)
 
 batt = find_dataref("sim/cockpit2/electrical/battery_on[0]")
 gpu = find_dataref("sim/cockpit/electrical/gpu_on")
@@ -29,31 +32,31 @@ beacon_lt = find_dataref("sim/cockpit2/switches/beacon_on")
 elec_hyd = find_dataref("sim/cockpit2/switches/electric_hydraulic_pump_on")
 stat_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 
-fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number")
+fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number", dummy)
 
 
-stall_fuse = create_dataref("custom/dromader/electrical/stall_fuse","number")
+stall_fuse = create_dataref("custom/dromader/electrical/stall_fuse","number", dummy)
 stall_fail = find_dataref("sim/operation/failures/rel_stall_warn")
 
 inst_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")
 
-heater_sw = create_dataref("custom/dromader/electrical/heater","number")
+heater_sw = create_dataref("custom/dromader/electrical/heater","number", dummy)
 
-vent_fuse = create_dataref("custom/dromader/electrical/vent","number")
+vent_fuse = create_dataref("custom/dromader/electrical/vent","number", dummy)
 
-wiper_fuse = create_dataref("custom/dromader/electrical/wiper","number")
+wiper_fuse = create_dataref("custom/dromader/electrical/wiper","number", dummy)
 wiper_speed = find_dataref("sim/cockpit2/switches/wiper_speed")
 
-inst_light_fuse = create_dataref("custom/dromader/electrical/instruments_light","number")
+inst_light_fuse = create_dataref("custom/dromader/electrical/instruments_light","number", dummy)
 inst_light_fail = find_dataref("sim/operation/failures/rel_clights")
 
-agk49_fuse = create_dataref("custom/dromader/electrical/agk49_power","number")
+agk49_fuse = create_dataref("custom/dromader/electrical/agk49_power","number", dummy)
 agk49_fail = find_dataref("sim/operation/failures/rel_invert0")
 
-radio_fuse = create_dataref("custom/dromader/electrical/radio_power","number")
+radio_fuse = create_dataref("custom/dromader/electrical/radio_power","number", dummy)
 radio_fail = find_dataref("sim/operation/failures/rel_esys2")
 
-transponder_fuse = create_dataref("custom/dromader/electrical/transponder_power","number")
+transponder_fuse = create_dataref("custom/dromader/electrical/transponder_power","number", dummy)
 transponder_fail = find_dataref("sim/operation/failures/rel_esys3")
 inverter_on = find_dataref("sim/cockpit2/electrical/inverter_on[0]")
 
@@ -61,9 +64,6 @@ inverter_on = find_dataref("sim/cockpit2/electrical/inverter_on[0]")
 
 local volt_but = 0
 
-function dummy()
---do nothing
-end
 
 function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
   if math.abs(reference_value - animated_VALUE) < 0.1 then return reference_value end
