@@ -4,7 +4,7 @@
 #THIS IS A ROPE GIVEN TO LET ONE HANG HIMSELF!!!
 #SET IT TO 0.0 TO RECORD EVERY FLIGHT LOOP
 #DEFAULT SET TO 0.1s
-%0.1
+%0.03
 ##########################################
 ##############DATAREFS SECTION############
 #It is planes author responsibility not to record datarefs already saved for replay by X-Plane
@@ -17,12 +17,15 @@ sim/cockpit2/switches/electric_hydraulic_pump_on
 sim/flightmodel/controls/tail_lock_rat
 sim/cockpit2/engine/actuators/ignition_on[0]
 sim/cockpit2/gauges/actuators/artificial_horizon_adjust_deg_pilot
-#sim/flightmodel2/misc/door_open_ratio[0]
-#sim/flightmodel2/misc/door_open_ratio[1]
-#sim/flightmodel2/misc/door_open_ratio[2]
 sim/cockpit2/switches/instrument_brightness_ratio[0]
 sim/cockpit2/switches/instrument_brightness_ratio[1]
 sim/cockpit2/switches/wiper_speed
+sim/cockpit2/radios/actuators/audio_volume_com1
+sim/cockpit2/radios/actuators/audio_volume_nav1
+sim/cockpit2/radios/actuators/gps_power
+sim/cockpit2/engine/actuators/cowl_flap_ratio[0]
+sim/cockpit2/engine/actuators/carb_heat_ratio[0]
+sim/cockpit/g430/g430_nav_com_sel
 #custom datarefs
 #water
 custom/dromader/water/water_drop_em_anim
@@ -71,6 +74,17 @@ custom/dromader/clock/elapsed_time_minutes
 custom/dromader/clock/elapsed_time_hours
 #radio
 custom/dromader/electrical/radio_power
+custom/dromader/radios/com_pwr_konb
+custom/dromader/radios/nav_pwr_knob
+custom/dromader/radios/comm_coarse_knob
+custom/dromader/radios/comm_fine_knob
+custom/dromader/radios/nav_coarse_knob
+custom/dromader/radios/nav_fine_knob
+#custom/dromader/radios/transponder_rot[0]
+#custom/dromader/radios/transponder_rot[1]
+#custom/dromader/radios/transponder_rot[2]
+#custom/dromader/radios/transponder_rot[3]
+custom/dromader/radios/transponder_mode
 #engine
 custom/dromader/electrical/starter_fuse
 #mixture
@@ -83,3 +97,10 @@ custom/dromader/compass/compass_lock_knob
 #audio
 custom/dromader/misc/audio_sw
 custom/dromader/misc/audio_vol
+#gns430
+custom/dromader/gns430/knob_big_l_ang
+custom/dromader/gns430/knob_big_r_ang
+custom/dromader/gns430/knob_small_l_ang
+custom/dromader/gns430/knob_small_r_ang
+#misc
+custom/dromader/misc/tension_handle

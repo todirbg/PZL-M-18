@@ -22,6 +22,7 @@ end
 draw_fires = find_dataref("sim/graphics/settings/draw_forestfires")
 static_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 
+
 audio_com1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_com1")
 audio_nav1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_nav1")
 
@@ -44,7 +45,7 @@ function cmd_audiosw_up(phase, duration)
 		audio_sw = math.min(2, audio_sw + 1)
 		if audio_sw == 1 then
 			audio_com1 = 0
-			audio_nav1 = 0		
+			audio_nav1 = 0
 		elseif audio_sw == 2 then
 			audio_com1 = 0
 			audio_nav1 = 1
@@ -60,7 +61,7 @@ function cmd_audiosw_dn(phase, duration)
 			audio_nav1 = 0
 		elseif audio_sw == 1 then
 			audio_com1 = 0
-			audio_nav1 = 0		
+			audio_nav1 = 0
 		end
 	end
 end
