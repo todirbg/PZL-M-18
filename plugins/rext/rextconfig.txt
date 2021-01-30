@@ -26,6 +26,7 @@ sim/cockpit2/radios/actuators/gps_power
 sim/cockpit2/engine/actuators/cowl_flap_ratio[0]
 sim/cockpit2/engine/actuators/carb_heat_ratio[0]
 sim/cockpit/g430/g430_nav_com_sel
+sim/flightmodel2/engines/prop_is_disc[0]
 #custom datarefs
 #water
 custom/dromader/water/water_drop_em_anim
