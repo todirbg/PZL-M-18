@@ -60,6 +60,8 @@ transponder_fuse = create_dataref("custom/dromader/electrical/transponder_power"
 transponder_fail = find_dataref("sim/operation/failures/rel_esys3")
 inverter_on = find_dataref("sim/cockpit2/electrical/inverter_on[0]")
 
+bat_cover_hide = create_dataref("custom/dromader/electrical/hide_bat_cover","number", dummy)
+
 
 
 local volt_but = 0
@@ -103,6 +105,18 @@ function cmd_stall_fuse_tog(phase, duration)
 end
 
 cmdcustomstalltog = create_command("custom/dromader/electrical/stall_fuse_tog","Toggle stall warning fuse",cmd_stall_fuse_tog)
+
+function cmd_bat_cover_tog(phase, duration)
+	if phase == 0 then
+		if bat_cover_hide == 0 then
+			bat_cover_hide = 1
+		else
+			bat_cover_hide = 0
+		end
+	end
+end
+
+cmdcustombatcvrtog = create_command("custom/dromader/electrical/bat_cover_tog","Toggle battery cover",cmd_bat_cover_tog)
 
 function cmd_agk49_fuse_tog(phase, duration)
 	if phase == 0 then

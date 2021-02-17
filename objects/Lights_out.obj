@@ -57,6 +57,7 @@ POINT_COUNTS	0	0	0	0
 							LIGHT_PARAM	airplane_nav_left_size -0.023892276 -0.399984 -0.68282574 1.5 0
 						ANIM_end
 					ANIM_end
+					LIGHT_NAMED	airplane_landing0 -0.039410438 -0.68330401 -0.65784943
 					ANIM_begin
 					ANIM_rotate	-0.99042296	0.13806675	-0	90.967018	90.967018
 					LIGHT_PARAM	airplane_landing_sp 0.14718267 0.65522319 -0.67100167 1 1 1 0 500 0.92387953
@@ -68,7 +69,6 @@ POINT_COUNTS	0	0	0	0
 					ANIM_end
 				ANIM_end
 			ANIM_end
-					LIGHT_NAMED	airplane_landing0 -5.7241516 -0.20778593 2.0386205
 			ANIM_begin
 			ANIM_trans	2.7530899	-0.53921002	2.72192	2.7530899	-0.53921002	2.72192
 			ANIM_rotate	0	0	-1	-97.162756	-97.162756
@@ -122,6 +122,10 @@ POINT_COUNTS	0	0	0	0
 						ANIM_end
 					ANIM_end
 					LIGHT_NAMED	airplane_landing0 -0.039409712 0.68330348 -0.65784705
+					ANIM_begin
+					ANIM_rotate	0.99042308	0.1380661	0	90.966924	90.966924
+					LIGHT_PARAM	airplane_landing_sp 0.14718196 -0.65521991 -0.67100203 1 1 1 0 500 0.92387953
+					ANIM_end
 					LIGHT_NAMED	airplane_taxi -0.039768279 0.68461329 -1.2765961
 					ANIM_begin
 					ANIM_rotate	0.90750217	0.42004752	0	92.939575	92.939575
@@ -129,15 +133,11 @@ POINT_COUNTS	0	0	0	0
 					ANIM_end
 				ANIM_end
 			ANIM_end
-					ANIM_begin
-					ANIM_rotate	-1	-0.00000005	-0	7.994299	7.994299
-					LIGHT_PARAM	airplane_landing_sp 5.7241497 -0.48928693 1.9899116 1 1 1 0 500 0.92387953
-					ANIM_end
 	ANIM_begin
 	ANIM_trans	-0	1.2780401	8.3418303	-0	1.2780401	8.3418303
 	ANIM_rotate	1	0	0	176.31917	176.31917
 	ANIM_rotate_begin	0	1	-0	sim/flightmodel/controls/vstab1_rud1def
-	ANIM_rotate_key	0	0
+	ANIM_rotate_key	0	-0
 	ANIM_rotate_key	23	-23.000245
 	ANIM_rotate_key	-23	23.000245
 	ANIM_rotate_end
