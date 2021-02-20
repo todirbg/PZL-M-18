@@ -7,7 +7,7 @@ P _cgpt/0/_name empty craft
 P _cgpt/0/_w_max 5974.500000000
 P _cgpt/0/_w_now 5974.500000000
 P _cgpt/0/_w_test 5974.529785156
-P _cgpt/0/_z_ref 8.500000000
+P _cgpt/0/_z_ref 8.800000191
 P _cgpt/1/_name fuel tank #1
 P _cgpt/1/_w_max 562.200012207
 P _cgpt/1/_w_now 618.420043945
@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.187218428
+P _gear/0/_stat_def 0.187218413
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.187218428
+P _gear/1/_stat_def 0.187218413
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -20.0
 P _gear/2/_lonN -20.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.052861810
+P _gear/2/_stat_def 0.052861806
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -28389,7 +28389,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.166215897
+P _part/87/_part_y -2.166216135
 P _part/87/_part_z 25.986059189
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -37569,13 +37569,13 @@ P acf/_feathered_pitch 85.0
 P acf/_ff_rat_idle_JET 0.100000001
 P acf/_ff_rat_idle_PRP 0.100000001
 P acf/_file_writer_version 115200
-P acf/_flap1_cd 0.079999998
+P acf/_flap1_cd 0.039999999
 P acf/_flap1_cl 0.825999975
-P acf/_flap1_cm -0.354999989
+P acf/_flap1_cm -0.254999995
 P acf/_flap1_cratR 0.250000000
 P acf/_flap1_cratT 0.250000000
 P acf/_flap1_dn/0 0.0
-P acf/_flap1_dn/1 15.0
+P acf/_flap1_dn/1 30.0
 P acf/_flap1_dn/10 0.0
 P acf/_flap1_dn/11 0.0
 P acf/_flap1_dn/2 30.0
@@ -37593,13 +37593,13 @@ P acf/_flap1_ptch_above_50 0
 P acf/_flap1_roll 0.0
 P acf/_flap1_roll_above_50 0
 P acf/_flap1_type 1
-P acf/_flap2_cd 0.079999998
-P acf/_flap2_cl 0.526000023
-P acf/_flap2_cm -0.354999989
+P acf/_flap2_cd 0.039999999
+P acf/_flap2_cl 0.825999975
+P acf/_flap2_cm -0.254999995
 P acf/_flap2_cratR 0.250000000
 P acf/_flap2_cratT 0.250000000
 P acf/_flap2_dn/0 0.0
-P acf/_flap2_dn/1 15.0
+P acf/_flap2_dn/1 30.0
 P acf/_flap2_dn/10 0.0
 P acf/_flap2_dn/11 0.0
 P acf/_flap2_dn/2 30.0
@@ -37619,7 +37619,7 @@ P acf/_flap2_roll_above_50 0
 P acf/_flap2_type 1
 P acf/_flap_EQ 1
 P acf/_flap_arm 0.0
-P acf/_flap_detents 2
+P acf/_flap_detents 1
 P acf/_flap_ext_time 9.0
 P acf/_flap_extend_protect 0
 P acf/_flap_pumps 25.0
@@ -38174,7 +38174,7 @@ P acf/_rudd2_v2 0.0
 P acf/_rudd_def_time 0.0
 P acf/_rudd_lf_trim 13.0
 P acf/_rudd_rt_trim 13.0
-P acf/_rudd_tab 0.100000001
+P acf/_rudd_tab 0.115000002
 P acf/_rudd_trim_time 3.500000000
 P acf/_rudd_with_ailn_rat 0.0
 P acf/_rudd_with_fail 0.0

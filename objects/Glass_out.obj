@@ -11022,6 +11022,7 @@ IDX	9893
 	ANIM_rotate_key	23	-23.000245
 	ANIM_rotate_key	-23	23.000245
 	ANIM_rotate_end
+	ANIM_hide	6	6	sim/operation/failures/rel_vstb1
 		TRIS	2538 336
 	ANIM_end
 	ANIM_begin
