@@ -22,6 +22,10 @@ end
 draw_fires = find_dataref("sim/graphics/settings/draw_forestfires")
 static_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 
+park_brake = find_dataref("sim/cockpit2/controls/parking_brake_ratio")
+left_brake = find_dataref("sim/cockpit2/controls/left_brake_ratio")
+right_brake = find_dataref("sim/cockpit2/controls/right_brake_ratio")
+
 
 audio_com1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_com1")
 audio_nav1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_nav1")
@@ -39,6 +43,36 @@ compass_g_nrml_dromader= create_dataref("custom/dromader/compass/compass_g_nrml"
 compass_heading = find_dataref("sim/cockpit2/gauges/indicators/compass_heading_deg_mag")
 compass_g_side = find_dataref("sim/flightmodel/forces/g_side")
 compass_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml")
+
+door_detach_L = find_dataref("sim/operation/failures/rel_pyl1a")
+door_detach_R = find_dataref("sim/operation/failures/rel_pyl1b")
+
+function emer_handle_R_handler()
+	if emer_handle_R == 1 then
+		door_detach_R = 6
+	end
+
+end
+
+function emer_handle_L_handler()
+	if emer_handle_L == 1 then
+		door_detach_L = 6
+	end
+end
+
+emer_handle_R = create_dataref("custom/dromader/misc/emer_handle_R","number", emer_handle_R_handler)
+emer_handle_L = create_dataref("custom/dromader/misc/emer_handle_L","number", emer_handle_L_handler)
+
+
+function brake_cmd_after(phase, duration)
+	left_brake = park_brake
+	right_brake = park_brake
+end
+
+cmdcsutombrakeregtog = wrap_command("sim/flight_controls/brakes_toggle_regular", dummy, brake_cmd_after)
+cmdcsutombrakemaxtog = wrap_command("sim/flight_controls/brakes_toggle_max", dummy, brake_cmd_after)
+cmdcsutombrakereghold = wrap_command("sim/flight_controls/brakes_regular", dummy, brake_cmd_after)
+cmdcsutombrakemaxhold = wrap_command("sim/flight_controls/brakes_max", dummy, brake_cmd_after)
 
 function cmd_audiosw_up(phase, duration)
 	if phase == 0 then
@@ -113,6 +147,9 @@ function flight_start()
 	audio_vol_com1 = audio_vol
 	audio_vol_nav1 = audio_vol
 	compass_lock_knob = 0
+	left_brake = park_brake
+	right_brake = park_brake
+	park_brake = 0
 end
 
 function aircraft_unload()

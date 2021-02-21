@@ -15,26 +15,6 @@ eng_throt = find_dataref("sim/flightmodel/engine/ENGN_thro[0]")
 eng_fail = find_dataref("sim/operation/failures/rel_engfai0")
 oat = find_dataref("sim/weather/temperature_ambient_c")
 
-fuel_press_dromader = find_dataref("custom/dromader/fuel/fuel_press")
-throttle_ratio = find_dataref("sim/flightmodel2/engines/throttle_used_ratio[0]")
-
-prop_angle = find_dataref("sim/flightmodel2/engines/prop_rotation_angle_deg[0]")
-function prop_angle_handler()
-	if prop_angle_dromader < prop_angle then
-		fuel_press_dromader = math.max(0, fuel_press_dromader - (prop_angle - prop_angle_dromader)*throttle_ratio/90)
-	end
-	if prop_angle_dromader == 360 then 
-		prop_angle_dromader = 0
-	elseif prop_angle_dromader == 0 then
-		prop_angle_dromader = 360
-	end
-		prop_angle = prop_angle_dromader
-end
-
-prop_angle_dromader = create_dataref("custom/dromader/engine/prop_angle_deg","number", prop_angle_handler)
-
-eng_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
-
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 
 starter_fuse = create_dataref("custom/dromader/electrical/starter_fuse","number", dummy)
@@ -113,6 +93,5 @@ end
 local timer = 0
 function after_physics()
 	flywheel_rpm = math.max(0, flywheel_rpm - 2*SIM_PERIOD)	
-	prop_angle_dromader = prop_angle
 	--check_eng()
 end

@@ -5,6 +5,8 @@ OBJ
 GLOBAL_cockpit_lit
 POINT_COUNTS	0	0	0	0
 
+		ANIM_begin
+		ANIM_hide	6	6	sim/operation/failures/rel_wing2L
 			ANIM_begin
 			ANIM_trans	-2.7530899	-0.53921002	2.72192	-2.7530899	-0.53921002	2.72192
 			ANIM_rotate	0	0	-1	-82.837092	-82.837092
@@ -54,21 +56,39 @@ POINT_COUNTS	0	0	0	0
 						ANIM_rotate_key	1000	-2.4995231
 						ANIM_rotate_key	0	0
 						ANIM_rotate_end
-							LIGHT_PARAM	airplane_nav_left_size -0.023892276 -0.399984 -0.68282574 1.5 0
+							ANIM_begin
+							ANIM_hide	6	6	sim/operation/failures/rel_mwing2
+							LIGHT_PARAM	airplane_nav_left_size -0.023891963 -0.39998376 -0.68282384 1.5 0
+							ANIM_end
 						ANIM_end
 					ANIM_end
-					LIGHT_NAMED	airplane_landing0 -0.039410438 -0.68330401 -0.65784943
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
+					LIGHT_NAMED	airplane_landing0 -0.039410438 -0.68666834 -0.65784943
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
 					ANIM_begin
 					ANIM_rotate	-0.99042296	0.13806675	-0	90.967018	90.967018
-					LIGHT_PARAM	airplane_landing_sp 0.14718267 0.65522319 -0.67100167 1 1 1 0 500 0.92387953
+					LIGHT_PARAM	airplane_landing_sp 0.1476505 0.65521473 -0.67433333 1 1 1 0 500 0.92387953
 					ANIM_end
-					LIGHT_NAMED	airplane_taxi -0.039769139 -0.68461382 -1.2765993
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
+					LIGHT_NAMED	airplane_taxi -0.039769143 -0.68797815 -1.2765993
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
 					ANIM_begin
 					ANIM_rotate	-0.90750188	0.42004809	-0	92.939608	92.939608
-					LIGHT_PARAM	airplane_taxi_sp 0.77748942 1.0810499 -0.57168561 1 0.96621579 0.69207108 0 100 0.76604446
+					LIGHT_PARAM	airplane_taxi_sp 0.77883768 1.0805984 -0.57473475 1 0.96621579 0.69207108 0 100 0.76604446
+					ANIM_end
 					ANIM_end
 				ANIM_end
 			ANIM_end
+		ANIM_end
+		ANIM_begin
+		ANIM_hide	6	6	sim/operation/failures/rel_wing2R
 			ANIM_begin
 			ANIM_trans	2.7530899	-0.53921002	2.72192	2.7530899	-0.53921002	2.72192
 			ANIM_rotate	0	0	-1	-97.162756	-97.162756
@@ -118,26 +138,42 @@ POINT_COUNTS	0	0	0	0
 						ANIM_rotate_key	1000	-2.4995231
 						ANIM_rotate_key	0	0
 						ANIM_rotate_end
-							LIGHT_PARAM	airplane_nav_right_size -0.02389203 0.39998251 -0.682823 1.5 0
+							ANIM_begin
+							ANIM_hide	6	6	sim/operation/failures/rel_mwing1
+							LIGHT_PARAM	airplane_nav_right_size -0.023891822 0.39998227 -0.68282205 1.5 0
+							ANIM_end
 						ANIM_end
 					ANIM_end
-					LIGHT_NAMED	airplane_landing0 -0.039409712 0.68330348 -0.65784705
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
+					LIGHT_NAMED	airplane_landing0 -0.039409712 0.6866678 -0.65784705
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
 					ANIM_begin
 					ANIM_rotate	0.99042308	0.1380661	0	90.966924	90.966924
-					LIGHT_PARAM	airplane_landing_sp 0.14718196 -0.65521991 -0.67100203 1 1 1 0 500 0.92387953
+					LIGHT_PARAM	airplane_landing_sp 0.14764977 -0.65521145 -0.67433369 1 1 1 0 500 0.92387953
 					ANIM_end
-					LIGHT_NAMED	airplane_taxi -0.039768279 0.68461329 -1.2765961
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
+					LIGHT_NAMED	airplane_taxi -0.039768279 0.68797761 -1.2765961
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
 					ANIM_begin
 					ANIM_rotate	0.90750217	0.42004752	0	92.939575	92.939575
-					LIGHT_PARAM	airplane_taxi_sp 0.7774874 -1.0810471 -0.57168573 1 0.96621579 0.69207108 0 100 0.76604446
+					LIGHT_PARAM	airplane_taxi_sp 0.77883559 -1.0805956 -0.57473481 1 0.96621579 0.69207108 0 100 0.76604446
+					ANIM_end
 					ANIM_end
 				ANIM_end
 			ANIM_end
+		ANIM_end
 	ANIM_begin
 	ANIM_trans	-0	1.2780401	8.3418303	-0	1.2780401	8.3418303
 	ANIM_rotate	1	0	0	176.31917	176.31917
 	ANIM_rotate_begin	0	1	-0	sim/flightmodel/controls/vstab1_rud1def
-	ANIM_rotate_key	0	0
+	ANIM_rotate_key	0	-0
 	ANIM_rotate_key	23	-23.000245
 	ANIM_rotate_key	-23	23.000245
 	ANIM_rotate_end

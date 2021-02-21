@@ -34,6 +34,26 @@ disc_t = find_dataref("sim/flightmodel2/engines/prop_disc/disc_t[0]")
 side_s = find_dataref("sim/flightmodel2/engines/prop_disc/side_s[0]")
 side_t = find_dataref("sim/flightmodel2/engines/prop_disc/side_t[0]")
 
+fuel_press_dromader = find_dataref("custom/dromader/fuel/fuel_press")
+throttle_ratio = find_dataref("sim/flightmodel2/engines/throttle_used_ratio[0]")
+eng_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
+
+function prop_angle_handler()
+	if prop_angle_dromader > prop_rotation_angle_deg then
+		fuel_press_dromader = math.max(0, fuel_press_dromader - (prop_angle_dromader - prop_rotation_angle_deg)*throttle_ratio/90)
+	else
+		prop_angle_dromader = prop_rotation_angle_deg
+		return
+	end
+	if prop_angle_dromader > 360 then 
+		prop_angle_dromader = 0
+	elseif prop_angle_dromader < 0 then
+		prop_angle_dromader = 360
+	end
+		prop_rotation_angle_deg = prop_angle_dromader
+end
+
+prop_angle_dromader = create_dataref("custom/dromader/engine/prop_angle_deg","number", prop_angle_handler)
 
 function interp(in1, out1, in2, out2, x)
 
@@ -70,25 +90,27 @@ function aircraft_unload()
 	prop_disc_ovrd = 0
 end
 
+
+local prop_angle_prev = 0
 function after_physics()
 local prop_speed_now = prop_rotation_speed_rad_sec
 
-    if prop_rotation_angle_deg < 0 then
+    if prop_rotation_angle_deg > 360 then
 
-        prop_rotation_angle_deg = prop_rotation_angle_deg + 360
+        prop_rotation_angle_deg = prop_rotation_angle_deg - 360
 
     end
-    if side_angle < 0 then
+    if side_angle > 360 then
 
-        side_angle = side_angle + 360
+        side_angle = side_angle - 360
 
     end
 
 local prop_angle_now = prop_rotation_angle_deg
 local side_angle_now = side_angle
 
-prop_rotation_angle_deg = prop_angle_now - prop_speed_now * SIM_PERIOD * 60
-side_angle = side_angle_now - prop_speed_now * SIM_PERIOD * 60
+prop_rotation_angle_deg = prop_angle_now + prop_speed_now * SIM_PERIOD * 60
+side_angle = side_angle_now + prop_speed_now * SIM_PERIOD * 60
     if prop_speed_now > 20 then
         prop_is_disc = 1
     else
@@ -97,5 +119,6 @@ side_angle = side_angle_now - prop_speed_now * SIM_PERIOD * 60
 
 disc_s = interp(20,0,120,2, prop_speed_now)
 side_s = interp(0,12,90,14, prop_pitch_deg)
-
+prop_angle_dromader = prop_rotation_angle_deg
+	
 end

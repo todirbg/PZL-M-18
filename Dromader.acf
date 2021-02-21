@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.187218413
+P _gear/0/_stat_def 0.187218428
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.187218413
+P _gear/1/_stat_def 0.187218428
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -201,7 +201,7 @@ P _gear/2/_eagle_claw_deg 0.0
 P _gear/2/_gear_brakes 0
 P _gear/2/_gear_can_retract 0
 P _gear/2/_gear_castors 1
-P _gear/2/_gear_def_empty 0.259999990
+P _gear/2/_gear_def_empty 0.159999996
 P _gear/2/_gear_def_gross 0.660000026
 P _gear/2/_gear_load_fraction 0.123711616
 P _gear/2/_gear_type 2
@@ -216,7 +216,7 @@ P _gear/2/_lonE -20.0
 P _gear/2/_lonN -20.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.052861806
+P _gear/2/_stat_def 0.187218428
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -37943,7 +37943,7 @@ P acf/_num_generators 1
 P acf/_num_inverters 1
 P acf/_num_prop 1
 P acf/_num_xmsn 1
-P acf/_nw_side_k 0.0
+P acf/_nw_side_k 50.0
 P acf/_o2_bottle_liter 0
 P acf/_oilT_is_C 1
 P acf/_ott_asi_kts_off_for_full_def 20.0
@@ -38174,7 +38174,7 @@ P acf/_rudd2_v2 0.0
 P acf/_rudd_def_time 0.0
 P acf/_rudd_lf_trim 13.0
 P acf/_rudd_rt_trim 13.0
-P acf/_rudd_tab 0.115000002
+P acf/_rudd_tab 0.119999997
 P acf/_rudd_trim_time 3.500000000
 P acf/_rudd_with_ailn_rat 0.0
 P acf/_rudd_with_fail 0.0
