@@ -9,6 +9,14 @@ local power_slope = 1
 local egt_last = 0
 local egt_slope = 0
 
+mixture_eng = find_dataref("sim/flightmodel/engine/ENGN_mixt[0]")
+power_eng = find_dataref("sim/flightmodel/engine/ENGN_power[0]")
+
+running_eng = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
+ovrd_mix = find_dataref("sim/operation/override/override_mixture")
+startup_running = find_dataref("sim/operation/prefs/startup_running")
+
+
 function mixture_handle_handler()
 	if mixture_handle < 1 then
 		ovrd_mix = 0
@@ -19,19 +27,6 @@ function mixture_handle_handler()
 end
 
 mixture_handle = create_dataref("custom/dromader/fuel/mixture_handle","number", mixture_handle_handler)
-
-function primed_ratio_handler()
-
-end
-
-primed_ratio = create_dataref("custom/dromader/engine/primed_ratio","number", primed_ratio_handler)
-
-mixture_eng = find_dataref("sim/flightmodel/engine/ENGN_mixt[0]")
-power_eng = find_dataref("sim/flightmodel/engine/ENGN_power[0]")
-
-running_eng = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
-ovrd_mix = find_dataref("sim/operation/override/override_mixture")
-start_run = find_dataref("sim/operation/prefs/startup_running")
 
 function auto_rich()
  local mix = mixture_eng
@@ -95,10 +90,18 @@ function aircraft_load()
 end
 
 
+
 function aircraft_unload()
   ovrd_mix = 0
 end
 
+-- function flight_start()
+	-- if startup_running == 1 then
+		-- primed_ratio = 1
+	-- else
+		-- primed_ratio = 0
+	-- end
+-- end
 
 
 run_at_interval(set_mixture,(1/10))

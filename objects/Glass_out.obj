@@ -10099,7 +10099,7 @@ IDX10	9020	9021	9022	9023	9024	9025	9026	9027	9028	9029
 	ANIM_rotate_key	0.55000001	94.999988
 	ANIM_rotate_key	1	189.99999
 	ANIM_rotate_end
-	ANIM_hide	6	6	sim/operation/failures/rel_pyl1a
+	ANIM_hide	6	6	sim/operation/failures/rel_aftbur0
 		TRIS	9006 12
 	ANIM_end
 	ANIM_begin
@@ -10112,7 +10112,7 @@ IDX10	9020	9021	9022	9023	9024	9025	9026	9027	9028	9029
 	ANIM_rotate_key	0.55000001	94.999988
 	ANIM_rotate_key	1	190
 	ANIM_rotate_end
-	ANIM_hide	6	6	sim/operation/failures/rel_pyl1b
+	ANIM_hide	6	6	sim/operation/failures/rel_aftbur1
 		TRIS	9018 12
 	ANIM_end
 	TRIS	0 1242

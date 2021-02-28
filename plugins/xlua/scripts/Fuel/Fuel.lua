@@ -21,11 +21,10 @@ engn_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 fuel_quantity_left = find_dataref("sim/flightmodel/weight/m_fuel[0]")
 fuel_quantity_right = find_dataref("sim/flightmodel/weight/m_fuel[1]")
 engn_tacrad = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
-primer_ratio = find_dataref("sim/cockpit2/engine/actuators/primer_ratio")
-
 
 fuel_fuse = find_dataref("custom/dromader/electrical/fuel_fuse")
 fuel_burning = find_dataref("sim/flightmodel2/engines/engine_is_burning_fuel[0]")
+primed_ratio = find_dataref("custom/dromader/engine/primed_ratio")
 
 
 local cutoff = 0
@@ -54,7 +53,7 @@ fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector",
 local prev = 0 
 function man_fuel_pump_handler()
 	if manual_fuel_pump < prev and cutoff == 0 then
-		fuel_press_dromader = fuel_press_dromader + (prev - manual_fuel_pump)
+		fuel_press_dromader = fuel_press_dromader + (prev - manual_fuel_pump)*2
 	end
 	prev = manual_fuel_pump
 end
@@ -164,8 +163,9 @@ function update_fuel_press()
 	fuel_press_dromader = math.max(0, fuel_press_dromader - engn_tacrad/10*(throttle_ratio + 0.2)* SIM_PERIOD)
 	end
 	if fuel_press_dromader > 50 then flooded = 1 end
+	if primed_ratio > 2 then flooded = 1 end
 	if flooded == 1 then
-		if fuel_press_dromader < 20 then flooded = 0 end
+		if fuel_press_dromader < 20 and primed_ratio < 1  then flooded = 0 end
 	end
 end
 
@@ -173,8 +173,6 @@ function auto_start_before()
 	fuel_press_dromader = 35
 end
 
-
-------------------------------- LOCATE AND/OR CREATE COMMANDS -------------------------------
 
 quickstart = wrap_command("sim/operation/quick_start", auto_start_before, dummy)
 autostart = wrap_command("sim/operation/auto_start", auto_start_before, dummy)

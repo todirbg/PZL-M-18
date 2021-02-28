@@ -37,10 +37,12 @@ side_t = find_dataref("sim/flightmodel2/engines/prop_disc/side_t[0]")
 fuel_press_dromader = find_dataref("custom/dromader/fuel/fuel_press")
 throttle_ratio = find_dataref("sim/flightmodel2/engines/throttle_used_ratio[0]")
 eng_running = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
+primed_ratio = find_dataref("custom/dromader/engine/primed_ratio")
 
 function prop_angle_handler()
 	if prop_angle_dromader > prop_rotation_angle_deg then
 		fuel_press_dromader = math.max(0, fuel_press_dromader - (prop_angle_dromader - prop_rotation_angle_deg)*throttle_ratio/90)
+		primed_ratio = math.max(0, primed_ratio - (prop_angle_dromader - prop_rotation_angle_deg)*0.001)
 	else
 		prop_angle_dromader = prop_rotation_angle_deg
 		return

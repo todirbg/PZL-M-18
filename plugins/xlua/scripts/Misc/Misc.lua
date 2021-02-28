@@ -44,8 +44,8 @@ compass_heading = find_dataref("sim/cockpit2/gauges/indicators/compass_heading_d
 compass_g_side = find_dataref("sim/flightmodel/forces/g_side")
 compass_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml")
 
-door_detach_L = find_dataref("sim/operation/failures/rel_pyl1a")
-door_detach_R = find_dataref("sim/operation/failures/rel_pyl1b")
+door_detach_L = find_dataref("sim/operation/failures/rel_aftbur0")
+door_detach_R = find_dataref("sim/operation/failures/rel_aftbur1")
 
 function emer_handle_R_handler()
 	if emer_handle_R == 1 then
