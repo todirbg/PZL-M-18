@@ -106,5 +106,12 @@ custom/dromader/gns430/knob_big_l_ang
 custom/dromader/gns430/knob_big_r_ang
 custom/dromader/gns430/knob_small_l_ang
 custom/dromader/gns430/knob_small_r_ang
+#spray
+custom/dromader/spray/atom_prop_ang
+custom/dromader/spray/pump_prop_ang
+custom/dromader/spray/boom_press
+custom/dromader/spray/boom_hide
+custom/dromader/spray/boom_fuse
+custom/dromader/spray/spray
 #misc
 custom/dromader/misc/tension_handle

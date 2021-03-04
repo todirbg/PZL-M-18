@@ -14,7 +14,7 @@ POINT_COUNTS	0	0	0	0
 			ANIM_rotate_begin	-0.00000001	1	0	sim/flightmodel2/wing/wing_tip_deflection_deg[2]
 			ANIM_rotate_key	0	0
 			ANIM_rotate_key	-1000	1.000137
-			ANIM_rotate_key	-5	1.000137
+			ANIM_rotate_key	-10	1.000137
 			ANIM_rotate_key	0	0
 			ANIM_rotate_key	5	-1.000137
 			ANIM_rotate_key	1000	-1.000137
@@ -26,7 +26,7 @@ POINT_COUNTS	0	0	0	0
 				ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[4]
 				ANIM_rotate_key	0	0
 				ANIM_rotate_key	-1000	1.4998201
-				ANIM_rotate_key	-5	1.4998201
+				ANIM_rotate_key	-10	1.4998201
 				ANIM_rotate_key	0	0
 				ANIM_rotate_key	5	-1.4998201
 				ANIM_rotate_key	1000	-1.4998201
@@ -38,7 +38,7 @@ POINT_COUNTS	0	0	0	0
 					ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[6]
 					ANIM_rotate_key	0	0
 					ANIM_rotate_key	-1000	1.9999016
-					ANIM_rotate_key	-5	1.9999016
+					ANIM_rotate_key	-10	1.9999016
 					ANIM_rotate_key	0	0
 					ANIM_rotate_key	5	-1.9999016
 					ANIM_rotate_key	1000	-1.9999016
@@ -50,7 +50,7 @@ POINT_COUNTS	0	0	0	0
 						ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[13]
 						ANIM_rotate_key	0	0
 						ANIM_rotate_key	-1000	2.4995231
-						ANIM_rotate_key	-5	2.4995231
+						ANIM_rotate_key	-10	2.4995231
 						ANIM_rotate_key	0	0
 						ANIM_rotate_key	5	-2.4995231
 						ANIM_rotate_key	1000	-2.4995231
@@ -64,7 +64,6 @@ POINT_COUNTS	0	0	0	0
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
-					LIGHT_NAMED	airplane_landing0 -0.039410438 -0.68666834 -0.65784943
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
@@ -75,13 +74,40 @@ POINT_COUNTS	0	0	0	0
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
-					LIGHT_NAMED	airplane_taxi -0.039769143 -0.68797815 -1.2765993
+					ANIM_begin
+					ANIM_rotate	-0.99042296	0.13806675	-0	90.967018	90.967018
+					LIGHT_PARAM	airplane_landing_glow 0.1476505 0.65521473 -0.67433333 0 0 -1 0 3
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
+					ANIM_begin
+					ANIM_rotate	-0.99042296	0.13806675	-0	90.967018	90.967018
+					LIGHT_PARAM	airplane_landing_core 0.1476505 0.65521473 -0.67433333 0 0 -1 0 1.2
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
 					ANIM_begin
 					ANIM_rotate	-0.90750188	0.42004809	-0	92.939608	92.939608
 					LIGHT_PARAM	airplane_taxi_sp 0.77883768 1.0805984 -0.57473475 1 0.96621579 0.69207108 0 100 0.76604446
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
+					ANIM_begin
+					ANIM_rotate	-0.90750188	0.42004809	-0	92.939608	92.939608
+					LIGHT_PARAM	airplane_taxi_glow 0.77883768 1.0805984 -0.57473475 0 0 -1 0 3
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3L
+					ANIM_begin
+					ANIM_rotate	-0.90750188	0.42004809	-0	92.939608	92.939608
+					LIGHT_PARAM	airplane_taxi_core 0.77883768 1.0805984 -0.57473475 0 0 -1 0 1.2
 					ANIM_end
 					ANIM_end
 				ANIM_end
@@ -96,7 +122,7 @@ POINT_COUNTS	0	0	0	0
 			ANIM_rotate_begin	-0.00000001	1	0	sim/flightmodel2/wing/wing_tip_deflection_deg[1]
 			ANIM_rotate_key	0	0
 			ANIM_rotate_key	-1000	1.000137
-			ANIM_rotate_key	-5	1.000137
+			ANIM_rotate_key	-10	1.000137
 			ANIM_rotate_key	0	0
 			ANIM_rotate_key	5	-1.000137
 			ANIM_rotate_key	1000	-1.000137
@@ -108,7 +134,7 @@ POINT_COUNTS	0	0	0	0
 				ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[3]
 				ANIM_rotate_key	0	0
 				ANIM_rotate_key	-1000	1.4998201
-				ANIM_rotate_key	-5	1.4998201
+				ANIM_rotate_key	-10	1.4998201
 				ANIM_rotate_key	0	0
 				ANIM_rotate_key	5	-1.4998201
 				ANIM_rotate_key	1000	-1.4998201
@@ -120,7 +146,7 @@ POINT_COUNTS	0	0	0	0
 					ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[5]
 					ANIM_rotate_key	0	0
 					ANIM_rotate_key	-1000	1.9999016
-					ANIM_rotate_key	-5	1.9999016
+					ANIM_rotate_key	-10	1.9999016
 					ANIM_rotate_key	0	0
 					ANIM_rotate_key	5	-1.9999016
 					ANIM_rotate_key	1000	-1.9999016
@@ -132,7 +158,7 @@ POINT_COUNTS	0	0	0	0
 						ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[12]
 						ANIM_rotate_key	0	0
 						ANIM_rotate_key	-1000	2.4995231
-						ANIM_rotate_key	-5	2.4995231
+						ANIM_rotate_key	-10	2.4995231
 						ANIM_rotate_key	0	0
 						ANIM_rotate_key	5	-2.4995231
 						ANIM_rotate_key	1000	-2.4995231
@@ -146,7 +172,6 @@ POINT_COUNTS	0	0	0	0
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
-					LIGHT_NAMED	airplane_landing0 -0.039409712 0.6866678 -0.65784705
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
@@ -157,13 +182,40 @@ POINT_COUNTS	0	0	0	0
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
-					LIGHT_NAMED	airplane_taxi -0.039768279 0.68797761 -1.2765961
+					ANIM_begin
+					ANIM_rotate	0.99042308	0.1380661	0	90.966924	90.966924
+					LIGHT_PARAM	airplane_landing_glow 0.14764977 -0.65521145 -0.67433369 0 0 -1 0 3
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
+					ANIM_begin
+					ANIM_rotate	0.99042308	0.1380661	0	90.966924	90.966924
+					LIGHT_PARAM	airplane_landing_core 0.14764977 -0.65521145 -0.67433369 0 0 -1 0 1.2
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
 					ANIM_end
 					ANIM_begin
 					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
 					ANIM_begin
 					ANIM_rotate	0.90750217	0.42004752	0	92.939575	92.939575
 					LIGHT_PARAM	airplane_taxi_sp 0.77883559 -1.0805956 -0.57473481 1 0.96621579 0.69207108 0 100 0.76604446
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
+					ANIM_begin
+					ANIM_rotate	0.90750217	0.42004752	0	92.939575	92.939575
+					LIGHT_PARAM	airplane_taxi_glow 0.77883559 -1.0805956 -0.57473481 0 0 -1 0 3
+					ANIM_end
+					ANIM_end
+					ANIM_begin
+					ANIM_hide	6	6	sim/operation/failures/rel_wing3R
+					ANIM_begin
+					ANIM_rotate	0.90750217	0.42004752	0	92.939575	92.939575
+					LIGHT_PARAM	airplane_taxi_core 0.77883559 -1.0805956 -0.57473481 0 0 -1 0 1.2
 					ANIM_end
 					ANIM_end
 				ANIM_end
@@ -173,7 +225,7 @@ POINT_COUNTS	0	0	0	0
 	ANIM_trans	-0	1.2780401	8.3418303	-0	1.2780401	8.3418303
 	ANIM_rotate	1	0	0	176.31917	176.31917
 	ANIM_rotate_begin	0	1	-0	sim/flightmodel/controls/vstab1_rud1def
-	ANIM_rotate_key	0	-0
+	ANIM_rotate_key	0	0
 	ANIM_rotate_key	23	-23.000245
 	ANIM_rotate_key	-23	23.000245
 	ANIM_rotate_end
