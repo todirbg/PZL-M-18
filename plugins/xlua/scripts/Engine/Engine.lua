@@ -25,6 +25,7 @@ oil_temp = find_dataref("sim/flightmodel/engine/ENGN_oil_temp_c[0]")
 oil_pres = find_dataref("sim/aircraft/engine/acf_max_OILP")
 oil_fail = find_dataref("sim/operation/failures/rel_oilpmp0")
 oil_press_lo_lim = find_dataref("sim/aircraft/limits/red_lo_oilP")
+oil_press_hi_lim = find_dataref("sim/aircraft/limits/red_hi_oilP")
 oat = find_dataref("sim/weather/temperature_ambient_c")
 
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
@@ -131,18 +132,22 @@ local MP_fail_counter = 0
 --eng_hi_fail_counter = create_dataref("custom/dromader/engine/eng_hi_fail_counter","number")
 --MP_fail_counter = create_dataref("custom/dromader/engine/MP_fail_counter","number")
 function check_eng()
-	oil_temp_max = 200/(1+oil_flap) 
+
+	oil_temp_max = (200/(1+oil_flap) ) - oat
 	oil_pres = 90 - oil_temp/5
 	
 	if oil_pres < oil_press_lo_lim and eng_speed > 100 then
-		eng_max_pwr_w = eng_power_wats - 1000*oil_press_lo_lim - oil_pres
+		eng_max_pwr_w = eng_power_wats - 1000*(oil_press_lo_lim - oil_pres)
+	elseif oil_pres > oil_press_hi_lim then
+		oil_fail = 6
+		smoke_trail = 1
 	else
 		if eng_max_pwr_w ~= eng_power_wats then
 			eng_max_pwr_w = eng_power_wats
 		end
 	end
 	
-	if oil_temp > 125 then
+	if oil_temp > 110 then
 		air_res = 6
 		smoke_trail = 1
 	end
@@ -160,7 +165,7 @@ function check_eng()
 		end
 	end
 	
-	if MP_cur > MP_limit then
+	if MP_cur > MP_limit*1.05 then
 		MP_fail_counter = MP_fail_counter + (MP_cur - MP_limit)*SIM_PERIOD
 	else
 		if MP_fail_counter > 0 then
@@ -223,9 +228,9 @@ end
 function flight_start()
 	eng_max_pwr_w = eng_power_wats
 	if oat < 15 then 
-		eng_cowl = 0
-	else 
 		eng_cowl = 0.5
+	else 
+		eng_cowl = 1
 	end
 	math.randomseed( oat )
 end

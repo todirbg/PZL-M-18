@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.187218428
+P _gear/0/_stat_def 0.187218457
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.187218428
+P _gear/1/_stat_def 0.187218457
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -20.0
 P _gear/2/_lonN -20.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.187218428
+P _gear/2/_stat_def 0.052861810
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -391,6 +391,18 @@ P _obja/20/_v10_att_y_acf_prt_ref 0.0
 P _obja/20/_v10_att_z_acf_prt_ref 0.0
 P _obja/20/_v10_is_internal 1392851600
 P _obja/20/_v10_steers_with_gear 0
+P _obja/21/_obj_flags 20
+P _obja/21/_obj_hide_dataref custom/dromader/spray/boom_hide
+P _obja/21/_v10_att_file_stl Spray.obj
+P _obja/21/_v10_att_part -1
+P _obja/21/_v10_att_phi_ref 0.0
+P _obja/21/_v10_att_psi_ref 0.0
+P _obja/21/_v10_att_the_ref 0.0
+P _obja/21/_v10_att_x_acf_prt_ref 0.0
+P _obja/21/_v10_att_y_acf_prt_ref 0.0
+P _obja/21/_v10_att_z_acf_prt_ref 0.0
+P _obja/21/_v10_is_internal -2129229984
+P _obja/21/_v10_steers_with_gear 0
 P _obja/3/_obj_flags 20
 P _obja/3/_v10_att_file_stl Wings.obj
 P _obja/3/_v10_att_part -1
@@ -468,7 +480,7 @@ P _obja/9/_v10_att_y_acf_prt_ref 0.0
 P _obja/9/_v10_att_z_acf_prt_ref 0.0
 P _obja/9/_v10_is_internal -1982793600
 P _obja/9/_v10_steers_with_gear 0
-P _obja/count 21
+P _obja/count 22
 P _panel_inst_3d 1
 P _part/0/_bot_s1 0.0
 P _part/0/_bot_s2 0.015625000
@@ -25449,7 +25461,7 @@ P _part/85/_part_specs_invis 1
 P _part/85/_part_tex 0
 P _part/85/_part_the 0.0
 P _part/85/_part_x -5.931249142
-P _part/85/_part_y -5.524676323
+P _part/85/_part_y -5.524675846
 P _part/85/_part_z 7.227523804
 P _part/85/_patt_con 0
 P _part/85/_patt_prt 0
@@ -26919,7 +26931,7 @@ P _part/86/_part_specs_invis 1
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 5.931249142
-P _part/86/_part_y -5.524676323
+P _part/86/_part_y -5.524675846
 P _part/86/_part_z 7.227523804
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -28389,7 +28401,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.166216135
+P _part/87/_part_y -2.166215897
 P _part/87/_part_z 25.986059189
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0

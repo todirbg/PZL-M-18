@@ -3,7 +3,7 @@ I
 OBJ
 
 GLOBAL_cockpit_lit
-POINT_COUNTS	7068	0	0	7068
+POINT_COUNTS	7116	0	0	7116
 
 VT	-0.064154543	0.68728799	3.7669785	0	-0.79867274	-0.60176557	0.85355341	0.85355335
 VT	-0.067281492	0.68806744	3.765944	0	-0.79867274	-0.60176557	0.5	1
@@ -1175,6 +1175,42 @@ VT	0.0042344444	-0.0042339219	-0.035755765	-0	0	-1	0.625	0.5
 VT	0.0042344444	0.004235127	-0.035755765	0	0	-1	0.625	0.75
 VT	-0.0042346036	0.004235127	-0.035755765	0	0	-1	0.875	0.75
 VT	0.0042344444	-0.0042339219	-0.035755765	0	0	-1	0.625	0.5
+VT	-0.0042348453	-0.0042349352	-0.035755958	-1	0	0.00000205	0.625	0.25
+VT	-0.0042348453	0.0042341123	-0.035755962	-1	0	0.00000205	0.625	0
+VT	-0.0042347717	0.0042343349	0.0000638	-1	0	0.00000205	0.375	0
+VT	-0.0042347717	-0.0042345892	0.00006381	-1	0	0.00000205	0.375	0.25
+VT	-0.0042348453	-0.0042349352	-0.035755958	-1	0	0.00000205	0.625	0.25
+VT	-0.0042347717	0.0042343349	0.0000638	-1	0	0.00000205	0.375	0
+VT	0.0042342045	-0.0042349342	-0.035755962	0.00000011	-1	0.00000966	0.625	0.5
+VT	-0.0042348453	-0.0042349352	-0.035755958	0.00000011	-1	0.00000966	0.625	0.25
+VT	-0.0042347717	-0.0042345892	0.00006381	0.00000011	-1	0.00000966	0.375	0.25
+VT	0.0042341533	-0.0042345882	0.0000638	0.00000011	-1	0.00000966	0.375	0.5
+VT	0.0042342045	-0.0042349342	-0.035755962	0.00000011	-1	0.00000966	0.625	0.5
+VT	-0.0042347717	-0.0042345892	0.00006381	0.00000011	-1	0.00000966	0.375	0.25
+VT	0.0042342045	0.0042341133	-0.035755966	1	0	0.00000143	0.625	0.75
+VT	0.0042342045	-0.0042349342	-0.035755962	1	0	0.00000143	0.625	0.5
+VT	0.0042341533	-0.0042345882	0.0000638	1	0	0.00000143	0.375	0.5
+VT	0.0042341533	0.0042343359	0.0000638	1	0	0.00000143	0.375	0.75
+VT	0.0042342045	0.0042341133	-0.035755966	1	0	0.00000143	0.625	0.75
+VT	0.0042341533	-0.0042345882	0.0000638	1	0	0.00000143	0.375	0.5
+VT	-0.0042348453	0.0042341123	-0.035755962	-0.00000011	1	-0.00000621	0.625	1
+VT	0.0042342045	0.0042341133	-0.035755966	-0.00000011	1	-0.00000621	0.625	0.75
+VT	0.0042341533	0.0042343359	0.0000638	-0.00000011	1	-0.00000621	0.375	0.75
+VT	-0.0042347717	0.0042343349	0.0000638	-0.00000011	1	-0.00000621	0.375	1
+VT	-0.0042348453	0.0042341123	-0.035755962	-0.00000011	1	-0.00000621	0.625	1
+VT	0.0042341533	0.0042343359	0.0000638	-0.00000011	1	-0.00000621	0.375	0.75
+VT	0.0042341533	0.0042343359	0.0000638	0.00000035	0.00000029	1	0.375	0.75
+VT	0.0042341533	-0.0042345882	0.0000638	0.00000035	0.00000029	1	0.375	0.5
+VT	-0.0042347717	-0.0042345892	0.00006381	0.00000035	0.00000029	1	0.125	0.5
+VT	-0.0042347717	0.0042343349	0.0000638	0.00000035	0.00000029	1	0.125	0.75
+VT	0.0042341533	0.0042343359	0.0000638	0.00000035	0.00000029	1	0.375	0.75
+VT	-0.0042347717	-0.0042345892	0.00006381	0.00000035	0.00000029	1	0.125	0.5
+VT	-0.0042348453	0.0042341123	-0.035755962	-0.00000044	-0.00000044	-1	0.875	0.75
+VT	-0.0042348453	-0.0042349352	-0.035755958	-0.00000044	-0.00000044	-1	0.875	0.5
+VT	0.0042342045	-0.0042349342	-0.035755962	-0.00000044	-0.00000044	-1	0.625	0.5
+VT	0.0042342045	0.0042341133	-0.035755966	-0.00000044	-0.00000044	-1	0.625	0.75
+VT	-0.0042348453	0.0042341123	-0.035755962	-0.00000044	-0.00000044	-1	0.875	0.75
+VT	0.0042342045	-0.0042349342	-0.035755962	-0.00000044	-0.00000044	-1	0.625	0.5
 VT	1.6290438	0.0020069948	0.091810763	0.00057700591	-0.99920118	-0.039960284	0.625	0.5
 VT	1.6319684	0.010108661	-0.11072802	0.00057700591	-0.99920118	-0.039960284	0.625	0.25
 VT	1.2644477	0.011232374	-0.14413312	0.00057700591	-0.99920118	-0.039960284	0.5625	0.25
@@ -6809,6 +6845,18 @@ VT	-0.48068953	0.31933457	5.0443721	-0.99379057	-0.027112519	0.10791299	0.948328
 VT	-0.49336553	0.29172263	4.9206991	-0.99379057	-0.027112519	0.10791299	0.70538658	0.87124336
 VT	-0.49517411	0.32721394	4.9129605	-0.99379057	-0.027112519	0.10791299	0.70538658	0.94062579
 VT	-0.48068953	0.31933457	5.0443721	-0.99379057	-0.027112519	0.10791299	0.94832802	0.87124336
+VT	1.6503848	-0.43302512	3.527312	0.004469485	0.97422367	0.22554031	1	1
+VT	1.6501445	-0.48048872	3.7323363	0.004469485	0.97422367	0.22554031	1	0
+VT	1.4397	-0.47951818	3.7323143	0.004469485	0.97422367	0.22554031	0	0
+VT	1.4399403	-0.43205458	3.5272901	0.0044694841	0.97422361	0.22554028	0	1
+VT	1.6503848	-0.43302512	3.527312	0.0044694841	0.97422361	0.22554028	1	1
+VT	1.4397	-0.47951818	3.7323143	0.0044694841	0.97422361	0.22554028	0	0
+VT	-1.650385	-0.43302515	3.527312	-0.0044696177	0.97422361	0.2255403	1	1
+VT	-1.4399403	-0.43205458	3.5272901	-0.0044696177	0.97422361	0.2255403	0	1
+VT	-1.4397	-0.47951818	3.7323143	-0.0044696177	0.97422361	0.2255403	0	0
+VT	-1.6501447	-0.48048872	3.7323363	-0.004469472	0.97422361	0.22554018	1	0
+VT	-1.650385	-0.43302515	3.527312	-0.004469472	0.97422361	0.22554018	1	1
+VT	-1.4397	-0.47951818	3.7323143	-0.004469472	0.97422361	0.22554018	0	0
 VT	0.043951347	0.67432493	3.7794449	0	0.79863423	0.60181671	0.53741372	0.74544507
 VT	0.043951347	0.66265857	3.7949266	0	0.79863423	0.60181671	0.53741372	0.66848248
 VT	-0.064675398	0.66265857	3.7949266	0	0.79863423	0.60181671	0.10614707	0.66848248
@@ -7780,14 +7828,17 @@ IDX10	7020	7021	7022	7023	7024	7025	7026	7027	7028	7029
 IDX10	7030	7031	7032	7033	7034	7035	7036	7037	7038	7039
 IDX10	7040	7041	7042	7043	7044	7045	7046	7047	7048	7049
 IDX10	7050	7051	7052	7053	7054	7055	7056	7057	7058	7059
-IDX	7060
-IDX	7061
-IDX	7062
-IDX	7063
-IDX	7064
-IDX	7065
-IDX	7066
-IDX	7067
+IDX10	7060	7061	7062	7063	7064	7065	7066	7067	7068	7069
+IDX10	7070	7071	7072	7073	7074	7075	7076	7077	7078	7079
+IDX10	7080	7081	7082	7083	7084	7085	7086	7087	7088	7089
+IDX10	7090	7091	7092	7093	7094	7095	7096	7097	7098	7099
+IDX10	7100	7101	7102	7103	7104	7105	7106	7107	7108	7109
+IDX	7110
+IDX	7111
+IDX	7112
+IDX	7113
+IDX	7114
+IDX	7115
 
 			ATTR_draw_disable
 			ATTR_manip_command_knob	rotate_medium	custom/dromader/radios/comm_pwr_up	custom/dromader/radios/comm_pwr_dwn	
@@ -7815,17 +7866,17 @@ IDX	7067
 				TRIS	540 36
 			ANIM_end
 			ATTR_manip_command_knob	rotate_large	sim/radios/stby_com1_coarse_up	sim/radios/stby_com1_coarse_down	
-			TRIS	2268 84
+			TRIS	2304 84
 			ATTR_manip_command_knob	rotate_large	sim/radios/stby_nav1_coarse_up 	sim/radios/stby_nav1_coarse_down	
-			TRIS	2352 84
+			TRIS	2388 84
 			ATTR_manip_command_knob	rotate_small	sim/radios/stby_com1_fine_up	sim/radios/stby_com1_fine_down	
-			TRIS	2436 84
+			TRIS	2472 84
 			ATTR_manip_command_knob	rotate_small	sim/radios/stby_nav1_fine_up	sim/radios/stby_nav1_fine_down	
-			TRIS	2520 84
+			TRIS	2556 84
 			ATTR_manip_none
 			ATTR_draw_enable
 			ATTR_cockpit
-			TRIS	6594 84
+			TRIS	6630 84
 			ATTR_draw_disable
 			ATTR_no_cockpit
 			ATTR_manip_command_knob	rotate_medium	sim/transponder/transponder_thousands_up	sim/transponder/transponder_thousands_down	
@@ -7857,11 +7908,11 @@ IDX	7067
 				TRIS	612 36
 			ANIM_end
 			ATTR_manip_command_knob	rotate_large	custom/dromader/radios/transponder_up	custom/dromader/radios/transponder_dn	
-			TRIS	2604 84
+			TRIS	2640 84
 			ATTR_manip_none
 			ATTR_draw_enable
 			ATTR_cockpit
-			TRIS	6804 6
+			TRIS	6852 6
 	ANIM_begin
 	ANIM_trans	0.49405	0.46514001	4.9651999	0.49405	0.46514001	4.9651999
 	ANIM_rotate	0	1	0	-96.514741	-96.514741
@@ -7903,7 +7954,7 @@ IDX	7067
 			ANIM_rotate_key	1	30.000069
 			ANIM_rotate_end
 				ATTR_manip_command_axis	left_right	0	0.1	0	sim/flight_controls/rudder_trim_right	sim/flight_controls/rudder_trim_left	Rudder trim left/right
-				TRIS	2232 36
+				TRIS	2268 36
 			ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.50121999	0.66756999	4.3659801	-0.50121999	0.66756999	4.3659801
@@ -7915,7 +7966,7 @@ IDX	7067
 		ANIM_rotate_key	0	48.164551
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.50121891	0.66756773	4.3659849	1	0	-0	-48.164551	48.164551	0	1	0	0	0	sim/flightmodel/controls/tail_lock_rat	none	Tail wheel lock
-			TRIS	3864 84
+			TRIS	3900 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.48727	0.67205	4.2413702	-0.48727	0.67205	4.2413702
@@ -7927,7 +7978,7 @@ IDX	7067
 		ANIM_rotate_key	1	-270.00006
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.48727331	0.67205286	4.2413673	0	1	-0	0	-270.00006	0	0	1	0	0	custom/dromader/misc/audio_vol	none	Audio volume
-			TRIS	3948 84
+			TRIS	3984 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.51217997	0.68413001	4.36727	-0.51217997	0.68413001	4.36727
@@ -7941,7 +7992,7 @@ IDX	7067
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.51218128	0.68413007	4.3672733	1	0	-0	60.000138	-60.000138	0	1	-1	0	0	sim/cockpit2/controls/elevator_trim	none	Elevator trim
 			ATTR_manip_keyframe	0	0
-			TRIS	5826 240
+			TRIS	5862 240
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	0.42478001	0.65469003	4.20189	0.42478001	0.65469003	4.20189
@@ -7985,7 +8036,7 @@ IDX	7067
 		ANIM_rotate_key	3	-60.000138
 		ANIM_rotate_end
 			ATTR_manip_command_knob	rotate_large	custom/dromader/fuel/fuel_selector_up	custom/dromader/fuel/fuel_selector_dwn	Fuel tank selector
-			TRIS	2160 36
+			TRIS	2196 36
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	0.54329997	0.65029001	4.0176902	0.54329997	0.65029001	4.0176902
@@ -7997,7 +8048,7 @@ IDX	7067
 		ANIM_rotate_key	1	69.999972
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	0.54330111	0.6502859	4.0176907	1	0	-0	0	69.999972	0	0	1	0	0	custom/dromader/fuel/fuel_valve_handle	none	Fuel Valve
-			TRIS	5586 240
+			TRIS	5622 240
 		ANIM_end
 	ANIM_begin
 	ANIM_trans	0.20838	0.99247003	2.7186301	0.20838	0.99247003	2.7186301
@@ -8084,7 +8135,7 @@ IDX	7067
 		ANIM_begin
 		ANIM_hide	0	0.1	sim/flightmodel2/misc/door_open_ratio[1]
 		ATTR_manip_command	hand	sim/flight_controls/door_close_2	Close door
-		TRIS	6816 6
+		TRIS	6864 6
 		ANIM_end
 	ANIM_end
 	ANIM_begin
@@ -8114,7 +8165,7 @@ IDX	7067
 		ANIM_begin
 		ANIM_hide	0	0.1	sim/flightmodel2/misc/door_open_ratio[0]
 		ATTR_manip_command	hand	sim/flight_controls/door_close_1	Close door
-		TRIS	6810 6
+		TRIS	6858 6
 		ANIM_end
 	ANIM_end
 		ANIM_begin
@@ -8136,26 +8187,349 @@ IDX	7067
 			ANIM_hide	0.0099999998	1	sim/flightmodel/engine/ENGN_running[0]
 			ATTR_manip_drag_rotate	hand	-0.00000025	0.00000003	-0.037759908	0	1	-0	0	-719.99997	0	0	720	0	0	custom/dromader/engine/prop_angle_deg	none	
 			ATTR_manip_keyframe	360	-360.00026
-			TRIS	1170 6
+			TRIS	1206 6
 			ANIM_end
 			ANIM_begin
 			ANIM_hide	0.0099999998	1	sim/flightmodel/engine/ENGN_running[0]
 			ATTR_manip_drag_rotate	hand	-0.00000025	0.00000003	-0.037759908	0	1	-0	0	-719.99997	0	0	720	0	0	custom/dromader/engine/prop_angle_deg	none	
 			ATTR_manip_keyframe	360	-360.00026
-			TRIS	1176 6
+			TRIS	1212 6
 			ANIM_end
 			ANIM_begin
 			ANIM_hide	0.0099999998	1	sim/flightmodel/engine/ENGN_running[0]
 			ATTR_manip_drag_rotate	hand	-0.00000025	0.00000003	-0.037759908	0	1	-0	0	-719.99997	0	0	720	0	0	custom/dromader/engine/prop_angle_deg	none	
 			ATTR_manip_keyframe	360	-360.00026
-			TRIS	1182 6
+			TRIS	1218 6
 			ANIM_end
 		ANIM_end
 		ANIM_begin
 		ANIM_hide	1	1	sim/flightmodel/engine/ENGN_running[0]
-		ATTR_manip_toggle	hand	0	0.5	sim/flightmodel/engine/ENGN_cowl[0]	Add/Remove cyl. shields
-		TRIS	6852 216
+		ATTR_manip_toggle	hand	0.5	1	sim/flightmodel/engine/ENGN_cowl[0]	Add/Remove cyl. shields
+		TRIS	6900 216
 		ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.4718	0.62274998	3.8485401	-0.4718	0.62274998	3.8485401
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/spray/boom_fuse
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/spray/boom_fuse_cmd	Boom fuse
+					TRIS	1170 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.20577	0.67192	3.76056	-0.20577	0.67192	3.76056
+				ANIM_rotate	0	1	0	16.021046	16.021046
+				ANIM_rotate	0	0	-1	3.3317496	3.3317496
+				ANIM_rotate	1	0	0	170.32546	170.32546
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/battery_sw
+				ANIM_rotate_key	0	-30.000069
+				ANIM_rotate_key	1	0
+				ANIM_rotate_key	2	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_axis	hand	0	0	0.1	custom/dromader/electrical/bat_selector_dwn	custom/dromader/electrical/bat_selector_up	Battery/Ext. Power
+					TRIS	1296 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.22727001	0.67322999	3.7667301	-0.22727001	0.67322999	3.7667301
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit2/electrical/generator_on[0]
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/electrical/generator_1_toggle	Generator
+					TRIS	1332 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.55804998	0.62796998	3.8733101	-0.55804998	0.62796998	3.8733101
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/vent
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/vent_fuse_tog	Vent fuse
+					TRIS	1368 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.53654999	0.62667	3.86713	-0.53654999	0.62667	3.86713
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit2/switches/electric_hydraulic_pump_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_toggle	hand	1	0	sim/cockpit2/switches/electric_hydraulic_pump_on	Emergency hydraulic pump
+					ATTR_manip_wheel	1
+					TRIS	1404 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.51503998	0.62537003	3.86096	-0.51503998	0.62537003	3.86096
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/water/foaming_fuse
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/water/foaming_fuse_cmd	Foaming agent fuse
+					TRIS	1440 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.49353001	0.62405998	3.85478	-0.49353001	0.62405998	3.85478
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/water/hyd_dump_fuse
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/water/hyd_dump_fuse_cmd	Hydraulic water dump fuse
+					TRIS	1476 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.278	0.66385001	3.78351	-0.278	0.66385001	3.78351
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/transponder_power
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/transponder_pwr_cmd	Transponder
+					TRIS	1512 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.25648999	0.66254002	3.7773299	-0.25648999	0.66254002	3.7773299
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit2/switches/avionics_power_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/systems/avionics_toggle	Avionics power
+					TRIS	1548 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.29949999	0.66514999	3.78968	-0.29949999	0.66514999	3.78968
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/radio_power
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/radio_pwr_cmd	Radio power
+					TRIS	1584 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.32100999	0.66645002	3.7958601	-0.32100999	0.66645002	3.7958601
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/agk49_power
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/agk49_pwr_cmd	AGK-49 fuse
+					TRIS	1620 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.34252	0.66775	3.8020301	-0.34252	0.66775	3.8020301
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/fuel_fuse
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/fuel_fuse_tog	Fuel indicator fuse
+					TRIS	1656 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.36403	0.66905999	3.8082099	-0.36403	0.66905999	3.8082099
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit2/ice/ice_pitot_heat_on_pilot
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/ice/pitot_heat0_tog	Pitot heat
+					TRIS	1692 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.38552999	0.67036003	3.8143899	-0.38552999	0.67036003	3.8143899
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit2/ice/ice_static_heat_on_pilot
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/ice/static_heat0_tog 	Static port heat
+					TRIS	1728 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.40704	0.67166001	3.82056	-0.40704	0.67166001	3.82056
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/beacon_lights_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/lights/beacon_lights_toggle	Beacon light
+					TRIS	1764 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.42855	0.67295998	3.82674	-0.42855	0.67295998	3.82674
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/strobe_lights_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/lights/strobe_lights_toggle	Strobe light
+					TRIS	1800 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.45005	0.67426997	3.8329101	-0.45005	0.67426997	3.8329101
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/nav_lights_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/lights/nav_lights_toggle	Nav lights
+					TRIS	1836 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.47156	0.67557001	3.8390901	-0.47156	0.67557001	3.8390901
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit2/switches/spot_light_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/lights/spot_lights_toggle	Cockpit light
+					TRIS	1872 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.49307001	0.67686999	3.8452599	-0.49307001	0.67686999	3.8452599
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/instruments_light
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/inst_light_cmd	Instruments lights 
+					TRIS	1908 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.53608	0.67948002	3.85761	-0.53608	0.67948002	3.85761
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/landing_lights_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/lights/landing_lights_toggle	Landing lights
+					TRIS	1944 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.51457	0.67817003	3.85144	-0.51457	0.67817003	3.85144
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/taxi_light_on
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	sim/lights/taxi_lights_toggle 	Taxi Lights
+					TRIS	1980 36
+				ANIM_end
+				ANIM_begin
+				ANIM_trans	-0.55759001	0.68077999	3.86379	-0.55759001	0.68077999	3.86379
+				ANIM_rotate	0	1	0	15.995836	15.995836
+				ANIM_rotate	0	0	-1	3.4801456	3.4801456
+				ANIM_rotate	1	0	0	170.32374	170.32374
+				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/wiper
+				ANIM_rotate_key	1	-30.000069
+				ANIM_rotate_key	0	30.000069
+				ANIM_rotate_end
+					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/wiper_fuse_tog	Wiper fuse
+					TRIS	2016 36
+				ANIM_end
+			ANIM_begin
+			ANIM_trans	-0.30052999	0.74642003	3.7915699	-0.30052999	0.74642003	3.7915699
+			ANIM_rotate	0	1	0	16.021046	16.021046
+			ANIM_rotate	0	0	-1	3.3317496	3.3317496
+			ANIM_rotate	1	0	0	170.32488	170.32488
+			ANIM_trans_begin	CMND=custom/dromader/clock/elapsed_timer_cycle
+			ANIM_trans_key	0	0	0	-0
+			ANIM_trans_key	1	0	-0	0.0024999999
+			ANIM_trans_end
+				ATTR_manip_command	hand	custom/dromader/clock/elapsed_timer_cycle	Toggle flight time
+				TRIS	2892 84
+			ANIM_end
+			ANIM_begin
+			ANIM_trans	-0.23023	0.74216998	3.77139	-0.23023	0.74216998	3.77139
+			ANIM_rotate	0	1	0	16.021046	16.021046
+			ANIM_rotate	0	0	-1	3.3317496	3.3317496
+			ANIM_rotate	1	0	0	170.32488	170.32488
+			ANIM_trans_begin	CMND=sim/instruments/timer_cycle
+			ANIM_trans_key	0	0	0	-0
+			ANIM_trans_key	1	0	0	0.0024999999
+			ANIM_trans_end
+				ATTR_manip_command	hand	sim/instruments/timer_cycle	Toggle timer
+				TRIS	2976 84
+			ANIM_end
+			ANIM_begin
+			ANIM_trans	-0.36215001	0.82190001	3.7938199	-0.36215001	0.82190001	3.7938199
+			ANIM_rotate	0	1	0	16.021046	16.021046
+			ANIM_rotate	0	0	-1	3.3317496	3.3317496
+			ANIM_rotate	1	0	0	80.324672	80.324672
+			ANIM_rotate_begin	0	1	-0	sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot
+			ANIM_rotate_key	27.834999	0
+			ANIM_rotate_key	32.007999	-3599.9997
+				ANIM_keyframe_loop	5.0
+			ANIM_rotate_end
+				ANIM_begin
+				ATTR_manip_wheel	0.01
+				ATTR_manip_drag_rotate	rotate_medium	-0.36215365	0.82189512	3.7938192	0	1	-0	0	-3599.9997	0	27.834999	32.007999	0	0	sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot	none	
+				TRIS	3648 84
+				ANIM_end
+			ANIM_end
+		ANIM_begin
+		ANIM_trans	-0.54255998	0.79139	3.8462901	-0.54255998	0.79139	3.8462901
+		ANIM_rotate	0	1	0	-73.411363	-73.411363
+		ANIM_rotate	0	0	-1	-9.6589225	-9.6589225
+		ANIM_rotate	1	0	0	168.73263	168.73263
+		ANIM_rotate_begin	-1	-0.00000001	0.00000002	sim/cockpit2/switches/panel_brightness_ratio[0]
+		ANIM_rotate_key	0	0
+		ANIM_rotate_key	1	109.79627
+		ANIM_rotate_end
+			ANIM_begin
+			ATTR_manip_wheel	0.1
+			ATTR_manip_drag_rotate	rotate_medium	-0.5425579	0.79138964	3.8462873	-1	-0.00000001	0.00000002	0	109.79627	0	0	1	0	0	sim/cockpit2/switches/panel_brightness_ratio[0]	none	Panel lightning
+			TRIS	3732 84
+			ANIM_end
+		ANIM_end
+			ATTR_manip_command_knob	rotate_small	sim/radios/obs1_up	sim/radios/obs1_down	OBS
+			TRIS	4302 84
 			ANIM_begin
 			ANIM_trans	0.40470999	0.66402	3.82179	0.40470999	0.66402	3.82179
 			ANIM_rotate	0	1	0	-16.021046	-16.021046
@@ -8167,7 +8541,7 @@ IDX	7067
 			ANIM_rotate_key	2	30.000069
 			ANIM_rotate_end
 				ATTR_manip_command_axis	hand	0	0	0.1	custom/dromader/electrical/heater_sw_dwn	custom/dromader/electrical/heater_sw_up	Heater
-				TRIS	1188 36
+				TRIS	1224 36
 			ANIM_end
 			ANIM_begin
 			ANIM_trans	0.37520999	0.67461997	3.8172901	0.37520999	0.67461997	3.8172901
@@ -8179,7 +8553,7 @@ IDX	7067
 			ANIM_rotate_key	0	30.000069
 			ANIM_rotate_end
 				ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/stall_fuse_tog	Stall warning
-				TRIS	1224 36
+				TRIS	1260 36
 			ANIM_end
 		ANIM_begin
 		ANIM_trans	0.44255	0.74585003	3.83108	0.44255	0.74585003	3.83108
@@ -8191,7 +8565,7 @@ IDX	7067
 		ANIM_trans_key	1	0	-0	0.0042399999
 		ANIM_trans_end
 			ATTR_manip_command	hand	custom/dromader/electrical/volt_but	Show voltage
-			TRIS	2772 84
+			TRIS	2808 84
 		ANIM_end
 			ANIM_begin
 			ANIM_trans	0.43698001	0.65505999	3.83957	0.43698001	0.65505999	3.83957
@@ -8204,7 +8578,7 @@ IDX	7067
 			ANIM_trans_end
 				ATTR_manip_drag_axis	hand	0	-0	0.059999999	0	1	custom/dromader/fuel/mixture_handle	Mixture
 				ATTR_manip_wheel	0.0099999998
-				TRIS	3024 84
+				TRIS	3060 84
 			ANIM_end
 		ANIM_begin
 		ANIM_trans	0.38407001	0.74905002	3.8157699	0.38407001	0.74905002	3.8157699
@@ -8221,320 +8595,9 @@ IDX	7067
 			ANIM_begin
 			ATTR_manip_wheel	1
 			ATTR_manip_command_knob	rotate_medium	custom/dromader/electrical/volt_selector_up	custom/dromader/electrical/volt_selector_dwn	Voltmeter selector
-			TRIS	3780 84
+			TRIS	3816 84
 			ANIM_end
 		ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.20577	0.67192	3.76056	-0.20577	0.67192	3.76056
-				ANIM_rotate	0	1	0	16.021046	16.021046
-				ANIM_rotate	0	0	-1	3.3317496	3.3317496
-				ANIM_rotate	1	0	0	170.32546	170.32546
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/battery_sw
-				ANIM_rotate_key	0	-30.000069
-				ANIM_rotate_key	1	0
-				ANIM_rotate_key	2	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_axis	hand	0	0	0.1	custom/dromader/electrical/bat_selector_dwn	custom/dromader/electrical/bat_selector_up	Battery/Ext. Power
-					TRIS	1260 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.22727001	0.67322999	3.7667301	-0.22727001	0.67322999	3.7667301
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit2/electrical/generator_on[0]
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/electrical/generator_1_toggle	Generator
-					TRIS	1296 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.55804998	0.62796998	3.8733101	-0.55804998	0.62796998	3.8733101
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/vent
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/vent_fuse_tog	Vent fuse
-					TRIS	1332 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.53654999	0.62667	3.86713	-0.53654999	0.62667	3.86713
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit2/switches/electric_hydraulic_pump_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_toggle	hand	1	0	sim/cockpit2/switches/electric_hydraulic_pump_on	Emergency hydraulic pump
-					ATTR_manip_wheel	1
-					TRIS	1368 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.51503998	0.62537003	3.86096	-0.51503998	0.62537003	3.86096
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/water/foaming_fuse
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/water/foaming_fuse_cmd	Foaming agent fuse
-					TRIS	1404 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.49353001	0.62405998	3.85478	-0.49353001	0.62405998	3.85478
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/water/hyd_dump_fuse
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/water/hyd_dump_fuse_cmd	Hydraulic water dump fuse
-					TRIS	1440 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.278	0.66385001	3.78351	-0.278	0.66385001	3.78351
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/transponder_power
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/transponder_pwr_cmd	Transponder
-					TRIS	1476 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.25648999	0.66254002	3.7773299	-0.25648999	0.66254002	3.7773299
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit2/switches/avionics_power_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/systems/avionics_toggle	Avionics power
-					TRIS	1512 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.29949999	0.66514999	3.78968	-0.29949999	0.66514999	3.78968
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/radio_power
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/radio_pwr_cmd	Radio power
-					TRIS	1548 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.32100999	0.66645002	3.7958601	-0.32100999	0.66645002	3.7958601
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/agk49_power
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/agk49_pwr_cmd	AGK-49 fuse
-					TRIS	1584 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.34252	0.66775	3.8020301	-0.34252	0.66775	3.8020301
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/fuel_fuse
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/fuel_fuse_tog	Fuel indicator fuse
-					TRIS	1620 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.36403	0.66905999	3.8082099	-0.36403	0.66905999	3.8082099
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit2/ice/ice_pitot_heat_on_pilot
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/ice/pitot_heat0_tog	Pitot heat
-					TRIS	1656 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.38552999	0.67036003	3.8143899	-0.38552999	0.67036003	3.8143899
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit2/ice/ice_static_heat_on_pilot
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/ice/static_heat0_tog 	Static port heat
-					TRIS	1692 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.40704	0.67166001	3.82056	-0.40704	0.67166001	3.82056
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/beacon_lights_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/lights/beacon_lights_toggle	Beacon light
-					TRIS	1728 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.42855	0.67295998	3.82674	-0.42855	0.67295998	3.82674
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/strobe_lights_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/lights/strobe_lights_toggle	Strobe light
-					TRIS	1764 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.45005	0.67426997	3.8329101	-0.45005	0.67426997	3.8329101
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/nav_lights_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/lights/nav_lights_toggle	Nav lights
-					TRIS	1800 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.47156	0.67557001	3.8390901	-0.47156	0.67557001	3.8390901
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit2/switches/spot_light_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/lights/spot_lights_toggle	Cockpit light
-					TRIS	1836 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.49307001	0.67686999	3.8452599	-0.49307001	0.67686999	3.8452599
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/instruments_light
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/inst_light_cmd	Instruments lights 
-					TRIS	1872 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.53608	0.67948002	3.85761	-0.53608	0.67948002	3.85761
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/landing_lights_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/lights/landing_lights_toggle	Landing lights
-					TRIS	1908 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.51457	0.67817003	3.85144	-0.51457	0.67817003	3.85144
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	sim/cockpit/electrical/taxi_light_on
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	sim/lights/taxi_lights_toggle 	Taxi Lights
-					TRIS	1944 36
-				ANIM_end
-				ANIM_begin
-				ANIM_trans	-0.55759001	0.68077999	3.86379	-0.55759001	0.68077999	3.86379
-				ANIM_rotate	0	1	0	15.995836	15.995836
-				ANIM_rotate	0	0	-1	3.4801456	3.4801456
-				ANIM_rotate	1	0	0	170.32374	170.32374
-				ANIM_rotate_begin	1	0	-0	custom/dromader/electrical/wiper
-				ANIM_rotate_key	1	-30.000069
-				ANIM_rotate_key	0	30.000069
-				ANIM_rotate_end
-					ATTR_manip_command_switch_up_down2	hand	custom/dromader/electrical/wiper_fuse_tog	Wiper fuse
-					TRIS	1980 36
-				ANIM_end
-			ANIM_begin
-			ANIM_trans	-0.30052999	0.74642003	3.7915699	-0.30052999	0.74642003	3.7915699
-			ANIM_rotate	0	1	0	16.021046	16.021046
-			ANIM_rotate	0	0	-1	3.3317496	3.3317496
-			ANIM_rotate	1	0	0	170.32488	170.32488
-			ANIM_trans_begin	CMND=custom/dromader/clock/elapsed_timer_cycle
-			ANIM_trans_key	0	0	0	-0
-			ANIM_trans_key	1	0	-0	0.0024999999
-			ANIM_trans_end
-				ATTR_manip_command	hand	custom/dromader/clock/elapsed_timer_cycle	Toggle flight time
-				TRIS	2856 84
-			ANIM_end
-			ANIM_begin
-			ANIM_trans	-0.23023	0.74216998	3.77139	-0.23023	0.74216998	3.77139
-			ANIM_rotate	0	1	0	16.021046	16.021046
-			ANIM_rotate	0	0	-1	3.3317496	3.3317496
-			ANIM_rotate	1	0	0	170.32488	170.32488
-			ANIM_trans_begin	CMND=sim/instruments/timer_cycle
-			ANIM_trans_key	0	0	0	-0
-			ANIM_trans_key	1	0	0	0.0024999999
-			ANIM_trans_end
-				ATTR_manip_command	hand	sim/instruments/timer_cycle	Toggle timer
-				TRIS	2940 84
-			ANIM_end
-			ANIM_begin
-			ANIM_trans	-0.36215001	0.82190001	3.7938199	-0.36215001	0.82190001	3.7938199
-			ANIM_rotate	0	1	0	16.021046	16.021046
-			ANIM_rotate	0	0	-1	3.3317496	3.3317496
-			ANIM_rotate	1	0	0	80.324672	80.324672
-			ANIM_rotate_begin	0	1	-0	sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot
-			ANIM_rotate_key	27.834999	0
-			ANIM_rotate_key	32.007999	-3599.9997
-				ANIM_keyframe_loop	5.0
-			ANIM_rotate_end
-				ANIM_begin
-				ATTR_manip_wheel	0.01
-				ATTR_manip_drag_rotate	rotate_medium	-0.36215365	0.82189512	3.7938192	0	1	-0	0	-3599.9997	0	27.834999	32.007999	0	0	sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot	none	
-				TRIS	3612 84
-				ANIM_end
-			ANIM_end
-		ANIM_begin
-		ANIM_trans	-0.54255998	0.79139	3.8462901	-0.54255998	0.79139	3.8462901
-		ANIM_rotate	0	1	0	-73.411363	-73.411363
-		ANIM_rotate	0	0	-1	-9.6589225	-9.6589225
-		ANIM_rotate	1	0	0	168.73263	168.73263
-		ANIM_rotate_begin	-1	-0.00000001	0.00000002	sim/cockpit2/switches/panel_brightness_ratio[0]
-		ANIM_rotate_key	0	0
-		ANIM_rotate_key	1	109.79627
-		ANIM_rotate_end
-			ANIM_begin
-			ATTR_manip_wheel	0.1
-			ATTR_manip_drag_rotate	rotate_medium	-0.5425579	0.79138964	3.8462873	-1	-0.00000001	0.00000002	0	109.79627	0	0	1	0	0	sim/cockpit2/switches/panel_brightness_ratio[0]	none	Panel lightning
-			TRIS	3696 84
-			ANIM_end
-		ANIM_end
-			ATTR_manip_command_knob	rotate_small	sim/radios/obs1_up	sim/radios/obs1_down	OBS
-			TRIS	4266 84
 	ANIM_begin
 	ANIM_trans	-0.53619999	-0.22622	4.4159899	-0.53619999	-0.22622	4.4159899
 	ANIM_rotate	0	1	0	97.433192	97.433192
@@ -8545,7 +8608,7 @@ IDX	7067
 	ANIM_rotate_key	1	-130.00011
 	ANIM_rotate_end
 		ATTR_manip_drag_rotate	hand	-0.53620458	-0.2262238	4.4159932	1	0	-0	0	-130.00011	0	0	1	0	0	custom/dromader/water/foam_quantity_handle	none	Fill foaming agent
-		TRIS	2016 36
+		TRIS	2052 36
 	ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.49776	0.64881003	4.1189198	-0.49776	0.64881003	4.1189198
@@ -8557,7 +8620,7 @@ IDX	7067
 		ANIM_rotate_key	1	-45.000104
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.49776253	0.64881498	4.1189232	0	1	-0	0	-45.000104	0	0	1	0	0	custom/dromader/misc/tension_handle	none	Controls tension(not implemented)
-			TRIS	2088 36
+			TRIS	2124 36
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.52929997	0.64713001	4.1227102	-0.52929997	0.64713001	4.1227102
@@ -8569,7 +8632,7 @@ IDX	7067
 		ANIM_rotate_key	125.68658	67.692099
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.52929622	0.64713371	4.1227055	0	1	-0	0	67.692099	0	68.556313	125.68658	0	0	sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all	none	Propeller RPM
-			TRIS	3108 84
+			TRIS	3144 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.51269001	0.64807999	4.1207099	-0.51269001	0.64807999	4.1207099
@@ -8581,7 +8644,7 @@ IDX	7067
 		ANIM_rotate_key	1	64.592389
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.51269418	0.64807665	4.1207137	0.00000001	1	-0.00000003	0	64.592389	0	0	1	0	0	sim/cockpit2/engine/actuators/throttle_ratio[0]	none	Throttle
-			TRIS	3192 84
+			TRIS	3228 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.49114001	0.64929998	4.1179299	-0.49114001	0.64929998	4.1179299
@@ -8593,7 +8656,7 @@ IDX	7067
 		ANIM_rotate_key	0	54.739096
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.49113768	0.64930189	4.1179323	-0.00000001	1	0	0	54.739096	0	1	0	0	0	sim/cockpit2/engine/actuators/cowl_flap_ratio[1]	none	Oil Radiator
-			TRIS	3276 84
+			TRIS	3312 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.49186	0.64925998	4.1182199	-0.49186	0.64925998	4.1182199
@@ -8605,7 +8668,7 @@ IDX	7067
 		ANIM_rotate_key	1	62.170581
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.49186188	0.64925975	4.1182156	0.00000031	-1	0.00000052	0	62.170581	0	0	1	0	0	sim/cockpit2/engine/actuators/carb_heat_ratio[0]	none	Carburator heat
-			TRIS	3360 84
+			TRIS	3396 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	0.00001	0.36702001	3.9942701	0.00001	0.36702001	3.9942701
@@ -8633,7 +8696,7 @@ IDX	7067
 			ANIM_rotate_key	1	-9.9998324
 			ANIM_rotate_end
 				ATTR_manip_command_axis	up_down	0	0.050000001	0	sim/flight_controls/flaps_down	sim/flight_controls/flaps_up	Flaps up/down
-				TRIS	2124 36
+				TRIS	2160 36
 			ANIM_end
 			ANIM_begin
 			ANIM_trans	-0.037319999	0.02623	-0.64744002	-0.037319999	0.02623	-0.64744002
@@ -8643,18 +8706,18 @@ IDX	7067
 			ANIM_rotate_key	1	-9.9998324
 			ANIM_rotate_end
 				ATTR_manip_command	hand	custom/dromader/water/hyd_drop_toggle	Dump water hydraulic valve
-				TRIS	2196 36
+				TRIS	2232 36
 			ANIM_end
 			ATTR_manip_drag_xy	hand	600	600	-1	1	1	-1	sim/joystick/yoke_roll_ratio	sim/joystick/yoke_pitch_ratio	
-			TRIS	4182 84
+			TRIS	4218 84
 			ATTR_manip_command	left	sim/flight_controls/aileron_trim_left	Trim left
-			TRIS	6762 6
+			TRIS	6798 6
 			ATTR_manip_command	up	sim/flight_controls/pitch_trim_down	Trim down
-			TRIS	6768 6
+			TRIS	6804 6
 			ATTR_manip_command	right	sim/flight_controls/aileron_trim_right	Trim right
-			TRIS	6774 6
+			TRIS	6810 6
 			ATTR_manip_command	down	sim/flight_controls/pitch_trim_up	Trim up
-			TRIS	6780 6
+			TRIS	6816 6
 		ANIM_end
 	ANIM_begin
 	ANIM_trans	-0.26049	1.0857199	3.7515099	-0.26049	1.0857199	3.7515099
@@ -8665,7 +8728,7 @@ IDX	7067
 	ANIM_trans_key	1	0	0	-0
 	ANIM_trans_end
 		ATTR_manip_toggle	hand	0	1	sim/cockpit/gyros/gyr_cage_ratio[2]	Cage
-		TRIS	3444 84
+		TRIS	3480 84
 	ANIM_end
 	ANIM_begin
 	ANIM_trans	-0.36528	1.0644	3.7640901	-0.36528	1.0644	3.7640901
@@ -8679,7 +8742,7 @@ IDX	7067
 		ATTR_manip_wheel	0.5
 		ATTR_manip_drag_rotate	rotate_medium	-0.36527732	1.0643967	3.7640896	0	1	-0	170.00002	-170.00002	0	-20	20	0	0	sim/cockpit2/gauges/actuators/artificial_horizon_adjust_deg_pilot	none	Artificial horizon adjust
 		ATTR_manip_keyframe	0	0
-		TRIS	3528 84
+		TRIS	3564 84
 		ANIM_end
 	ANIM_end
 		ANIM_begin
@@ -8690,7 +8753,7 @@ IDX	7067
 		ANIM_rotate_key	1	-15.000035
 		ANIM_rotate_end
 			ATTR_manip_command_axis	hand	0	0.1	0	custom/dromader/water/jettison_payload_dwn	custom/dromader/water/jettison_payload_up	Emergrncy water dump
-			TRIS	4098 84
+			TRIS	4134 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	0.14426	1.61287	4.10853	0.14426	1.61287	4.10853
@@ -8719,11 +8782,11 @@ IDX	7067
 					ANIM_begin
 					ATTR_manip_wheel	0.1
 					ATTR_manip_drag_rotate	rotate_medium	0.13755172	1.562047	4.1573153	1	0	-0	0	270.00006	0	0	1	0	0	sim/cockpit2/switches/generic_lights_switch[0]	none	Light intensity
-					TRIS	4350 84
+					TRIS	4386 84
 					ANIM_end
 				ANIM_end
 				ATTR_manip_drag_xy	four_arrows	300	600	-90	90	90	-90	sim/flightmodel2/lights/spot_light_heading_deg[0]	sim/flightmodel2/lights/spot_light_pitch_deg[0]	Rotate light
-				TRIS	4434 84
+				TRIS	4470 84
 			ANIM_end
 		ANIM_end
 		ANIM_begin
@@ -8738,9 +8801,9 @@ IDX	7067
 		ANIM_rotate_key	1	-270.00006
 		ANIM_rotate_end
 			ATTR_manip_command_knob	rotate_small	sim/GPS/g430n1_cvol_up	sim/GPS/g430n1_cvol_dn	COM volume up/down
-			TRIS	4518 84
+			TRIS	4554 84
 			ATTR_manip_command	hand	sim/GPS/g430n1_cvol	COM audio
-			TRIS	5076 18
+			TRIS	5112 18
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.072379999	0.76049	3.6770501	-0.072379999	0.76049	3.6770501
@@ -8754,9 +8817,9 @@ IDX	7067
 		ANIM_rotate_key	1	-270.00006
 		ANIM_rotate_end
 			ATTR_manip_axis_knob	rotate_small	0	1	0.1	0	sim/cockpit2/radios/actuators/audio_volume_nav1	NAV volume up/down
-			TRIS	4602 84
+			TRIS	4638 84
 			ATTR_manip_command	hand	sim/GPS/g430n1_vvol	NAV ID
-			TRIS	5058 18
+			TRIS	5094 18
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.072389998	0.75230002	3.7049601	-0.072389998	0.75230002	3.7049601
@@ -8770,9 +8833,9 @@ IDX	7067
 		ANIM_rotate_key	36	-360.00026
 		ANIM_rotate_end
 			ATTR_manip_command_knob	rotate_medium	sim/GPS/g430n1_fine_up	sim/GPS/g430n1_fine_down	Fine tune up/down
-			TRIS	4686 84
+			TRIS	4722 84
 			ATTR_manip_command	hand	sim/GPS/g430n1_nav_com_tog	NAV/COM toggle
-			TRIS	4770 18
+			TRIS	4806 18
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	0.072389998	0.75230002	3.7049601	0.072389998	0.75230002	3.7049601
@@ -8786,9 +8849,9 @@ IDX	7067
 		ANIM_rotate_key	36	-360.00026
 		ANIM_rotate_end
 			ATTR_manip_command_knob	rotate_medium	sim/GPS/g430n1_page_up	sim/GPS/g430n1_page_dn	Page up/don
-			TRIS	4788 84
+			TRIS	4824 84
 			ATTR_manip_command	hand	sim/GPS/g430n1_cursor	Cursor
-			TRIS	4872 18
+			TRIS	4908 18
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.072389998	0.74466997	3.6992099	-0.072389998	0.74466997	3.6992099
@@ -8798,7 +8861,7 @@ IDX	7067
 		ANIM_rotate_key	36	360.00026
 		ANIM_rotate_end
 			ATTR_manip_command_knob	rotate_large	sim/GPS/g430n1_coarse_up	sim/GPS/g430n1_coarse_down	Coarse tune up/down
-			TRIS	4890 84
+			TRIS	4926 84
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	0.072389998	0.74466997	3.6992099	0.072389998	0.74466997	3.6992099
@@ -8808,36 +8871,36 @@ IDX	7067
 		ANIM_rotate_key	36	360.00026
 		ANIM_rotate_end
 			ATTR_manip_command_knob	rotate_large	sim/GPS/g430n1_chapter_up	sim/GPS/g430n1_chapter_dn	Chapter up/don
-			TRIS	4974 84
+			TRIS	5010 84
 		ANIM_end
 		ATTR_manip_command	hand	sim/GPS/g430n1_popup	Popup 2D window
-		TRIS	5256 90
+		TRIS	5292 90
 			ATTR_manip_command	hand	sim/GPS/g430n1_com_ff	Swap COM freq
-			TRIS	6678 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_nav_ff	Swap NAV freq
-			TRIS	6684 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_cdi	CDI
-			TRIS	6690 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_obs	OBS
-			TRIS	6696 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_fpl	FPL
-			TRIS	6702 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_msg	MSG
-			TRIS	6708 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_proc	PROC
 			TRIS	6714 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_direct	Direct To
+			ATTR_manip_command	hand	sim/GPS/g430n1_nav_ff	Swap NAV freq
 			TRIS	6720 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_menu	Menu
+			ATTR_manip_command	hand	sim/GPS/g430n1_cdi	CDI
 			TRIS	6726 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_ent	Enter
+			ATTR_manip_command	hand	sim/GPS/g430n1_obs	OBS
 			TRIS	6732 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_clr	CLR
+			ATTR_manip_command	hand	sim/GPS/g430n1_fpl	FPL
 			TRIS	6738 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_zoom_out	Zoom In
+			ATTR_manip_command	hand	sim/GPS/g430n1_msg	MSG
 			TRIS	6744 6
-			ATTR_manip_command	hand	sim/GPS/g430n1_zoom_in	Zoom Out
+			ATTR_manip_command	hand	sim/GPS/g430n1_proc	PROC
 			TRIS	6750 6
+			ATTR_manip_command	hand	sim/GPS/g430n1_direct	Direct To
+			TRIS	6756 6
+			ATTR_manip_command	hand	sim/GPS/g430n1_menu	Menu
+			TRIS	6762 6
+			ATTR_manip_command	hand	sim/GPS/g430n1_ent	Enter
+			TRIS	6768 6
+			ATTR_manip_command	hand	sim/GPS/g430n1_clr	CLR
+			TRIS	6774 6
+			ATTR_manip_command	hand	sim/GPS/g430n1_zoom_out	Zoom In
+			TRIS	6780 6
+			ATTR_manip_command	hand	sim/GPS/g430n1_zoom_in	Zoom Out
+			TRIS	6786 6
 	ANIM_begin
 	ANIM_trans	-0.48738	0.99864	3.76442	-0.48738	0.99864	3.76442
 	ANIM_rotate	0	1	0	37.339087	37.339087
@@ -8848,7 +8911,7 @@ IDX	7067
 	ANIM_trans_key	1	-0	-0	-0.034770001
 	ANIM_trans_end
 		ATTR_manip_drag_axis	hand	0	0	-0.034770001	0	1	custom/dromader/misc/emer_handle_L	
-		TRIS	5160 48
+		TRIS	5196 48
 	ANIM_end
 	ANIM_begin
 	ANIM_trans	0.48738	0.99864	3.76442	0.48738	0.99864	3.76442
@@ -8860,7 +8923,7 @@ IDX	7067
 	ANIM_trans_key	1	0	-0	-0.034770001
 	ANIM_trans_end
 		ATTR_manip_drag_axis	hand	0	0	-0.034770001	0	1	custom/dromader/misc/emer_handle_R	
-		TRIS	5208 48
+		TRIS	5244 48
 	ANIM_end
 		ANIM_begin
 		ANIM_trans	0.34687999	0.60835999	3.8386199	0.34687999	0.60835999	3.8386199
@@ -8870,7 +8933,7 @@ IDX	7067
 		ANIM_rotate_key	0	-18.556268
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	0.3468771	0.60835755	3.8386216	1	0	-0	18.574349	-18.556268	0	1	0	0	0	sim/cockpit2/controls/right_brake_ratio	none	Right brake
-			TRIS	6066 240
+			TRIS	6102 240
 		ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.34687999	0.60835999	3.8386199	-0.34687999	0.60835999	3.8386199
@@ -8880,28 +8943,28 @@ IDX	7067
 		ANIM_rotate_key	0	-18.556268
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	-0.34687698	0.60835755	3.8386216	1	0	-0	18.574349	-18.556268	0	1	0	0	0	sim/cockpit2/controls/left_brake_ratio	none	Left brake
-			TRIS	6306 240
+			TRIS	6342 240
 		ANIM_end
 							ATTR_manip_command	hand	AviTab/Home	Home
-							TRIS	6546 42
+							TRIS	6582 42
 						ATTR_manip_none
 						ATTR_draw_enable
 						ATTR_cockpit
-						TRIS	6588 6
+						TRIS	6624 6
 					ATTR_draw_disable
 					ATTR_no_cockpit
 					ATTR_manip_toggle	hand	1	0	avitab/panel_powered	Ipad power
-					TRIS	6822 30
+					TRIS	6870 30
 	ANIM_begin
 	ANIM_hide	0	0	custom/dromader/water/foam_quantity_handle
 	ATTR_manip_none
 	ATTR_draw_enable
 	ATTR_cockpit
-	TRIS	6792 6
+	TRIS	6828 6
 	ANIM_end
 	ANIM_begin
 	ANIM_hide	0	0.001	custom/dromader/water/water_quantity_handle
-	TRIS	6798 6
+	TRIS	6834 6
 	ANIM_end
 		ANIM_begin
 		ANIM_trans	-0.47079	0.28887001	4.9849501	-0.47079	0.28887001	4.9849501
@@ -8915,7 +8978,7 @@ IDX	7067
 			ATTR_draw_disable
 			ATTR_no_cockpit
 			ATTR_manip_drag_rotate	hand	-0.4707931	0.28887206	4.9849491	1	0	-0	0	-133.99994	0	0	1	0	0	custom/dromader/water/water_quantity_handle	none	Fill water
-			TRIS	2052 36
+			TRIS	2088 36
 		ANIM_end
 	ANIM_begin
 	ANIM_hide	1	1	custom/dromader/electrical/hide_bat_cover
@@ -8929,7 +8992,7 @@ IDX	7067
 		ANIM_rotate_key	1	59.627715
 		ANIM_rotate_end
 			ATTR_manip_command_axis	hand	0.12	0	0	sim/flight_controls/door_open_5	sim/flight_controls/door_close_5	Open ext. power cover
-			TRIS	5094 66
+			TRIS	5130 66
 		ANIM_end
 	ANIM_end
 		ANIM_begin
@@ -8940,17 +9003,22 @@ IDX	7067
 		ANIM_trans_key	0	0	0	0.00211
 		ANIM_trans_end
 			ATTR_manip_command_axis	hand	0	0	0.105	custom/dromader/compass/compass_unlock	custom/dromader/compass/compass_lock	Compass lock
-			TRIS	2688 84
+			TRIS	2724 84
 		ANIM_end
 	ANIM_begin
 	ATTR_manip_wheel	1
 	ATTR_manip_command_knob	rotate_medium	sim/systems/wipers_up	sim/systems/wipers_dn	
-	TRIS	4032 66
+	TRIS	4068 66
 	ANIM_end
 	ATTR_manip_command	hand	custom/dromader/electrical/bat_cover_tog	Open/Close battery cover
-	TRIS	6756 6
+	TRIS	6792 6
 	ATTR_manip_command_switch_up_down	arrow	custom/dromader/electrical/heater_sw_dwn	custom/dromader/electrical/heater_sw_up	
-	TRIS	6786 6
+	TRIS	6822 6
+	ANIM_begin
+	ANIM_hide	1	1	sim/flightmodel/engine/ENGN_running[0]
+	ATTR_manip_toggle	hand	0	1	custom/dromader/spray/boom_hide	Equip AG sprayer
+	TRIS	6840 12
+	ANIM_end
 		ANIM_begin
 		ANIM_trans	0.49768001	0.63619	4.1954699	0.49768001	0.63619	4.1954699
 		ANIM_rotate	0	1	0	-7.6421111	-7.6421111
@@ -8989,7 +9057,7 @@ IDX	7067
 		ANIM_rotate_key	1	-45.000104
 		ANIM_rotate_end
 			ATTR_manip_drag_rotate	hand	0.45222285	0.56881428	4.3016024	0	1	-0	45.000104	-45.000104	0	0	1	0	0	custom/dromader/fuel/fuel_pump	none	Manual fuel pump
-			TRIS	5346 240
+			TRIS	5382 240
 		ANIM_end
 
 # Build with Blender 2.91.0 (build b'0f45cab862b8'). Exported with XPlane2Blender 4.1.0-beta.1+101.20201117225215

@@ -7,6 +7,124 @@ GLOBAL_cockpit_lit
 TEXTURE	Particles/aircraft_system.png
 POINT_COUNTS	0	0	0	0
 
+		ANIM_begin
+		ANIM_hide	6	6	sim/operation/failures/rel_wing2L
+			ANIM_begin
+			ANIM_trans	-2.7530899	-0.53921002	2.72192	-2.7530899	-0.53921002	2.72192
+			ANIM_rotate	0	0	-1	-82.837092	-82.837092
+			ANIM_rotate	1	0	0	90.00021	90.00021
+			ANIM_rotate_begin	-0.00000001	1	0	sim/flightmodel2/wing/wing_tip_deflection_deg[2]
+			ANIM_rotate_key	0	0
+			ANIM_rotate_key	-1000	1.000137
+			ANIM_rotate_key	-10	1.000137
+			ANIM_rotate_key	0	0
+			ANIM_rotate_key	5	-1.000137
+			ANIM_rotate_key	1000	-1.000137
+			ANIM_rotate_key	0	0
+			ANIM_rotate_end
+				ANIM_begin
+				ANIM_trans	-0	0	-2.33148	-0	0	-2.33148
+				ANIM_rotate	0	1	0	0.19308678	0.19308678
+				ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[4]
+				ANIM_rotate_key	0	0
+				ANIM_rotate_key	-1000	1.4998201
+				ANIM_rotate_key	-10	1.4998201
+				ANIM_rotate_key	0	0
+				ANIM_rotate_key	5	-1.4998201
+				ANIM_rotate_key	1000	-1.4998201
+				ANIM_rotate_key	0	0
+				ANIM_rotate_end
+					ANIM_begin
+					ANIM_trans	-0	-0	-1.41745	-0	-0	-1.41745
+					ANIM_rotate	0	1	0	0.1031324	0.1031324
+					ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[6]
+					ANIM_rotate_key	0	0
+					ANIM_rotate_key	-1000	1.9999016
+					ANIM_rotate_key	-10	1.9999016
+					ANIM_rotate_key	0	0
+					ANIM_rotate_key	5	-1.9999016
+					ANIM_rotate_key	1000	-1.9999016
+					ANIM_rotate_key	0	0
+					ANIM_rotate_end
+						ANIM_begin
+						ANIM_trans	0	-0	-1.68583	0	-0	-1.68583
+						ANIM_rotate	0	1	0	-4.6678872	-4.6678872
+						ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[13]
+						ANIM_rotate_key	0	0
+						ANIM_rotate_key	-1000	2.4995231
+						ANIM_rotate_key	-10	2.4995231
+						ANIM_rotate_key	0	0
+						ANIM_rotate_key	5	-2.4995231
+						ANIM_rotate_key	1000	-2.4995231
+						ANIM_rotate_key	0	0
+						ANIM_rotate_end
+						ANIM_end
+						EMITTER Spray -0.44911367 1.800454 -0.37116235 83.133251 90.000009 0.00000964
+					ANIM_end
+					EMITTER Spray -0.45244113 1.80046 -0.28729302 83.030013 90.000003 0.00001176
+				ANIM_end
+				EMITTER Spray -0.45191255 1.800469 -1.117017 82.837115 90.000003 0.00000801
+			ANIM_end
+		ANIM_end
+		ANIM_begin
+		ANIM_hide	6	6	sim/operation/failures/rel_wing2R
+			ANIM_begin
+			ANIM_trans	2.7530899	-0.53921002	2.72192	2.7530899	-0.53921002	2.72192
+			ANIM_rotate	0	0	-1	-97.162756	-97.162756
+			ANIM_rotate	1	0	0	-89.999638	-89.999638
+			ANIM_rotate_begin	-0.00000001	1	0	sim/flightmodel2/wing/wing_tip_deflection_deg[1]
+			ANIM_rotate_key	0	0
+			ANIM_rotate_key	-1000	1.000137
+			ANIM_rotate_key	-10	1.000137
+			ANIM_rotate_key	0	0
+			ANIM_rotate_key	5	-1.000137
+			ANIM_rotate_key	1000	-1.000137
+			ANIM_rotate_key	0	0
+			ANIM_rotate_end
+				ANIM_begin
+				ANIM_trans	-0	-0	-2.33149	-0	-0	-2.33149
+				ANIM_rotate	0	1	0	0.19308678	0.19308678
+				ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[3]
+				ANIM_rotate_key	0	0
+				ANIM_rotate_key	-1000	1.4998201
+				ANIM_rotate_key	-10	1.4998201
+				ANIM_rotate_key	0	0
+				ANIM_rotate_key	5	-1.4998201
+				ANIM_rotate_key	1000	-1.4998201
+				ANIM_rotate_key	0	0
+				ANIM_rotate_end
+					ANIM_begin
+					ANIM_trans	0	0	-1.41745	0	0	-1.41745
+					ANIM_rotate	0	1	0	0.1031324	0.1031324
+					ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[5]
+					ANIM_rotate_key	0	0
+					ANIM_rotate_key	-1000	1.9999016
+					ANIM_rotate_key	-10	1.9999016
+					ANIM_rotate_key	0	0
+					ANIM_rotate_key	5	-1.9999016
+					ANIM_rotate_key	1000	-1.9999016
+					ANIM_rotate_key	0	0
+					ANIM_rotate_end
+						ANIM_begin
+						ANIM_trans	0	-0	-1.68583	0	-0	-1.68583
+						ANIM_rotate	0	1	0	-4.6678872	-4.6678872
+						ANIM_rotate_begin	0	1	-0	sim/flightmodel2/wing/wing_tip_deflection_deg[12]
+						ANIM_rotate_key	0	0
+						ANIM_rotate_key	-1000	2.4995231
+						ANIM_rotate_key	-10	2.4995231
+						ANIM_rotate_key	0	0
+						ANIM_rotate_key	5	-2.4995231
+						ANIM_rotate_key	1000	-2.4995231
+						ANIM_rotate_key	0	0
+						ANIM_rotate_end
+						ANIM_end
+						EMITTER Spray -0.44877812 -1.8022901 -0.39052662 -96.866747 -89.999962 0.00000824
+					ANIM_end
+					EMITTER Spray -0.45213491 -1.8022977 -0.29987538 -96.969985 -89.999962 0.00000647
+				ANIM_end
+				EMITTER Spray -0.45101604 -1.8023059 -1.1221817 -97.162883 -89.999955 0.00000951
+			ANIM_end
+		ANIM_end
 	ANIM_begin
 	ANIM_trans_begin	custom/dromader/water/emergency_drop
 	ANIM_trans_key	0	0	-0.75623	2.82163
@@ -21,5 +139,9 @@ POINT_COUNTS	0	0	0	0
 	ANIM_trans_end
 	EMITTER Hydraulic_drop 0 0 -0 -0 -0 0
 	ANIM_end
+	EMITTER Spray -0.91092372 -0.84355617 4.522408 -0 -179.99998 -0
+	EMITTER Spray 0.91092998 -0.84383404 4.5230927 -0 -179.99998 -0
+	EMITTER Spray 2.4159942 -0.99021977 4.5242395 -0 -179.99998 -0
+	EMITTER Spray -2.4157822 -0.99272954 4.5223999 -0 -179.99998 -0
 
-# Build with Blender 2.82 (sub 7) (build b'77d23b0bd76f'). Exported with XPlane2Blender 4.1.0-beta.1+101.20201117225215
+# Build with Blender 2.91.0 (build b'0f45cab862b8'). Exported with XPlane2Blender 4.1.0-beta.1+101.20201117225215
