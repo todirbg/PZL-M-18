@@ -31,5 +31,6 @@ POINT_COUNTS	0	0	0	0
 	ANIM_hide	0	0.89999998	sim/cockpit2/switches/spot_light_on
 	LIGHT_PARAM	airplane_spot_sp 0.00000465 1.7263967 4.5154409 1 0.85227197 0.54477167 0 3 1
 	ANIM_end
+	LIGHT_PARAM	airplane_inst_sp -0.13554054 1.1630363 3.7101316 1 1 1 0 0.69999999 -0.014744511 -0.735461 -0.67740667 0.61977908
 
-# Build with Blender 2.82 (sub 7) (build b'77d23b0bd76f'). Exported with XPlane2Blender 4.1.0-beta.1+101.20201117225215
+# Build with Blender 2.91.0 (build b'0f45cab862b8'). Exported with XPlane2Blender 4.1.0-beta.1+101.20201117225215

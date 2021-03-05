@@ -113,5 +113,6 @@ custom/dromader/spray/boom_press
 custom/dromader/spray/boom_hide
 custom/dromader/spray/boom_fuse
 custom/dromader/spray/spray
+custom/dromader/spray/spray_sw
 #misc
 custom/dromader/misc/tension_handle
