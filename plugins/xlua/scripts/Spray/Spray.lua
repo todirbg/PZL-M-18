@@ -23,7 +23,23 @@ function spray_toggle_cmd(phase, duration)
 	end
 end
 
-spraycmd = create_command("custom/dromader/spray/spray_cmd","Toggle spray", spray_toggle_cmd)
+spraytogcmd = create_command("custom/dromader/spray/spray_tog_cmd","Toggle spray", spray_toggle_cmd)
+
+function spray_cmd(phase, duration)
+	if phase == 0 then
+		if spray == 0 and water_quantity > 0 and boom_fuse == 1 then
+			spray = 1
+		end
+	elseif phase == 1 then	
+			if water_quantity < 0 or boom_fuse == 0 then
+				spray = 0
+			end
+	elseif phase == 2 then
+			spray = 0
+	end
+end
+
+spraycmd = create_command("custom/dromader/spray/spray_cmd","Engage spray", spray_cmd)
 
 function boom_fuse_toggle_cmd(phase, duration)
 	if phase == 0 then

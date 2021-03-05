@@ -228,9 +228,9 @@ end
 function flight_start()
 	eng_max_pwr_w = eng_power_wats
 	if oat < 15 then 
-		eng_cowl = 0.5
+		eng_cowl = 0
 	else 
-		eng_cowl = 1
+		eng_cowl = 0.5
 	end
 	math.randomseed( oat )
 end
