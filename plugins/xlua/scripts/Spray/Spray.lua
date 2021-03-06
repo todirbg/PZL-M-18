@@ -1,3 +1,8 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2021
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+----------------------------------------------------------------------------------------------------------
 function dummy()
 
 end
@@ -36,7 +41,7 @@ function spray_toggle_cmd(phase, duration)
 	if phase == 0 then
 		if spray_sw == 0 then 
 			spray_sw = 1
-			if water_quantity > 0 and boom_fuse == 1 then
+			if water_quantity > 0 and boom_fuse == 1 and boom_hide == 0 then
 				spray = 1
 			end		
 		else
@@ -50,7 +55,7 @@ spraytogcmd = create_command("custom/dromader/spray/spray_tog_cmd","Toggle spray
 
 function spray_cmd(phase, duration)
 	if phase == 0 then
-		if spray == 0 and water_quantity > 0 and boom_fuse == 1 then
+		if spray == 0 and water_quantity > 0 and boom_fuse == 1 and boom_hide == 0 then
 			spray = 1
 		end
 	elseif phase == 1 then	
@@ -112,7 +117,7 @@ function after_physics()
 		
 		if water_quantity > 0 and boom_fuse == 1 then
 			if spray == 1 then
-				water_quantity = water_quantity - 20*boom_press*SIM_PERIOD --20 lit/min at 1bar - 10*2 l/min
+				water_quantity = water_quantity - 30*boom_press*SIM_PERIOD/60 --30 lit/min at 1bar - 10*3 l/min
 			end
 		else
 			spray = 0
