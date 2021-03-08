@@ -19,7 +19,9 @@ boom_hide = create_dataref("custom/dromader/spray/boom_hide","number", dummy)
 boom_fuse = create_dataref("custom/dromader/spray/boom_fuse","number", dummy)
 spray = create_dataref("custom/dromader/spray/spray","number", dummy)
 spray_sw = create_dataref("custom/dromader/spray/spray_sw","number", dummy)
-
+vru_set = create_dataref("custom/dromader/spray/vru_set","number", dummy)
+pump_press_set = create_dataref("custom/dromader/spray/pump_press_set","number", dummy)
+flow_rate = create_dataref("custom/dromader/spray/flow_rate","number", dummy)
 local acf_cg_save = acf_cd
 
 function ag_equip_toggle_cmd(phase, duration)
@@ -68,7 +70,7 @@ function spray_cmd(phase, duration)
 	end
 end
 
-spraycmd = create_command("custom/dromader/spray/spray_cmd","Engage spray", spray_cmd)
+spraycmd = create_command("custom/dromader/spray/spray_cmd","Spray", spray_cmd)
 
 function boom_fuse_toggle_cmd(phase, duration)
 	if phase == 0 then
@@ -82,12 +84,15 @@ end
 
 boomfusecmd = create_command("custom/dromader/spray/boom_fuse_cmd","Toggle boom fuse", boom_fuse_toggle_cmd)
 
-function flight_start()
-	boom_hide = 1
-end
+-- function flight_start()
+	-- boom_hide = 1
+	-- vru_set = 5
+	-- pump_press_set = 1
+-- end
 
 function after_physics()
 	if boom_hide == 0 then
+		local boom_press_temp = 0
 		local temp_deg = atom_prop_deg
 		temp_deg = temp_deg + math.max(0,air_speed*36*SIM_PERIOD)
 
@@ -102,25 +107,24 @@ function after_physics()
 			temp_pump_deg = temp_pump_deg + math.max(0,(air_speed +  prop_wash/2) )*36*SIM_PERIOD
 			pump_prop_deg_sec = (temp_pump_deg - pump_prop_deg)/(SIM_PERIOD*60)
 			if  water_quantity > 0 then
-				boom_press = math.min(1.5, math.max(0, pump_prop_deg_sec/30) )
+				boom_press = math.min(pump_press_set, math.max(0, pump_prop_deg_sec/30) )
 			else
 				boom_press = 0
 			end
-			if spray == 1 then
-				boom_press = math.max(0, boom_press - boom_press*0.25)
-			end
+
 			if temp_pump_deg > 360 then
 				temp_pump_deg = temp_pump_deg - 360
 			end	
 			pump_prop_deg = temp_pump_deg
 		end	
-		
 		if water_quantity > 0 and boom_fuse == 1 then
 			if spray == 1 then
-				water_quantity = water_quantity - 30*boom_press*SIM_PERIOD/60 --30 lit/min at 1bar - 10*3 l/min
+				flow_rate = (vru_set*boom_press)*10
+				water_quantity = water_quantity - flow_rate*SIM_PERIOD/60
 			end
 		else
 			spray = 0
+			flow_rate = 0
 		end
 	end
 end
