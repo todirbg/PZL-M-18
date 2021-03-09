@@ -8,6 +8,8 @@ function dummy()
 end
 
 eng_cyl_temp = find_dataref("sim/flightmodel/engine/ENGN_CHT_c[0]")
+eng_cyl_temp_max = find_dataref("sim/aircraft/engine/acf_max_CHT")
+eng_egt = find_dataref("sim/flightmodel/engine/ENGN_EGT_c[0]")
 eng_carb_temp = find_dataref("sim/cockpit2/engine/indicators/carburetor_temperature_C[0]")
 eng_cyl_temp_lim_lo = find_dataref("sim/aircraft/limits/red_lo_CHT")
 eng_cyl_temp_lim_hi = find_dataref("sim/aircraft/limits/red_hi_CHT")
@@ -133,6 +135,7 @@ local MP_fail_counter = 0
 --MP_fail_counter = create_dataref("custom/dromader/engine/MP_fail_counter","number")
 function check_eng()
 
+	eng_cyl_temp_max = eng_egt*0.75 + oat
 	oil_temp_max = (200/(1+oil_flap) ) - oat
 	oil_pres = 90 - oil_temp/5
 	
@@ -228,9 +231,9 @@ end
 function flight_start()
 	eng_max_pwr_w = eng_power_wats
 	if oat < 15 then 
-		eng_cowl = 0
-	else 
 		eng_cowl = 0.5
+	else 
+		eng_cowl = 1
 	end
 	math.randomseed( oat )
 end

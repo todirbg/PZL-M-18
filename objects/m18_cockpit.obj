@@ -8639,7 +8639,7 @@ IDX	7487
 		ANIM_begin
 		ANIM_hide	1	1	sim/flightmodel/engine/ENGN_running[0]
 		ANIM_hide	0.0099999998	1000	sim/flightmodel2/position/groundspeed
-		ATTR_manip_toggle	hand	0	0.5	sim/flightmodel/engine/ENGN_cowl[0]	Add/Remove cyl. shields
+		ATTR_manip_toggle	hand	1	0.5	sim/flightmodel/engine/ENGN_cowl[0]	Add/Remove cyl. shields
 		TRIS	7272 216
 		ANIM_end
 				ANIM_begin
@@ -9513,9 +9513,8 @@ IDX	7487
 			ANIM_rotate_key	13	-315.00016
 			ANIM_rotate_end
 				ANIM_begin
-				ANIM_hide	1	1	sim/flightmodel/engine/ENGN_running[0]
 				ANIM_hide	0.0099999998	1000	sim/flightmodel2/position/groundspeed
-				ATTR_manip_drag_axis_pix	up_down	1000	2	1	1	13	custom/dromader/spray/vru_set	Adjust flow
+				ATTR_manip_drag_axis_pix	up_down	1000	2	2	1	13	custom/dromader/spray/vru_set	Adjust flow
 				ATTR_manip_wheel	1
 				TRIS	5412 84
 				ANIM_end
@@ -9530,7 +9529,6 @@ IDX	7487
 			ANIM_rotate_key	13	-315.00016
 			ANIM_rotate_end
 				ANIM_begin
-				ANIM_hide	1	1	sim/flightmodel/engine/ENGN_running[0]
 				ANIM_hide	0.0099999998	1000	sim/flightmodel2/position/groundspeed
 				ATTR_manip_wheel	1
 				TRIS	5496 84
@@ -9544,7 +9542,6 @@ IDX	7487
 		ANIM_rotate_key	1.5	130.00011
 		ANIM_rotate_end
 			ANIM_begin
-			ANIM_hide	1	1	sim/flightmodel/engine/ENGN_running[0]
 			ANIM_hide	0.0099999998	1000	sim/flightmodel2/position/groundspeed
 			ATTR_manip_axis_knob	rotate_large	0	1.5	0.1	0	custom/dromader/spray/pump_press_set	Boom pressure limit
 			TRIS	5580 84
