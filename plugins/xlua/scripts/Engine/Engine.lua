@@ -11,8 +11,11 @@ eng_cyl_temp = find_dataref("sim/flightmodel/engine/ENGN_CHT_c[0]")
 eng_cyl_temp_max = find_dataref("sim/aircraft/engine/acf_max_CHT")
 eng_egt = find_dataref("sim/flightmodel/engine/ENGN_EGT_c[0]")
 eng_carb_temp = find_dataref("sim/cockpit2/engine/indicators/carburetor_temperature_C[0]")
-eng_cyl_temp_lim_lo = find_dataref("sim/aircraft/limits/red_lo_CHT")
-eng_cyl_temp_lim_hi = find_dataref("sim/aircraft/limits/red_hi_CHT")
+eng_pwr = find_dataref("sim/flightmodel/engine/ENGN_power[0]")
+eng_cyl_temp_red_lo = find_dataref("sim/aircraft/limits/red_lo_CHT")
+eng_cyl_temp_red_hi = find_dataref("sim/aircraft/limits/red_hi_CHT")
+eng_cyl_temp_green_lo = find_dataref("sim/aircraft/limits/green_lo_CHT")
+eng_cyl_temp_green_hi = find_dataref("sim/aircraft/limits/green_hi_CHT")
 eng_speed = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
 eng_throt = find_dataref("sim/flightmodel/engine/ENGN_thro[0]")
 eng_fail = find_dataref("sim/operation/failures/rel_engfai0")
@@ -131,33 +134,35 @@ cmdcsutomspinflywheel = create_command("custom/dromader/engine/spin_flywheel","S
 local eng_hi_fail_counter = 0
 local eng_lo_fail_counter = 0
 local MP_fail_counter = 0
+local RPM_fail_counter = 0
 --eng_hi_fail_counter = create_dataref("custom/dromader/engine/eng_hi_fail_counter","number")
 --MP_fail_counter = create_dataref("custom/dromader/engine/MP_fail_counter","number")
+--eng_pwr_ratio = create_dataref("custom/dromader/engine/eng_pwr_ratio","number", dummy)
 function check_eng()
 
-	eng_cyl_temp_max = eng_egt*0.75 + oat
-	oil_temp_max = (200/(1+oil_flap) ) - oat
-	oil_pres = 90 - oil_temp/5
-	
-	if oil_pres < oil_press_lo_lim and eng_speed > 100 then
-		eng_max_pwr_w = eng_power_wats - 1000*(oil_press_lo_lim - oil_pres)
-	elseif oil_pres > oil_press_hi_lim then
-		oil_fail = 6
-		smoke_trail = 1
-	else
-		if eng_max_pwr_w ~= eng_power_wats then
-			eng_max_pwr_w = eng_power_wats
-		end
-	end
+	local eng_pwr_ratio = math.max(0,(eng_pwr/eng_max_pwr_w))
+	eng_cyl_temp_max = eng_egt*(0.75+eng_pwr_ratio/2)
+	oil_temp_max = (300/(1+oil_flap) )
 	
 	if oil_temp > 110 then
 		air_res = 6
 		smoke_trail = 1
 	end
+	
+	if eng_speed > 246.1 then
+		RPM_fail_counter = RPM_fail_counter + SIM_PERIOD
+		if RPM_fail_counter > 30 then
+			eng_seize = 6
+		end
+	else
+		if RPM_fail_counter > 0 then
+			RPM_fail_counter = RPM_fail_counter - 2*SIM_PERIOD
+		end
+	end
 
-	if eng_cyl_temp < eng_cyl_temp_lim_lo and eng_speed > 126 then
+	if eng_cyl_temp < eng_cyl_temp_red_lo and eng_speed > 126 then
 		eng_lo_fail_counter = eng_lo_fail_counter + SIM_PERIOD
-	elseif eng_cyl_temp > 215 then
+	elseif eng_cyl_temp > eng_cyl_temp_green_hi then
 		eng_hi_fail_counter = eng_hi_fail_counter + SIM_PERIOD
 	else
 		if eng_hi_fail_counter > 0 then
@@ -182,34 +187,25 @@ function check_eng()
 		max_throt = 0.75
 	end
 	
-	if eng_lo_fail_counter > 60 and eng_cyl_temp < eng_cyl_temp_lim_lo then
+	if eng_lo_fail_counter > 60 and eng_cyl_temp < eng_cyl_temp_red_lo then
 		if eng_speed > 126 then
 			eng_max_pwr_w = eng_max_pwr_w - 100*SIM_PERIOD -- degrade performance 100 wats/sec
 			eng_power_wats = eng_max_pwr_w
 		end
 		air_res = 6
 		smoke_trail = 1
-	elseif eng_lo_fail_counter > 120 and eng_cyl_temp < eng_cyl_temp_lim_lo then
+	elseif eng_lo_fail_counter > 120 and eng_cyl_temp < eng_cyl_temp_red_lo then
 		oil_fail = 6
-	elseif eng_hi_fail_counter > 60 and eng_cyl_temp > 215 then
+	elseif eng_hi_fail_counter > 300 and eng_cyl_temp > eng_cyl_temp_green_hi then
 			air_res = 6
 			smoke_trail = 1
-			eng_max_pwr_w = eng_max_pwr_w - 100*SIM_PERIOD -- degrade performance 100 wats/sec
-			eng_power_wats = eng_max_pwr_w
-		if eng_hi_fail_counter > 180 then
+	elseif eng_hi_fail_counter > 180 and eng_cyl_temp > eng_cyl_temp_red_hi then
 			eng_seize = 6
 			eng_fire = 6
-		end
 	end
 
 	
-	if eng_cyl_temp < (eng_cyl_temp_lim_lo - 20) and starter_running == 1 then
-		eng_max_pwr_w = eng_power_wats * math.max(0.3,math.min(1, eng_cyl_temp/100))
-	else 
-		eng_max_pwr_w = eng_power_wats
-	end
-	
-	if eng_cyl_temp < 15 then
+	if eng_cyl_temp < 30 then
 		if primed_good == 1 then
 			if math.max(0,eng_cyl_temp/100) < math.random(-1, 1) and eng_fail == 0 then 
 					
@@ -235,9 +231,8 @@ function flight_start()
 	else 
 		eng_cowl = 1
 	end
-	math.randomseed( oat )
+	math.randomseed( os.clock( ) )
 end
-
 
 function after_physics()
 	flywheel_rpm = math.max(0, flywheel_rpm - 2*SIM_PERIOD)	

@@ -22,6 +22,7 @@ bus_amp3 = find_dataref("sim/cockpit2/electrical/bus_load_amps[2]")
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 bat_volt =  find_dataref("sim/cockpit2/electrical/battery_voltage_indicated_volts[0]")
 bus_load_add = find_dataref("sim/cockpit2/electrical/plugin_bus_load_amps[0]")
+gen_off = find_dataref("sim/cockpit/warnings/annunciators/generator_off[0]")
 
 ldg_lt = find_dataref("sim/cockpit2/switches/landing_lights_on")
 taxi_lt = find_dataref("sim/cockpit2/switches/taxi_light_on")
@@ -65,7 +66,6 @@ bat_cover_hide = create_dataref("custom/dromader/electrical/hide_bat_cover","num
 
 
 local volt_but = 0
-
 
 function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
   if math.abs(reference_value - animated_VALUE) < 0.1 then return reference_value end
@@ -330,6 +330,7 @@ function auto_start_after()
 		beacon_lt = 0	
 		elec_hyd = 1
 		stat_heat = 0
+		bus_load_add = 10
 end
 
 function auto_board_after()
@@ -382,6 +383,7 @@ function flight_start()
 		transponder_fail = 0
 		fuel_fuse = 1
 		elec_hyd = 1
+		bus_load_add = 10
 	else
 		bat_sel = 1
 		batt = 0
@@ -403,7 +405,11 @@ local tmpval
 	if batt == 1 or gpu == 1 then
 		if volt_but == 0 then
 			if volt_sel == 0 then
-				tmpval = (bus_amp + bus_amp2 + bus_amp3 + bus_load_add)/4
+				if gen_off == 1 and gpu == 0 then
+					tmpval = (bus_amp + bus_amp2 + bus_amp3 + bus_load_add)/4
+				else
+					tmpval = (bus_amp + bus_amp2 + bus_amp3 + bus_load_add)/4 - 20
+				end
 			elseif volt_sel == 1 then
 				tmpval = bus_volt
 			elseif volt_sel == 2 then
@@ -423,7 +429,7 @@ local tmpval
 	else 
 		tmpval = 0
 	end
-	volt_needle = func_animate_slowly(tmpval, volt_needle, 3)
+	volt_needle = func_animate_slowly(tmpval, volt_needle, 2)
 end
 
 function monitor_failures()
