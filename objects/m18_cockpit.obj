@@ -9063,10 +9063,10 @@ IDX	7487
 		ANIM_rotate	0	0	-1	44.769203	44.769203
 		ANIM_rotate	1	0	0	94.548349	94.548349
 		ANIM_rotate_begin	0	1	-0	sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all
-		ANIM_rotate_key	68.556313	0
-		ANIM_rotate_key	125.68658	67.692099
+		ANIM_rotate_key	86.426216	0
+		ANIM_rotate_key	158.44806	67.692099
 		ANIM_rotate_end
-			ATTR_manip_drag_rotate	hand	-0.52929622	0.64713371	4.1227055	0	1	-0	0	67.692099	0	68.556313	125.68658	0	0	sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all	none	Propeller RPM
+			ATTR_manip_drag_rotate	hand	-0.52929622	0.64713371	4.1227055	0	1	-0	0	67.692099	0	86.426216	158.44806	0	0	sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all	none	Propeller RPM
 			TRIS	3180 84
 		ANIM_end
 		ANIM_begin
