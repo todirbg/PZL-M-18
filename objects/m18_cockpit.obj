@@ -8672,6 +8672,8 @@ IDX	7805
 			ATTR_draw_enable
 			ATTR_cockpit
 			TRIS	7542 6
+	ANIM_begin
+	ANIM_hide	1	1	custom/dromader/spray/boom_hide
 			ANIM_begin
 			ANIM_trans	-0.031629998	1.04131	3.70013	-0.031629998	1.04131	3.70013
 			ANIM_rotate	1	0	0	-179.99985	-179.99985
@@ -8744,6 +8746,7 @@ IDX	7805
 				ATTR_manip_command_switch_up_down2	up_down	custom/dromader/litestar/toggle_power	
 				TRIS	2424 36
 			ANIM_end
+	ANIM_end
 	ANIM_begin
 	ANIM_trans	-0.025110001	1.077	3.69696	-0.025110001	1.077	3.69696
 	ANIM_rotate	1	0	0	-179.99985	-179.99985
