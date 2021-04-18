@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186571687
+P _gear/0/_stat_def 0.186571732
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186571687
+P _gear/1/_stat_def 0.186571732
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.054135919
+P _gear/2/_stat_def 0.054135911
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -404,6 +404,7 @@ P _obja/21/_v10_att_z_acf_prt_ref 0.0
 P _obja/21/_v10_is_internal -2129229984
 P _obja/21/_v10_steers_with_gear 0
 P _obja/22/_obj_flags 29
+P _obja/22/_obj_hide_dataref custom/dromader/spray/boom_hide
 P _obja/22/_v10_att_file_stl LiteStar.obj
 P _obja/22/_v10_att_part -1
 P _obja/22/_v10_att_phi_ref 0.0
@@ -28412,7 +28413,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.219652653
+P _part/87/_part_y -2.219652891
 P _part/87/_part_z 25.592498779
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -38865,6 +38866,8 @@ GROUP Transponder
 
 END_GROUP
 GROUP LiteStarIV
+  SHOW_EQUAL 0.000000 custom/dromader/spray/boom_hide
+  SHOW_GREATER 1.000000 custom/dromader/litestar/power
   CHAINED
   GROUP_OPEN
   gen_text <*`

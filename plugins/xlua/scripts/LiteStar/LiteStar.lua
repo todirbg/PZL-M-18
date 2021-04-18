@@ -1,12 +1,18 @@
+----------------------------------------------------------------------------------------------------------
+-- Copyright Todor Radonov 2020
+-- Licnsed under Creative Commons CC BY-NC 4.0
+-- https://creativecommons.org/licenses/by-nc/4.0/
+-- parts of this code is borrowed from EADT KLN90B. 10x Falcon!
+----------------------------------------------------------------------------------------------------------
 function dummy()
 
 end
 
 local in_menu = 0
---local area = 0 --area in hectares
+local area = 0 --area in hectares
 local area_disp = 0
 local swath_width_dis = 0
-local hdop = 0.6 --const
+local hdop = 0.6 --const not simulated
 local xtk = 0
 local dtk = 0
 local gps_crs = 0
@@ -14,38 +20,15 @@ local guide = 0
 local brt_control = 101
 local spd = 0
 local alt = 0
-local numsats = 6 --const
+local numsats = 6 --const not simulated
 local mode = 0 -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
+local xtksense = 0
+local swath_num = 0
+local swath_dir = 0
+local swath_width_m = 0
 
 local temp_mrk_lat = 0
 local temp_mrk_lon = 0
-
-function brt_knob_handler()
-	old_job["brt_knob"] = brt_knob
-	if brt_control == 101 then
-		brt = brt_knob
-	end
-end
-
-lat = find_dataref("sim/flightmodel/position/latitude")
-lon = find_dataref("sim/flightmodel/position/longitude")
-spd_dr = find_dataref("sim/flightmodel/position/groundspeed")
-crs = find_dataref("sim/flightmodel/position/true_psi")
-brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[4]")
-alt_dr = find_dataref("sim/flightmodel/position/elevation")
-spray = find_dataref("custom/dromader/spray/spray","number")
-hours = find_dataref("sim/cockpit2/clock_timer/local_time_hours")
-minutes = find_dataref("sim/cockpit2/clock_timer/local_time_minutes")
-
-fuse = create_dataref("custom/dromader/litestar/fuse","number", dummy)
-xtksense = create_dataref("custom/dromader/litestar/xtksense","number", dummy)
-power_sw = create_dataref("custom/dromader/litestar/power_sw","number", dummy)
-brt_knob = create_dataref("custom/dromader/litestar/brt_knob","number", brt_knob_handler)
-swath_num = create_dataref("custom/dromader/litestar/swath_num","number", dummy)
-swath_dir = create_dataref("custom/dromader/litestar/swath_dir","number", dummy)
-swath_width_m = create_dataref("custom/dromader/litestar/swath_width_m","number", dummy)
-area = create_dataref("custom/dromader/litestar/area","number", dummy)
---dtk = create_dataref("custom/dromader/litestar/gps_dtk","number", dummy)
 
 local points = {}
 points["A"] = {["lat"] = 0, ["lon"] = 0}
@@ -165,6 +148,34 @@ old_job["acres"] = 0
 old_job["brt_knob"] = 0.8
 old_job["brt_control"] = 101
 
+function brt_knob_handler()
+	old_job["brt_knob"] = brt_knob
+	if brt_control == 101 then
+		brt = brt_knob
+	end
+end
+
+lat = find_dataref("sim/flightmodel/position/latitude")
+lon = find_dataref("sim/flightmodel/position/longitude")
+spd_dr = find_dataref("sim/flightmodel/position/groundspeed")
+crs = find_dataref("sim/flightmodel/position/true_psi")
+brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[4]")
+alt_dr = find_dataref("sim/flightmodel/position/elevation")
+spray = find_dataref("custom/dromader/spray/spray","number")
+hours = find_dataref("sim/cockpit2/clock_timer/local_time_hours")
+minutes = find_dataref("sim/cockpit2/clock_timer/local_time_minutes")
+
+fuse = create_dataref("custom/dromader/litestar/fuse","number", dummy)
+power_sw = create_dataref("custom/dromader/litestar/power_sw","number", dummy)
+power = create_dataref("custom/dromader/litestar/power","number", dummy)
+brt_knob = create_dataref("custom/dromader/litestar/brt_knob","number", brt_knob_handler)
+-- xtksense = create_dataref("custom/dromader/litestar/xtksense","number", dummy)
+-- swath_num = create_dataref("custom/dromader/litestar/swath_num","number", dummy)
+-- swath_dir = create_dataref("custom/dromader/litestar/swath_dir","number", dummy)
+-- swath_width_m = create_dataref("custom/dromader/litestar/swath_width_m","number", dummy)
+--area = create_dataref("custom/dromader/litestar/area","number", dummy)
+--dtk = create_dataref("custom/dromader/litestar/gps_dtk","number", dummy)
+
 
 local filename = "Output/preferences/LiteStarIV.cfg"
 
@@ -197,7 +208,7 @@ function calculate_point(lat1, lon1, dir, dist)
 end
 
 function cmd_swath_adv(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 		if mode == 3 then
 			points["Mrk"]["lat"] = temp_mrk_lat
 			points["Mrk"]["lon"] = temp_mrk_lon
@@ -266,7 +277,7 @@ end
 cmdswathadv = create_command("custom/dromader/litestar/but_swath_adv","Swath Advance",cmd_swath_adv)
 
 function cmd_swath_dec(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 		if mode == 3 then
 			temp_mrk_lat = 0
 			temp_mrk_lon = 0
@@ -317,7 +328,7 @@ end
 cmdswathdec = create_command("custom/dromader/litestar/but_swath_dec","Swath Decrement",cmd_swath_dec)
 
 function cmd_set_mark(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 		if in_menu == 0 then
 			temp_mrk_lat = lat
 			temp_mrk_lon = lon
@@ -332,8 +343,12 @@ function cmd_toggle_fuse(phase, duration)
 	if phase == 0 then
 		if fuse == 1 then
 			fuse = 0
+			power = 0
 		else
 			fuse = 1
+			if power_sw == 1 then
+				power = 1
+			end
 		end
 	end
 end
@@ -344,8 +359,12 @@ function cmd_toggle_power(phase, duration)
 	if phase == 0 then
 		if power_sw == 1 then
 			power_sw = 0
+			power = 0
 		else
 			power_sw = 1
+			if fuse == 1 then
+				power = 1
+			end
 		end
 	end
 end
@@ -353,7 +372,7 @@ end
 cmdtogglepower = create_command("custom/dromader/litestar/toggle_power","Toggle power",cmd_toggle_power)
 
 function cmd_but_menu(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 			if mode == 2 then
 				mode = 0
 				return
@@ -383,14 +402,16 @@ end
 cmdbutmenu = create_command("custom/dromader/litestar/but_menu","Menu",cmd_but_menu)
 
 function cmd_but_ent(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 
 		if in_menu > 0 then
 			if menu[1]["set"] == 1 then	
 				points["A"]["lat"] = 0
 				points["A"]["lon"] = 0
 				points["B"]["lat"] = 0
-				points["B"]["lon"] = 0	
+				points["B"]["lon"] = 0
+				points["Mrk"]["lat"] = 0
+				points["Mrk"]["lon"] = 0
 				old_job["set1"] = menu[1]["set"]
 				old_job["set2"] = menu[2]["set"]
 				old_job["set3"] = menu[3]["set"]
@@ -407,6 +428,7 @@ function cmd_but_ent(phase, duration)
 				old_job["sens"] = xtksense				
 				area = 0
 				guide = 0
+				swath_num = 0
 			elseif menu[1]["set"] == 2 then
 				old_job["set1"] = menu[1]["set"]
 				old_job["set2"] = menu[2]["set"]
@@ -420,7 +442,7 @@ function cmd_but_ent(phase, duration)
 				old_job["set10"] = menu[10]["set"]
 				old_job["set11"] = menu[11]["set"]
 				old_job["set12"] = menu[12]["set"]
-				old_job["sens"] = 2
+				old_job["sens"] = xtksense
 				old_job["brt_control"] = brt_control
 				if 	points["A"]["lat"] ~= 0 and points["B"]["lat"] ~= 0 then
 					dtk = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
@@ -441,6 +463,7 @@ function cmd_but_ent(phase, duration)
 				mode = 1
 				area = 0
 				guide = 0
+				swath_num = 0
 				return
 			elseif menu[in_menu]["name"] == ">SETFAC" then	
 				points["A"]["lat"] = 0
@@ -452,6 +475,7 @@ function cmd_but_ent(phase, duration)
 				in_menu = 1
 				mode = 1
 				area = 0
+				swath_num = 0
 				menu[1]["set"] = 1
 				menu[2]["set"] = 1
 				menu[3]["set"] = 1
@@ -466,8 +490,8 @@ function cmd_but_ent(phase, duration)
 				menu[12]["set"] = 1
 				xtksense = 2
 				menu[9]["value"] = {"SENS 2"}
-				menu[2]["value"] = {"30.0"}
-				swath_width_dis = 30
+				menu[2]["value"] = {"50.0"}
+				swath_width_dis = 50
 				guide = 0
 				return
 			end
@@ -485,7 +509,7 @@ end
 cmdbutent = create_command("custom/dromader/litestar/but_ent","Enter",cmd_but_ent)
 
 function cmd_but_up(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 		if in_menu > 0 then
 			if menu[in_menu]["name"] == ">SWIDTH" then
 				local t = function () if menu[10]["set"] == 1 then return 300 end return 100 end
@@ -527,7 +551,7 @@ end
 
 
 function cmd_but_dn(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 		if in_menu > 0 then
 			if menu[in_menu]["name"] == ">SWIDTH" then
 				local t = function () if menu[10]["set"] == 1 then return 6 end return 2 end
@@ -562,7 +586,7 @@ cmdbutdn = create_command("custom/dromader/litestar/but_dn","Down",cmd_but_dn)
 cmdbutup = create_command("custom/dromader/litestar/but_up","Up",cmd_but_up)
 
 function spray_toggle_after_cmd(phase, duration)
-	if phase == 0 then
+	if phase == 0 and power == 1 then
 		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then 
 			points["A"]["lat"] = lat
 			points["A"]["lon"] = lon
@@ -735,53 +759,260 @@ function flight_start()
 	
 	fuse = 1
 	power_sw = 1
+	power = 1
 	mode = 1
 	in_menu = 1
 	
 end
 
 function after_physics()
+	if power == 1 then
+		if spray == 1 then 
+			str_stat = "<"
+			area = area + (msec2kph(spd_dr, 2)*swath_width_m/600)*SIM_PERIOD/60
+			old_job["acres"] = area
+		else
+			str_stat = ""
+		end
+		
+		if menu[10]["set"] == 1 then
+			spd = math.min(999,msec2mph(spd_dr))
+			area_disp = math.min(999,hect2acre(area))
+			alt = math.min(9999,met2feet(alt_dr))
+		else
+			area_disp = math.min(999,area)
+			spd = math.min(999,msec2kph(spd_dr))
+			alt = math.min(9999, round2(alt_dr))
+		end
+		
+		
+		gps_crs = round2(course ( points["LastLoc"]["lat"], points["LastLoc"]["lon"], lat, lon))
+		
+		points["LastLoc"]["lat"] = lat
+		points["LastLoc"]["lon"] = lon
+		
 
-	if spray == 1 then 
-		str_stat = "<"
-		area = area + (spd_dr*1.852*swath_width_m/600)*SIM_PERIOD/60
-		old_job["acres"] = area
-	else
-		str_stat = ""
-	end
-	
-	if menu[10]["set"] == 1 then
-		spd = math.min(999,msec2mph(spd_dr))
-		area_disp = math.min(999,hect2acre(area))
-		alt = math.min(9999,met2feet(alt_dr))
-	else
-		area_disp = math.min(999,area)
-		spd = math.min(999,msec2kph(spd_dr))
-		alt = math.min(9999, round2(alt_dr))
-	end
-	
-	
-	gps_crs = round2(course ( points["LastLoc"]["lat"], points["LastLoc"]["lon"], lat, lon))
-	
-	points["LastLoc"]["lat"] = lat
-	points["LastLoc"]["lon"] = lon
-	
+			str_hdgL = ""
+			str_hdgR = ""
+			str_trkL = ""
+			str_trkR = ""
+			if mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
+				if guide == 1 then 
+				
+					if menu[10]["set"] == 1 then
+						xtk = met2feet(crosstrack( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["A"]["lat"], points["A"]["lon"], dtk) )
+					else
+						xtk = round2(crosstrack( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["A"]["lat"], points["A"]["lon"], dtk) )
+					end
+					
+					
+					local diff = gps_crs - dtk
+					
+					if diff < -180 then 
+						diff = diff + 360
+					elseif diff > 180 then 
+						diff = diff - 360 
+					end
+					
+					if diff > 0 then 
+						diff = math.floor(math.min(diff/5, 18) )
+						str_hdgR = ledtrkR[diff]	
+					elseif diff < 0 then
+						diff = math.floor(math.min(math.abs(diff/5), 18) )
+						str_hdgL = ledtrkL[diff]	
+					end
+					
+					local letter = " "
+					if xtk > 0 then
+						letter = "L"
+					elseif xtk < 0 then
+						letter = "R"
+					end
 
-		str_hdgL = ""
-		str_hdgR = ""
-		str_trkL = ""
-		str_trkR = ""
-		if mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
-			if guide == 1 then 
-			
-				if menu[10]["set"] == 1 then
-					xtk = met2feet(crosstrack( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["A"]["lat"], points["A"]["lon"], dtk) )
-				else
-					xtk = round2(crosstrack( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["A"]["lat"], points["A"]["lon"], dtk) )
+					if xtk > 0 then
+						for k,v in ipairs(senstable[xtksense]) do
+							if xtk < v then
+								str_trkL = 	ledtrkL[k-1]
+								if diff < 2 and diff> -2 and k < 3 then
+									str_ontrk = ontrk
+								else
+									str_ontrk = ""
+								end
+								break
+							else
+								str_trkL = 	ledtrkL[k-1]
+							end
+						end
+						xtk = math.min(xtk, 999)
+					else
+						xtk = math.abs(xtk)
+						for k,v in ipairs(senstable[xtksense]) do
+							if xtk < v then
+								str_trkR = 	ledtrkR[k-1]
+								if diff < 2 and diff> -2 and k < 3 then
+									str_ontrk = ontrk
+								else
+									str_ontrk = ""
+								end
+								break
+							else
+								str_trkR = 	ledtrkR[k-1]
+							end
+						end
+						xtk = math.min(xtk, 999)
+					end
+				-- "SwthNum", "X-Track", "Blank", "GPS Alt", "NumSats", "HDOP", "A/B Hdg", "Time", "Dst2Mrk", "Acres", "AcftHdg", "Speed"
+				-- "SwthNum", "Blank", "NumSats", "HDOP", "A/B Hdg", "Acres", "AcftHdg", "Speed"	
+				
+				if menu[5]["set"] == 1 then
+					local dir = "L"
+					if menu[3]["set"] == 2 then
+						dir = "R"
+					end			
+					str_dis1 = string.format("%s%d", dir, swath_num)
+				elseif menu[5]["set"] == 2 then
+					str_dis1 = string.format("%s%d", letter, xtk)
+				elseif menu[5]["set"] == 3 then
+					str_dis1 = string.format("    ")
+				elseif menu[5]["set"] == 4 then
+					str_dis1 = string.format("%4d", alt)
+				elseif menu[5]["set"] == 5 then
+					str_dis1 = string.format("%2d", numsats)
+				elseif menu[5]["set"] == 6 then
+					str_dis1 = string.format("%2.1f", hdop)
+				elseif menu[5]["set"] == 7 then
+					str_dis1 = string.format("%3d", dtk)
+				elseif menu[5]["set"] == 8 then
+					str_dis1 = string.format("%2.2d%2.2d", hours, minutes)
+				elseif menu[5]["set"] == 9 then
+					local dist = 0
+					if points["Mrk"]["lat"] ~= 0 then
+						dist = round2(distance(lat, lon, points["Mrk"]["lat"], points["Mrk"]["lon"] )/1000 )
+						if menu[10]["set"] == 1 then
+							dist = km2mile(dist)
+						end
+					end
+					str_dis1 = string.format("%4d", math.min(9999, dist))
+				elseif menu[5]["set"] == 10 then
+					str_dis1 = string.format("%3d", area_disp)
+				elseif menu[5]["set"] == 11 then
+					str_dis1 = string.format("%3d", gps_crs)
+				elseif menu[5]["set"] == 12 then
+					str_dis1 = string.format("%3d", spd)
 				end
 				
-				
-				local diff = gps_crs - dtk
+				if menu[6]["set"] == 1 then
+					local dir = "L"
+					if menu[3]["set"] == 2 then
+						dir = "R"
+					end
+					str_dis2 = string.format("%s%d", dir, swath_num)
+				elseif menu[6]["set"] == 2 then
+					str_dis2 = string.format("    ")
+				elseif menu[6]["set"] == 3 then
+					str_dis2 = string.format("%2d", numsats)
+				elseif menu[6]["set"] == 4 then
+					str_dis2 = string.format("%2.1f", hdop)
+				elseif menu[6]["set"] == 5 then
+					str_dis2 = string.format("%3d", dtk)
+				elseif menu[6]["set"] == 6 then
+					str_dis2 = string.format("%3d", area_disp)
+				elseif menu[6]["set"] == 7 then
+					str_dis2 = string.format("%3d", gps_crs)
+				elseif menu[6]["set"] == 8 then
+					str_dis2 = string.format("%3d", spd)
+				end
+					
+				if menu[7]["set"] == 1 then
+					local dir = "L"
+					if menu[3]["set"] == 2 then
+						dir = "R"
+					end
+					str_dis3 = string.format("%s%d", dir, swath_num)
+				elseif menu[7]["set"] == 2 then
+					str_dis3 = string.format("    ")
+				elseif menu[7]["set"] == 3 then
+					str_dis3 = string.format("%2d", numsats)
+				elseif menu[7]["set"] == 4 then
+					str_dis3 = string.format("%2.1f", hdop)
+				elseif menu[7]["set"] == 5 then
+					str_dis3 = string.format("%3d", dtk)
+				elseif menu[7]["set"] == 6 then
+					str_dis3 = string.format("%3d", area_disp)
+				elseif menu[7]["set"] == 7 then
+					str_dis3 = string.format("%3d", gps_crs)
+				elseif menu[7]["set"] == 8 then
+					str_dis3 = string.format("%3d", spd)
+					end
+										
+					if menu[8]["set"] == 1 then
+						local dir = "L"
+						if menu[3]["set"] == 2 then
+							dir = "R"
+						end
+						str_dis4 = string.format("%s%d", dir, swath_num)
+					elseif menu[8]["set"] == 2 then
+						str_dis4 = string.format("%s%d", letter, xtk)
+					elseif menu[8]["set"] == 3 then
+						str_dis4 = string.format("    ")
+					elseif menu[8]["set"] == 4 then
+						str_dis4 = string.format("%4d", alt)
+					elseif menu[8]["set"] == 5 then
+						str_dis4 = string.format("%2d", numsats)
+					elseif menu[8]["set"] == 6 then
+						str_dis4 = string.format("%2.1f", hdop)
+					elseif menu[8]["set"] == 7 then
+						str_dis4 = string.format("%3d", dtk)
+					elseif menu[8]["set"] == 8 then
+						str_dis4 = string.format("%2.2d%2.2d", hours, minutes)
+					elseif menu[8]["set"] == 9 then
+						local dist = 0
+						if points["Mrk"]["lat"] ~= 0 then
+							dist = round2(distance(lat, lon, points["Mrk"]["lat"], points["Mrk"]["lon"] )/1000 )
+							if menu[10]["set"] == 1 then
+								dist = km2mile(dist)
+							end
+						end
+						str_dis4 = string.format("%4d", math.min(9999, dist))
+					elseif menu[8]["set"] == 10 then
+						str_dis4 = string.format("%3d", area_disp)
+					elseif menu[8]["set"] == 11 then
+						str_dis4 = string.format("%3d", gps_crs)
+					elseif menu[8]["set"] == 12 then
+						str_dis4 = string.format("%3d", spd)
+					end			
+					
+					str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
+					str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)	
+					
+				else
+						local point = "A"
+						if points["A"]["lat"] ~= 0 and points["A"]["lon"] ~= 0 then
+							point = "B"
+							str_trkL = "*********************"
+							str_trkR = ",,,,,,,,,,,,,,,,,,,,,"
+							str_ontrk = ontrk
+						end
+						str_dis1 = string.format("---%s", point)
+						str_dis2 = string.format("%3d", spd)
+						str_dis3 = string.format("%3d", gps_crs)
+						str_dis4 = "----"
+						
+					str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
+					str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)	
+				end
+			elseif mode == 1 then
+				str_disL = string.format("%-7.7s", menu[in_menu]["name"])	
+				str_disR = string.format("%-7.7s", menu[in_menu]["value"][ menu[in_menu]["set"] or 1])	
+			elseif mode == 2 then
+				local dist = round2(distance(lat, lon, points["Mrk"]["lat"], points["Mrk"]["lon"] )/1000 )
+				if menu[10]["set"] == 1 then
+					dist = km2mile(dist)
+				end
+
+				local bearing = course ( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["Mrk"]["lat"], points["Mrk"]["lon"])
+				local diff = gps_crs - bearing
+
 				
 				if diff < -180 then 
 					diff = diff + 360
@@ -791,233 +1022,27 @@ function after_physics()
 				
 				if diff > 0 then 
 					diff = math.floor(math.min(diff/5, 18) )
-					str_hdgR = ledtrkR[diff]	
+					str_hdgL = ledtrkL[diff]	
 				elseif diff < 0 then
 					diff = math.floor(math.min(math.abs(diff/5), 18) )
-					str_hdgL = ledtrkL[diff]	
-				end
-				
-				local letter = " "
-				if xtk > 0 then
-					letter = "L"
-				elseif xtk < 0 then
-					letter = "R"
+					str_hdgR = ledtrkR[diff]	
 				end
 
-				if xtk > 0 then
-					for k,v in ipairs(senstable[xtksense]) do
-						if xtk < v then
-							str_trkL = 	ledtrkL[k-1]
-							if diff < 2 and diff> -2 and k < 3 then
-								str_ontrk = ontrk
-							else
-								str_ontrk = ""
-							end
-							break
-						else
-							str_trkL = 	ledtrkL[k-1]
-						end
-					end
-					xtk = math.min(xtk, 999)
-				else
-					xtk = math.abs(xtk)
-					for k,v in ipairs(senstable[xtksense]) do
-						if xtk < v then
-							str_trkR = 	ledtrkR[k-1]
-							if diff < 2 and diff> -2 and k < 3 then
-								str_ontrk = ontrk
-							else
-								str_ontrk = ""
-							end
-							break
-						else
-							str_trkR = 	ledtrkR[k-1]
-						end
-					end
-					xtk = math.min(xtk, 999)
-				end
-			-- "SwthNum", "X-Track", "Blank", "GPS Alt", "NumSats", "HDOP", "A/B Hdg", "Time", "Dst2Mrk", "Acres", "AcftHdg", "Speed"
-			-- "SwthNum", "Blank", "NumSats", "HDOP", "A/B Hdg", "Acres", "AcftHdg", "Speed"	
-			
-			if menu[5]["set"] == 1 then
-				local dir = "L"
-				if menu[3]["set"] == 2 then
-					dir = "R"
-				end			
-				str_dis1 = string.format("%s%d", dir, swath_num)
-			elseif menu[5]["set"] == 2 then
-				str_dis1 = string.format("%s%d", letter, xtk)
-			elseif menu[5]["set"] == 3 then
-				str_dis1 = string.format("    ")
-			elseif menu[5]["set"] == 4 then
-				str_dis1 = string.format("%4d", alt)
-			elseif menu[5]["set"] == 5 then
-				str_dis1 = string.format("%2d", numsats)
-			elseif menu[5]["set"] == 6 then
-				str_dis1 = string.format("%2.1f", hdop)
-			elseif menu[5]["set"] == 7 then
-				str_dis1 = string.format("%3d", dtk)
-			elseif menu[5]["set"] == 8 then
-				str_dis1 = string.format("%2.2d%2.2d", hours, minutes)
-			elseif menu[5]["set"] == 9 then
-				local dist = 0
-				if points["Mrk"]["lat"] ~= 0 then
-					dist = round2(distance(lat, lon, points["Mrk"]["lat"], points["Mrk"]["lon"] )/1000 )
-					if menu[10]["set"] == 1 then
-						dist = km2mile(dist)
-					end
-				end
-				str_dis1 = string.format("%4d", math.min(9999, dist))
-			elseif menu[5]["set"] == 10 then
-				str_dis1 = string.format("%3d", area_disp)
-			elseif menu[5]["set"] == 11 then
-				str_dis1 = string.format("%3d", gps_crs)
-			elseif menu[5]["set"] == 12 then
-				str_dis1 = string.format("%3d", spd)
-			end
-			
-			if menu[6]["set"] == 1 then
-				local dir = "L"
-				if menu[3]["set"] == 2 then
-					dir = "R"
-				end
-				str_dis2 = string.format("%s%d", dir, swath_num)
-			elseif menu[6]["set"] == 2 then
-				str_dis2 = string.format("    ")
-			elseif menu[6]["set"] == 3 then
-				str_dis2 = string.format("%2d", numsats)
-			elseif menu[6]["set"] == 4 then
-				str_dis2 = string.format("%2.1f", hdop)
-			elseif menu[6]["set"] == 5 then
-				str_dis2 = string.format("%3d", dtk)
-			elseif menu[6]["set"] == 6 then
-				str_dis2 = string.format("%3d", area_disp)
-			elseif menu[6]["set"] == 7 then
-				str_dis2 = string.format("%3d", gps_crs)
-			elseif menu[6]["set"] == 8 then
+				str_dis1 = string.format("%3d", bearing)
 				str_dis2 = string.format("%3d", spd)
-			end
-				
-			if menu[7]["set"] == 1 then
-				local dir = "L"
-				if menu[3]["set"] == 2 then
-					dir = "R"
-				end
-				str_dis3 = string.format("%s%d", dir, swath_num)
-			elseif menu[7]["set"] == 2 then
-				str_dis3 = string.format("    ")
-			elseif menu[7]["set"] == 3 then
-				str_dis3 = string.format("%2d", numsats)
-			elseif menu[7]["set"] == 4 then
-				str_dis3 = string.format("%2.1f", hdop)
-			elseif menu[7]["set"] == 5 then
-				str_dis3 = string.format("%3d", dtk)
-			elseif menu[7]["set"] == 6 then
-				str_dis3 = string.format("%3d", area_disp)
-			elseif menu[7]["set"] == 7 then
 				str_dis3 = string.format("%3d", gps_crs)
-			elseif menu[7]["set"] == 8 then
-				str_dis3 = string.format("%3d", spd)
-				end
-									
-				if menu[8]["set"] == 1 then
-					local dir = "L"
-					if menu[3]["set"] == 2 then
-						dir = "R"
-					end
-					str_dis4 = string.format("%s%d", dir, swath_num)
-				elseif menu[8]["set"] == 2 then
-					str_dis4 = string.format("%s%d", letter, xtk)
-				elseif menu[8]["set"] == 3 then
-					str_dis4 = string.format("    ")
-				elseif menu[8]["set"] == 4 then
-					str_dis4 = string.format("%4d", alt)
-				elseif menu[8]["set"] == 5 then
-					str_dis4 = string.format("%2d", numsats)
-				elseif menu[8]["set"] == 6 then
-					str_dis4 = string.format("%2.1f", hdop)
-				elseif menu[8]["set"] == 7 then
-					str_dis4 = string.format("%3d", dtk)
-				elseif menu[8]["set"] == 8 then
-					str_dis4 = string.format("%2.2d%2.2d", hours, minutes)
-				elseif menu[8]["set"] == 9 then
-					local dist = 0
-					if points["Mrk"]["lat"] ~= 0 then
-						dist = round2(distance(lat, lon, points["Mrk"]["lat"], points["Mrk"]["lon"] )/1000 )
-						if menu[10]["set"] == 1 then
-							dist = km2mile(dist)
-						end
-					end
-					str_dis4 = string.format("%4d", math.min(9999, dist))
-				elseif menu[8]["set"] == 10 then
-					str_dis4 = string.format("%3d", area_disp)
-				elseif menu[8]["set"] == 11 then
-					str_dis4 = string.format("%3d", gps_crs)
-				elseif menu[8]["set"] == 12 then
-					str_dis4 = string.format("%3d", spd)
-				end			
+				str_dis4 = string.format("%3d", math.min(9999, dist))
 				
 				str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
-				str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)	
-				
-			else
-					local point = "A"
-					if points["A"]["lat"] ~= 0 and points["A"]["lon"] ~= 0 then
-						point = "B"
-						str_trkL = "*********************"
-						str_trkR = ",,,,,,,,,,,,,,,,,,,,,"
-						str_ontrk = ontrk
-					end
-					str_dis1 = string.format("---%s", point)
-					str_dis2 = string.format("%3d", spd)
-					str_dis3 = string.format("%3d", gps_crs)
-					str_dis4 = "----"
-					
-				str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
-				str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)	
+				str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)				
+			elseif mode == 3 then
+				str_disL = string.format("%-7.7s", ">SET")	
+				str_disR = string.format("%-7.7s", "MARK")	
+			elseif mode == 4 then 
+				str_disL = string.format("%-7.7s", ">  =|")	
+				str_disR = string.format("%-7.7s", "TO MARK")	
 			end
-		elseif mode == 1 then
-			str_disL = string.format("%-7.7s", menu[in_menu]["name"])	
-			str_disR = string.format("%-7.7s", menu[in_menu]["value"][ menu[in_menu]["set"] or 1])	
-		elseif mode == 2 then
-			local dist = round2(distance(lat, lon, points["Mrk"]["lat"], points["Mrk"]["lon"] )/1000 )
-			if menu[10]["set"] == 1 then
-				dist = km2mile(dist)
-			end
-
-			local bearing = course ( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["Mrk"]["lat"], points["Mrk"]["lon"])
-			local diff = gps_crs - bearing
-
-			
-			if diff < -180 then 
-				diff = diff + 360
-			elseif diff > 180 then 
-				diff = diff - 360 
-			end
-			
-			if diff > 0 then 
-				diff = math.floor(math.min(diff/5, 18) )
-				str_hdgL = ledtrkL[diff]	
-			elseif diff < 0 then
-				diff = math.floor(math.min(math.abs(diff/5), 18) )
-				str_hdgR = ledtrkR[diff]	
-			end
-
-			str_dis1 = string.format("%3d", bearing)
-			str_dis2 = string.format("%3d", spd)
-			str_dis3 = string.format("%3d", gps_crs)
-			str_dis4 = string.format("%3d", math.min(9999, dist))
-			
-			str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
-			str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)				
-		elseif mode == 3 then
-			str_disL = string.format("%-7.7s", ">SET")	
-			str_disR = string.format("%-7.7s", "MARK")	
-		elseif mode == 4 then 
-			str_disL = string.format("%-7.7s", ">  =|")	
-			str_disR = string.format("%-7.7s", "TO MARK")	
-		end
-	
+	end
 end
 
 function aircraft_unload()
