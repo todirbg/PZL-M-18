@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186571732
+P _gear/0/_stat_def 0.186571687
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186571732
+P _gear/1/_stat_def 0.186571687
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.054135922
+P _gear/2/_stat_def 0.054135919
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -37591,7 +37591,7 @@ P acf/_feather_prop_with_oilp 0
 P acf/_feathered_pitch 85.0
 P acf/_ff_rat_idle_JET 0.100000001
 P acf/_ff_rat_idle_PRP 0.150000006
-P acf/_file_writer_version 115200
+P acf/_file_writer_version 115301
 P acf/_flap1_cd 0.039999999
 P acf/_flap1_cl 0.825999975
 P acf/_flap1_cm -0.254999995
@@ -38868,12 +38868,12 @@ GROUP LiteStarIV
   CHAINED
   GROUP_OPEN
   gen_text <*`
-    POS 829.000000 313.000000
+    POS 850.000000 313.000000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/stat
-    SIZE -0.450000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    SIZE -0.500000
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
@@ -38881,13 +38881,13 @@ GROUP LiteStarIV
     OFFSET_Y -48.000000
 
   gen_text <*`
-    POS 104.000000 314.000000
+    POS 80.000000 315.000000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/stat
-    SIZE 0.450000
+    SIZE 0.500000
     LOCKED
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
@@ -38895,12 +38895,12 @@ GROUP LiteStarIV
     OFFSET_Y -48.000000
 
   gen_text *******************
-    POS 423.500000 393.500000
+    POS 415.500000 394.500000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/trk_L
-    SIZE -0.450000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    SIZE -0.500000
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
@@ -38908,12 +38908,12 @@ GROUP LiteStarIV
     OFFSET_Y -48.000000
 
   gen_text ******************
-    POS 423.500000 313.500000
+    POS 415.500000 314.000000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/hdg_L
-    SIZE -0.450000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    SIZE -0.500000
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
@@ -38921,12 +38921,12 @@ GROUP LiteStarIV
     OFFSET_Y -48.000000
 
   gen_text ,,,,,,,,,,,,,,,,,,,
-    POS 509.500000 393.500000
+    POS 515.500000 393.500000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/trk_R
-    SIZE 0.450000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    SIZE 0.500000
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
@@ -38934,12 +38934,12 @@ GROUP LiteStarIV
     OFFSET_Y -48.000000
 
   gen_text ,,,,,,,,,,,,,,,,,,
-    POS 509.500000 313.500000
+    POS 515.500000 314.000000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/hdg_R
-    SIZE 0.450000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    SIZE 0.500000
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
@@ -38951,8 +38951,8 @@ GROUP LiteStarIV
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/on_trk
     SIZE 0.250000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     CORNERS -8.750000 15.999999  23.875006 0.000000  -18.791662 -86.541763  -51.416656 -70.541649
     KEY_FRAME 0.000000 0.000000 1.000000
@@ -38961,12 +38961,12 @@ GROUP LiteStarIV
     OFFSET_Y -48.000000
 
   gen_text ---B123
-    POS 164.500000 354.500000
+    POS 136.500000 354.500000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/disp_L
     SIZE 1.100000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
@@ -38974,12 +38974,12 @@ GROUP LiteStarIV
     OFFSET_Y -48.000000
 
   gen_text 123----
-    POS 657.500000 354.500000
+    POS 681.500000 354.500000
     IMAGE LED/led_mat_text
     DATAREF custom/dromader/litestar/disp_R
     SIZE 1.100000
-    LIGHT_MODE GLASS_MANUAL
-    LIGHT_RHEOSTAT 3
+    LIGHT_MODE GLASS_AUTO
+    LIGHT_RHEOSTAT 4
     BUS_SRC 1073741825
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
