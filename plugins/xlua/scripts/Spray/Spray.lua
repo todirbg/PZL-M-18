@@ -7,6 +7,7 @@ function dummy()
 
 end
 
+startup_running = find_dataref("sim/operation/prefs/startup_running")
 water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
 acf_cd = find_dataref("sim/aircraft/bodies/acf_fuse_cd")
 air_speed = find_dataref("sim/flightmodel/forces/vz_air_on_acf")
@@ -84,11 +85,11 @@ end
 
 boomfusecmd = create_command("custom/dromader/spray/boom_fuse_cmd","Toggle boom fuse", boom_fuse_toggle_cmd)
 
--- function flight_start()
-	-- boom_hide = 1
-	-- vru_set = 5
-	-- pump_press_set = 1
--- end
+function flight_start()
+	if boom_hide == 0 and startup_running == 1 then
+		spray_sw = 1
+	end
+end
 
 function after_physics()
 	if boom_hide == 0 then

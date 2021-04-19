@@ -23,7 +23,7 @@ local alt = 0
 local numsats = 6 --const not simulated
 local mode = 0 -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
 local xtksense = 0
-local swath_num = 0
+local swath_num = 1
 local swath_dir = 0
 local swath_width_m = 0
 local flash_timer = 0
@@ -230,15 +230,15 @@ function cmd_swath_adv(phase, duration)
 			
 			if menu[3]["set"] == 1 then
 				if swath_num%2 == 0 then
-				dir = dtk - 90
-				else
 				dir = dtk + 90
+				else
+				dir = dtk - 90
 				end
 			else
 				if swath_num%2 == 0 then
-				dir = dtk + 90
-				else
 				dir = dtk - 90
+				else
+				dir = dtk + 90
 				end			
 			end
 			
@@ -289,27 +289,27 @@ function cmd_swath_dec(phase, duration)
 		elseif mode == 4 then
 			mode = 0
 		elseif mode == 0 and  guide == 1 then
-			if swath_num == 0 then return end
+			if swath_num == 1 then return end
 			local dir = 0
 			
 			if menu[3]["set"] == 1 then
 				if swath_num%2 == 0 then
-				dir = dtk + 90
-				else
 				dir = dtk - 90
+				else
+				dir = dtk + 90
 				end
 			else
 				if swath_num%2 == 0 then
-				dir = dtk - 90
-				else
 				dir = dtk + 90
+				else
+				dir = dtk - 90
 				end			
 			end
 			
 			if dir > 360 then dir = dir - 360 end
 			if dir < 0 then dir = dir + 360 end
 			
-			swath_num = math.max(0,swath_num - 1)
+			swath_num = math.max(1,swath_num - 1)
 			old_job["swath_num"] = swath_num
 			
 			local lat1, lon1 = calculate_point(points["A"]["lat"], points["A"]["lon"], dir, swath_width_m)
@@ -407,8 +407,68 @@ cmdbutmenu = create_command("custom/dromader/litestar/but_menu","Menu",cmd_but_m
 
 function cmd_but_ent(phase, duration)
 	if phase == 0 and power == 1 then
+		if mode == 3 then
+			points["Mrk"]["lat"] = temp_mrk_lat
+			points["Mrk"]["lon"] = temp_mrk_lon
+			old_job["pointMrklat"] = points["Mrk"]["lat"]
+			old_job["pointMrklon"] = points["Mrk"]["lon"]
+			mode = 0
+			return
+		elseif mode == 4 then
+			mode = 2
+			return
+		end
 
 		if in_menu > 0 then
+			if menu[in_menu]["name"] == "DEFSNOT" then	
+				points["A"]["lat"] = 0
+				points["A"]["lon"] = 0
+				points["B"]["lat"] = 0
+				points["B"]["lon"] = 0	
+				points["Mrk"]["lat"] = 0
+				points["Mrk"]["lon"] = 0	
+				for k in pairs(old_job["spayed_swath"]) do
+					old_job["spayed_swath"][k] = nil
+				end
+				in_menu = 1
+				mode = 1
+				area = 0
+				guide = 0
+				swath_num = 1
+				return
+			elseif menu[in_menu]["name"] == ">SETFAC" then	
+				points["A"]["lat"] = 0
+				points["A"]["lon"] = 0
+				points["B"]["lat"] = 0
+				points["B"]["lon"] = 0	
+				points["Mrk"]["lat"] = 0
+				points["Mrk"]["lon"] = 0	
+				in_menu = 1
+				mode = 1
+				area = 0
+				swath_num = 1
+				menu[1]["set"] = 1
+				menu[2]["set"] = 1
+				menu[3]["set"] = 1
+				menu[4]["set"] = 1
+				menu[5]["set"] = 1
+				menu[6]["set"] = 9
+				menu[7]["set"] = 8
+				menu[8]["set"] = 2
+				menu[9]["set"] = 1
+				menu[10]["set"] = 1
+				menu[11]["set"] = 1
+				menu[12]["set"] = 1
+				for k in pairs(old_job["spayed_swath"]) do
+					old_job["spayed_swath"][k] = nil
+				end
+				xtksense = 2
+				menu[9]["value"] = {"SENS 2"}
+				menu[2]["value"] = {"50.0"}
+				swath_width_dis = 50
+				guide = 0
+				return
+			end
 			if menu[1]["set"] == 1 then	
 				points["A"]["lat"] = 0
 				points["A"]["lon"] = 0
@@ -435,7 +495,7 @@ function cmd_but_ent(phase, duration)
 				end
 				area = 0
 				guide = 0
-				swath_num = 0
+				swath_num = 1
 			elseif menu[1]["set"] == 2 then
 				old_job["set1"] = menu[1]["set"]
 				old_job["set2"] = menu[2]["set"]
@@ -458,55 +518,6 @@ function cmd_but_ent(phase, duration)
 					area = 0
 					guide = 0				
 				end
-			end
-			if menu[in_menu]["name"] == "DEFSNOT" then	
-				points["A"]["lat"] = 0
-				points["A"]["lon"] = 0
-				points["B"]["lat"] = 0
-				points["B"]["lon"] = 0	
-				points["Mrk"]["lat"] = 0
-				points["Mrk"]["lon"] = 0	
-				for k in pairs(old_job["spayed_swath"]) do
-					old_job["spayed_swath"][k] = nil
-				end
-				in_menu = 1
-				mode = 1
-				area = 0
-				guide = 0
-				swath_num = 0
-				return
-			elseif menu[in_menu]["name"] == ">SETFAC" then	
-				points["A"]["lat"] = 0
-				points["A"]["lon"] = 0
-				points["B"]["lat"] = 0
-				points["B"]["lon"] = 0	
-				points["Mrk"]["lat"] = 0
-				points["Mrk"]["lon"] = 0	
-				in_menu = 1
-				mode = 1
-				area = 0
-				swath_num = 0
-				menu[1]["set"] = 1
-				menu[2]["set"] = 1
-				menu[3]["set"] = 1
-				menu[4]["set"] = 1
-				menu[5]["set"] = 1
-				menu[6]["set"] = 9
-				menu[7]["set"] = 8
-				menu[8]["set"] = 2
-				menu[9]["set"] = 1
-				menu[10]["set"] = 1
-				menu[11]["set"] = 1
-				menu[12]["set"] = 1
-				for k in pairs(old_job["spayed_swath"]) do
-					old_job["spayed_swath"][k] = nil
-				end
-				xtksense = 2
-				menu[9]["value"] = {"SENS 2"}
-				menu[2]["value"] = {"50.0"}
-				swath_width_dis = 50
-				guide = 0
-				return
 			end
 			in_menu = 0
 			mode = 0
