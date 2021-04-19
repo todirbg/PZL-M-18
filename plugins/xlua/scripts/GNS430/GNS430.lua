@@ -10,7 +10,7 @@ end
 knob_b_l_ang = create_dataref("custom/dromader/gns430/knob_big_l_ang","number", dummy)
 knob_b_r_ang = create_dataref("custom/dromader/gns430/knob_big_r_ang","number", dummy)
 knob_s_l_ang = create_dataref("custom/dromader/gns430/knob_small_l_ang","number", dummy)
-knob_s_r_ang = create_dataref("custom/dromader/gns430/knob_small_r_ang","number"), dummy
+knob_s_r_ang = create_dataref("custom/dromader/gns430/knob_small_r_ang","number", dummy)
 
 com_vol = find_dataref("sim/cockpit2/radios/actuators/audio_volume_com1")
 gps_pwr = find_dataref("sim/cockpit2/radios/actuators/gps_power")

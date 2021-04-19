@@ -25,7 +25,7 @@ sim/cockpit2/radios/actuators/audio_volume_nav1
 sim/cockpit2/radios/actuators/gps_power
 sim/cockpit2/engine/actuators/cowl_flap_ratio[0]
 sim/cockpit2/engine/actuators/carb_heat_ratio[0]
-sim/cockpit/g430/g430_nav_com_sel
+sim/cockpit/g430/g430_nav_com_sel[0]
 sim/flightmodel2/engines/prop_is_disc[0]
 sim/flightmodel2/engines/prop_disc/side_angle[0]
 sim/flightmodel2/engines/prop_disc/disc_s[0]

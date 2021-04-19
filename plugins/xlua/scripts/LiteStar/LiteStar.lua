@@ -26,6 +26,7 @@ local xtksense = 0
 local swath_num = 0
 local swath_dir = 0
 local swath_width_m = 0
+local flash_timer = 0
 
 local temp_mrk_lat = 0
 local temp_mrk_lon = 0
@@ -147,6 +148,7 @@ old_job["sens"] = 2
 old_job["acres"] = 0
 old_job["brt_knob"] = 0.8
 old_job["brt_control"] = 101
+old_job["spayed_swath"] = {}
 
 function brt_knob_handler()
 	old_job["brt_knob"] = brt_knob
@@ -181,13 +183,15 @@ local filename = "Output/preferences/LiteStarIV.cfg"
 
 local file = io.open(filename, "a+")
 	while true do
-	  local line = file:read("*line")
-	  if line == nil then break end
-	  
-	  k,v = line:match('^([^=]+)=(.+)$')
-	  if k:sub(1, 1) ~= "#" then 
+		local line = file:read("*line")
+		if line == nil then break end
+		
+		k,v = line:match('^([^=]+)=(.+)$')
+		if k:sub(1, 1) ~= "#" and k:sub(1, 12) ~= "spayed_swath" then 
 			old_job[k] = tonumber(v)
-	  end
+		elseif k:sub(1, 12) == "spayed_swath" then
+			old_job["spayed_swath"][tonumber(k:sub(13))] = tonumber(v)
+		end
 	end
 file:close()
 
@@ -425,7 +429,10 @@ function cmd_but_ent(phase, duration)
 				old_job["set11"] = menu[11]["set"]
 				old_job["set12"] = menu[12]["set"]
 				old_job["swath_width"] = swath_width_dis
-				old_job["sens"] = xtksense				
+				old_job["sens"] = xtksense	
+				for k in pairs(old_job["spayed_swath"]) do
+					old_job["spayed_swath"][k] = nil
+				end
 				area = 0
 				guide = 0
 				swath_num = 0
@@ -459,6 +466,9 @@ function cmd_but_ent(phase, duration)
 				points["B"]["lon"] = 0	
 				points["Mrk"]["lat"] = 0
 				points["Mrk"]["lon"] = 0	
+				for k in pairs(old_job["spayed_swath"]) do
+					old_job["spayed_swath"][k] = nil
+				end
 				in_menu = 1
 				mode = 1
 				area = 0
@@ -488,6 +498,9 @@ function cmd_but_ent(phase, duration)
 				menu[10]["set"] = 1
 				menu[11]["set"] = 1
 				menu[12]["set"] = 1
+				for k in pairs(old_job["spayed_swath"]) do
+					old_job["spayed_swath"][k] = nil
+				end
 				xtksense = 2
 				menu[9]["value"] = {"SENS 2"}
 				menu[2]["value"] = {"50.0"}
@@ -765,6 +778,18 @@ function flight_start()
 	
 end
 
+
+
+function timer()
+	if flash_timer == 1 then
+		flash_timer = 0
+	else 
+		flash_timer = 1
+	end
+end
+
+run_at_interval(timer,(1/4))
+
 function after_physics()
 	if power == 1 then
 		if spray == 1 then 
@@ -777,10 +802,10 @@ function after_physics()
 		
 		if menu[10]["set"] == 1 then
 			spd = math.min(999,msec2mph(spd_dr))
-			area_disp = math.min(999,hect2acre(area))
+			area_disp = math.min(99.9,hect2acre(area, 2))
 			alt = math.min(9999,met2feet(alt_dr))
 		else
-			area_disp = math.min(999,area)
+			area_disp = math.min(99.9,area)
 			spd = math.min(999,msec2kph(spd_dr))
 			alt = math.min(9999, round2(alt_dr))
 		end
@@ -796,9 +821,10 @@ function after_physics()
 			str_hdgR = ""
 			str_trkL = ""
 			str_trkR = ""
+			str_ontrk =""
 			if mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
 				if guide == 1 then 
-				
+					
 					if menu[10]["set"] == 1 then
 						xtk = met2feet(crosstrack( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["A"]["lat"], points["A"]["lon"], dtk) )
 					else
@@ -861,6 +887,20 @@ function after_physics()
 						end
 						xtk = math.min(xtk, 999)
 					end
+					
+					if str_ontrk == ontrk and spray == 1 and old_job["spayed_swath"][swath_num] == nil then
+						old_job["spayed_swath"][swath_num] = 0
+					elseif str_ontrk == ontrk and spray == 0 and old_job["spayed_swath"][swath_num] == 0 then
+						old_job["spayed_swath"][swath_num] = 1
+					elseif str_ontrk == ontrk and spray == 1 and old_job["spayed_swath"][swath_num] == 1 then
+							if flash_timer == 1 then
+								str_trkL = "*********************"
+								str_trkR = ",,,,,,,,,,,,,,,,,,,,,"
+							else
+								str_trkL = ""
+								str_trkR = ""							
+							end							
+					end
 				-- "SwthNum", "X-Track", "Blank", "GPS Alt", "NumSats", "HDOP", "A/B Hdg", "Time", "Dst2Mrk", "Acres", "AcftHdg", "Speed"
 				-- "SwthNum", "Blank", "NumSats", "HDOP", "A/B Hdg", "Acres", "AcftHdg", "Speed"	
 				
@@ -894,7 +934,7 @@ function after_physics()
 					end
 					str_dis1 = string.format("%4d", math.min(9999, dist))
 				elseif menu[5]["set"] == 10 then
-					str_dis1 = string.format("%3d", area_disp)
+					str_dis1 = string.format("%2.1f", area_disp)
 				elseif menu[5]["set"] == 11 then
 					str_dis1 = string.format("%3d", gps_crs)
 				elseif menu[5]["set"] == 12 then
@@ -916,7 +956,7 @@ function after_physics()
 				elseif menu[6]["set"] == 5 then
 					str_dis2 = string.format("%3d", dtk)
 				elseif menu[6]["set"] == 6 then
-					str_dis2 = string.format("%3d", area_disp)
+					str_dis2 = string.format("%2.1f", area_disp)
 				elseif menu[6]["set"] == 7 then
 					str_dis2 = string.format("%3d", gps_crs)
 				elseif menu[6]["set"] == 8 then
@@ -938,7 +978,7 @@ function after_physics()
 				elseif menu[7]["set"] == 5 then
 					str_dis3 = string.format("%3d", dtk)
 				elseif menu[7]["set"] == 6 then
-					str_dis3 = string.format("%3d", area_disp)
+					str_dis3 = string.format("%2.1f", area_disp)
 				elseif menu[7]["set"] == 7 then
 					str_dis3 = string.format("%3d", gps_crs)
 				elseif menu[7]["set"] == 8 then
@@ -975,7 +1015,7 @@ function after_physics()
 						end
 						str_dis4 = string.format("%4d", math.min(9999, dist))
 					elseif menu[8]["set"] == 10 then
-						str_dis4 = string.format("%3d", area_disp)
+						str_dis4 = string.format("%2.1f", area_disp)
 					elseif menu[8]["set"] == 11 then
 						str_dis4 = string.format("%3d", gps_crs)
 					elseif menu[8]["set"] == 12 then
@@ -989,9 +1029,14 @@ function after_physics()
 						local point = "A"
 						if points["A"]["lat"] ~= 0 and points["A"]["lon"] ~= 0 then
 							point = "B"
-							str_trkL = "*********************"
-							str_trkR = ",,,,,,,,,,,,,,,,,,,,,"
 							str_ontrk = ontrk
+							if flash_timer == 1 then
+								str_trkL = "*********************"
+								str_trkR = ",,,,,,,,,,,,,,,,,,,,,"
+								if old_job["spayed_swath"][swath_num] == nil and spray == 1 then
+									old_job["spayed_swath"][swath_num] = 0
+								end
+							end
 						end
 						str_dis1 = string.format("---%s", point)
 						str_dis2 = string.format("%3d", spd)
@@ -1021,10 +1066,10 @@ function after_physics()
 				end
 				
 				if diff > 0 then 
-					diff = math.floor(math.min(diff/5, 18) )
+					diff = round2(math.min(diff/5, 18) )
 					str_hdgL = ledtrkL[diff]	
 				elseif diff < 0 then
-					diff = math.floor(math.min(math.abs(diff/5), 18) )
+					diff = round2(math.min(math.abs(diff/5), 18) )
 					str_hdgR = ledtrkR[diff]	
 				end
 
@@ -1047,9 +1092,16 @@ end
 
 function aircraft_unload()
 	local file = io.open(filename, "w")
-
+	local table_index = 0
 	for k,v in pairs(old_job) do
-		file:write(k .. "=" .. v .. "\n" )
+		if type(v) ~= "table" then
+			file:write(k .. "=" .. v .. "\n" )
+		else
+			table_index = k
+		end
+	end
+	for k,v in pairs(old_job[table_index]) do
+			file:write(table_index .. k .. "=" .. v .. "\n" )
 	end
 	
 	file:close()
