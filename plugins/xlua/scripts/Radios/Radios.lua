@@ -12,12 +12,12 @@ transp_mode = find_dataref("sim/cockpit/radios/transponder_mode")
 transp_mode_dromader = create_dataref("custom/dromader/radios/transponder_mode","number", dummy)
 
 transp_knob = create_dataref("custom/dromader/radios/transponder_rot","array[4]", dummy)
-transp_str_FL = create_dataref("custom/dromader/radios/string_fl","string")
-transp_str_ALT = create_dataref("custom/dromader/radios/string_alt","string")
-transp_str_SBY = create_dataref("custom/dromader/radios/string_sby","string")
-transp_str_GND = create_dataref("custom/dromader/radios/string_gnd","string")
-transp_str_ON = create_dataref("custom/dromader/radios/string_on","string")
-transp_str_R = create_dataref("custom/dromader/radios/string_r","string")
+transp_str_FL = create_dataref("custom/dromader/radios/string_fl","string", dummy)
+transp_str_ALT = create_dataref("custom/dromader/radios/string_alt","string", dummy)
+transp_str_SBY = create_dataref("custom/dromader/radios/string_sby","string", dummy)
+transp_str_GND = create_dataref("custom/dromader/radios/string_gnd","string", dummy)
+transp_str_ON = create_dataref("custom/dromader/radios/string_on","string", dummy)
+transp_str_R = create_dataref("custom/dromader/radios/string_r","string", dummy)
 transp_str_FL = "FL"
 transp_str_ALT = "ALT"
 transp_str_SBY = "SBY"
@@ -276,12 +276,12 @@ function flight_start()
 	if startup_running == 1 then
 		nav_brt = 0.7
 		nav_pwr = 1
-		nav_pwr_knob = 0.7
 		com_brt = 0.7
 		com_pwr = 1
-		com_pwr_knob = 0.7
-		transp_mode = 1
-		transp_mode_dromader = 1
+		com_pwr_konb = 0.7
+		nav_pwr_konb = 0.7
+		transp_mode = 3
+		transp_mode_dromader = 5
 	else
 		nav_brt = 0.0
 		nav_pwr = 0

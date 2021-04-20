@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186571717
+P _gear/0/_stat_def 0.186571702
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186571717
+P _gear/1/_stat_def 0.186571702
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.186571717
+P _gear/2/_stat_def 0.186571702
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -19692,8 +19692,8 @@ P _part/56/_geo_xyz/1,12,2 1.218981028
 P _part/56/_geo_xyz/1,13,0 -2.211285114
 P _part/56/_geo_xyz/1,13,1 -0.003965000
 P _part/56/_geo_xyz/1,13,2 1.218979955
-P _part/56/_geo_xyz/1,14,0 -2.043447018
-P _part/56/_geo_xyz/1,14,1 0.847492993
+P _part/56/_geo_xyz/1,14,0 -2.042999983
+P _part/56/_geo_xyz/1,14,1 0.847000003
 P _part/56/_geo_xyz/1,14,2 1.218978047
 P _part/56/_geo_xyz/1,15,0 -1.562546968
 P _part/56/_geo_xyz/1,15,1 1.569908023
@@ -19707,8 +19707,8 @@ P _part/56/_geo_xyz/1,17,2 1.218999982
 P _part/56/_geo_xyz/1,2,0 1.562546968
 P _part/56/_geo_xyz/1,2,1 1.569908023
 P _part/56/_geo_xyz/1,2,2 1.218976974
-P _part/56/_geo_xyz/1,3,0 2.043447018
-P _part/56/_geo_xyz/1,3,1 0.847492993
+P _part/56/_geo_xyz/1,3,0 2.042999983
+P _part/56/_geo_xyz/1,3,1 0.847000003
 P _part/56/_geo_xyz/1,3,2 1.218978047
 P _part/56/_geo_xyz/1,4,0 2.211285114
 P _part/56/_geo_xyz/1,4,1 -0.003965000
@@ -21066,7 +21066,7 @@ P _part/56/_locked/9,9 1
 P _part/56/_locked/i_count 20
 P _part/56/_locked/j_count 18
 P _part/56/_part_area_rule 1.0
-P _part/56/_part_cd 0.171000004
+P _part/56/_part_cd 0.150000006
 P _part/56/_part_phi 0.0
 P _part/56/_part_psi 0.0
 P _part/56/_part_rad 5.840000153
@@ -38215,10 +38215,10 @@ P acf/_rudd_trim_time 3.500000000
 P acf/_rudd_with_ailn_rat 0.0
 P acf/_rudd_with_fail 0.0
 P acf/_rwy_req_pave 0
-P acf/_sbrk1_cratR 0.0
-P acf/_sbrk1_cratT 0.0
-P acf/_sbrk1_up_flit 0.0
-P acf/_sbrk1_up_grnd 0.0
+P acf/_sbrk1_cratR 0.100000001
+P acf/_sbrk1_cratT 0.100000001
+P acf/_sbrk1_up_flit 90.0
+P acf/_sbrk1_up_grnd 90.0
 P acf/_sbrk2_cratR 0.0
 P acf/_sbrk2_cratT 0.0
 P acf/_sbrk2_up_flit 0.0

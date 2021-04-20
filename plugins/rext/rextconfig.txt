@@ -84,6 +84,12 @@ custom/dromader/radios/comm_coarse_knob
 custom/dromader/radios/comm_fine_knob
 custom/dromader/radios/nav_coarse_knob
 custom/dromader/radios/nav_fine_knob
+custom/dromader/radios/string_fl
+custom/dromader/radios/string_alt
+custom/dromader/radios/string_sby
+custom/dromader/radios/string_gnd
+custom/dromader/radios/string_on
+custom/dromader/radios/string_r
 #custom/dromader/radios/transponder_rot[0]
 #custom/dromader/radios/transponder_rot[1]
 #custom/dromader/radios/transponder_rot[2]

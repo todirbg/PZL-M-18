@@ -23,17 +23,17 @@ spray_sw = create_dataref("custom/dromader/spray/spray_sw","number", dummy)
 vru_set = create_dataref("custom/dromader/spray/vru_set","number", dummy)
 pump_press_set = create_dataref("custom/dromader/spray/pump_press_set","number", dummy)
 flow_rate = create_dataref("custom/dromader/spray/flow_rate","number", dummy)
-local acf_cg_save = acf_cd
+local acf_cd_save = acf_cd
 
 function ag_equip_toggle_cmd(phase, duration)
 	if phase == 0 then
 		if boom_hide == 0 then
 			boom_hide = 1
-			acf_cd = acf_cg_save
+			acf_cd = acf_cd_save
 			boom_press = 0
 		else
 			boom_hide = 0
-			acf_cd = acf_cg_save*3
+			acf_cd = acf_cd_save*3
 		end
 	end
 end
@@ -86,8 +86,11 @@ end
 boomfusecmd = create_command("custom/dromader/spray/boom_fuse_cmd","Toggle boom fuse", boom_fuse_toggle_cmd)
 
 function flight_start()
-	if boom_hide == 0 and startup_running == 1 then
-		spray_sw = 1
+	if boom_hide == 0 then
+		acf_cd = acf_cd_save*3
+		if startup_running == 1 then
+			boom_fuse = 1
+		end
 	end
 end
 

@@ -631,21 +631,25 @@ end
 
 spraytogwrapcmd = wrap_command("custom/dromader/spray/spray_tog_cmd",dummy, spray_toggle_after_cmd)
 
--- function spray_after_cmd(phase, duration)
-	-- if phase == 0 then
-		-- if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then 
-			-- points["A"]["lat"] = lat
-			-- points["A"]["lon"] = lon
-		-- end
-	-- elseif phase == 2 then
-		-- if  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then 
-			-- points["B"]["lat"] = lat
-			-- points["B"]["lon"] = lon
-		-- end
-	-- end
--- end
+function spray_after_cmd(phase, duration)
+	if phase == 0 and power == 1 then
+		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then 
+			points["A"]["lat"] = lat
+			points["A"]["lon"] = lon
+			old_job["pointAlat"] = points["A"]["lat"]
+			old_job["pointAlon"] = points["A"]["lon"]
+		end
+	elseif phase == 2 and power == 1 then
+		if  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then 
+			points["B"]["lat"] = lat
+			points["B"]["lon"] = lon
+			old_job["pointBlat"] = points["B"]["lat"]
+			old_job["pointBlon"] = points["B"]["lon"]	
+		end
+	end
+end
 
--- spraywrapcmd = wrap_command("custom/dromader/spray/spray_cmd",dummy, spray_after_cmd)
+spraywrapcmd = wrap_command("custom/dromader/spray/spray_cmd",dummy, spray_after_cmd)
 
 str_disL = create_dataref("custom/dromader/litestar/disp_L","string", dummy)
 str_disR = create_dataref("custom/dromader/litestar/disp_R","string", dummy)
