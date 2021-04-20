@@ -119,3 +119,16 @@ custom/dromader/spray/pump_press_set
 custom/dromader/spray/flow_rate
 #misc
 custom/dromader/misc/tension_handle
+#LiteStar IV
+custom/dromader/litestar/fuse
+custom/dromader/litestar/power_sw
+custom/dromader/litestar/power
+custom/dromader/litestar/brt_knob
+custom/dromader/litestar/disp_L
+custom/dromader/litestar/disp_R
+custom/dromader/litestar/trk_L
+custom/dromader/litestar/trk_R
+custom/dromader/litestar/hdg_L
+custom/dromader/litestar/hdg_R
+custom/dromader/litestar/on_trk
+custom/dromader/litestar/stat

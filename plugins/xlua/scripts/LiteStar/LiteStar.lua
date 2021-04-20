@@ -647,14 +647,14 @@ spraytogwrapcmd = wrap_command("custom/dromader/spray/spray_tog_cmd",dummy, spra
 
 -- spraywrapcmd = wrap_command("custom/dromader/spray/spray_cmd",dummy, spray_after_cmd)
 
-str_disL = create_dataref("custom/dromader/litestar/disp_L","string")
-str_disR = create_dataref("custom/dromader/litestar/disp_R","string")
-str_trkL = create_dataref("custom/dromader/litestar/trk_L","string")
-str_trkR = create_dataref("custom/dromader/litestar/trk_R","string")
-str_hdgL = create_dataref("custom/dromader/litestar/hdg_L","string")
-str_hdgR = create_dataref("custom/dromader/litestar/hdg_R","string")
-str_ontrk = create_dataref("custom/dromader/litestar/on_trk","string")
-str_stat = create_dataref("custom/dromader/litestar/stat","string")
+str_disL = create_dataref("custom/dromader/litestar/disp_L","string", dummy)
+str_disR = create_dataref("custom/dromader/litestar/disp_R","string", dummy)
+str_trkL = create_dataref("custom/dromader/litestar/trk_L","string", dummy)
+str_trkR = create_dataref("custom/dromader/litestar/trk_R","string", dummy)
+str_hdgL = create_dataref("custom/dromader/litestar/hdg_L","string", dummy)
+str_hdgR = create_dataref("custom/dromader/litestar/hdg_R","string", dummy)
+str_ontrk = create_dataref("custom/dromader/litestar/on_trk","string", dummy)
+str_stat = create_dataref("custom/dromader/litestar/stat","string", dummy)
 str_disL = ""--"---A123"
 str_disR = ""--"123----"
 str_trkL = ""--"*********************"
@@ -813,10 +813,10 @@ function after_physics()
 		
 		if menu[10]["set"] == 1 then
 			spd = math.min(999,msec2mph(spd_dr))
-			area_disp = math.min(99.9,hect2acre(area, 2))
+			area_disp = math.min(999,hect2acre(area,2))
 			alt = math.min(9999,met2feet(alt_dr))
 		else
-			area_disp = math.min(99.9,area)
+			area_disp = math.min(999,area)
 			spd = math.min(999,msec2kph(spd_dr))
 			alt = math.min(9999, round2(alt_dr))
 		end
@@ -945,7 +945,7 @@ function after_physics()
 					end
 					str_dis1 = string.format("%4d", math.min(9999, dist))
 				elseif menu[5]["set"] == 10 then
-					str_dis1 = string.format("%2.1f", area_disp)
+					str_dis1 = string.format("%3d", area_disp)
 				elseif menu[5]["set"] == 11 then
 					str_dis1 = string.format("%3d", gps_crs)
 				elseif menu[5]["set"] == 12 then
@@ -967,7 +967,7 @@ function after_physics()
 				elseif menu[6]["set"] == 5 then
 					str_dis2 = string.format("%3d", dtk)
 				elseif menu[6]["set"] == 6 then
-					str_dis2 = string.format("%2.1f", area_disp)
+					str_dis2 = string.format("%3d", area_disp)
 				elseif menu[6]["set"] == 7 then
 					str_dis2 = string.format("%3d", gps_crs)
 				elseif menu[6]["set"] == 8 then
@@ -989,7 +989,7 @@ function after_physics()
 				elseif menu[7]["set"] == 5 then
 					str_dis3 = string.format("%3d", dtk)
 				elseif menu[7]["set"] == 6 then
-					str_dis3 = string.format("%2.1f", area_disp)
+					str_dis3 = string.format("%3d", area_disp)
 				elseif menu[7]["set"] == 7 then
 					str_dis3 = string.format("%3d", gps_crs)
 				elseif menu[7]["set"] == 8 then
@@ -1026,7 +1026,7 @@ function after_physics()
 						end
 						str_dis4 = string.format("%4d", math.min(9999, dist))
 					elseif menu[8]["set"] == 10 then
-						str_dis4 = string.format("%2.1f", area_disp)
+						str_dis4 = string.format("%3d", area_disp)
 					elseif menu[8]["set"] == 11 then
 						str_dis4 = string.format("%3d", gps_crs)
 					elseif menu[8]["set"] == 12 then
