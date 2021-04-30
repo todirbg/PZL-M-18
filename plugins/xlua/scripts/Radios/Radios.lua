@@ -36,12 +36,14 @@ nav_pwr = find_dataref("sim/cockpit2/radios/actuators/nav1_power")
 com_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")
 nav_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[1]")
 
+transponder_fuse = find_dataref("custom/dromader/electrical/transponder_power")
+
 startup_running = find_dataref("sim/operation/prefs/startup_running")
 
 function cmd_transponder_up(phase, duration)
 	if phase == 0 then
 		if transp_mode_dromader < 5 then
-			transp_mode_dromader = transp_mode_dromader + 1	
+			transp_mode_dromader = transp_mode_dromader + 1
 			if transp_mode_dromader == 1 then
 				transp_mode = 1
 			elseif transp_mode_dromader == 2 then
@@ -83,7 +85,7 @@ cmdcsutomtransdwn = create_command("custom/dromader/radios/transponder_dn","Tran
 
 
 function cmd_transponder_vfr(phase, duration)
-	if phase == 0 then
+	if phase == 0 and transponder_fuse == 1 then
 		transp_code = 1200
 	end
 end
@@ -288,7 +290,7 @@ function flight_start()
 		nav_pwr_knob = 0.0
 		com_brt = 0.0
 		com_pwr = 0
-		com_pwr_knob = 0.0	
+		com_pwr_knob = 0.0
 		transp_mode = 0
 		transp_mode_dromader = 0
 	end

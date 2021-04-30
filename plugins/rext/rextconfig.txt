@@ -6,6 +6,11 @@
 #DEFAULT SET TO 0.1s
 %0.03
 ##########################################
+#Maximum recorded samples. Set 0 for indefinate.
+$100000
+##########################################
+#Float recording tolerance. Sets how much a float dataref should change to be recorded
+&0.01
 ##############DATAREFS SECTION############
 #It is planes author responsibility not to record datarefs already saved for replay by X-Plane
 #Add your datarefs here. Only float and int types are supported. Array datarefs must be accessed by index.
@@ -97,6 +102,7 @@ custom/dromader/radios/string_r
 custom/dromader/radios/transponder_mode
 #engine
 custom/dromader/electrical/starter_fuse
+custom/dromader/engine/flooded
 #mixture
 custom/dromader/fuel/mixture_handle
 #comapass

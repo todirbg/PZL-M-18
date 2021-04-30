@@ -24,12 +24,11 @@ engn_tacrad = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
 
 fuel_fuse = find_dataref("custom/dromader/electrical/fuel_fuse")
 fuel_burning = find_dataref("sim/flightmodel2/engines/engine_is_burning_fuel[0]")
-primed_ratio = find_dataref("custom/dromader/engine/primed_ratio")
 
 
 local cutoff = 0
 local man_press = 0
-local flooded = 0
+
 function fuel_cutoff_handler()
 	if fuel_cutoff_selector > 0.7 then
 		cutoff = 1
@@ -50,9 +49,9 @@ fuel_press_dromader = create_dataref("custom/dromader/fuel/fuel_press","number",
 fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector","number", dummy) -- (1=left,2=all,3=right)
 
 
-local prev = 0 
+local prev = 0
 function man_fuel_pump_handler()
-	if manual_fuel_pump < prev and cutoff == 0 then
+	if manual_fuel_pump < prev and cutoff == 0 and fuel_press_dromader < 38 then
 		fuel_press_dromader = fuel_press_dromader + (prev - manual_fuel_pump)*2
 	end
 	prev = manual_fuel_pump
@@ -67,17 +66,17 @@ function update_fuel_needles()
 		fuel_quantity_dromader_R = func_animate_slowly(fuel_quantity_right, fuel_quantity_dromader_R, 2)
 		if fuel_quantity_dromader_L < 35 then
 			fuel_low_dromader_L = 1
-		else 
+		else
 			fuel_low_dromader_L = 0
 		end
 		if fuel_quantity_dromader_R < 35 then
 			fuel_low_dromader_R = 1
-		else 
+		else
 			fuel_low_dromader_R = 0
 		end
 	else
 		fuel_quantity_dromader_L = func_animate_slowly(0, fuel_quantity_dromader_L, 2)
-		fuel_quantity_dromader_R = func_animate_slowly(0, fuel_quantity_dromader_R, 2)	
+		fuel_quantity_dromader_R = func_animate_slowly(0, fuel_quantity_dromader_R, 2)
 	end
 end
 
@@ -90,7 +89,7 @@ end
 function cmd_fuel_selector_up(phase, duration)
 	if phase == 0 then
 		if fuel_tank_selector_handle < 3 then
-			fuel_tank_selector_handle = fuel_tank_selector_handle + 1	
+			fuel_tank_selector_handle = fuel_tank_selector_handle + 1
 		end
 	end
 end
@@ -131,14 +130,14 @@ function flight_start()
 		fuel_flow_before_engine = 1
 		fuel_tank_selector_handle = 2
 		fuel_fuse = 1
-		press = 20
+		press = 35
 	else
 		fuel_flow_before_engine = 0
 		fuel_tank_selector_handle = 2
 		fuel_fuse = 0
 		press = 0
 	end
-	
+
 end
 
 function aircraft_unload()
@@ -146,7 +145,7 @@ function aircraft_unload()
 end
 local nofuel = 0
 function tank_check_empty(tank_quantity)
-	if tank_quantity < 0 then 
+	if tank_quantity < 0 then
 		nofuel = 1
 	else
 		nofuel = 0
@@ -155,27 +154,23 @@ end
 
 function update_fuel_press()
 
-	
-	if cutoff == 0 and nofuel == 0 then 
+
+	if cutoff == 0 and nofuel == 0 then
 		fuel_press_dromader = math.max(fuel_press_dromader, math.sqrt(6*math.abs(engn_tacrad)))
 	end
-	if engn_tacrad > 1 then 
+	if engn_tacrad > 1 then
 	fuel_press_dromader = math.max(0, fuel_press_dromader - engn_tacrad/10*(throttle_ratio + 0.2)* SIM_PERIOD)
 	end
-	if fuel_press_dromader > 50 then flooded = 1 end
-	if primed_ratio > 2 then flooded = 1 end
-	if flooded == 1 then
-		if fuel_press_dromader < 20 and primed_ratio < 1  then flooded = 0 end
-	end
+
 end
 
-function auto_start_before()
-	fuel_press_dromader = 35
-end
+--function auto_start_before()
+--	fuel_press_dromader = 35
+--end
 
 
-quickstart = wrap_command("sim/operation/quick_start", auto_start_before, dummy)
-autostart = wrap_command("sim/operation/auto_start", auto_start_before, dummy)
+--quickstart = wrap_command("sim/operation/quick_start", auto_start_before, dummy)
+--autostart = wrap_command("sim/operation/auto_start", auto_start_before, dummy)
 
 function after_physics()
 	update_fuel_needles()
@@ -195,10 +190,10 @@ function after_physics()
 		end
 	end
 
-	if cutoff==1 or nofuel==1 or fuel_press_dromader < 15 or flooded == 1 then
+	if cutoff==1 or nofuel==1 or fuel_press_dromader < 15 then
 		fuel_flow_before_engine = 0
 	else
 		fuel_flow_before_engine = 1
 	end
-	
+
 end

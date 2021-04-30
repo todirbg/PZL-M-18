@@ -42,11 +42,11 @@ agequiptogcmd = create_command("custom/dromader/spray/ag_equip_tog_cmd","Toggle 
 
 function spray_toggle_cmd(phase, duration)
 	if phase == 0 then
-		if spray_sw == 0 then 
+		if spray_sw == 0 then
 			spray_sw = 1
 			if water_quantity > 0 and boom_fuse == 1 and boom_hide == 0 then
 				spray = 1
-			end		
+			end
 		else
 			spray_sw = 0
 			spray = 0
@@ -61,7 +61,7 @@ function spray_cmd(phase, duration)
 		if spray == 0 and water_quantity > 0 and boom_fuse == 1 and boom_hide == 0 then
 			spray = 1
 		end
-	elseif phase == 1 then	
+	elseif phase == 1 then
 			if water_quantity < 0 or boom_fuse == 0 then
 				spray = 0
 				boom_press = 0
@@ -105,8 +105,8 @@ function after_physics()
 		end
 
 		atom_prop_deg = temp_deg
-		
-		if boom_fuse == 1 then
+
+
 			local temp_pump_deg = pump_prop_deg
 			temp_pump_deg = temp_pump_deg + math.max(0,(air_speed +  prop_wash/2) )*36*SIM_PERIOD
 			pump_prop_deg_sec = (temp_pump_deg - pump_prop_deg)/(SIM_PERIOD*60)
@@ -118,9 +118,9 @@ function after_physics()
 
 			if temp_pump_deg > 360 then
 				temp_pump_deg = temp_pump_deg - 360
-			end	
+			end
 			pump_prop_deg = temp_pump_deg
-		end	
+
 		if water_quantity > 0 and boom_fuse == 1 then
 			if spray == 1 then
 				flow_rate = (vru_set*boom_press)*10

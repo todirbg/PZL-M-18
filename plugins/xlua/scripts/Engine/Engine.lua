@@ -51,7 +51,7 @@ primed_ratio = create_dataref("custom/dromader/engine/primed_ratio","number", du
 --magR_fail = find_dataref("sim/operation/failures/rel_magRGT0")
 running_eng = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 eng_max_pwr_w = find_dataref("sim/aircraft2/engine/max_power_limited_watts")
-
+flooded = create_dataref("custom/dromader/engine/flooded","number", dummy)
 
 
 MP_limit = find_dataref("sim/aircraft/limits/red_hi_MP")
@@ -59,13 +59,18 @@ MP_cur = find_dataref("sim/cockpit2/engine/indicators/MPR_in_hg[0]")
 
 
 max_throt = find_dataref("sim/aircraft/engine/acf_throtmax_FWD")
+fuel_press_dromader = find_dataref("custom/dromader/fuel/fuel_press")
 
 local eng_power_wats = eng_max_pwr_w
+
 
 local primer_handle_prev = 0
 function primer_handle_handler()
 	if running_eng == 0 and primer_handle_prev > primer_handle then
-		primed_ratio = primed_ratio + (primer_handle_prev - primer_handle)*0.2
+		primed_ratio = primed_ratio + (primer_handle_prev - primer_handle)*(fuel_press_dromader/180)
+		if primed_ratio > 2 then
+			flooded = 1
+		end
 	end
 	primer_handle_prev = primer_handle
 
@@ -98,16 +103,19 @@ end
 local primed_good = 0
 function cmd_starter_wrap_after_handler(phase, duration)
 	if phase == 0 then 
-		if primed_ratio > math.random() then
+		if primed_ratio > math.random()*0.8 and  flooded == 0 then
 			primed_good = 1
 		else
 			primed_good = 0
 			eng_fail = 6
+			if primed_ratio > 2 then
+				flooded = 1
+			end
 		end
 	elseif phase == 1 and starter_fuse == 1 then
 		flywheel_rpm = math.max(0, flywheel_rpm - 20*SIM_PERIOD)
 		primed_ratio_prev = primed_ratio
-	elseif phase == 2 and starter_fuse == 1 then
+	elseif phase == 2 and starter_fuse == 1 and flooded == 0 then
 		primed_ratio = 0
 	end
 end

@@ -85,7 +85,7 @@ function cmd_heater_sw_dwn(phase, duration)
 	if phase == 0 then
 		heater_sw = heater_sw - 1
 		if heater_sw > -1 then bus_load_add = bus_load_add - 10 end
-		if heater_sw < 0 then heater_sw = 0 end		
+		if heater_sw < 0 then heater_sw = 0 end
 	end
 end
 
@@ -237,8 +237,8 @@ cmdcustomfueltog = create_command("custom/dromader/electrical/fuel_fuse_tog","To
 
 function cmd_bat_selector_up(phase, duration)
 	if phase == 0 then
-		if bat_sel < 2 then 
-			bat_sel = bat_sel + 1 
+		if bat_sel < 2 then
+			bat_sel = bat_sel + 1
 		end
 		if bat_sel == 0 then
 			batt = 1
@@ -255,8 +255,8 @@ end
 
 function cmd_bat_selector_dwn(phase, duration)
 	if phase == 0 then
-		if bat_sel > 0 then 
-			bat_sel = bat_sel - 1 
+		if bat_sel > 0 then
+			bat_sel = bat_sel - 1
 		end
 		if bat_sel == 0 then
 			batt = 1
@@ -267,7 +267,7 @@ function cmd_bat_selector_dwn(phase, duration)
 		elseif bat_sel == 2 then
 			batt = 1
 			gpu = 1
-		end		
+		end
 	end
 end
 
@@ -278,17 +278,17 @@ cmdcustombatswdwn = create_command("custom/dromader/electrical/bat_selector_dwn"
 
 function cmd_volt_selector_up(phase, duration)
 	if phase == 0 then
-		if volt_sel < 4 then 
-			volt_sel = volt_sel + 1 
+		if volt_sel < 4 then
+			volt_sel = volt_sel + 1
 		end
 	end
 end
 
 function cmd_volt_selector_dwn(phase, duration)
 	if phase == 0 then
-		if volt_sel > 0 then 
-			volt_sel = volt_sel - 1 
-		end	
+		if volt_sel > 0 then
+			volt_sel = volt_sel - 1
+		end
 	end
 end
 
@@ -298,7 +298,7 @@ cmdcustomvoltswdwn = create_command("custom/dromader/electrical/volt_selector_dw
 function cmd_volt_but_press(phase, duration)
 	if phase == 1 then
 		volt_but = 1
-	else 
+	else
 		volt_but = 0
 	end
 end
@@ -306,20 +306,21 @@ end
 
 cmdcustomvoltbutpress = create_command("custom/dromader/electrical/volt_but","Press voltmeter button",cmd_volt_but_press)
 
+fuel_press_dromader = find_dataref("custom/dromader/fuel/fuel_press")
 function auto_start_after()
 		inst_light_fuse = 0
 		inst_light_fail = 6
 		bat_sel = 0
 		batt = 1
 		gpu = 0
-		stall_fuse = 1
-		stall_fail = 0
-		agk49_fuse = 1
-		agk49_fail = 0
-		radio_fuse = 1
-		radio_fail = 0
-		transponder_fuse = 1
-		transponder_fail = 0
+--		stall_fuse = 1
+--		stall_fail = 0
+--		agk49_fuse = 1
+--		agk49_fail = 0
+--		radio_fuse = 1
+--		radio_fail = 0
+--		transponder_fuse = 1
+--		transponder_fail = 0
 		fuel_fuse = 1
 		heater_sw = 0
 		vent_fuse = 0
@@ -327,10 +328,11 @@ function auto_start_after()
 		taxi_lt = 0
 		nav_lt = 0
 		strobe_lt = 0
-		beacon_lt = 0	
-		elec_hyd = 1
+		beacon_lt = 1
+--		elec_hyd = 1
 		stat_heat = 0
 		bus_load_add = 10
+        fuel_press_dromader = 35
 end
 
 function auto_board_after()
@@ -339,14 +341,14 @@ function auto_board_after()
 		bat_sel = 0
 		batt = 1
 		gpu = 0
-		stall_fuse = 1
-		stall_fail = 0
-		agk49_fuse = 1
-		agk49_fail = 0
-		radio_fuse = 1
-		radio_fail = 0
-		transponder_fuse = 1
-		transponder_fail = 0
+--		stall_fuse = 1
+--		stall_fail = 0
+--		agk49_fuse = 1
+--		agk49_fail = 0
+--		radio_fuse = 1
+--		radio_fail = 0
+--		transponder_fuse = 1
+--		transponder_fail = 0
 		fuel_fuse = 1
 		heater_sw = 0
 		vent_fuse = 0
@@ -354,8 +356,8 @@ function auto_board_after()
 		taxi_lt = 0
 		nav_lt = 0
 		strobe_lt = 0
-		beacon_lt = 0	
-		elec_hyd = 1
+		beacon_lt = 1
+--		elec_hyd = 1
 		stat_heat = 0
 end
 
@@ -391,7 +393,7 @@ function flight_start()
 		stall_fuse = 0
 		stall_fail = 6
 		agk49_fuse = 0
-		agk49_fail = 6	
+		agk49_fail = 6
 		radio_fuse = 0
 		radio_fail = 6
 		transponder_fuse = 0
@@ -419,54 +421,54 @@ local tmpval
 			elseif volt_sel == 4 then
 				if gpu == 1 then
 					tmpval = bus_volt
-				else 
+				else
 					tmpval = 0
 				end
 			end
-		else 
+		else
 			tmpval = bus_volt
 		end
-	else 
+	else
 		tmpval = 0
 	end
 	volt_needle = func_animate_slowly(tmpval, volt_needle, 2)
 end
 
 function monitor_failures()
-	
+
 	if bus_amp > 100 then
 		bat_sel = 1
 		batt = 0
 		gpu = 0
 	end
-	
+
 	if inst_light_fail == 6 then
 		inst_light_fuse = 0
 	end
-	
+
 	if stall_fail == 6 then
 		stall_fuse = 0
 	end
-	
+
 	if agk49_fail == 6 then
 		if agk49_fuse == 1 then
 			agk49_fuse = 0
 			inverter_on = 0
 		end
 	end
-	
+
 	if radio_fail == 6 then
 		if radio_fuse == 1 then
 			radio_fuse = 0
 		end
 	end
-	
+
 	if transponder_fail == 6 then
 		if transponder_fuse == 1 then
 			transponder_fuse = 0
 		end
 	end
-	
+
 end
 
 function after_physics()

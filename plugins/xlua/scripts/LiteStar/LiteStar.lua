@@ -103,14 +103,14 @@ menu[12]["set"] = 1
 local ledtrkL = {}
 local ledtrkR = {}
 for i=0, 21 do
-	ledtrkL[i] = ""
-	ledtrkR[i] = ""
+	ledtrkL[i] = " "
+	ledtrkR[i] = " "
 	for j=1, i do
 		ledtrkL[i] = ledtrkL[i] .. "*"
 		ledtrkR[i] = ledtrkR[i] .. ","
 	end
 end
-	
+
 local senstable = {}
 senstable[1] = {1,2,3,4,8,16,32,83,133,183,233,283,333,383,433,483,533,583,633,683,733}
 senstable[2] = {2,4,6,8,16,32,64,166,266,366,466,566,666,766,866,966,1066,1166,1266,1366,1466}
@@ -185,9 +185,9 @@ local file = io.open(filename, "a+")
 	while true do
 		local line = file:read("*line")
 		if line == nil then break end
-		
+
 		k,v = line:match('^([^=]+)=(.+)$')
-		if k:sub(1, 1) ~= "#" and k:sub(1, 12) ~= "spayed_swath" then 
+		if k:sub(1, 1) ~= "#" and k:sub(1, 12) ~= "spayed_swath" then
 			old_job[k] = tonumber(v)
 		elseif k:sub(1, 12) == "spayed_swath" then
 			old_job["spayed_swath"][tonumber(k:sub(13))] = tonumber(v)
@@ -201,12 +201,12 @@ file:close()
 local R = 6371008.7714
 
 function calculate_point(lat1, lon1, dir, dist)
-	
+
 	local latA = math.rad(lat1)
 	local lonA = math.rad(lon1)
 
 	local latB = math.asin( math.sin(latA) * math.cos( dist / R ) + math.cos( latA ) * math.sin( dist / R ) * math.cos( math.rad(dir) ) )
-	local lonB = lonA + math.atan2(math.sin( math.rad(dir) ) * math.sin( dist / R ) * math.cos( latA ), math.cos( dist / R ) - math.sin( latA ) * math.sin( latB )) 
+	local lonB = lonA + math.atan2(math.sin( math.rad(dir) ) * math.sin( dist / R ) * math.cos( latA ), math.cos( dist / R ) - math.sin( latA ) * math.sin( latB ))
 
 	return math.deg(latB), math.deg(lonB)
 end
@@ -226,8 +226,8 @@ function cmd_swath_adv(phase, duration)
 		elseif mode == 0 and guide == 1 then
 			if swath_num == 99 then return end
 			local dir = 0
-			
-			
+
+
 			if menu[3]["set"] == 1 then
 				if swath_num%2 == 0 then
 				dir = dtk + 90
@@ -239,41 +239,41 @@ function cmd_swath_adv(phase, duration)
 				dir = dtk - 90
 				else
 				dir = dtk + 90
-				end			
+				end
 			end
-			
+
 			if dir > 360 then dir = dir - 360 end
 			if dir < 0 then dir = dir + 360 end
-			
+
 			swath_num = math.min(99,swath_num + 1)
 			old_job["swath_num"] = swath_num
 			local lat1, lon1 = calculate_point(points["A"]["lat"], points["A"]["lon"], dir, swath_width_m)
-			
+
 			points["A"]["lat"], points["A"]["lon"] = calculate_point(points["B"]["lat"], points["B"]["lon"], dir, swath_width_m)
-			
+
 			points["B"]["lat"] = lat1
 			points["B"]["lon"] = lon1
-			
+
 			old_job["pointAlat"] = points["A"]["lat"]
 			old_job["pointAlon"] = points["A"]["lon"]
 			old_job["pointBlat"] = points["B"]["lat"]
-			old_job["pointBlon"] = points["B"]["lon"]	
-			
+			old_job["pointBlon"] = points["B"]["lon"]
+
 			dtk = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 		elseif mode == 0 and guide == 0 then
-			if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then 
+			if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then
 				points["A"]["lat"] = lat
 				points["A"]["lon"] = lon
 				old_job["pointAlat"] = points["A"]["lat"]
 				old_job["pointAlon"] = points["A"]["lon"]
-			elseif  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then 
+			elseif  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then
 				points["B"]["lat"] = lat
 				points["B"]["lon"] = lon
 				old_job["pointBlat"] = points["B"]["lat"]
 				old_job["pointBlon"] = points["B"]["lon"]
 				dtk = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 				guide = 1
-			end		
+			end
 		end
 	end
 end
@@ -291,7 +291,7 @@ function cmd_swath_dec(phase, duration)
 		elseif mode == 0 and  guide == 1 then
 			if swath_num == 1 then return end
 			local dir = 0
-			
+
 			if menu[3]["set"] == 1 then
 				if swath_num%2 == 0 then
 				dir = dtk - 90
@@ -303,27 +303,27 @@ function cmd_swath_dec(phase, duration)
 				dir = dtk + 90
 				else
 				dir = dtk - 90
-				end			
+				end
 			end
-			
+
 			if dir > 360 then dir = dir - 360 end
 			if dir < 0 then dir = dir + 360 end
-			
+
 			swath_num = math.max(1,swath_num - 1)
 			old_job["swath_num"] = swath_num
-			
+
 			local lat1, lon1 = calculate_point(points["A"]["lat"], points["A"]["lon"], dir, swath_width_m)
-			
+
 			points["A"]["lat"], points["A"]["lon"] = calculate_point(points["B"]["lat"], points["B"]["lon"], dir, swath_width_m)
-			
+
 			points["B"]["lat"] = lat1
 			points["B"]["lon"] = lon1
-			
+
 			old_job["pointAlat"] = points["A"]["lat"]
 			old_job["pointAlon"] = points["A"]["lon"]
 			old_job["pointBlat"] = points["B"]["lat"]
-			old_job["pointBlon"] = points["B"]["lon"]	
-			
+			old_job["pointBlon"] = points["B"]["lon"]
+
 			dtk = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 		end
 	end
@@ -381,17 +381,17 @@ function cmd_but_menu(phase, duration)
 				mode = 0
 				return
 			end
-			
+
 			if points["Mrk"]["lat"] ~= 0 and mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
 				mode = 4
-			else 
+			else
 				mode = 1
 			end
-			
+
 			if mode == 1 then
 				in_menu = in_menu + 1
-				if in_menu > #menu then 
-					in_menu = 1 
+				if in_menu > #menu then
+					in_menu = 1
 				end
 				if menu[1]["set"] == 2 then
 					if menu[in_menu]["name"] == ">SWIDTH" then
@@ -420,13 +420,13 @@ function cmd_but_ent(phase, duration)
 		end
 
 		if in_menu > 0 then
-			if menu[in_menu]["name"] == "DEFSNOT" then	
+			if menu[in_menu]["name"] == "DEFSNOT" then
 				points["A"]["lat"] = 0
 				points["A"]["lon"] = 0
 				points["B"]["lat"] = 0
-				points["B"]["lon"] = 0	
+				points["B"]["lon"] = 0
 				points["Mrk"]["lat"] = 0
-				points["Mrk"]["lon"] = 0	
+				points["Mrk"]["lon"] = 0
 				for k in pairs(old_job["spayed_swath"]) do
 					old_job["spayed_swath"][k] = nil
 				end
@@ -436,13 +436,13 @@ function cmd_but_ent(phase, duration)
 				guide = 0
 				swath_num = 1
 				return
-			elseif menu[in_menu]["name"] == ">SETFAC" then	
+			elseif menu[in_menu]["name"] == ">SETFAC" then
 				points["A"]["lat"] = 0
 				points["A"]["lon"] = 0
 				points["B"]["lat"] = 0
-				points["B"]["lon"] = 0	
+				points["B"]["lon"] = 0
 				points["Mrk"]["lat"] = 0
-				points["Mrk"]["lon"] = 0	
+				points["Mrk"]["lon"] = 0
 				in_menu = 1
 				mode = 1
 				area = 0
@@ -469,7 +469,7 @@ function cmd_but_ent(phase, duration)
 				guide = 0
 				return
 			end
-			if menu[1]["set"] == 1 then	
+			if menu[1]["set"] == 1 then
 				points["A"]["lat"] = 0
 				points["A"]["lon"] = 0
 				points["B"]["lat"] = 0
@@ -489,7 +489,7 @@ function cmd_but_ent(phase, duration)
 				old_job["set11"] = menu[11]["set"]
 				old_job["set12"] = menu[12]["set"]
 				old_job["swath_width"] = swath_width_dis
-				old_job["sens"] = xtksense	
+				old_job["sens"] = xtksense
 				for k in pairs(old_job["spayed_swath"]) do
 					old_job["spayed_swath"][k] = nil
 				end
@@ -516,7 +516,7 @@ function cmd_but_ent(phase, duration)
 					guide = 1
 				else
 					area = 0
-					guide = 0				
+					guide = 0
 				end
 			end
 			in_menu = 0
@@ -541,7 +541,7 @@ function cmd_but_up(phase, duration)
 				menu[in_menu]["value"][1] = string.format("%.1f", swath_width_dis)
 
 			elseif menu[in_menu]["name"] == ">DIM" then
-				
+
 				brt_control = math.min(101, brt_control+1)
 				old_job["brt_control"] = brt_control
 				if brt_control == 101 then
@@ -563,12 +563,12 @@ function cmd_but_up(phase, duration)
 						menu[2]["value"][1] = string.format("%.1f", swath_width_dis)
 					else
 						swath_width_dis = math.max(2,math.min(100, feet2met(swath_width_dis, 1)))
-						menu[2]["value"][1] = string.format("%.1f", swath_width_dis)						
+						menu[2]["value"][1] = string.format("%.1f", swath_width_dis)
 					end
 				end
 			end
 		end
-		
+
 	end
 end
 
@@ -598,7 +598,7 @@ function cmd_but_dn(phase, duration)
 						menu[2]["value"][1] = string.format("%.1f", swath_width_dis)
 					else
 						swath_width_dis = math.max(2,math.min(100, feet2met(swath_width_dis, 1)))
-						menu[2]["value"][1] = string.format("%.1f", swath_width_dis)						
+						menu[2]["value"][1] = string.format("%.1f", swath_width_dis)
 					end
 				end
 			end
@@ -611,18 +611,18 @@ cmdbutup = create_command("custom/dromader/litestar/but_up","Up",cmd_but_up)
 
 function spray_toggle_after_cmd(phase, duration)
 	if phase == 0 and power == 1 then
-		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then 
+		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then
 			points["A"]["lat"] = lat
 			points["A"]["lon"] = lon
 			old_job["pointAlat"] = points["A"]["lat"]
 			old_job["pointAlon"] = points["A"]["lon"]
 
-		elseif  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then 
+		elseif  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then
 			points["B"]["lat"] = lat
 			points["B"]["lon"] = lon
 			old_job["pointBlat"] = points["B"]["lat"]
-			old_job["pointBlon"] = points["B"]["lon"]	
-			
+			old_job["pointBlon"] = points["B"]["lon"]
+
 		dtk = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 		guide = 1
 		end
@@ -633,18 +633,18 @@ spraytogwrapcmd = wrap_command("custom/dromader/spray/spray_tog_cmd",dummy, spra
 
 function spray_after_cmd(phase, duration)
 	if phase == 0 and power == 1 then
-		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then 
+		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then
 			points["A"]["lat"] = lat
 			points["A"]["lon"] = lon
 			old_job["pointAlat"] = points["A"]["lat"]
 			old_job["pointAlon"] = points["A"]["lon"]
 		end
 	elseif phase == 2 and power == 1 then
-		if  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then 
+		if  points["B"]["lat"] == 0 and points["B"]["lon"] == 0 then
 			points["B"]["lat"] = lat
 			points["B"]["lon"] = lon
 			old_job["pointBlat"] = points["B"]["lat"]
-			old_job["pointBlon"] = points["B"]["lon"]	
+			old_job["pointBlon"] = points["B"]["lon"]
 		end
 	end
 end
@@ -659,15 +659,15 @@ str_hdgL = create_dataref("custom/dromader/litestar/hdg_L","string", dummy)
 str_hdgR = create_dataref("custom/dromader/litestar/hdg_R","string", dummy)
 str_ontrk = create_dataref("custom/dromader/litestar/on_trk","string", dummy)
 str_stat = create_dataref("custom/dromader/litestar/stat","string", dummy)
-str_disL = ""--"---A123"
-str_disR = ""--"123----"
-str_trkL = ""--"*********************"
-str_trkR = ""--",,,,,,,,,,,,,,,,,,,,,"
-str_hdgL = ""--"******************"
-str_hdgR = ""--",,,,,,,,,,,,,,,,,,"
+str_disL = " "--"---A123"
+str_disR = " "--"123----"
+str_trkL = " "--"*********************"
+str_trkR = " "--",,,,,,,,,,,,,,,,,,,,,"
+str_hdgL = " "--"******************"
+str_hdgR = " "--",,,,,,,,,,,,,,,,,,"
 local ontrk = "` ` `"
-str_ontrk = ""--ontrk
-str_stat = ""--"<`*"
+str_ontrk = " "--ontrk
+str_stat = " "--"<`*"
 
 str_dis1 = "    "
 str_dis2 = "   "
@@ -681,12 +681,12 @@ function distance(lat1, lon1, lat2, lon2)
 	local latB = math.rad(lat2)
 	local dlat = math.rad(lat2 - lat1)
 	local dlon = math.rad(lon2 - lon1)
-	
+
 	local a = math.sin(dlat/2)*math.sin(dlat/2) + math.cos(latA)*math.cos(latB)*math.sin(dlon/2)*math.sin(dlon/2)
 	local c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
-	
+
 	return R*c
-	
+
 end
 
 function course(lat1, lon1, lat2, lon2)
@@ -697,9 +697,9 @@ function course(lat1, lon1, lat2, lon2)
 	local lonB = math.rad(lon2)
 
 	local y = math.sin(lonB-lonA) * math.cos(latB)
-	local x = math.cos(latA)*math.sin(latB) - math.sin(latA)*math.cos(latB)*math.cos(lonB-lonA) 
-	local a = math.atan2(y, x) 
-	
+	local x = math.cos(latA)*math.sin(latB) - math.sin(latA)*math.cos(latB)*math.cos(lonB-lonA)
+	local a = math.atan2(y, x)
+
 	return (math.deg(a) + 360) % 360 --in degrees
 end
 
@@ -708,7 +708,7 @@ function crosstrack(lat_cur, lon_cur, latA, lonA, dcourse)
 	local dis = distance( latA, lonA, lat_cur, lon_cur)/R
 	local bearA = math.rad( course( latA, lonA, lat_cur, lon_cur) )
 	local bearB = math.rad( dcourse )
-	
+
 	return math.asin( math.sin( dis) * math.sin( bearA - bearB ) )*R
 end
 
@@ -759,10 +759,10 @@ function flight_start()
 	end
 	xtksense = old_job["sens"]
 	menu[9]["value"][1] = string.format("SENS %d", xtksense)
-	swath_width_dis = old_job["swath_width"] 
+	swath_width_dis = old_job["swath_width"]
 	menu[2]["value"][1] = string.format("%.1f", swath_width_dis)
-	
-	menu[1]["set"] = old_job["set1"] 
+
+	menu[1]["set"] = old_job["set1"]
 	menu[2]["set"] = old_job["set2"]
 	menu[3]["set"] = old_job["set3"]
 	menu[4]["set"] = old_job["set4"]
@@ -784,13 +784,13 @@ function flight_start()
 	swath_num = old_job["swath_num"]
 	xtksense = old_job["sens"]
 	area = old_job["acres"]
-	
+
 	fuse = 1
 	power_sw = 1
 	power = 1
 	mode = 1
 	in_menu = 1
-	
+
 end
 
 
@@ -798,7 +798,7 @@ end
 function timer()
 	if flash_timer == 1 then
 		flash_timer = 0
-	else 
+	else
 		flash_timer = 1
 	end
 end
@@ -807,14 +807,14 @@ run_at_interval(timer,(1/4))
 
 function after_physics()
 	if power == 1 then
-		if spray == 1 then 
+		if spray == 1 then
 			str_stat = "<"
 			area = area + (msec2kph(spd_dr, 2)*swath_width_m/600)*SIM_PERIOD/60
 			old_job["acres"] = area
 		else
-			str_stat = ""
+			str_stat = " "
 		end
-		
+
 		if menu[10]["set"] == 1 then
 			spd = math.min(999,msec2mph(spd_dr))
 			area_disp = math.min(999,hect2acre(area,2))
@@ -824,45 +824,45 @@ function after_physics()
 			spd = math.min(999,msec2kph(spd_dr))
 			alt = math.min(9999, round2(alt_dr))
 		end
-		
-		
+
+
 		gps_crs = round2(course ( points["LastLoc"]["lat"], points["LastLoc"]["lon"], lat, lon))
-		
+
 		points["LastLoc"]["lat"] = lat
 		points["LastLoc"]["lon"] = lon
-		
 
-			str_hdgL = ""
-			str_hdgR = ""
-			str_trkL = ""
-			str_trkR = ""
-			str_ontrk =""
+
+			str_hdgL = " "
+			str_hdgR = " "
+			str_trkL = " "
+			str_trkR = " "
+			str_ontrk =" "
 			if mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
-				if guide == 1 then 
-					
+				if guide == 1 then
+
 					if menu[10]["set"] == 1 then
 						xtk = met2feet(crosstrack( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["A"]["lat"], points["A"]["lon"], dtk) )
 					else
 						xtk = round2(crosstrack( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["A"]["lat"], points["A"]["lon"], dtk) )
 					end
-					
-					
+
+
 					local diff = gps_crs - dtk
-					
-					if diff < -180 then 
+
+					if diff < -180 then
 						diff = diff + 360
-					elseif diff > 180 then 
-						diff = diff - 360 
+					elseif diff > 180 then
+						diff = diff - 360
 					end
-					
-					if diff > 0 then 
+
+					if diff > 0 then
 						diff = math.floor(math.min(diff/5, 18) )
-						str_hdgR = ledtrkR[diff]	
+						str_hdgR = ledtrkR[diff]
 					elseif diff < 0 then
 						diff = math.floor(math.min(math.abs(diff/5), 18) )
-						str_hdgL = ledtrkL[diff]	
+						str_hdgL = ledtrkL[diff]
 					end
-					
+
 					local letter = " "
 					if xtk > 0 then
 						letter = "L"
@@ -877,7 +877,7 @@ function after_physics()
 								if diff < 2 and diff> -2 and k < 3 then
 									str_ontrk = ontrk
 								else
-									str_ontrk = ""
+									str_ontrk = " "
 								end
 								break
 							else
@@ -893,7 +893,7 @@ function after_physics()
 								if diff < 2 and diff> -2 and k < 3 then
 									str_ontrk = ontrk
 								else
-									str_ontrk = ""
+									str_ontrk = " "
 								end
 								break
 							else
@@ -902,7 +902,7 @@ function after_physics()
 						end
 						xtk = math.min(xtk, 999)
 					end
-					
+
 					if str_ontrk == ontrk and spray == 1 and old_job["spayed_swath"][swath_num] == nil then
 						old_job["spayed_swath"][swath_num] = 0
 					elseif str_ontrk == ontrk and spray == 0 and old_job["spayed_swath"][swath_num] == 0 then
@@ -912,18 +912,18 @@ function after_physics()
 								str_trkL = "*********************"
 								str_trkR = ",,,,,,,,,,,,,,,,,,,,,"
 							else
-								str_trkL = ""
-								str_trkR = ""							
-							end							
+								str_trkL = " "
+								str_trkR = " "
+							end
 					end
 				-- "SwthNum", "X-Track", "Blank", "GPS Alt", "NumSats", "HDOP", "A/B Hdg", "Time", "Dst2Mrk", "Acres", "AcftHdg", "Speed"
-				-- "SwthNum", "Blank", "NumSats", "HDOP", "A/B Hdg", "Acres", "AcftHdg", "Speed"	
-				
+				-- "SwthNum", "Blank", "NumSats", "HDOP", "A/B Hdg", "Acres", "AcftHdg", "Speed"
+
 				if menu[5]["set"] == 1 then
 					local dir = "L"
 					if menu[3]["set"] == 2 then
 						dir = "R"
-					end			
+					end
 					str_dis1 = string.format("%s%d", dir, swath_num)
 				elseif menu[5]["set"] == 2 then
 					str_dis1 = string.format("%s%d", letter, xtk)
@@ -955,7 +955,7 @@ function after_physics()
 				elseif menu[5]["set"] == 12 then
 					str_dis1 = string.format("%3d", spd)
 				end
-				
+
 				if menu[6]["set"] == 1 then
 					local dir = "L"
 					if menu[3]["set"] == 2 then
@@ -977,7 +977,7 @@ function after_physics()
 				elseif menu[6]["set"] == 8 then
 					str_dis2 = string.format("%3d", spd)
 				end
-					
+
 				if menu[7]["set"] == 1 then
 					local dir = "L"
 					if menu[3]["set"] == 2 then
@@ -999,7 +999,7 @@ function after_physics()
 				elseif menu[7]["set"] == 8 then
 					str_dis3 = string.format("%3d", spd)
 					end
-										
+
 					if menu[8]["set"] == 1 then
 						local dir = "L"
 						if menu[3]["set"] == 2 then
@@ -1035,11 +1035,11 @@ function after_physics()
 						str_dis4 = string.format("%3d", gps_crs)
 					elseif menu[8]["set"] == 12 then
 						str_dis4 = string.format("%3d", spd)
-					end			
-					
-					str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
-					str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)	
-					
+					end
+
+					str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)
+					str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)
+
 				else
 						local point = "A"
 						if points["A"]["lat"] ~= 0 and points["A"]["lon"] ~= 0 then
@@ -1057,13 +1057,13 @@ function after_physics()
 						str_dis2 = string.format("%3d", spd)
 						str_dis3 = string.format("%3d", gps_crs)
 						str_dis4 = "----"
-						
-					str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
-					str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)	
+
+					str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)
+					str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)
 				end
 			elseif mode == 1 then
-				str_disL = string.format("%-7.7s", menu[in_menu]["name"])	
-				str_disR = string.format("%-7.7s", menu[in_menu]["value"][ menu[in_menu]["set"] or 1])	
+				str_disL = string.format("%-7.7s", menu[in_menu]["name"])
+				str_disR = string.format("%-7.7s", menu[in_menu]["value"][ menu[in_menu]["set"] or 1])
 			elseif mode == 2 then
 				local dist = round2(distance(lat, lon, points["Mrk"]["lat"], points["Mrk"]["lon"] )/1000 )
 				if menu[10]["set"] == 1 then
@@ -1073,34 +1073,34 @@ function after_physics()
 				local bearing = course ( points["LastLoc"]["lat"], points["LastLoc"]["lon"], points["Mrk"]["lat"], points["Mrk"]["lon"])
 				local diff = gps_crs - bearing
 
-				
-				if diff < -180 then 
+
+				if diff < -180 then
 					diff = diff + 360
-				elseif diff > 180 then 
-					diff = diff - 360 
+				elseif diff > 180 then
+					diff = diff - 360
 				end
-				
-				if diff > 0 then 
+
+				if diff > 0 then
 					diff = round2(math.min(diff/5, 18) )
-					str_hdgL = ledtrkL[diff]	
+					str_hdgL = ledtrkL[diff]
 				elseif diff < 0 then
 					diff = round2(math.min(math.abs(diff/5), 18) )
-					str_hdgR = ledtrkR[diff]	
+					str_hdgR = ledtrkR[diff]
 				end
 
 				str_dis1 = string.format("%3d", bearing)
 				str_dis2 = string.format("%3d", spd)
 				str_dis3 = string.format("%3d", gps_crs)
 				str_dis4 = string.format("%3d", math.min(9999, dist))
-				
-				str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)	
-				str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)				
+
+				str_disL = string.format("%-4.4s%3.3s", str_dis1, str_dis2)
+				str_disR = string.format("%-3.3s%4.4s", str_dis3, str_dis4)
 			elseif mode == 3 then
-				str_disL = string.format("%-7.7s", ">SET")	
-				str_disR = string.format("%-7.7s", "MARK")	
-			elseif mode == 4 then 
-				str_disL = string.format("%-7.7s", ">  =|")	
-				str_disR = string.format("%-7.7s", "TO MARK")	
+				str_disL = string.format("%-7.7s", ">SET")
+				str_disR = string.format("%-7.7s", "MARK")
+			elseif mode == 4 then
+				str_disL = string.format("%-7.7s", ">  =|")
+				str_disR = string.format("%-7.7s", "TO MARK")
 			end
 	end
 end
@@ -1118,6 +1118,6 @@ function aircraft_unload()
 	for k,v in pairs(old_job[table_index]) do
 			file:write(table_index .. k .. "=" .. v .. "\n" )
 	end
-	
+
 	file:close()
 end

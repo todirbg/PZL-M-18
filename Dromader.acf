@@ -2094,7 +2094,7 @@ P _part/10/_geo_xyz/10,0,2 6.282500267
 P _part/10/_geo_xyz/10,1,0 -15.756186485
 P _part/10/_geo_xyz/10,1,1 -0.818097830
 P _part/10/_geo_xyz/10,1,2 6.520702362
-P _part/10/_geo_xyz/10,10,0 -15.840820313
+P _part/10/_geo_xyz/10,10,0 -15.840820312
 P _part/10/_geo_xyz/10,10,1 -1.549566388
 P _part/10/_geo_xyz/10,10,2 8.009260178
 P _part/10/_geo_xyz/10,11,0 -15.834431648
@@ -3564,7 +3564,7 @@ P _part/11/_geo_xyz/10,0,2 6.282500267
 P _part/11/_geo_xyz/10,1,0 15.756186485
 P _part/11/_geo_xyz/10,1,1 -0.818097830
 P _part/11/_geo_xyz/10,1,2 6.520702362
-P _part/11/_geo_xyz/10,10,0 15.840820313
+P _part/11/_geo_xyz/10,10,0 15.840820312
 P _part/11/_geo_xyz/10,10,1 -1.549566388
 P _part/11/_geo_xyz/10,10,2 8.009260178
 P _part/11/_geo_xyz/10,11,0 15.834431648
@@ -24028,7 +24028,7 @@ P _part/8/_top_t1 0.0
 P _part/8/_top_t2 0.384000003
 P _part/85/_bot_s1 0.632812500
 P _part/85/_bot_s2 0.753906250
-P _part/85/_bot_t1 0.254882813
+P _part/85/_bot_t1 0.254882812
 P _part/85/_bot_t2 0.295898438
 P _part/85/_geo_xyz/0,0,0 0.0
 P _part/85/_geo_xyz/0,0,1 2.0
@@ -25494,11 +25494,11 @@ P _part/85/_r_dim 10
 P _part/85/_s_dim 8
 P _part/85/_top_s1 0.632812500
 P _part/85/_top_s2 0.753906250
-P _part/85/_top_t1 0.254882813
+P _part/85/_top_t1 0.254882812
 P _part/85/_top_t2 0.295898438
 P _part/86/_bot_s1 0.632812500
 P _part/86/_bot_s2 0.753906250
-P _part/86/_bot_t1 0.254882813
+P _part/86/_bot_t1 0.254882812
 P _part/86/_bot_t2 0.295898438
 P _part/86/_geo_xyz/0,0,0 0.0
 P _part/86/_geo_xyz/0,0,1 2.0
@@ -26964,11 +26964,11 @@ P _part/86/_r_dim 10
 P _part/86/_s_dim 8
 P _part/86/_top_s1 0.632812500
 P _part/86/_top_s2 0.753906250
-P _part/86/_top_t1 0.254882813
+P _part/86/_top_t1 0.254882812
 P _part/86/_top_t2 0.295898438
 P _part/87/_bot_s1 0.632812500
 P _part/87/_bot_s2 0.753906250
-P _part/87/_bot_t1 0.254882813
+P _part/87/_bot_t1 0.254882812
 P _part/87/_bot_t2 0.295898438
 P _part/87/_geo_xyz/0,0,0 0.0
 P _part/87/_geo_xyz/0,0,1 2.0
@@ -28425,7 +28425,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.219652653
+P _part/87/_part_y -2.219652891
 P _part/87/_part_z 25.592498779
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -28434,7 +28434,7 @@ P _part/87/_r_dim 10
 P _part/87/_s_dim 8
 P _part/87/_top_s1 0.632812500
 P _part/87/_top_s2 0.753906250
-P _part/87/_top_t1 0.254882813
+P _part/87/_top_t1 0.254882812
 P _part/87/_top_t2 0.295898438
 P _part/9/_bot_s1 0.755999982
 P _part/9/_bot_s2 1.0
@@ -38753,7 +38753,7 @@ GROUP NAV
 
 END_GROUP
 GROUP Transponder
-  SHOW_GREATER 1.000000 sim/cockpit2/radios/actuators/transponder_mode
+  SHOW_GREATER 1.000000 custom/dromader/radios/transponder_mode
   CHAINED
   GROUP_OPEN
   gen_LED transponder_FL
@@ -38815,6 +38815,20 @@ GROUP Transponder
     OFFSET_X -50
     OFFSET_Y -30.000000
 
+  gen_text R
+    POS 397.500000 504.500000
+    IMAGE LED/LED_text
+    DATAREF custom/dromader/radios/string_r
+    SHOW_EQUAL 1.000000 sim/cockpit/radios/transponder_light
+    SIZE 0.350000
+    LIGHT_MODE GLASS_TRANS_AUOTO
+    LIGHT_RHEOSTAT 2
+    BUS_SRC 1073741828
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+    OFFSET_X -50
+    OFFSET_Y -30.000000
+
   gen_text ON
     POS 357.500000 504.500000
     IMAGE LED/LED_text
@@ -38829,25 +38843,6 @@ GROUP Transponder
     OFFSET_X -50
     OFFSET_Y -30.000000
 
-  GROUP New Group
-    SHOW_GREATER 2.000000 sim/cockpit/radios/transponder_mode
-    CHAINED
-    GROUP_OPEN
-    gen_text R
-      POS 397.500000 504.500000
-      IMAGE LED/LED_text
-      DATAREF custom/dromader/radios/string_r
-      SHOW_EQUAL 1.000000 sim/cockpit/radios/transponder_light
-      SIZE 0.350000
-      LIGHT_MODE GLASS_TRANS_AUOTO
-      LIGHT_RHEOSTAT 2
-      BUS_SRC 1073741828
-      KEY_FRAME 0.000000 0.000000 1.000000
-      KEY_FRAME 1.000000 1.000000
-      OFFSET_X -50
-      OFFSET_Y -30.000000
-
-  END_GROUP
   gen_text FL
     POS 183.500000 465.500000
     IMAGE LED/LED_text
