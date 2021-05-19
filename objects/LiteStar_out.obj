@@ -9323,6 +9323,7 @@ IDX	8460
 IDX	8461
 IDX	8462
 
+		ATTR_light_level	0	1	custom/dromader/litestar/power
 		TRIS	0 2391
 		TRIS	2391 720
 		TRIS	3111 1104

@@ -4,6 +4,7 @@ OBJ
 
 GLOBAL_cockpit_lit
 TEXTURE	LiteStar_base.png
+TEXTURE_LIT	LiteStar_lit.png
 TEXTURE_NORMAL	LiteStar_nor.png
 NORMAL_METALNESS
 GLOBAL_specular	1
@@ -24405,6 +24406,7 @@ IDX10	22160	22161	22162	22163	22164	22165	22166	22167	22168	22169
 		ANIM_trans_key	0	0	0	-0
 		ANIM_trans_key	1	0	0	0.0017299999
 		ANIM_trans_end
+			ATTR_light_level	0	1	custom/dromader/litestar/power
 			TRIS	10428 528
 		ANIM_end
 		ANIM_begin

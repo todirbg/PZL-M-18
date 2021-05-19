@@ -63,6 +63,8 @@ inverter_on = find_dataref("sim/cockpit2/electrical/inverter_on[0]")
 
 bat_cover_hide = create_dataref("custom/dromader/electrical/hide_bat_cover","number", dummy)
 
+primed_ratio = find_dataref("custom/dromader/engine/primed_ratio")
+
 
 
 local volt_but = 0
@@ -333,6 +335,7 @@ function auto_start_after()
 		stat_heat = 0
 		bus_load_add = 10
         fuel_press_dromader = 35
+		primed_ratio = 1
 end
 
 function auto_board_after()

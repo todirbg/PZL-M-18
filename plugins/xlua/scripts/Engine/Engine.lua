@@ -103,14 +103,11 @@ end
 local primed_good = 0
 function cmd_starter_wrap_after_handler(phase, duration)
 	if phase == 0 then 
-		if primed_ratio > math.random()*0.8 and  flooded == 0 then
+		if (primed_ratio > math.random()*0.8 or eng_cyl_temp >= 30) and flooded == 0  then
 			primed_good = 1
 		else
 			primed_good = 0
 			eng_fail = 6
-			if primed_ratio > 2 then
-				flooded = 1
-			end
 		end
 	elseif phase == 1 and starter_fuse == 1 then
 		flywheel_rpm = math.max(0, flywheel_rpm - 20*SIM_PERIOD)

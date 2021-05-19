@@ -51,7 +51,7 @@ fuel_tank_selector_handle = create_dataref("custom/dromader/fuel/fuel_selector",
 
 local prev = 0
 function man_fuel_pump_handler()
-	if manual_fuel_pump < prev and cutoff == 0 and fuel_press_dromader < 38 then
+	if manual_fuel_pump < prev and cutoff == 0 and fuel_press_dromader < 35 then
 		fuel_press_dromader = fuel_press_dromader + (prev - manual_fuel_pump)*2
 	end
 	prev = manual_fuel_pump
