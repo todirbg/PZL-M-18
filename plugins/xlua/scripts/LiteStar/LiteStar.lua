@@ -20,7 +20,7 @@ local brt_control = 101
 local spd = 0
 local alt = 0
 local numsats = 12 --const not simulated
-local mode = 0 -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto, 5 scroll GPS menu
+local mode = 0 -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto, 5 scroll GPS menu, 6 starup, 7 export
 local xtksense = 0
 local swath_num = 1
 local swath_width_m = 0
@@ -239,7 +239,59 @@ local file = io.open(filename, "a+")
 	end
 file:close()
 
+local startup_count = 1
 
+function startup()
+	if startup_count < 16 then
+		str_disL = " "
+		str_disR = " "				
+		for i = 1,7 do
+			if math.random() > 0.5 then
+				str_disL = str_disL..string.char(math.random(65,90))
+				str_disR = str_disR..string.char(math.random(48,57))
+			else
+				str_disL = str_disL..string.char(math.random(48,57))
+				str_disR = str_disR..string.char(math.random(65,90))
+			end
+			
+		end
+	elseif startup_count > 32 then
+		mode = 1
+		in_menu = 1
+		stop_timer(startup)
+	else
+		str_disL = "   LITE"
+		str_disR = "STAR 4 "
+	end
+	startup_count = startup_count + 1
+end
+
+local export_count = 0
+
+function export()
+		if export_count <= 100 then
+		if export_count%7 == 0 then
+			if str_disL:sub(-1) == "(" then
+				str_disL = str_disL:sub(1, -2 )
+				str_disL = str_disL .. ")"
+			else
+				str_disL = str_disL .. "("
+			end
+		end
+		str_disR = string.format("%6d%%", export_count)
+		else
+		str_disL = "Success"
+		str_disR = "    8/8"			
+			if export_count > 124 then
+				export_count = 0
+				mode = 1
+				in_menu = 1
+				menu[1]["set"] = 2
+				stop_timer(export)
+			end
+		end
+		export_count = export_count + 1
+end
 
 function calculate_point(lat1, lon1, dir, dist)
 
@@ -655,9 +707,11 @@ function power_reset()
 	swath_num = old_job["swath_num"]
 	xtksense = old_job["sens"]
 	area = old_job["acres"]
-	in_menu = 1
-	mode = 1
+	in_menu = 0
+	mode = 6
 	guide = 0
+	startup_count = 1
+	run_at_interval(startup,(1/4))
 end
 
 local index = 1
@@ -781,6 +835,7 @@ function cmd_toggle_fuse(phase, duration)
 		if fuse == 1 then
 			fuse = 0
 			power = 0
+			stop_timer(startup)
 			power_reset()
 		else
 			fuse = 1
@@ -798,6 +853,7 @@ function cmd_toggle_power(phase, duration)
 		if power_sw == 1 then
 			power_sw = 0
 			power = 0
+			stop_timer(startup)
 			power_reset()
 		else
 			power_sw = 1
@@ -817,6 +873,8 @@ function cmd_but_menu(phase, duration)
 				return
 			elseif mode == 5 then
 				mode = 1
+			elseif mode == 6 or mode == 7 then
+				return
 			end
 
 			if points["Mrk"]["lat"] ~= 0 and mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
@@ -857,7 +915,7 @@ function cmd_but_ent(phase, duration)
 		elseif mode == 4 then
 			mode = 2
 			return
-		elseif mode == 5 then
+		elseif mode == 5 or mode == 6 or mode == 7 then
 			return
 		end
 
@@ -1008,8 +1066,13 @@ function cmd_but_ent(phase, duration)
 				else
 					guide = 1
 				end
-			elseif menu[1]["set"] == 3 then
+			elseif menu[1]["set"] == 3 and #track > 0 then
 				generate_kml()
+				run_at_interval(export,(1/8))
+				mode = 7
+				in_menu = 0
+				str_disL = ""
+				return
 			end
 			in_menu = 0
 			mode = 0
@@ -1134,7 +1197,7 @@ cmdbutdn = create_command("custom/dromader/litestar/but_dn","Down",cmd_but_dn)
 cmdbutup = create_command("custom/dromader/litestar/but_up","Up",cmd_but_up)
 
 function spray_toggle_after_cmd(phase, duration)
-	if phase == 0 and power == 1 then
+	if phase == 0 and power == 1 and mode == 0 then
 		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then
 			points["A"]["lat"] = lat
 			points["A"]["lon"] = lon
@@ -1181,7 +1244,7 @@ end
 spraytogwrapcmd = wrap_command("custom/dromader/spray/spray_tog_cmd",dummy, spray_toggle_after_cmd)
 
 function spray_after_cmd(phase, duration)
-	if phase == 0 and power == 1 then
+	if phase == 0 and power == 1 and mode == 0 then
 		if points["A"]["lat"] == 0 and points["A"]["lon"] == 0 then
 			points["A"]["lat"] = lat
 			points["A"]["lon"] = lon
@@ -1262,7 +1325,7 @@ function flight_start()
 		power = 0	
 	end
 	fuse = 1
-	mode = 1
+	mode = 6
 	power_reset()
 end
 
@@ -1311,7 +1374,7 @@ function after_physics()
 			str_trkL = " "
 			str_trkR = " "
 			str_ontrk =" "
-			if mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto
+			if mode == 0 then -- 0 guide, 1 menu, 2 dirto, 3 set mark, 4 confirm dirto, 5 submenu, 6 startup
 				if guide == 1 then
 
 					if menu[12]["set"] == 1 then
@@ -1575,54 +1638,53 @@ function after_physics()
 				str_disL = string.format("%-7.7s", ">  =|")
 				str_disR = string.format("%-7.7s", "TO MARK")
 			elseif mode == 5 then
-					if menu[10]["submenu"]["index"] == 1 then
-						local word = " Diff"
-						if menu[14]["set"] == 2 then word = "" end
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][1])
-						str_disR = string.format("%7.7s", string.format("3D%s", word))
-					elseif menu[10]["submenu"]["index"] == 2 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][2])
-						str_disR = string.format("%7.7s", string.format("Trak %2d", numsats + 3))
-					elseif menu[10]["submenu"]["index"] == 3 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][3])
-						str_disR = string.format("%7.7s", string.format("Used %2d", numsats))
-					elseif menu[10]["submenu"]["index"] == 4 then
-						local age = 0
-						if menu[14]["set"] ~= 2 then age = os.date("%S") + 1 end 
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][4])
-						str_disR = string.format("%7.7s", string.format("Age %03d", age))
-					elseif menu[10]["submenu"]["index"] == 5 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][5])
-						str_disR = string.format("%7.7s", string.format("%1.2f", hdop))
-					elseif menu[10]["submenu"]["index"] == 6 then
-						local word = "N"
-						if points["LastLoc"]["lat"] < 0 then word = "S" end
-						local num, frac = tostring(math.abs(points["LastLoc"]["lat"])):match("(%d+).(%d+)")
-						str_disL = string.format("%-7.7s", string.format(">%s %03s.", word, num))
-						str_disR = string.format("%7.7s", frac)
-					elseif menu[10]["submenu"]["index"] == 7 then
-						local word = "E"
-						if points["LastLoc"]["lon"] < 0 then word = "W" end
-						local num, frac = tostring(math.abs(points["LastLoc"]["lon"])):match("(%d+).(%d+)")
-						str_disL = string.format("%-7.7s", string.format(">%s %03s.", word, num))
-						str_disR = string.format("%7.7s", frac)
-					elseif menu[10]["submenu"]["index"] == 8 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][8])
-						str_disR = string.format("%7.7s", string.format("%.2f", met2feet(alt_dr,2)))
-					elseif menu[10]["submenu"]["index"] == 9 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][9])
-						str_disR = string.format("%7.7s", string.format("%.2f", msec2mph(spd_dr, 2)))
-					elseif menu[10]["submenu"]["index"] == 10 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][10])
-						str_disR = string.format("%7.7s", string.format("%03d", gps_crs))
-					elseif menu[10]["submenu"]["index"] == 11 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][11])
-						str_disR = string.format("%7.7s", string.format("%02d%02d%02d", string.sub(os.date(), -2), month, day))
-					elseif menu[10]["submenu"]["index"] == 12 then
-						str_disL = string.format("%-7.7s", menu[10]["submenu"][12])
-						str_disR = string.format("%7.7s", string.format("%02d%02d%02d", hours, minutes, seconds_z))
-					end
-
+				if menu[10]["submenu"]["index"] == 1 then
+					local word = " Diff"
+					if menu[14]["set"] == 2 then word = "" end
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][1])
+					str_disR = string.format("%7.7s", string.format("3D%s", word))
+				elseif menu[10]["submenu"]["index"] == 2 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][2])
+					str_disR = string.format("%7.7s", string.format("Trak %2d", numsats + 3))
+				elseif menu[10]["submenu"]["index"] == 3 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][3])
+					str_disR = string.format("%7.7s", string.format("Used %2d", numsats))
+				elseif menu[10]["submenu"]["index"] == 4 then
+					local age = 0
+					if menu[14]["set"] ~= 2 then age = os.date("%S") + 1 end 
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][4])
+					str_disR = string.format("%7.7s", string.format("Age %03d", age))
+				elseif menu[10]["submenu"]["index"] == 5 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][5])
+					str_disR = string.format("%7.7s", string.format("%1.2f", hdop))
+				elseif menu[10]["submenu"]["index"] == 6 then
+					local word = "N"
+					if points["LastLoc"]["lat"] < 0 then word = "S" end
+					local num, frac = tostring(math.abs(points["LastLoc"]["lat"])):match("(%d+).(%d+)")
+					str_disL = string.format("%-7.7s", string.format(">%s %03s.", word, num))
+					str_disR = string.format("%7.7s", frac)
+				elseif menu[10]["submenu"]["index"] == 7 then
+					local word = "E"
+					if points["LastLoc"]["lon"] < 0 then word = "W" end
+					local num, frac = tostring(math.abs(points["LastLoc"]["lon"])):match("(%d+).(%d+)")
+					str_disL = string.format("%-7.7s", string.format(">%s %03s.", word, num))
+					str_disR = string.format("%7.7s", frac)
+				elseif menu[10]["submenu"]["index"] == 8 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][8])
+					str_disR = string.format("%7.7s", string.format("%.2f", met2feet(alt_dr,2)))
+				elseif menu[10]["submenu"]["index"] == 9 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][9])
+					str_disR = string.format("%7.7s", string.format("%.2f", msec2mph(spd_dr, 2)))
+				elseif menu[10]["submenu"]["index"] == 10 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][10])
+					str_disR = string.format("%7.7s", string.format("%03d", gps_crs))
+				elseif menu[10]["submenu"]["index"] == 11 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][11])
+					str_disR = string.format("%7.7s", string.format("%02d%02d%02d", string.sub(os.date(), -2), month, day))
+				elseif menu[10]["submenu"]["index"] == 12 then
+					str_disL = string.format("%-7.7s", menu[10]["submenu"][12])
+					str_disR = string.format("%7.7s", string.format("%02d%02d%02d", hours, minutes, seconds_z))
+				end
 			end
 	end
 end
@@ -1630,15 +1692,14 @@ end
 function generate_kml()
 	local year = os.date("%Y")
 	local filename = "Output/LiteStarIV".. "_" .. os.date("%Y-%m-%d-%H-%M") .. ".kml"
-	--local filename = "D:/LiteStarIV.kml"
 	local file = io.open(filename, "w")
 	
-	file:write(
-	[[
+	file:write([[
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
 	<Document>
-		<name>LiteStar IV GPS</name>]])
+		<name>LiteStar IV GPS</name>
+		]])
 	file:write("		<Snippet>Created " .. os.date("%Y-%m-%d %H:%M:%S") .. "</Snippet>\n")	
 	file:write([[
 		<Style id="swathline">
@@ -1810,7 +1871,7 @@ function generate_kml()
 	for k,v in pairs(swath_tbl) do
 		file:write("		<Placemark>\n")
 
-		file:write("			<name>Swath " .. k .. "</name>\n")
+		file:write("			<name>Swatht " .. k .. "|Num in sequence " .. swath_sequence_tbl[k] .. "</name>\n")
 		file:write("			<styleUrl>#swathline</styleUrl>\n")	
 		file:write("				<LineString>\n")
 		file:write("					<coordinates>\n")
@@ -1845,13 +1906,6 @@ function generate_kml()
 		end
 		i = i + 1
 	end
-		-- track[index]["spd"] = msec2kph(spd_dr)
-		-- track[index]["alt"] = alt_dr
-		-- track[index]["hr"]	= hours_z
-		-- track[index]["min"] = minutes_z
-		-- track[index]["sec"] = seconds_z
-		-- track[index]["lat"] = lat
-		-- track[index]["lon"] = lon
 	file:write("		<Folder>\n")
 	file:write("		<name>AcfTrack</name>\n")
 	file:write("			<Placemark>\n")	
@@ -1867,25 +1921,25 @@ function generate_kml()
 	for k,v in pairs(track) do
 		file:write("				<gx:coord>" .. v["lon"] .. " " .. v["lat"] .. " " .. v["alt"] .. "</gx:coord>\n")
 	end
-	file:write("				<ExtendedData>\n")
-	file:write("					<SchemaData schemaUrl=\"#schema\">\n")
-	file:write("						<gx:SimpleArrayData name=\"speed\">\n")
+	file:write("					<ExtendedData>\n")
+	file:write("						<SchemaData schemaUrl=\"#schema\">\n")
+	file:write("							<gx:SimpleArrayData name=\"speed\">\n")
 	for k,v in pairs(track) do
-		file:write("							<gx:value>" .. v["spd"] .. " km/h" .. "</gx:value>\n")
+		file:write("								<gx:value>" .. v["spd"] .. " km/h" .. "</gx:value>\n")
 	end	
-	file:write("						</gx:SimpleArrayData>\n")
-	file:write("						<gx:SimpleArrayData name=\"payload\">\n")
+	file:write("							</gx:SimpleArrayData>\n")
+	file:write("							<gx:SimpleArrayData name=\"payload\">\n")
 	for k,v in pairs(track) do
-		file:write("							<gx:value>" .. round2(v["payload"], 1) .. " kg" .. "</gx:value>\n")
+		file:write("								<gx:value>" .. round2(v["payload"], 1) .. " kg" .. "</gx:value>\n")
 	end	
-	file:write("						</gx:SimpleArrayData>\n")
-	file:write("						<gx:SimpleArrayData name=\"area\">\n")
+	file:write("							</gx:SimpleArrayData>\n")
+	file:write("							<gx:SimpleArrayData name=\"area\">\n")
 	for k,v in pairs(track) do
-		file:write("							<gx:value>" .. round2(v["area"], 2) .. " ha" .. "</gx:value>\n")
+		file:write("								<gx:value>" .. round2(v["area"], 2) .. " ha" .. "</gx:value>\n")
 	end	
-	file:write("						</gx:SimpleArrayData>\n")
-	file:write("					</SchemaData>\n")
-	file:write("				</ExtendedData>\n")
+	file:write("							</gx:SimpleArrayData>\n")
+	file:write("						</SchemaData>\n")
+	file:write("					</ExtendedData>\n")
 	file:write("				</gx:Track>\n")
 	file:write("			</Placemark>\n")
 	file:write("		</Folder>\n")
