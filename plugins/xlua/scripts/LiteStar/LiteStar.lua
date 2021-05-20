@@ -343,6 +343,8 @@ end
 function pattern_BK_BK_R()
 	clear_tbl(swath_tbl)
 	clear_tbl(swath_sequence_tbl)
+	points["C"]["lat"] = 0
+	points["C"]["lon"] = 0
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 	local course_ba = reverse_course(course_ab)
 	local dir = (course_ab + 90) % 360
@@ -359,6 +361,8 @@ end
 function pattern_BK_BK_L()
 	clear_tbl(swath_tbl)
 	clear_tbl(swath_sequence_tbl)
+	points["C"]["lat"] = 0
+	points["C"]["lon"] = 0
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 	local course_ba = reverse_course(course_ab)
 	local dir = (course_ab - 90) % 360
@@ -863,6 +867,8 @@ function cmd_but_ent(phase, duration)
 				points["A"]["lon"] = 0
 				points["B"]["lat"] = 0
 				points["B"]["lon"] = 0
+				points["C"]["lat"] = 0
+				points["C"]["lon"] = 0
 				points["Mrk"]["lat"] = 0
 				points["Mrk"]["lon"] = 0
 				for k in pairs(old_job["spayed_swath"]) do
@@ -1140,12 +1146,13 @@ function spray_toggle_after_cmd(phase, duration)
 			points["B"]["lon"] = lon
 			old_job["pointBlat"] = points["B"]["lat"]
 			old_job["pointBlon"] = points["B"]["lon"]
-			if menu[3]["set"] == 1 or menu[3]["set"] == 1 then
+			if menu[3]["set"] == 1 or menu[3]["set"] == 7 then
 				if menu[3]["set"] == 1 then
 					pattern_BK_BK_L()
 				elseif menu[3]["set"] == 7 then
 					pattern_BK_BK_R()
 				end
+				swath_num = 2
 				guide = 1
 			end
 		elseif  points["C"]["lat"] == 0 and points["C"]["lon"] == 0 and points["B"]["lat"] ~= 0 and points["B"]["lon"] ~= 0 then
@@ -1206,7 +1213,7 @@ function spray_after_cmd(phase, duration)
 			points["B"]["lon"] = lon
 			old_job["pointBlat"] = points["B"]["lat"]
 			old_job["pointBlon"] = points["B"]["lon"]
-			if menu[3]["set"] == 1 or menu[3]["set"] == 1 then
+			if menu[3]["set"] == 1 or menu[3]["set"] == 7 then
 				if menu[3]["set"] == 1 then
 					pattern_BK_BK_L()
 				elseif menu[3]["set"] == 7 then
@@ -1214,6 +1221,7 @@ function spray_after_cmd(phase, duration)
 				end
 				guide = 1
 			end
+			swath_num = 2
 		end
 		track_flight()
 	end
