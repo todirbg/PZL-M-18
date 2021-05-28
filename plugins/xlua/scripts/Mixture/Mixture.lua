@@ -3,6 +3,9 @@
 -- Licnsed under Creative Commons CC BY-NC 4.0
 -- https://creativecommons.org/licenses/by-nc/4.0/
 ----------------------------------------------------------------------------------------------------------
+function dummy()
+
+end
 
 local power_last = 0
 local power_slope = 1
@@ -27,6 +30,53 @@ function mixture_handle_handler()
 end
 
 mixture_handle = create_dataref("custom/dromader/fuel/mixture_handle","number", mixture_handle_handler)
+
+function joy_axis_handler()
+
+  if joy_map[9] == 1 then
+    if joy_value[9] > 0.95 then
+		ovrd_mix = 1
+		mixture_handle = 1
+	else
+		ovrd_mix = 0
+		mixture_handle = mixture_eng
+	end
+    
+  end
+
+end
+
+function cmd_mixture_selector_up(phase, duration)
+		if mixture_eng == 1 then
+			ovrd_mix = 1
+		end
+		mixture_handle = mixture_eng
+end
+
+function cmd_mixture_selector_dwn(phase, duration)
+		if ovrd_mix == 1 then
+			mixture_eng = 0.99
+			ovrd_mix = 0
+		end
+		mixture_handle = mixture_eng
+end
+
+function cmd_mixture_selector_max(phase, duration)
+	if phase == 0 then
+		mixture_handle = 1
+	end
+end
+
+function cmd_mixture_selector_min(phase, duration)
+	if phase == 0 then
+		mixture_handle = 0
+	end
+end
+
+cmdcustommixup = wrap_command("sim/engines/mixture_up", dummy, cmd_mixture_selector_up)
+cmdcustommixdwn = wrap_command("sim/engines/mixture_down", dummy, cmd_mixture_selector_dwn)
+cmdcustommixmax = wrap_command("sim/engines/mixture_max", dummy, cmd_mixture_selector_max)
+cmdcustommixmin = wrap_command("sim/engines/mixture_min", dummy, cmd_mixture_selector_min)
 
 function auto_rich()
  local mix = mixture_eng
@@ -95,13 +145,8 @@ function aircraft_unload()
   ovrd_mix = 0
 end
 
--- function flight_start()
-	-- if startup_running == 1 then
-		-- primed_ratio = 1
-	-- else
-		-- primed_ratio = 0
-	-- end
--- end
-
+function after_physics()
+   joy_axis_handler()
+end
 
 run_at_interval(set_mixture,(1/10))

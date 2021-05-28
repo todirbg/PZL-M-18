@@ -216,6 +216,8 @@ water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
 
 startup_running = find_dataref("sim/operation/prefs/startup_running")
 
+bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
+
 fuse = create_dataref("custom/dromader/litestar/fuse","number", dummy)
 power_sw = create_dataref("custom/dromader/litestar/power_sw","number", dummy)
 power = create_dataref("custom/dromader/litestar/power","number", dummy)
@@ -275,7 +277,11 @@ function export()
 				str_disL = str_disL:sub(1, -2 )
 				str_disL = str_disL .. ")"
 			else
-				str_disL = str_disL .. "("
+        if str_disL:sub(-1) == " " then
+          str_disL = "("
+        else
+          str_disL = str_disL .. "("
+        end
 			end
 		end
 		str_disR = string.format("%6d%%", export_count)
@@ -836,11 +842,14 @@ function cmd_toggle_fuse(phase, duration)
 			fuse = 0
 			power = 0
 			stop_timer(startup)
-			power_reset()
+			
 		else
 			fuse = 1
 			if power_sw == 1 then
-				power = 1
+				if bus_volt > 17 then
+					power = 1
+					power_reset()
+				end
 			end
 		end
 	end
@@ -854,11 +863,14 @@ function cmd_toggle_power(phase, duration)
 			power_sw = 0
 			power = 0
 			stop_timer(startup)
-			power_reset()
+			
 		else
 			power_sw = 1
 			if fuse == 1 then
-				power = 1
+				if bus_volt > 17 then
+					power = 1
+					power_reset()
+				end
 			end
 		end
 	end
@@ -1071,7 +1083,7 @@ function cmd_but_ent(phase, duration)
 				run_at_interval(export,(1/8))
 				mode = 7
 				in_menu = 0
-				str_disL = ""
+				str_disL = " "
 				return
 			end
 			in_menu = 0
@@ -1343,6 +1355,15 @@ run_at_interval(timer,(1/4))
 run_at_interval(track_flight,1)
 
 function after_physics()
+	if bus_volt < 18 then
+		power = 0
+	elseif power == 0 and power_sw == 1 and fuse == 1 then
+		if bus_volt > 18 then
+			power = 1
+			power_reset()
+		end
+	end
+
 	if power == 1 then
 		if spray == 1 then
 			str_stat = "<"
@@ -1577,6 +1598,9 @@ function after_physics()
 						if points["A"]["lat"] ~= 0 and points["A"]["lon"] ~= 0 then
 							if points["B"]["lat"] ~= 0 and points["B"]["lon"] ~= 0 then 
 								point = "C"
+								if old_job["spayed_swath"][swath_num] ~= nil and spray == 1 then
+									old_job["spayed_swath"][swath_num] = 1
+								end
 							else
 								point = "B"
 							end

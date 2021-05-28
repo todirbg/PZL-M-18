@@ -43,17 +43,18 @@ flooded = find_dataref("custom/dromader/engine/flooded")
 
 function prop_angle_handler()
 	if prop_angle_dromader > prop_rotation_angle_deg then
-		primed_ratio = math.max(0, primed_ratio - (prop_angle_dromader - prop_rotation_angle_deg)*0.001*throttle_ratio*(1-mixture_eng))
-		if primed_ratio < 0.5 then 
+		primed_ratio = math.max(0, primed_ratio - (prop_angle_dromader - prop_rotation_angle_deg)*0.001*throttle_ratio)
+		if primed_ratio < 1 then
+      primed_ratio = 0
 			flooded = 0
 		end
 	else
 		prop_angle_dromader = prop_rotation_angle_deg
 		return
 	end
-	if prop_angle_dromader > 360 then 
+	if prop_angle_dromader >= 360 then 
 		prop_angle_dromader = 0
-	elseif prop_angle_dromader < 0 then
+	elseif prop_angle_dromader <= 0 then
 		prop_angle_dromader = 360
 	end
 		prop_rotation_angle_deg = prop_angle_dromader
@@ -101,12 +102,12 @@ local prop_angle_prev = 0
 function after_physics()
 local prop_speed_now = prop_rotation_speed_rad_sec
 
-    if prop_rotation_angle_deg > 360 then
+    if prop_rotation_angle_deg >= 360 then
 
         prop_rotation_angle_deg = prop_rotation_angle_deg - 360
 
     end
-    if side_angle > 360 then
+    if side_angle >= 360 then
 
         side_angle = side_angle - 360
 
