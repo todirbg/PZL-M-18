@@ -14,7 +14,7 @@
   
  Materials for textures https://cc0textures.com/ and https://freepbr.com/
 
- Painting with Armour Paint
+ Painting with Armor Paint
  https://armorpaint.org/
  https://github.com/armory3d/armorpaint
 
