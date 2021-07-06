@@ -15,6 +15,7 @@ batt = find_dataref("sim/cockpit2/electrical/battery_on[0]")
 gpu = find_dataref("sim/cockpit/electrical/gpu_on")
 startup_running = find_dataref("sim/operation/prefs/startup_running")
 
+running_eng = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 
 bus_amp = find_dataref("sim/cockpit2/electrical/bus_load_amps[0]")
 bus_amp2 = find_dataref("sim/cockpit2/electrical/bus_load_amps[1]")
@@ -33,7 +34,12 @@ beacon_lt = find_dataref("sim/cockpit2/switches/beacon_on")
 elec_hyd = find_dataref("sim/cockpit2/switches/electric_hydraulic_pump_on")
 stat_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 
+door5_ratio = find_dataref("sim/flightmodel2/misc/door_open_ratio[4]")
+
 fuel_fuse = create_dataref("custom/dromader/electrical/fuel_fuse","number", dummy)
+
+kill_gpu = create_dataref("custom/dromader/electrical/kill_gpu","number", dummy) --0 connected/ 1 disconnected
+spd_dr = find_dataref("sim/flightmodel/position/groundspeed")
 
 
 stall_fuse = create_dataref("custom/dromader/electrical/stall_fuse","number", dummy)
@@ -108,12 +114,16 @@ end
 
 cmdcustomstalltog = create_command("custom/dromader/electrical/stall_fuse_tog","Toggle stall warning fuse",cmd_stall_fuse_tog)
 
+open_door5_cmd = find_command("sim/flight_controls/door_open_5")
 function cmd_bat_cover_tog(phase, duration)
 	if phase == 0 then
 		if bat_cover_hide == 0 then
 			bat_cover_hide = 1
 		else
 			bat_cover_hide = 0
+			if door5_ratio == 0 and kill_gpu == 0 then
+				open_door5_cmd:once()
+			end
 		end
 	end
 end
@@ -208,6 +218,15 @@ cmdcustomwiperdn = wrap_command("sim/systems/wipers_dn", dummy, cmd_wiper_wrap_h
 cmdcustomwiperup = wrap_command("sim/systems/wipers_up", dummy, cmd_wiper_wrap_handler)
 cmdcustomwipertog = create_command("custom/dromader/electrical/wiper_fuse_tog","Toggle stall warning fuse",cmd_wiper_fuse_tog)
 
+function cmd_door5_close_wrap_handler(phase, duration)
+	if phase == 0 then
+		kill_gpu = 1
+		gpu = 0
+	end
+end
+
+cmddooor5closewrap = wrap_command("sim/flight_controls/door_close_5", dummy, cmd_door5_close_wrap_handler)
+
 function cmd_vent_fuse_tog(phase, duration)
 	if phase == 0 then
 		if vent_fuse == 0 then
@@ -249,8 +268,10 @@ function cmd_bat_selector_up(phase, duration)
 			batt = 0
 			gpu = 0
 		elseif bat_sel == 2 then
-			batt = 1
-			gpu = 1
+			batt = 0		
+			if kill_gpu == 0 then
+				gpu = 1
+			end
 		end
 	end
 end
@@ -267,8 +288,10 @@ function cmd_bat_selector_dwn(phase, duration)
 			batt = 0
 			gpu = 0
 		elseif bat_sel == 2 then
-			batt = 1
-			gpu = 1
+			batt = 0
+			if kill_gpu == 0 then
+				gpu = 1
+			end
 		end
 	end
 end
@@ -277,6 +300,21 @@ end
 cmdcustombatswup = create_command("custom/dromader/electrical/bat_selector_up","Move the power selector up one",cmd_bat_selector_up)
 cmdcustombatswdwn = create_command("custom/dromader/electrical/bat_selector_dwn","Move the power selector down one",cmd_bat_selector_dwn)
 
+function cmd_gpu_connect_tog(phase, duration)
+	if phase == 0 then
+		if kill_gpu == 0 then
+			kill_gpu = 1
+			gpu = 0
+		else
+			kill_gpu = 0
+			if bat_sel == 2 then
+				gpu = 1
+			end
+		end
+	end
+end
+
+cmdcustomgpuconnecttog = create_command("custom/dromader/electrical/gpu_connect_tog","Toggle GPU",cmd_gpu_connect_tog)
 
 function cmd_volt_selector_up(phase, duration)
 	if phase == 0 then
@@ -315,6 +353,7 @@ function auto_start_after()
 		bat_sel = 0
 		batt = 1
 		gpu = 0
+		kill_gpu = 1
 --		stall_fuse = 1
 --		stall_fail = 0
 --		agk49_fuse = 1
@@ -374,6 +413,7 @@ function flight_start()
 
 	inst_light_fuse = 0
 	inst_light_fail = 6
+	kill_gpu = 1
 	if startup_running == 1 then
 		bat_sel = 0
 		batt = 1
@@ -418,7 +458,11 @@ local tmpval
 			elseif volt_sel == 1 then
 				tmpval = bus_volt
 			elseif volt_sel == 2 then
-				tmpval = bus_volt
+				if running_eng == 1 and gen_off == 0 then
+					tmpval = bus_volt
+				else
+					tmpval = 0
+				end
 			elseif volt_sel == 3 then
 				tmpval = bat_volt
 			elseif volt_sel == 4 then
@@ -477,4 +521,7 @@ end
 function after_physics()
 	update_volt_needle()
 	monitor_failures()
+	if kill_gpu == 0 and spd_dr > 0.1 then
+			kill_gpu = 1
+	end
 end

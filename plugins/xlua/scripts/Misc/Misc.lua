@@ -47,6 +47,14 @@ compass_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml")
 door_detach_L = find_dataref("sim/operation/failures/rel_aftbur0")
 door_detach_R = find_dataref("sim/operation/failures/rel_aftbur1")
 
+chocks = create_dataref("custom/dromader/misc/chocks","number", dummy)
+pitot_cover = create_dataref("custom/dromader/misc/pitot_cover","number", dummy)
+pitot_fail = find_dataref("sim/operation/failures/rel_pitot")
+
+startup_running = find_dataref("sim/operation/prefs/startup_running")
+
+spd_dr = find_dataref("sim/flightmodel/position/groundspeed")
+
 function emer_handle_R_handler()
 	if emer_handle_R == 1 then
 		door_detach_R = 6
@@ -130,6 +138,37 @@ cmdcsutomcompasslock = create_command("custom/dromader/compass/compass_lock","Co
 cmdcsutomcompassunlock = create_command("custom/dromader/compass/compass_unlock","Compass unlock",cmd_compassunlock)
 cmdcsutomcompasslocktog = create_command("custom/dromader/compass/compass_lock_tog","Compass lock toggle",cmd_compasslock_tog)
 
+
+function cmd_chocks_tog(phase, duration)
+	if phase == 0 and spd_dr< 0.1 then
+		if chocks == 0 then
+			chocks = 1
+			park_brake = 1
+		else
+			chocks = 0
+			if left_brake == 0 and right_brake == 0 then
+				park_brake = 0
+			end
+		end
+	end
+end
+
+cmdcsutomchockstog = create_command("custom/dromader/misc/chocks_tog","Toggle chocks",cmd_chocks_tog)
+
+function cmd_pitot_cover_tog(phase, duration)
+	if phase == 0 and spd_dr< 0.1 then
+		if pitot_cover == 0 then
+			pitot_cover = 1
+			pitot_fail = 6
+		else
+			pitot_cover = 0
+			pitot_fail = 0
+		end
+	end
+end
+
+cmdcsutompitotcovertog = create_command("custom/dromader/misc/pitot_cover_tog","Toggle pitot cover",cmd_pitot_cover_tog)
+
 local fires_temp = draw_fires
 
 function aircraft_load()
@@ -150,6 +189,11 @@ function flight_start()
 	left_brake = park_brake
 	right_brake = park_brake
 	park_brake = 0
+	if startup_running == 0 then
+		chocks = 1
+		pitot_cover = 1
+		pitot_fail = 6
+	end
 end
 
 function aircraft_unload()
@@ -164,5 +208,9 @@ function after_physics()
 		compass_g_side_dromader = compass_g_side
 		compass_g_nrml_dromader = compass_g_nrml
 		compass_heading_dromader = compass_heading
+	end
+	
+	if chocks == 1 then
+		park_brake = 1	
 	end
 end

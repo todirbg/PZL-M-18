@@ -22,6 +22,8 @@ fuel_quantity_left = find_dataref("sim/flightmodel/weight/m_fuel[0]")
 fuel_quantity_right = find_dataref("sim/flightmodel/weight/m_fuel[1]")
 engn_tacrad = find_dataref("sim/flightmodel/engine/ENGN_tacrad[0]")
 
+gspeed_mult = find_dataref("sim/time/ground_speed_flt")
+
 fuel_fuse = find_dataref("custom/dromader/electrical/fuel_fuse")
 fuel_burning = find_dataref("sim/flightmodel2/engines/engine_is_burning_fuel[0]")
 
@@ -177,7 +179,7 @@ function after_physics()
 	update_fuel_press()
 	if engn_running == 1 and fuel_flow_before_engine == 1 then --uses fuel only when running
 		if fuel_tank_selector_handle == 1 then
-			fuel_quantity_left = fuel_quantity_left - fuel_flow * SIM_PERIOD --normalized per frame fuel flow
+			fuel_quantity_left = fuel_quantity_left - fuel_flow * gspeed_mult * SIM_PERIOD --normalized per frame fuel flow
 			tank_check_empty(fuel_quantity_left)
 		elseif fuel_tank_selector_handle == 2 then
 			local ff = fuel_flow/2 * SIM_PERIOD
@@ -185,7 +187,7 @@ function after_physics()
 			fuel_quantity_right = fuel_quantity_right - ff
 			tank_check_empty(fuel_quantity_left + fuel_quantity_right)
 		elseif fuel_tank_selector_handle == 3 then
-			fuel_quantity_right = fuel_quantity_right - fuel_flow * SIM_PERIOD
+			fuel_quantity_right = fuel_quantity_right - fuel_flow * gspeed_mult * SIM_PERIOD 
 			tank_check_empty(fuel_quantity_right)
 		end
 	end

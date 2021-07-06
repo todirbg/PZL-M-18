@@ -245,9 +245,10 @@ local startup_count = 1
 
 function startup()
 	if startup_count < 16 then
-		str_disL = " "
-		str_disR = " "				
+		str_disL = ""
+		str_disR = ""				
 		for i = 1,7 do
+			
 			if math.random() > 0.5 then
 				str_disL = str_disL..string.char(math.random(65,90))
 				str_disR = str_disR..string.char(math.random(48,57))
@@ -277,11 +278,11 @@ function export()
 				str_disL = str_disL:sub(1, -2 )
 				str_disL = str_disL .. ")"
 			else
-        if str_disL:sub(-1) == " " then
-          str_disL = "("
-        else
-          str_disL = str_disL .. "("
-        end
+				if str_disL:sub(-1) == " " then
+				  str_disL = "("
+				else
+				  str_disL = str_disL .. "("
+				end
 			end
 		end
 		str_disR = string.format("%6d%%", export_count)
