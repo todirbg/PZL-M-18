@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186553106
+P _gear/0/_stat_def 0.186553165
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186553106
+P _gear/1/_stat_def 0.186553165
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.054173104
+P _gear/2/_stat_def 0.054173112
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -28437,7 +28437,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.219615698
+P _part/87/_part_y -2.219615459
 P _part/87/_part_z 25.592498779
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -37185,7 +37185,7 @@ P acf/_cyclic_up_trim_rat 0.0
 P acf/_deg_psi_per_deg_def 0.0
 P acf/_deg_the_per_deg_def 6.0
 P acf/_delta3 0.0
-P acf/_descrip Firefighter/Agricultural
+P acf/_descrip M-18B Dromader Firefighter/Agricultural aircraft
 P acf/_diff_coll_with_hdng 0.0
 P acf/_diff_coll_with_ptch 0.0
 P acf/_diff_coll_with_roll 0.0
@@ -37960,7 +37960,7 @@ P acf/_mixt_x_ctr 0.0
 P acf/_n1_power_curve1 1.0
 P acf/_n1_power_curve2 1.0
 P acf/_n2_power_curve 1.0
-P acf/_name M-18 Dromader
+P acf/_name M-18B Dromader
 P acf/_new_plot_XP3D_cock/0 0
 P acf/_new_plot_XP3D_cock/1 1
 P acf/_new_plot_XP3D_cock/2 0
@@ -37984,6 +37984,7 @@ P acf/_nom_bat_volt 24.0
 P acf/_nom_fuelP 35.0
 P acf/_nom_gen_volt 26.500000000
 P acf/_nom_oilP 60.0
+P acf/_notes https://github.com/todirbg/PZL-M-18
 P acf/_num_batteries 1
 P acf/_num_braking_wheels 0.0
 P acf/_num_buses 3
@@ -38378,6 +38379,7 @@ P acf/_starter_max_rpm_rat 0.150000006
 P acf/_starter_torque_rat 0.300000012
 P acf/_steerdeg_castor 0.0
 P acf/_stickshaker 0
+P acf/_studio todirbg
 P acf/_sweep_extend_protect 0
 P acf/_sweep_m1 0.0
 P acf/_sweep_m2 0.0
@@ -38395,7 +38397,7 @@ P acf/_tail_rot_with_v2_kts 0.0
 P acf/_tail_rotor_lf_trim_rat 0.0
 P acf/_tail_rotor_rt_trim_rat 0.0
 P acf/_tail_with_coll 0.0
-P acf/_tailnum SP_ZUP
+P acf/_tailnum M18
 P acf/_tailrotor_EQ 0
 P acf/_takeoff_trim_11 0.0
 P acf/_tank_part_en/0 0
@@ -38533,7 +38535,7 @@ P acf/_vect_power_for 1.0
 P acf/_vect_rate 15.0
 P acf/_vectarmY 0.0
 P acf/_vectarmZ 0.0
-P acf/_version 0.62
+P acf/_version 0.70b
 P acf/_vvi_but_adjusts_pitch 0
 P acf/_warn_airliner 0
 P acf/_warn_alt_app_100 0

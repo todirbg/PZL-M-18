@@ -68,6 +68,8 @@ custom/dromader/electrical/wiper
 custom/dromader/electrical/instruments_light
 custom/dromader/electrical/agk49_power
 custom/dromader/electrical/transponder_power
+custom/dromader/electrical/hide_bat_cover
+custom/dromader/electrical/kill_gpu
 #fuel
 custom/dromader/fuel/fuel_valve_handle
 custom/dromader/fuel/fuel_quantity_L
@@ -131,6 +133,8 @@ custom/dromader/spray/pump_press_set
 custom/dromader/spray/flow_rate
 #misc
 custom/dromader/misc/tension_handle
+custom/dromader/misc/pitot_cover
+custom/dromader/misc/chocks
 #LiteStar IV
 custom/dromader/litestar/fuse
 custom/dromader/litestar/power_sw
