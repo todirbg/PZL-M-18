@@ -451,9 +451,9 @@ local tmpval
 		if volt_but == 0 then
 			if volt_sel == 0 then
 				if gen_off == 1 and gpu == 0 then
-					tmpval = (bus_amp + bus_amp2 + bus_amp3 + bus_load_add)/4
+					tmpval = (bus_amp + bus_amp2 + bus_amp3)/4
 				else
-					tmpval = (bus_amp + bus_amp2 + bus_amp3 + bus_load_add)/4 - 20
+					tmpval = (bus_amp + bus_amp2 + bus_amp3)/4 - 20
 				end
 			elseif volt_sel == 1 then
 				tmpval = bus_volt
