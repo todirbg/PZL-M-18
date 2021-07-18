@@ -149,7 +149,7 @@ function check_eng()
 	--eng_cyl_temp_max = eng_egt*(0.25+eng_pwr_ratio/2)
 	oil_temp_max = (150/(1+oil_flap) )
 	
-	if oil_temp > 110 then
+	if oil_temp > 100 then
 		air_res = 6
 		smoke_trail = 1
 	end
@@ -178,7 +178,7 @@ function check_eng()
 		end
 	end
 	
-	if MP_cur > MP_limit*1.1 then
+	if MP_cur > MP_limit*1.05 then
 		MP_fail_counter = MP_fail_counter + (MP_cur - MP_limit)*SIM_PERIOD
 	else
 		if MP_fail_counter > 0 then

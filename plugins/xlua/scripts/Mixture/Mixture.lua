@@ -15,6 +15,10 @@ local egt_slope = 0
 mixture_eng = find_dataref("sim/flightmodel/engine/ENGN_mixt[0]")
 power_eng = find_dataref("sim/flightmodel/engine/ENGN_power[0]")
 
+
+joy_map = find_dataref("sim/joystick/joy_mapped_axis_avail") --starting from 0 - 9 mixture all eng, 28 mixture eng1, 29 mixture eng2.
+joy_value = find_dataref("sim/joystick/joy_mapped_axis_value")
+
 running_eng = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 ovrd_mix = find_dataref("sim/operation/override/override_mixture")
 startup_running = find_dataref("sim/operation/prefs/startup_running")

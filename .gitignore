@@ -4,3 +4,5 @@ Dromader_prefs.txt
 *.blend2
 *.blend3
 objects/Paint_devel
+StackTracePlus.lua
+init_debug.lua

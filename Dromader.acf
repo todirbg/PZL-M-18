@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186553091
+P _gear/0/_stat_def 0.186553121
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186553091
+P _gear/1/_stat_def 0.186553121
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.054173101
+P _gear/2/_stat_def 0.054173112
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -237,7 +237,7 @@ P _gear/count 10
 P _lite/count 0
 P _lite_equip/_land_lite_off_on_retract_EQ 0
 P _lite_equip/_taxi_lite_off_on_retract_EQ 0
-P _obja/0/_obj_flags 20
+P _obja/0/_obj_flags 28
 P _obja/0/_v10_att_file_stl Engine.obj
 P _obja/0/_v10_att_part -1
 P _obja/0/_v10_att_phi_ref 0.0
@@ -28437,7 +28437,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.219615698
+P _part/87/_part_y -2.219615459
 P _part/87/_part_z 25.592498779
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -35513,7 +35513,7 @@ P acf/_SFC_half_lo_JET 0.550000012
 P acf/_SFC_half_lo_PRP 0.507000029
 P acf/_TOGA_discos_servos 0
 P acf/_TRQ_is_pcnt 1
-P acf/_Vfe1_kts 107.0
+P acf/_Vfe1_kts 108.0
 P acf/_Vfem_kts 95.0
 P acf/_Vle_kts 99999.0
 P acf/_Vmca_kts 0.0
@@ -38535,7 +38535,7 @@ P acf/_vect_power_for 1.0
 P acf/_vect_rate 15.0
 P acf/_vectarmY 0.0
 P acf/_vectarmZ 0.0
-P acf/_version 0.71b
+P acf/_version 0.80b
 P acf/_vvi_but_adjusts_pitch 0
 P acf/_warn_airliner 0
 P acf/_warn_alt_app_100 0

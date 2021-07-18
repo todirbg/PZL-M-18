@@ -173,7 +173,6 @@ local fires_temp = draw_fires
 
 function aircraft_load()
 	draw_fires = 1
-
 end
 
 function flight_start()
