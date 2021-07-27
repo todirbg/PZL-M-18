@@ -105,6 +105,7 @@ custom/dromader/radios/transponder_mode
 #engine
 custom/dromader/electrical/starter_fuse
 custom/dromader/engine/flooded
+custom/dromader/engine/smoker
 #mixture
 custom/dromader/fuel/mixture_handle
 #comapass

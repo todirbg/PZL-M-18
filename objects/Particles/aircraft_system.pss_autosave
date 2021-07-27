@@ -3129,6 +3129,82 @@ INTERP_MODE CUBIC_AVG
 END_KEYFRAME_TABLE
  COLLISION_MODE DIE
 END_PARTICLE
+PARTICLE
+ NAME smoker
+ MAX_PARTICLES 6000
+ BILLBOARD_MODE BILLBOARD
+ BLEND_MODE BLEND
+ TEX_CELLS_X 8
+ TEX_CELLS_Y 8
+ ANIM_CELL_START 3
+ ANIM_CELL_COUNT 2
+ ANIM_CELL_REPEAT 1
+ ANIM_CELL_RANDOM 1
+ANIM_CELL_KF
+INTERP_MODE LINEAR
+	0.000000	0.000000
+	1.000000	1.000000
+END_KEYFRAME_TABLE
+SIZE_CURVE
+INTERP_MODE CUBIC_AVG
+	0.000000	2.345239
+	0.174991	4.476190
+	0.605772	4.464285
+	1.000000	2.904759
+END_KEYFRAME_TABLE
+ALPHA_CURVE
+INTERP_MODE CUBIC_AVG
+	0.000000	0.067619
+	0.019143	0.365715
+	0.347949	0.986667
+	0.806571	0.636191
+	1.000000	0.000000
+END_KEYFRAME_TABLE
+LENGTH_CURVE
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000
+	1.000000	0.000000
+END_KEYFRAME_TABLE
+ DIFFUSE 1.000000
+ AMBIENT 1.000000
+EMISSIVE
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000
+	1.000000	0.000000
+END_KEYFRAME_TABLE
+TINT
+INTERP_MODE LINEAR
+	0.000000	1.000000	1.000000	1.000000
+	1.000000	1.000000	1.000000	1.000000
+END_KEYFRAME_TABLE
+GRAVITY_CURVE
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000
+	1.000000	-0.095238
+END_KEYFRAME_TABLE
+TURBULENCE
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000
+	1.000000	0.020000
+END_KEYFRAME_TABLE
+DRAG_CURVE
+INTERP_MODE CUBIC_AVG
+	0.000000	2.000000
+	1.000000	3.000000
+END_KEYFRAME_TABLE
+SPIN_CURVE
+INTERP_MODE CUBIC_AVG
+	0.000000	1.000000
+	0.250000	0.500000
+	1.000000	0.100000
+END_KEYFRAME_TABLE
+ELASTICITY
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000
+	1.000000	1.000000
+END_KEYFRAME_TABLE
+ COLLISION_MODE DIE
+END_PARTICLE
 EMITTER
  NAME Jet Exhaust
  EMIT_MODE STREAM
@@ -11362,6 +11438,150 @@ DREF
 DREF custom/dromader/spray/spray
 DREF custom/dromader/spray/flow_rate
 DREF sim/flightmodel/forces/vz_air_on_acf
+END_EMITTER
+EMITTER
+ NAME Smoker
+ EMIT_MODE STREAM
+SUB_EMITTER
+ PARTICLE_TYPE 42
+EMIT_RATE
+SLOT 50
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000	0.000000
+	1.000000	50.000000	50.000000
+SLOT 49
+INTERP_MODE LINEAR
+	0.000000	0.500000	0.500000
+	10.000000	1.000000	1.000000
+	300.000000	1.000000	1.000000
+	1000.000000	1.250000	1.250000
+END_KEYFRAME_TABLE
+INITIAL_SPEED
+SLOT 49
+INTERP_MODE LINEAR
+	0.000000	30.000000	40.000000
+	100.000000	80.000000	100.000000
+	200.000000	180.000000	200.000000
+END_KEYFRAME_TABLE
+ROTATION_SPEED
+INTERP_MODE CUBIC_AVG
+	0.000000	-1.000000	1.000000
+	1.000000	-1.000000	1.000000
+END_KEYFRAME_TABLE
+INITIAL_HEADING
+INTERP_MODE LINEAR
+	0.000000	0.000000	0.000000
+	1.000000	0.000000	0.000000
+END_KEYFRAME_TABLE
+INITIAL_PITCH
+INTERP_MODE CUBIC_AVG
+	0.000000	15.000000	15.000000
+	1.000000	15.000000	15.000000
+END_KEYFRAME_TABLE
+DX
+INTERP_MODE LINEAR
+	0.000000	0.000000	0.000000
+	1.000000	0.000000	0.000000
+END_KEYFRAME_TABLE
+DY
+INTERP_MODE LINEAR
+	0.000000	0.000000	0.000000
+	1.000000	0.000000	0.000000
+END_KEYFRAME_TABLE
+DZ
+INTERP_MODE LINEAR
+	0.000000	0.000000	0.000000
+	1.000000	0.000000	0.000000
+END_KEYFRAME_TABLE
+DLON
+INTERP_MODE CUBIC_AVG
+	0.000000	1.000000	1.000000
+	1.000000	1.000000	1.000000
+END_KEYFRAME_TABLE
+DLAT
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000	0.000000
+	1.000000	0.000000	0.000000
+END_KEYFRAME_TABLE
+INITIAL_ROTATION
+INTERP_MODE CUBIC_AVG
+	0.000000	0.000000	0.000000
+	1.000000	0.000000	0.000000
+END_KEYFRAME_TABLE
+INITIAL_SIZE
+SLOT 41
+INTERP_MODE LINEAR
+	0.000000	0.250000	0.400000
+	100.000000	0.400000	1.000000
+	9999.000000	0.400000	1.000000
+END_KEYFRAME_TABLE
+INITIAL_ALPHA
+INTERP_MODE CUBIC_AVG
+	0.000000	1.000000	1.000000
+	1.000000	1.000000	1.000000
+END_KEYFRAME_TABLE
+TIME_TO_LIVE
+SLOT 41
+INTERP_MODE LINEAR
+	0.000000	1.000000	15.000000
+	37.500000	2.000000	37.500000
+	75.000000	3.000000	60.000000
+	150.000000	10.000000	90.000000
+	9999.000000	15.000000	90.000000
+END_KEYFRAME_TABLE
+END_SUB_EMITTER
+DATAREFS 51
+DREF 
+DREF sim/aircraft/parts/acf_gear_xnodef
+DREF sim/aircraft/parts/acf_gear_ynodef
+DREF sim/aircraft/parts/acf_gear_znodef
+DREF sim/flightmodel/parts/tire_x_no_deflection
+DREF sim/flightmodel/parts/tire_y_no_deflection
+DREF sim/flightmodel/parts/tire_z_no_deflection
+DREF sim/flightmodel2/gear/tire_vertical_force_n_mtr
+DREF sim/flightmodel2/gear/tire_vertical_deflection_mtr
+DREF sim/flightmodel2/gear/on_ground
+DREF sim/flightmodel2/gear/total_deflection_rate
+DREF sim/flightmodel2/gear/tire_skid_ratio
+DREF sim/cockpit2/controls/yoke_pitch_ratio
+DREF sim/cockpit2/controls/yoke_heading_ratio
+DREF sim/flightmodel2/gear/tire_skid_ratio[0]
+DREF sim/flightmodel2/gear/tire_skid_ratio[1]
+DREF sim/flightmodel2/gear/total_deflection_rate[0]
+DREF sim/flightmodel2/gear/total_deflection_rate[1]
+DREF sim/cockpit2/engine/actuators/throttle_ratio_all
+DREF sim/cockpit2/engine/indicators/engine_speed_rpm
+DREF sim/flightmodel2/engines/engine_is_burning_fuel
+DREF sim/flightmodel2/engines/engine_is_burning_fuel[0]
+DREF sim/cockpit2/engine/actuators/throttle_ratio
+DREF sim/cockpit2/engine/actuators/throttle_ratio[*]
+DREF sim/flightmodel2/gear/on_ground[*]
+DREF sim/flightmodel2/gear/on_ground[1]
+DREF sim/flightmodel2/gear/on_ground[0]
+DREF sim/cockpit2/gauges/indicators/radio_altimeter_height_ft_pilot
+DREF sim/weather/runway_friction
+DREF sim/flightmodel2/engines/throttle_used_ratio
+DREF sim/flightmodel2/engines/throttle_used_ratio[*]
+DREF sim/flightmodel2/gear/on_noisy
+DREF sim/flightmodel2/gear/on_noisy[*]
+DREF sim/flightmodel2/gear/on_grass
+DREF sim/flightmodel2/gear/on_grass[*]
+DREF sim/flightmodel2/misc/AoA_angle_degrees
+DREF sim/flightmodel2/misc/gforce_normal
+DREF sim/flightmodel2/engines/thrust_reverser_deploy_ratio
+DREF sim/flightmodel2/engines/thrust_reverser_deploy_ratio[*]
+DREF sim/cockpit2/annunciators/engine_fires
+DREF sim/cockpit2/annunciators/engine_fires[*]
+DREF sim/cockpit2/gauges/indicators/airspeed_kts_pilot
+DREF sim/cockpit2/gauges/indicators/altitude_ft_pilot
+DREF sim/cockpit2/engine/indicators/N1_percent[*]
+DREF sim/cockpit2/engine/indicators/N1_percent[0]
+DREF sim/cockpit2/engine/indicators/N1_percent[1]
+DREF sim/cockpit2/switches/puffers_on
+DREF sim/flightmodel/failures/smoking
+DREF sim/flightmodel/jetwash/DVinc
+DREF sim/flightmodel/jetwash/DVinc[*]
+DREF custom/dromader/engine/smoker
 END_EMITTER
  TEX_CELLS_X 8
  TEX_CELLS_Y 8

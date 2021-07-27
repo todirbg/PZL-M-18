@@ -142,6 +142,7 @@ end
 local swath_tbl = {}
 local swath_sequence_tbl = {}
 local track = {}
+local mem = {}
 
 local senstable = {}
 senstable[1] = {1,2,3,4,8,16,32,83,133,183,233,283,333,383,433,483,533,583,633,683,733}
@@ -188,6 +189,21 @@ old_job["acres"] = 0
 old_job["brt_knob"] = 0.8
 old_job["brt_control"] = 101
 old_job["spayed_swath"] = {}
+
+function deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
 
 function brt_knob_handler()
 	old_job["brt_knob"] = brt_knob
@@ -270,32 +286,34 @@ function startup()
 end
 
 local export_count = 0
-
-function export()
+local num_exp = 0
+function export(num)
 		if export_count <= 100 then
-		if export_count%7 == 0 then
-			if str_disL:sub(-1) == "(" then
-				str_disL = str_disL:sub(1, -2 )
-				str_disL = str_disL .. ")"
-			else
-				if str_disL:sub(-1) == " " then
-				  str_disL = "("
+			if export_count%7 == 0 then
+				if str_disL:sub(-1) == "(" then
+					str_disL = str_disL:sub(1, -2 )
+					str_disL = str_disL .. ")"
 				else
-				  str_disL = str_disL .. "("
+					if str_disL:sub(-1) == " " then
+					  str_disL = "("
+					else
+					  str_disL = str_disL .. "("
+					end
 				end
 			end
-		end
-		str_disR = string.format("%6d%%", export_count)
+			str_disR = string.format("%6d%%", export_count)
 		else
-		str_disL = "Success"
-		str_disR = "    8/8"			
-			if export_count > 124 then
-				export_count = 0
-				mode = 1
-				in_menu = 1
-				menu[1]["set"] = 2
-				stop_timer(export)
-			end
+			str_disL = "Success"
+			str_disR = string.format("%7s" , string.format("%d/%d", num_exp, num_exp))
+				if export_count == 101 then
+					generate_kml()
+				elseif export_count > 124 then
+					export_count = 0
+					mode = 1
+					in_menu = 1
+					menu[1]["set"] = 2
+					stop_timer(export)
+				end
 		end
 		export_count = export_count + 1
 end
@@ -395,13 +413,20 @@ end
 
 function clear_tbl(tbl)
 	for k,v in pairs(tbl) do
-		v = nil
+		if type(v) == 'table' then
+			clear_tbl(v)
+		else
+			v = nil
+		end
 	end
+	tbl = {}
+	collectgarbage()
+	return tbl
 end
 
 function pattern_BK_BK_R()
-	clear_tbl(swath_tbl)
-	clear_tbl(swath_sequence_tbl)
+	swath_tbl = clear_tbl(swath_tbl)
+	swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 	points["C"]["lat"] = 0
 	points["C"]["lon"] = 0
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
@@ -418,8 +443,8 @@ function pattern_BK_BK_R()
 end
 
 function pattern_BK_BK_L()
-	clear_tbl(swath_tbl)
-	clear_tbl(swath_sequence_tbl)
+	swath_tbl = clear_tbl(swath_tbl)
+	swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 	points["C"]["lat"] = 0
 	points["C"]["lon"] = 0
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
@@ -436,8 +461,8 @@ function pattern_BK_BK_L()
 end
 
 function pattern_RC_TRK()
-	clear_tbl(swath_tbl)
-	clear_tbl(swath_sequence_tbl)
+	swath_tbl = clear_tbl(swath_tbl)
+	swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 	local course_ba = reverse_course(course_ab)
 	
@@ -487,8 +512,8 @@ function pattern_RC_TRK()
 end
 
 function pattern_Squeeze()
-	clear_tbl(swath_tbl)
-	clear_tbl(swath_sequence_tbl)
+	swath_tbl = clear_tbl(swath_tbl)
+	swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 	local course_ba = reverse_course(course_ab)
 	
@@ -533,8 +558,8 @@ end
 
 function pattern_Expand()
 
-	clear_tbl(swath_tbl)
-	clear_tbl(swath_sequence_tbl)
+	swath_tbl = clear_tbl(swath_tbl)
+	swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 	local course_ba = reverse_course(course_ab)
 	
@@ -567,8 +592,8 @@ function pattern_Expand()
 end
 
 function pattern_QK_RTRK()
-	clear_tbl(swath_tbl)
-	clear_tbl(swath_sequence_tbl)
+	swath_tbl = clear_tbl(swath_tbl)
+	swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 	local course_ba = reverse_course(course_ab)
 	
@@ -613,8 +638,8 @@ function pattern_QK_RTRK()
 end
 
 function pattern_RV_TRK()
-	clear_tbl(swath_tbl)
-	clear_tbl(swath_sequence_tbl)
+	swath_tbl = clear_tbl(swath_tbl)
+	swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 	local course_ab = course ( points["A"]["lat"], points["A"]["lon"], points["B"]["lat"], points["B"]["lon"])
 	local course_ba = reverse_course(course_ab)
 	
@@ -801,6 +826,7 @@ function cmd_swath_adv(phase, duration)
 				end
 				guide = 1
 			end
+
 		end
 	end
 end
@@ -897,9 +923,9 @@ function cmd_but_menu(phase, duration)
 			end
 
 			if mode == 1 then
-				if #swath_tbl > 0 then 
-					menu[1]["set"] = 2
-				end
+				--if #swath_tbl > 0 then 
+				--	menu[1]["set"] = 2
+				--end
 				in_menu = in_menu + 1
 				if in_menu > #menu then
 					in_menu = 1
@@ -942,11 +968,9 @@ function cmd_but_ent(phase, duration)
 				points["C"]["lon"] = 0
 				points["Mrk"]["lat"] = 0
 				points["Mrk"]["lon"] = 0
-				for k in pairs(old_job["spayed_swath"]) do
-					old_job["spayed_swath"][k] = nil
-				end
-				clear_tbl(swath_tbl)
-				clear_tbl(swath_sequence_tbl)
+				old_job["spayed_swath"] = clear_tbl(old_job["spayed_swath"])
+				swath_tbl = clear_tbl(swath_tbl)
+				swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 				in_menu = 1
 				mode = 1
 				area = 0
@@ -962,8 +986,8 @@ function cmd_but_ent(phase, duration)
 				points["C"]["lon"] = 0
 				points["Mrk"]["lat"] = 0
 				points["Mrk"]["lon"] = 0
-				clear_tbl(swath_tbl)
-				clear_tbl(swath_sequence_tbl)
+				swath_tbl = clear_tbl(swath_tbl)
+				swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 				in_menu = 1
 				mode = 1
 				area = 0
@@ -985,9 +1009,7 @@ function cmd_but_ent(phase, duration)
 				menu[15]["set"] = 1				
 				menu[16]["set"] = 1
 				menu[17]["set"] = 1
-				for k in pairs(old_job["spayed_swath"]) do
-					old_job["spayed_swath"][k] = nil
-				end
+				old_job["spayed_swath"] = clear_tbl(old_job["spayed_swath"])
 				xtksense = 3
 				menu[9]["value"] = {"SENS 3"}
 				menu[2]["value"] = {"50.0"}
@@ -996,6 +1018,18 @@ function cmd_but_ent(phase, duration)
 				return
 			end
 			if menu[1]["set"] == 1 then
+				
+				if #swath_tbl ~= 0 then
+					local idx = #mem + 1
+					mem[idx] = {}
+					mem[idx]["job"] = deepcopy(old_job)
+					mem[idx]["swath_tbl"] = deepcopy(swath_tbl)
+					mem[idx]["swath_sequence_tbl"] = deepcopy(swath_sequence_tbl)
+					mem[idx]["track"] = deepcopy(track)
+					track = clear_tbl(track)
+					index = 1
+				end
+				
 				points["A"]["lat"] = 0
 				points["A"]["lon"] = 0
 				points["B"]["lat"] = 0
@@ -1004,8 +1038,8 @@ function cmd_but_ent(phase, duration)
 				points["C"]["lon"] = 0
 				points["Mrk"]["lat"] = 0
 				points["Mrk"]["lon"] = 0
-				clear_tbl(swath_tbl)
-				clear_tbl(swath_sequence_tbl)
+				swath_tbl = clear_tbl(swath_tbl)
+				swath_sequence_tbl = clear_tbl(swath_sequence_tbl)
 				--old_job["set1"] = menu[1]["set"]
 				old_job["set2"] = menu[2]["set"]
 				old_job["set3"] = menu[3]["set"]
@@ -1023,11 +1057,11 @@ function cmd_but_ent(phase, duration)
 				old_job["set15"] = menu[15]["set"]
 				old_job["set16"] = menu[16]["set"]
 				old_job["set17"] = menu[17]["set"]
+				old_job["pointMrklat"] = 0
+				old_job["pointMrklon"] = 0
 				old_job["swath_width"] = swath_width_dis
 				old_job["sens"] = xtksense
-				for k in pairs(old_job["spayed_swath"]) do
-					old_job["spayed_swath"][k] = nil
-				end
+				old_job["spayed_swath"] = clear_tbl(old_job["spayed_swath"])
 				area = 0
 				guide = 0
 				swath_num = 1
@@ -1079,13 +1113,22 @@ function cmd_but_ent(phase, duration)
 				else
 					guide = 1
 				end
-			elseif menu[1]["set"] == 3 and #track > 0 then
-				generate_kml()
-				run_at_interval(export,(1/8))
-				mode = 7
-				in_menu = 0
-				str_disL = " "
-				return
+			elseif menu[1]["set"] == 3 then
+				if #swath_tbl ~= 0 or #mem > 0 then
+					num_exp = #mem
+					if #swath_tbl ~= 0 then
+						num_exp = num_exp + 1
+					end
+					run_at_interval(export,(1/8))
+					mode = 7
+					in_menu = 0
+					str_disL = " "
+					menu[1]["set"] = 1
+					return
+				else
+					menu[1]["set"] = 1
+					return
+				end
 			end
 			in_menu = 0
 			mode = 0
@@ -1715,10 +1758,21 @@ function after_physics()
 end
 
 function generate_kml()
-	local year = os.date("%Y")
-	local filename = "Output/LiteStarIV".. "_" .. os.date("%Y-%m-%d-%H-%M") .. ".kml"
-	local file = io.open(filename, "w")
+		
+	if #swath_tbl ~= 0 then
+		local idx = #mem + 1
+		mem[idx] = {}
+		mem[idx]["job"] = deepcopy(old_job)
+		mem[idx]["swath_tbl"] = deepcopy(swath_tbl)
+		mem[idx]["track"] = deepcopy(track)
+		mem[idx]["swath_sequence_tbl"] = deepcopy(swath_sequence_tbl)
+	end
 	
+	for m=1, #mem do		
+		local year = os.date("%Y")
+		local filename = "Output/LiteStarIV".. "_" .. os.date("%Y-%m-%d-%H-%M") .. "_job_" .. m .. ".kml"
+		local file = io.open(filename, "w")
+		
 	file:write([[
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
@@ -1738,7 +1792,7 @@ function generate_kml()
 			 <LineStyle>
 				 <color>64B4E614</color>
 				 ]])
-	file:write("				 <gx:physicalWidth>" .. swath_width_m ..  "</gx:physicalWidth>\n")
+	file:write("				 <gx:physicalWidth>" .. feet2met(mem[m]["job"]["swath_width"]) ..  "</gx:physicalWidth>\n")
 	file:write([[
 				 <gx:labelVisibility>1</gx:labelVisibility>
 			 </LineStyle>
@@ -1746,10 +1800,10 @@ function generate_kml()
 	   <!-- Normal track style -->
 		<LookAt>
 		]])
-    file:write("		<longitude>" .. track[1]["lon"] .. "</longitude>\n")
-    file:write("		<latitude>" .. track[1]["lat"] .. "</latitude>\n")
-    file:write("		<range>" .. (2000.000000 + track[1]["alt"]) .. "</range>\n")
-    file:write([[
+	file:write("		<longitude>" .. mem[m]["track"][1]["lon"] .. "</longitude>\n")
+	file:write("		<latitude>" .. mem[m]["track"][1]["lat"] .. "</latitude>\n")
+	file:write("		<range>" .. (2000.000000 + mem[m]["track"][1]["alt"]) .. "</range>\n")
+	file:write([[
 		</LookAt>
 		<Style id="track_n">
 		  <IconStyle>
@@ -1863,115 +1917,123 @@ function generate_kml()
 			</gx:SimpleArrayField>
 		 </Schema>
 		 ]])
-	if points["A"]["lon"] ~= 0 and points["A"]["lat"] ~=0 then
-	file:write("		<Placemark>\n")
-	file:write("			<name>Point A</name>\n")
-	file:write("				<Point>\n")
-	file:write("					<coordinates>" .. points["A"]["lon"] .. "," .. points["A"]["lat"] .. "," .. "0" .. "</coordinates>\n")
-	file:write("				</Point>\n")	
-	file:write("		</Placemark>\n")
-	file:write("		<Placemark>\n")
-	file:write("			<name>Point B</name>\n")
-	file:write("				<Point>\n")
-	file:write("					<coordinates>" .. points["B"]["lon"] .. "," .. points["B"]["lat"] .. "," .. "0" .. "</coordinates>\n")
-	file:write("				</Point>\n")	
-	file:write("		</Placemark>\n")
-		if points["C"]["lon"] ~= 0 and points["C"]["lat"] ~=0 then
+		if mem[m]["job"]["pointAlon"] ~= 0 and mem[m]["job"]["pointAlat"] ~=0 then
 		file:write("		<Placemark>\n")
-		file:write("			<name>Point C</name>\n")
+		file:write("			<name>Point A</name>\n")
 		file:write("				<Point>\n")
-		file:write("					<coordinates>" .. points["C"]["lon"] .. "," .. points["C"]["lat"] .. "," .. "0" .. "</coordinates>\n")
+		file:write("					<coordinates>" .. mem[m]["job"]["pointAlon"] .. "," .. mem[m]["job"]["pointAlat"] .. "," .. "0" .. "</coordinates>\n")
 		file:write("				</Point>\n")	
-		file:write("			</Placemark>\n")
-		end
-	end
-		if points["Mrk"]["lon"] ~= 0 and points["Mrk"]["lat"] ~=0 then
-		file:write("		<Placemark>\n")
-		file:write("			<name>Marker</name>\n")
-		file:write("				<Point>\n")
-		file:write("					<coordinates>" .. points["Mrk"]["lon"] .. "," .. points["Mrk"]["lat"] .. "," .. "0" .. "</coordinates>\n")
-		file:write("				</Point>\n")	
-		file:write("			</Placemark>\n")
-		end
-	for k,v in pairs(swath_tbl) do
-		file:write("		<Placemark>\n")
-
-		file:write("			<name>Swatht " .. k .. "|Num in sequence " .. swath_sequence_tbl[k] .. "</name>\n")
-		file:write("			<styleUrl>#swathline</styleUrl>\n")	
-		file:write("				<LineString>\n")
-		file:write("					<coordinates>\n")
-		
-		file:write("						" .. v["lonA"] .. "," .. v["latA"] .. "\n" .. "						" .. v["lonB"] .. "," .. v["latB"] .. "\n")
-		
-		file:write("					</coordinates>\n")
-		file:write("				</LineString>\n")	
 		file:write("		</Placemark>\n")
-	end
-	local count = 1
-	local i = 1
-	while i <= #track do
-		if track[i]["spray"] == 1 then
+		
+			if mem[m]["job"]["pointBlon"] ~= 0 and mem[m]["job"]["pointBlat"] ~=0 then
+			file:write("		<Placemark>\n")
+			file:write("			<name>Point B</name>\n")
+			file:write("				<Point>\n")
+			file:write("					<coordinates>" .. mem[m]["job"]["pointBlon"] .. "," .. mem[m]["job"]["pointBlat"] .. "," .. "0" .. "</coordinates>\n")
+			file:write("				</Point>\n")	
+			file:write("		</Placemark>\n")
+			
+				if mem[m]["job"]["pointClon"] ~= 0 and mem[m]["job"]["pointClat"] ~=0 then
+				file:write("		<Placemark>\n")
+				file:write("			<name>Point C</name>\n")
+				file:write("				<Point>\n")
+				file:write("					<coordinates>" .. mem[m]["job"]["pointClon"] .. "," .. mem[m]["job"]["pointClat"] .. "," .. "0" .. "</coordinates>\n")
+				file:write("				</Point>\n")	
+				file:write("			</Placemark>\n")
+				end
+				
+			end
+			
+		end
+			if mem[m]["job"]["pointMrklon"] ~= 0 and mem[m]["job"]["pointMrklat"] ~=0 then
+			file:write("		<Placemark>\n")
+			file:write("			<name>Marker</name>\n")
+			file:write("				<Point>\n")
+			file:write("					<coordinates>" .. mem[m]["job"]["pointMrklon"] .. "," .. mem[m]["job"]["pointMrklat"] .. "," .. "0" .. "</coordinates>\n")
+			file:write("				</Point>\n")	
+			file:write("			</Placemark>\n")
+			end
+		for k,v in pairs(mem[m]["swath_tbl"]) do
 			file:write("		<Placemark>\n")
 
-			file:write("			<name>Spray run " .. count .. "</name>\n")
-			file:write("			<styleUrl>#sprayline</styleUrl>\n")	
+			file:write("			<name>Swatht " .. k .. "|Num in sequence " .. mem[m]["swath_sequence_tbl"][k] .. "</name>\n")
+			file:write("			<styleUrl>#swathline</styleUrl>\n")	
 			file:write("				<LineString>\n")
 			file:write("					<coordinates>\n")
-
-				while track[i]["spray"] == 1 do
-					file:write("						" .. track[i]["lon"] .. "," .. track[i]["lat"] .. "\n")
-					i = i + 1
-					if i > #track then break end
-				end
+			
+			file:write("						" .. v["lonA"] .. "," .. v["latA"] .. "\n" .. "						" .. v["lonB"] .. "," .. v["latB"] .. "\n")
 			
 			file:write("					</coordinates>\n")
 			file:write("				</LineString>\n")	
 			file:write("		</Placemark>\n")
-			count = count + 1
 		end
-		i = i + 1
-	end
-	file:write("		<Folder>\n")
-	file:write("		<name>AcfTrack</name>\n")
-	file:write("			<Placemark>\n")	
-	file:write("				<name>Aircraft</name>\n")
-	file:write("				<styleUrl>#multiTrack</styleUrl>\n")
-	file:write("				<gx:Track>\n")
-	file:write("				<altitudeMode>absolute</altitudeMode>\n")
-	
-	for k,v in pairs(track) do
-		local line  = string.format("				<when>%d-%02d-%02dT%02d:%02d:%02dZ</when>\n", year, month, day, v["hr"], v["min"], v["sec"])
-		file:write(line)
-	end
-	for k,v in pairs(track) do
-		file:write("				<gx:coord>" .. v["lon"] .. " " .. v["lat"] .. " " .. v["alt"] .. "</gx:coord>\n")
-	end
-	file:write("					<ExtendedData>\n")
-	file:write("						<SchemaData schemaUrl=\"#schema\">\n")
-	file:write("							<gx:SimpleArrayData name=\"speed\">\n")
-	for k,v in pairs(track) do
-		file:write("								<gx:value>" .. v["spd"] .. " km/h" .. "</gx:value>\n")
-	end	
-	file:write("							</gx:SimpleArrayData>\n")
-	file:write("							<gx:SimpleArrayData name=\"payload\">\n")
-	for k,v in pairs(track) do
-		file:write("								<gx:value>" .. round2(v["payload"], 1) .. " kg" .. "</gx:value>\n")
-	end	
-	file:write("							</gx:SimpleArrayData>\n")
-	file:write("							<gx:SimpleArrayData name=\"area\">\n")
-	for k,v in pairs(track) do
-		file:write("								<gx:value>" .. round2(v["area"], 2) .. " ha" .. "</gx:value>\n")
-	end	
-	file:write("							</gx:SimpleArrayData>\n")
-	file:write("						</SchemaData>\n")
-	file:write("					</ExtendedData>\n")
-	file:write("				</gx:Track>\n")
-	file:write("			</Placemark>\n")
-	file:write("		</Folder>\n")
-	file:write("	</Document>\n")	
-	file:write("</kml>\n")
-	file:close()
+		local count = 1
+		local i = 1
+		while i <= #mem[m]["track"] do
+			if mem[m]["track"][i]["spray"] == 1 then
+				file:write("		<Placemark>\n")
 
+				file:write("			<name>Spray run " .. count .. "</name>\n")
+				file:write("			<styleUrl>#sprayline</styleUrl>\n")	
+				file:write("				<LineString>\n")
+				file:write("					<coordinates>\n")
+
+					while mem[m]["track"][i]["spray"] == 1 do
+						file:write("						" .. mem[m]["track"][i]["lon"] .. "," .. mem[m]["track"][i]["lat"] .. "\n")
+						i = i + 1
+						if i > #mem[m]["track"] then break end
+					end
+				
+				file:write("					</coordinates>\n")
+				file:write("				</LineString>\n")	
+				file:write("		</Placemark>\n")
+				count = count + 1
+			end
+			i = i + 1
+		end
+		file:write("		<Folder>\n")
+		file:write("		<name>AcfTrack</name>\n")
+		file:write("			<Placemark>\n")	
+		file:write("				<name>Aircraft</name>\n")
+		file:write("				<styleUrl>#multiTrack</styleUrl>\n")
+		file:write("				<gx:Track>\n")
+		file:write("				<altitudeMode>absolute</altitudeMode>\n")
+		
+		for k,v in pairs(mem[m]["track"]) do
+			local line  = string.format("				<when>%d-%02d-%02dT%02d:%02d:%02dZ</when>\n", year, month, day, v["hr"], v["min"], v["sec"])
+			file:write(line)
+		end
+		for k,v in pairs(mem[m]["track"]) do
+			file:write("				<gx:coord>" .. v["lon"] .. " " .. v["lat"] .. " " .. v["alt"] .. "</gx:coord>\n")
+		end
+		file:write("					<ExtendedData>\n")
+		file:write("						<SchemaData schemaUrl=\"#schema\">\n")
+		file:write("							<gx:SimpleArrayData name=\"speed\">\n")
+		for k,v in pairs(mem[m]["track"]) do
+			file:write("								<gx:value>" .. v["spd"] .. " km/h" .. "</gx:value>\n")
+		end	
+		file:write("							</gx:SimpleArrayData>\n")
+		file:write("							<gx:SimpleArrayData name=\"payload\">\n")
+		for k,v in pairs(mem[m]["track"]) do
+			file:write("								<gx:value>" .. round2(v["payload"], 1) .. " kg" .. "</gx:value>\n")
+		end	
+		file:write("							</gx:SimpleArrayData>\n")
+		file:write("							<gx:SimpleArrayData name=\"area\">\n")
+		for k,v in pairs(mem[m]["track"]) do
+			file:write("								<gx:value>" .. round2(v["area"], 2) .. " ha" .. "</gx:value>\n")
+		end	
+		file:write("							</gx:SimpleArrayData>\n")
+		file:write("						</SchemaData>\n")
+		file:write("					</ExtendedData>\n")
+		file:write("				</gx:Track>\n")
+		file:write("			</Placemark>\n")
+		file:write("		</Folder>\n")
+		file:write("	</Document>\n")	
+		file:write("</kml>\n")
+		file:close()
+	end
+	
+	mem = clear_tbl(mem)
 end
 
 function aircraft_unload()

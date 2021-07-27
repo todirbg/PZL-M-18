@@ -33,6 +33,8 @@ oil_press_lo_lim = find_dataref("sim/aircraft/limits/red_lo_oilP")
 oil_press_hi_lim = find_dataref("sim/aircraft/limits/red_hi_oilP")
 oat = find_dataref("sim/weather/temperature_ambient_c")
 
+smoker = create_dataref("custom/dromader/engine/smoker","number", dummy)
+
 bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts[0]")
 
 starter_fuse = create_dataref("custom/dromader/electrical/starter_fuse","number", dummy)
@@ -78,6 +80,15 @@ end
 
 primer_handle = create_dataref("custom/dromader/engine/primer_handle","number", primer_handle_handler)
 
+function cmd_smoker_enable(phase, duration)
+	if phase == 1 and running_eng == 1 then
+		smoker = 1
+	else
+		smoker = 0
+	end
+end
+
+cmdcustomsmokerenable = create_command("custom/dromader/engine/smoker_enable","Lay smoke",cmd_smoker_enable)
 
 local bus_load_prev = 0
 
@@ -146,7 +157,7 @@ local RPM_fail_counter = 0
 function check_eng()
 
 	--local eng_pwr_ratio = math.max(0,(eng_pwr/eng_max_pwr_w))
-	--eng_cyl_temp_max = eng_egt*(0.25+eng_pwr_ratio/2)
+	--eng_cyl_temp_max = eng_egt*(0.25+eng_pwr_ratio/2
 	oil_temp_max = (150/(1+oil_flap) )
 	
 	if oil_temp > 100 then
