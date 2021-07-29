@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186553091
+P _gear/0/_stat_def 0.186553106
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186553091
+P _gear/1/_stat_def 0.186553106
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.054173104
+P _gear/2/_stat_def 0.054173101
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -29934,7 +29934,7 @@ P _prop/0/_des_AOA_pwr 2.0
 P _prop/0/_des_AOA_root 2.0
 P _prop/0/_des_AOA_tip 2.0
 P _prop/0/_des_kts_acf 200.0
-P _prop/0/_des_rpm_prp 1200.0
+P _prop/0/_des_rpm_prp 1300.0
 P _prop/0/_max_AOA_deg 45.0
 P _prop/0/_max_pitch 25.0
 P _prop/0/_min_pitch 0.0
@@ -35505,10 +35505,10 @@ P acf/_Jyy_unitmass 0.0
 P acf/_Jzz_unitmass 0.0
 P acf/_Mmo 0.0
 P acf/_RSC_idlespeed_ENGN 550.0
-P acf/_RSC_maxgreen_ENGN 2300.0
-P acf/_RSC_mingov_ENGN 1200.0
-P acf/_RSC_mingreen_ENGN 1200.0
-P acf/_RSC_redline_ENGN 2300.0
+P acf/_RSC_maxgreen_ENGN 2100.0
+P acf/_RSC_mingov_ENGN 800.0
+P acf/_RSC_mingreen_ENGN 800.0
+P acf/_RSC_redline_ENGN 2200.0
 P acf/_SFC_ROC 9.970000267
 P acf/_SFC_alt_hi_JET 0.0
 P acf/_SFC_alt_hi_PRP 10000.0

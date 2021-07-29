@@ -18848,7 +18848,7 @@ IDX	17036
 			ANIM_rotate_key	0	134.99974
 			ANIM_rotate_key	1	-134.99974
 			ANIM_rotate_end
-				ANIM_begin
+				ANIM_begin				
 				ATTR_manip_drag_rotate	rotate_medium	-0.031625409	1.0543488	3.7054508	0	1	-0	134.99974	-134.99974	0	0	1	0	0	custom/dromader/litestar/brt_knob	none	Adjust LiteStar Brightness
 				ATTR_manip_wheel	0.1
 				TRIS	522 84
@@ -19025,9 +19025,9 @@ IDX	17036
 		ANIM_rotate_key	0	0
 		ANIM_rotate_key	1	-270.00006
 		ANIM_rotate_end
-			ANIM_begin
+			ANIM_begin			
 			ATTR_manip_drag_rotate	hand	-0.51474285	0.6702472	4.2919188	0	1	-0	0	-270.00006	0	0	1	0	0	custom/dromader/misc/audio_vol	none	Audio volume
-			ATTR_manip_wheel	0.1			
+			ATTR_manip_wheel	0.1
 			TRIS	6681 84
 			ANIM_end
 		ANIM_end
@@ -19056,11 +19056,11 @@ IDX	17036
 		ANIM_rotate_key	1	14.00137
 		ANIM_rotate_key	0	47.972609
 		ANIM_rotate_end
-			ANIM_begin
+			ANIM_begin			
 			ATTR_manip_drag_rotate	hand	0.42477828	0.65468639	4.2018862	1	0	-0	-56.963463	47.972609	0	3	0	0	0	sim/cockpit2/engine/actuators/ignition_on[0]	none	Magnetos
 			ATTR_manip_keyframe	2	-22.49948
 			ATTR_manip_keyframe	1	14.00137
-			ATTR_manip_wheel	1			
+			ATTR_manip_wheel	1
 			TRIS	3339 108
 			ANIM_end
 		ANIM_end
@@ -19573,7 +19573,7 @@ IDX	17036
 			ANIM_rotate_key	32.007999	-3599.9997
 				ANIM_keyframe_loop	2.0
 			ANIM_rotate_end
-				ANIM_begin
+				ANIM_begin				
 				ATTR_manip_drag_rotate	rotate_medium	-0.36215365	0.82189512	3.7938192	0	1	-0	0	-3599.9997	0	27.834999	32.007999	0	0	sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot	none	Adjust altimeter
 				ATTR_manip_wheel	0.01
 				TRIS	6363 66
@@ -19705,10 +19705,10 @@ IDX	17036
 		ANIM_rotate	0	0	-1	44.769203	44.769203
 		ANIM_rotate	1	0	0	94.548349	94.548349
 		ANIM_rotate_begin	0	1	-0	sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all
-		ANIM_rotate_key	86.426216	0
-		ANIM_rotate_key	158.44806	67.692099
+		ANIM_rotate_key	57.617477	0
+		ANIM_rotate_key	165.65024	67.692099
 		ANIM_rotate_end
-			ATTR_manip_drag_rotate	hand	-0.52929622	0.64713371	4.1227055	0	1	-0	0	67.692099	0	86.426216	158.44806	0	0	sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all	none	Propeller RPM
+			ATTR_manip_drag_rotate	hand	-0.52929622	0.64713371	4.1227055	0	1	-0	0	67.692099	0	57.617477	165.65024	0	0	sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all	none	Propeller RPM
 			TRIS	5859 84
 		ANIM_end
 		ANIM_begin
