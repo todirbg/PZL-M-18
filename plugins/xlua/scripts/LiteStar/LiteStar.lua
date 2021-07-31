@@ -1338,8 +1338,8 @@ function spray_after_cmd(phase, duration)
 				elseif menu[3]["set"] == 7 then
 					pattern_BK_BK_R()
 				end
-				guide = 1
 			end
+			guide = 1
 			swath_num = 2
 		end
 		track_flight()
@@ -1792,7 +1792,11 @@ function generate_kml()
 			 <LineStyle>
 				 <color>64B4E614</color>
 				 ]])
-	file:write("				 <gx:physicalWidth>" .. feet2met(mem[m]["job"]["swath_width"]) ..  "</gx:physicalWidth>\n")
+		if(mem[m]["job"]["set12"] == 1) then
+			file:write("				 <gx:physicalWidth>" .. feet2met(mem[m]["job"]["swath_width"]) ..  "</gx:physicalWidth>\n")
+		else
+			file:write("				 <gx:physicalWidth>" .. mem[m]["job"]["swath_width"] ..  "</gx:physicalWidth>\n")
+		end
 	file:write([[
 				 <gx:labelVisibility>1</gx:labelVisibility>
 			 </LineStyle>
