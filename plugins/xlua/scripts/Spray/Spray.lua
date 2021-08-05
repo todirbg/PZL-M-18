@@ -33,7 +33,7 @@ function ag_equip_toggle_cmd(phase, duration)
 			boom_press = 0
 		else
 			boom_hide = 0
-			acf_cd = acf_cd_save*3
+			acf_cd = acf_cd_save*2
 		end
 	end
 end
