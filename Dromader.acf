@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186553121
+P _gear/0/_stat_def 0.186553091
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186553121
+P _gear/1/_stat_def 0.186553091
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -439,6 +439,17 @@ P _obja/24/_v10_att_y_acf_prt_ref 0.0
 P _obja/24/_v10_att_z_acf_prt_ref 0.0
 P _obja/24/_v10_is_internal -298805712
 P _obja/24/_v10_steers_with_gear 0
+P _obja/25/_obj_flags 29
+P _obja/25/_v10_att_file_stl Pilot.obj
+P _obja/25/_v10_att_part -1
+P _obja/25/_v10_att_phi_ref 0.0
+P _obja/25/_v10_att_psi_ref 0.0
+P _obja/25/_v10_att_the_ref 0.0
+P _obja/25/_v10_att_x_acf_prt_ref 0.0
+P _obja/25/_v10_att_y_acf_prt_ref 0.0
+P _obja/25/_v10_att_z_acf_prt_ref 0.0
+P _obja/25/_v10_is_internal 884250160
+P _obja/25/_v10_steers_with_gear 0
 P _obja/3/_obj_flags 28
 P _obja/3/_v10_att_file_stl Wings.obj
 P _obja/3/_v10_att_part -1
@@ -516,7 +527,7 @@ P _obja/9/_v10_att_y_acf_prt_ref 0.0
 P _obja/9/_v10_att_z_acf_prt_ref 0.0
 P _obja/9/_v10_is_internal -1982793600
 P _obja/9/_v10_steers_with_gear 0
-P _obja/count 25
+P _obja/count 26
 P _panel_inst_3d 1
 P _part/0/_bot_s1 0.0
 P _part/0/_bot_s2 0.015625000
@@ -38065,8 +38076,8 @@ P acf/_part_descrip/93 Nosegear steering link arm2
 P acf/_part_descrip/94 Nosegear axle truck
 P acf/_part_descrip/count 95
 P acf/_pe_xyz/0 0.0
-P acf/_pe_xyz/1 4.829999924
-P acf/_pe_xyz/2 15.300000191
+P acf/_pe_xyz/1 4.900000095
+P acf/_pe_xyz/2 14.899999619
 P acf/_pe_xyz/count 3
 P acf/_phase_hdng_tvect_in_at_00 0
 P acf/_phase_hdng_tvect_in_at_90 0
