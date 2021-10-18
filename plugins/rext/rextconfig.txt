@@ -136,6 +136,7 @@ custom/dromader/spray/flow_rate
 custom/dromader/misc/tension_handle
 custom/dromader/misc/pitot_cover
 custom/dromader/misc/chocks
+custom/dromader/misc/show_pilot
 #LiteStar IV
 custom/dromader/litestar/fuse
 custom/dromader/litestar/power_sw

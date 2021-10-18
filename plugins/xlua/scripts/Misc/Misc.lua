@@ -35,6 +35,8 @@ tension_handle = create_dataref("custom/dromader/misc/tension_handle","number", 
 audio_sw = create_dataref("custom/dromader/misc/audio_sw","number", dummy)
 audio_vol = create_dataref("custom/dromader/misc/audio_vol","number", audio_vol_handler)
 
+pilot_show_int = create_dataref("custom/dromader/misc/show_pilot","number", dummy)
+
 compass_lock_knob = create_dataref("custom/dromader/compass/compass_lock_knob","number", dummy)
 compass_heading_dromader = create_dataref("custom/dromader/compass/compass_heading","number", dummy)
 compass_g_side_dromader = create_dataref("custom/dromader/compass/compass_g_side","number", dummy)
