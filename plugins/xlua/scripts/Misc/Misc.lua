@@ -35,8 +35,6 @@ tension_handle = create_dataref("custom/dromader/misc/tension_handle","number", 
 audio_sw = create_dataref("custom/dromader/misc/audio_sw","number", dummy)
 audio_vol = create_dataref("custom/dromader/misc/audio_vol","number", audio_vol_handler)
 
-pilot_show_int = create_dataref("custom/dromader/misc/show_pilot","number", dummy)
-
 compass_lock_knob = create_dataref("custom/dromader/compass/compass_lock_knob","number", dummy)
 compass_heading_dromader = create_dataref("custom/dromader/compass/compass_heading","number", dummy)
 compass_g_side_dromader = create_dataref("custom/dromader/compass/compass_g_side","number", dummy)
@@ -45,6 +43,14 @@ compass_g_nrml_dromader= create_dataref("custom/dromader/compass/compass_g_nrml"
 compass_heading = find_dataref("sim/cockpit2/gauges/indicators/compass_heading_deg_mag")
 compass_g_side = find_dataref("sim/flightmodel/forces/g_side")
 compass_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml")
+
+pilot_show_int = create_dataref("custom/dromader/misc/show_pilot","number", dummy)
+pilot_show_head = create_dataref("custom/dromader/misc/show_head","number", dummy)
+pilot_head_x = find_dataref("sim/graphics/view/pilots_head_x")
+pilot_head_y = find_dataref("sim/graphics/view/pilots_head_y")
+pilot_head_z = find_dataref("sim/graphics/view/pilots_head_z")
+ext_view = find_dataref("sim/graphics/view/view_is_external")
+
 
 door_detach_L = find_dataref("sim/operation/failures/rel_aftbur0")
 door_detach_R = find_dataref("sim/operation/failures/rel_aftbur1")
@@ -201,7 +207,21 @@ function aircraft_unload()
 	draw_fires = fires_temp
 end
 
+function show_head()
+	if ext_view == 1 then return end
+	if pilot_show_int == 1 then
+		if ( 0-pilot_head_x )^2 + (1.92024-pilot_head_y)^2 + (1.892808-pilot_head_z)^ 2 > 0.0169 then 
+			pilot_show_head = 1
+		else
+			pilot_show_head = 0
+		end
+	else 
+		pilot_show_head = 0
+	end
+end
+
 function after_physics()
+	show_head()
 	if compass_lock_knob == 1 then
 		compass_g_side_dromader = 0
 		compass_g_nrml_dromader = 0
