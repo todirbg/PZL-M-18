@@ -210,7 +210,7 @@ end
 function show_head()
 	if ext_view == 1 then return end
 	if pilot_show_int == 1 then
-		if ( 0-pilot_head_x )^2 + (1.92024-pilot_head_y)^2 + (1.892808-pilot_head_z)^ 2 > 0.0169 then 
+		if ( 0-pilot_head_x )^2 + (1.92024-pilot_head_y)^2 + (1.892808-pilot_head_z)^2 > 0.0169 then 
 			pilot_show_head = 1
 		else
 			pilot_show_head = 0

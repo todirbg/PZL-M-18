@@ -50,6 +50,7 @@ inst_brt = find_dataref("sim/cockpit2/switches/instrument_brightness_ratio[0]")
 heater_sw = create_dataref("custom/dromader/electrical/heater","number", dummy)
 
 vent_fuse = create_dataref("custom/dromader/electrical/vent","number", dummy)
+fan_ang_deg = create_dataref("custom/dromader/electrical/fan_ang_deg","number", dummy)
 
 wiper_fuse = create_dataref("custom/dromader/electrical/wiper","number", dummy)
 wiper_speed = find_dataref("sim/cockpit2/switches/wiper_speed")
@@ -521,6 +522,17 @@ end
 function after_physics()
 	update_volt_needle()
 	monitor_failures()
+	
+	if vent_fuse == 1 and bus_volt > 18 then 
+		
+		fan_ang_deg = fan_ang_deg + (100*bus_volt)*SIM_PERIOD
+		
+		if fan_ang_deg > 360 then 
+				fan_ang_deg = fan_ang_deg - 360 
+		end
+		
+	end
+
 	if kill_gpu == 0 and spd_dr > 0.1 then
 			kill_gpu = 1
 	end
