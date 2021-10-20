@@ -13,6 +13,7 @@
  https://www.youtube.com/watch?v=nSTmpD9YFeo
   
  Materials for textures https://cc0textures.com/ and https://freepbr.com/
+ Pilot figure created with MakeHuman http://www.makehumancommunity.org/
 
  Painting with Armor Paint
  https://armorpaint.org/
