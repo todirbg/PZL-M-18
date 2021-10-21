@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186553136
+P _gear/0/_stat_def 0.186553121
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186553136
+P _gear/1/_stat_def 0.186553121
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.186553136
+P _gear/2/_stat_def 0.054173108
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -28448,7 +28448,7 @@ P _part/87/_part_specs_invis 1
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x 0.0
-P _part/87/_part_y -2.219615459
+P _part/87/_part_y -2.219615698
 P _part/87/_part_z 25.592498779
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -38110,7 +38110,7 @@ P acf/_push_back/1 0.0
 P acf/_push_back/2 0.0
 P acf/_push_back/count 3
 P acf/_pwr_is_pcnt 1
-P acf/_radiator_cd 2.500000000
+P acf/_radiator_cd 2.0
 P acf/_radiator_duct_expansion 1.0
 P acf/_radiator_frontal_area 5.0
 P acf/_radiator_in_propwash 1

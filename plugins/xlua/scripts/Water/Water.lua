@@ -49,8 +49,8 @@ function water_qty_handle_handler()
 end
 
 
-local dropping_water_hyd = 0
-local dropping_water_em = 0
+dropping_water_hyd = create_dataref("custom/dromader/water/dropping_water_hyd","number", dummy)
+dropping_water_em = create_dataref("custom/dromader/water/dropping_water_em","number", dummy)
 
 hyd_drop = create_dataref("custom/dromader/water/hyd_drop","number", hyd_drop_handler)
 
@@ -246,4 +246,45 @@ function after_physics()
 		foam_add = 0
 	end
 		
+end
+
+function after_replay()
+	if bus_volt > 18 then
+		for i = 0, 6 do
+			local fq = math.floor(foaming_quantity/10 + 0.5)
+			if fq == i then 
+				foaming_qty_ind[i] = 1
+			else
+				foaming_qty_ind[i] = 0
+			end
+		end
+	else 
+		for i = 0, 6 do
+			foaming_qty_ind[i] = 0
+		end
+	end
+	
+	if hyd_drop > 0 and em_drop == 0 then 
+		water_drop_speed = math.min(1, hyd_drop*SIM_PERIOD)
+		if water_quantity > 0 and hyd_drop > 0 then
+			water_drop_anim = hyd_drop
+		else
+			water_drop_anim = 0
+		end			
+	end		
+
+	if em_drop > 0 then 
+		water_drop_speed = math.min(1, em_drop*SIM_PERIOD)
+		if water_quantity > 0 and em_drop > 0 then
+			water_drop_em_anim = em_drop
+		else
+			water_drop_em_anim = 0
+		end			
+	end
+	
+	if foaming_fuse == 1 and foaming_quantity > 0 then
+		foam_add = 1
+	else 
+		foam_add = 0
+	end
 end
