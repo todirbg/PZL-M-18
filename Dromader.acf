@@ -38110,7 +38110,7 @@ P acf/_push_back/1 0.0
 P acf/_push_back/2 0.0
 P acf/_push_back/count 3
 P acf/_pwr_is_pcnt 1
-P acf/_radiator_cd 2.500000000
+P acf/_radiator_cd 2.0
 P acf/_radiator_duct_expansion 1.0
 P acf/_radiator_frontal_area 5.0
 P acf/_radiator_in_propwash 1
@@ -38546,7 +38546,7 @@ P acf/_vect_power_for 1.0
 P acf/_vect_rate 15.0
 P acf/_vectarmY 0.0
 P acf/_vectarmZ 0.0
-P acf/_version 1.0
+P acf/_version 1.01
 P acf/_vvi_but_adjusts_pitch 0
 P acf/_warn_airliner 0
 P acf/_warn_alt_app_100 0

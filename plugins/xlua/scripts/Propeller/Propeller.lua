@@ -129,3 +129,7 @@ side_s = interp(0,12,90,14, prop_pitch_deg)
 prop_angle_dromader = prop_rotation_angle_deg
 	
 end
+
+function after_replay()
+	after_physics()
+end

@@ -235,3 +235,7 @@ function after_physics()
 		park_brake = 1	
 	end
 end
+
+function after_replay()
+	show_head()
+end

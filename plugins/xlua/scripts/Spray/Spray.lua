@@ -33,7 +33,7 @@ function ag_equip_toggle_cmd(phase, duration)
 			boom_press = 0
 		else
 			boom_hide = 0
-			acf_cd = acf_cd_save*2
+			acf_cd = acf_cd_save*3
 		end
 	end
 end
@@ -131,5 +131,37 @@ function after_physics()
 			flow_rate = 0
 		end
 	end
+end
+
+function after_replay()
+	if boom_hide == 0 then
+		local boom_press_temp = 0
+		local temp_deg = atom_prop_deg
+		temp_deg = temp_deg + math.max(0,air_speed*36*SIM_PERIOD)
+
+		if temp_deg > 360 then
+			temp_deg = temp_deg - 360
+		end
+
+		atom_prop_deg = temp_deg
+
+
+			local temp_pump_deg = pump_prop_deg
+			temp_pump_deg = temp_pump_deg + math.max(0,(air_speed +  prop_wash/2) )*36*SIM_PERIOD
+			pump_prop_deg_sec = (temp_pump_deg - pump_prop_deg)/(SIM_PERIOD*60)
+
+			if temp_pump_deg > 360 then
+				temp_pump_deg = temp_pump_deg - 360
+			end
+			pump_prop_deg = temp_pump_deg
+
+		if water_quantity > 0 and boom_fuse == 1 then
+			if spray == 1 then
+				flow_rate = (vru_set*boom_press)*10
+			end
+		else
+			flow_rate = 0
+		end
+	end	
 end
 

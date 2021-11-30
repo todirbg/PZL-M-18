@@ -537,3 +537,15 @@ function after_physics()
 			kill_gpu = 1
 	end
 end
+
+function after_replay()
+	if vent_fuse == 1 and bus_volt > 18 then 
+		
+		fan_ang_deg = fan_ang_deg + (100*bus_volt)*SIM_PERIOD
+		
+		if fan_ang_deg > 360 then 
+				fan_ang_deg = fan_ang_deg - 360 
+		end
+		
+	end		
+end
