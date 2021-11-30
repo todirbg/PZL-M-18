@@ -7,7 +7,7 @@
  Contributors please fork and create pull requests.
 
 Best way to get the current release version is to clone the release branch
-git clone -b release --single-branch https://github.com/todirbg/PZL-M-18
+```git clone -b release --single-branch https://github.com/todirbg/PZL-M-18```
  
  Sounds courtesy of Dataroots from x-plane.org. Originaly created for Jacques Braults PZL M18A Dromader.
  Stall bell alarm courthesy of Benboncan https://freesound.org/people/Benboncan/sounds/72757/
