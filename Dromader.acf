@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27345.662109375
-P _gear/0/_stat_def 0.186553121
+P _gear/0/_stat_def 0.186553136
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27345.662109375
-P _gear/1/_stat_def 0.186553121
+P _gear/1/_stat_def 0.186553136
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -10.0
 P _gear/2/_lonN -10.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27345.662109375
-P _gear/2/_stat_def 0.186553121
+P _gear/2/_stat_def 0.186553136
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -38112,7 +38112,7 @@ P acf/_push_back/count 3
 P acf/_pwr_is_pcnt 1
 P acf/_radiator_cd 1.0
 P acf/_radiator_duct_expansion 1.0
-P acf/_radiator_frontal_area 5.0
+P acf/_radiator_frontal_area 7.0
 P acf/_radiator_in_propwash 1
 P acf/_radio_alt_callout_advance 0.0
 P acf/_red_hi_CHT 250.0
