@@ -6,5 +6,6 @@ Dromader_prefs.txt
 objects/Paint_devel
 Paint/
 Zips/
+fmod/
 StackTracePlus.lua
 init_debug.lua
