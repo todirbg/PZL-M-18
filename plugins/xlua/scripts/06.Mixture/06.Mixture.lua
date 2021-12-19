@@ -22,9 +22,14 @@ joy_value = find_dataref("sim/joystick/joy_mapped_axis_value")
 running_eng = find_dataref("sim/flightmodel/engine/ENGN_running[0]")
 ovrd_mix = find_dataref("sim/operation/override/override_mixture")
 startup_running = find_dataref("sim/operation/prefs/startup_running")
+mixture_fail = create_dataref("custom/dromader/mixture/mixture_fail","number", dummy)
 
 
 function mixture_handle_handler()
+	if mixture_fail == 1 then
+		ovrd_mix = 1
+		return
+	end
 	if mixture_handle < 1 then
 		ovrd_mix = 0
 		mixture_eng = mixture_handle
@@ -134,6 +139,10 @@ end
 
 function set_mixture()
 	if ovrd_mix == 1 then
+		if mixture_fail == 1 then
+			mixture_eng = 0
+			return
+		end
 		mixture_eng = mix_limits(auto_rich())
 	end
 end
