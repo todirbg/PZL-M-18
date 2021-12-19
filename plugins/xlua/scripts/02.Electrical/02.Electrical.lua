@@ -70,9 +70,6 @@ inverter_on = find_dataref("sim/cockpit2/electrical/inverter_on[0]")
 
 bat_cover_hide = create_dataref("custom/dromader/electrical/hide_bat_cover","number", dummy)
 
-primed_ratio = find_dataref("custom/dromader/engine/primed_ratio")
-
-
 
 local volt_but = 0
 
@@ -347,68 +344,6 @@ end
 
 cmdcustomvoltbutpress = create_command("custom/dromader/electrical/volt_but","Press voltmeter button",cmd_volt_but_press)
 
-fuel_press_dromader = find_dataref("custom/dromader/fuel/fuel_press")
-function auto_start_after()
-		inst_light_fuse = 0
-		inst_light_fail = 6
-		bat_sel = 0
-		batt = 1
-		gpu = 0
-		kill_gpu = 1
---		stall_fuse = 1
---		stall_fail = 0
---		agk49_fuse = 1
---		agk49_fail = 0
---		radio_fuse = 1
---		radio_fail = 0
---		transponder_fuse = 1
---		transponder_fail = 0
-		fuel_fuse = 1
-		heater_sw = 0
-		vent_fuse = 0
-		ldg_lt = 0
-		taxi_lt = 0
-		nav_lt = 0
-		strobe_lt = 0
-		beacon_lt = 1
---		elec_hyd = 1
-		stat_heat = 0
-		bus_load_add = 10
-        fuel_press_dromader = 35
-		primed_ratio = 1
-end
-
-function auto_board_after()
-		inst_light_fuse = 0
-		inst_light_fail = 6
-		bat_sel = 0
-		batt = 1
-		gpu = 0
---		stall_fuse = 1
---		stall_fail = 0
---		agk49_fuse = 1
---		agk49_fail = 0
---		radio_fuse = 1
---		radio_fail = 0
---		transponder_fuse = 1
---		transponder_fail = 0
-		fuel_fuse = 1
-		heater_sw = 0
-		vent_fuse = 0
-		ldg_lt = 0
-		taxi_lt = 0
-		nav_lt = 0
-		strobe_lt = 0
-		beacon_lt = 1
---		elec_hyd = 1
-		stat_heat = 0
-end
-
-
-quickstart = wrap_command("sim/operation/quick_start", dummy, auto_start_after)
-autostart = wrap_command("sim/operation/auto_start", dummy, auto_start_after)
-autoboard = wrap_command("sim/operation/auto_board", dummy, auto_board_after)
-
 
 function flight_start()
 
@@ -465,7 +400,7 @@ local tmpval
 					tmpval = 0
 				end
 			elseif volt_sel == 3 then
-				tmpval = bat_volt
+			tmpval = bat_volt
 			elseif volt_sel == 4 then
 				if gpu == 1 then
 					tmpval = bus_volt
