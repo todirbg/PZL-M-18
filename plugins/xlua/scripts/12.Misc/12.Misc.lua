@@ -93,6 +93,25 @@ startup_running = find_dataref("sim/operation/prefs/startup_running")
 
 spd_dr = find_dataref("sim/flightmodel/position/groundspeed")
 
+water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
+acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
+acf_weight_total = find_dataref("sim/flightmodel/weight/m_total")
+fuel_weight = find_dataref("sim/flightmodel/weight/m_fuel_total")
+ag_eqipment = find_dataref("custom/dromader/spray/boom_hide")
+foaming_quantity = find_dataref("custom/dromader/water/foaming_quantity")
+cg = find_dataref("sim/flightmodel/misc/cgz_ref_to_default")
+cgm = create_dataref("custom/dromader/misc/CG_meters","number")
+cgp = create_dataref("custom/dromader/misc/CG_percent","number")
+moment_tot = create_dataref("custom/dromader/misc/CG_moment","number")
+
+local acf_moment = 1465
+local oil_moment = -30
+local pilot_moment = 196
+local fire_eq_moment = 77
+local ag_eqipment_moment = 0
+local lsca = 2.261
+local defpos = (lsca*23.2)/100
+
 function emer_handle_R_handler()
 	if emer_handle_R == 1 then
 		door_detach_R = 6
@@ -337,6 +356,7 @@ local fires_temp = draw_fires
 
 function aircraft_load()
 	draw_fires = 1
+	compute_cg()
 end
 
 function flight_start()
@@ -472,6 +492,19 @@ function aircraft_unload()
 	draw_fires = fires_temp
 end
 
+function compute_cg()
+		--local water_shift = 0
+		local fuel_moment = fuel_weight*0.97
+		local water_moment = water_quantity*0.8
+		local foaming_moment = foaming_quantity*0.72
+		if ag_eqipment == 0 then ag_eqipment_moment = 240 end
+		moment_tot = (acf_moment + fuel_moment + water_moment + ag_eqipment_moment + fire_eq_moment + oil_moment + pilot_moment + foaming_moment)
+		local psca = (moment_tot/acf_weight_total)*(100/lsca) - 0.17
+		cgm = (lsca*psca)/100
+		cgp = psca
+		cg = cgm - defpos
+end
+
 function show_head()
 	if ext_view == 1 then return end
 	if pilot_show_int == 1 then
@@ -486,6 +519,7 @@ function show_head()
 end
 
 function after_physics()
+	compute_cg()
 	if ail_left_fail == 6 or ail_right_fail == 6 then
 		stick_roll  = 0
 	end

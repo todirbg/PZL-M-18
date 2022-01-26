@@ -143,8 +143,8 @@ function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
 end
 
 function flight_start()
-	foaming_quantity = 60
-	acf_weight = acf_weight + foaming_quantity
+	--foaming_quantity = 60
+	--acf_weight = foaming_quantity
 	if startup_running == 1 then
 		foaming_fuse = 1
 		hyd_dump_fuse = 1
@@ -164,7 +164,7 @@ function hydraulic_drop()
 			if foaming_fuse == 1 and water_quantity > 0  then
 				foaming_quantity = math.max(0 ,foaming_quantity - water_drop_speed)
 				if foaming_quantity > 0 then
-					acf_weight = acf_weight - water_drop_speed
+					foaming_quantity = foaming_quantity - water_drop_speed
 				end
 			end
 			if water_quantity > 0 and hyd_drop > 0 then
@@ -204,7 +204,7 @@ function emergency_drop()
 			if foaming_fuse == 1 and water_quantity > 0 then
 				foaming_quantity = math.max(0 ,foaming_quantity - water_drop_speed*10)
 				if foaming_quantity > 0 then
-					acf_weight = acf_weight - water_drop_speed
+					foaming_quantity = foaming_quantity - water_drop_speed
 				end
 			end
 			if water_quantity > 0 and em_drop > 0 then
@@ -223,7 +223,7 @@ function after_physics()
 	end
 	if foam_quantity_handle > 0.1 and em_drop == 0 and hyd_drop == 0 then
 		foaming_quantity =  math.min(60, foaming_quantity + 3*foam_quantity_handle*SIM_PERIOD)
-		acf_weight = acf_weight + 3*foam_quantity_handle*SIM_PERIOD
+		--foaming_quantity = foaming_quantity + 3*foam_quantity_handle*SIM_PERIOD
 	end
 	if bus_volt > 18 then
 		for i = 0, 6 do

@@ -23,7 +23,11 @@ spray_sw = create_dataref("custom/dromader/spray/spray_sw","number", dummy)
 vru_set = create_dataref("custom/dromader/spray/vru_set","number", dummy)
 pump_press_set = create_dataref("custom/dromader/spray/pump_press_set","number", dummy)
 flow_rate = create_dataref("custom/dromader/spray/flow_rate","number", dummy)
+acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
+foaming_quantity = find_dataref("custom/dromader/water/foaming_quantity")
+
 local acf_cd_save = acf_cd
+local ag_equip_weight = 164
 
 function ag_equip_toggle_cmd(phase, duration)
 	if phase == 0 then
@@ -31,9 +35,11 @@ function ag_equip_toggle_cmd(phase, duration)
 			boom_hide = 1
 			acf_cd = acf_cd_save
 			boom_press = 0
+			foaming_quantity = 60
 		else
 			boom_hide = 0
 			acf_cd = acf_cd_save*3
+			foaming_quantity = 0
 		end
 	end
 end
@@ -88,14 +94,18 @@ boomfusecmd = create_command("custom/dromader/spray/boom_fuse_cmd","Toggle boom 
 function flight_start()
 	if boom_hide == 0 then
 		acf_cd = acf_cd_save*3
+		foaming_quantity = 0
 		if startup_running == 1 then
 			boom_fuse = 1
 		end
-	end
+	else
+		foaming_quantity = 60
+	end	
 end
 
 function after_physics()
 	if boom_hide == 0 then
+		acf_weight = foaming_quantity + 211 + ag_equip_weight
 		local boom_press_temp = 0
 		local temp_deg = atom_prop_deg
 		temp_deg = temp_deg + math.max(0,air_speed*36*SIM_PERIOD)
@@ -130,6 +140,8 @@ function after_physics()
 			spray = 0
 			flow_rate = 0
 		end
+	else
+		acf_weight = foaming_quantity + 211
 	end
 end
 

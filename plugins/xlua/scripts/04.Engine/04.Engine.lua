@@ -160,9 +160,9 @@ function check_eng()
 	--local eng_pwr_ratio = math.max(0,(eng_pwr/eng_max_pwr_w))
 	--eng_cyl_temp_max = eng_egt*(0.25+eng_pwr_ratio/2
 	if oil_rad_fail == 1 then 
-		oil_temp_max = 200
+		oil_temp_max = 300
 	else
-		oil_temp_max = (150/(1+oil_flap) )
+		oil_temp_max = (200/(1+oil_flap) )
 	end
 	
 	if oil_temp > 100 then
@@ -183,7 +183,7 @@ function check_eng()
 
 	if eng_cyl_temp < eng_cyl_temp_red_lo and eng_speed > 126 then
 		eng_lo_fail_counter = eng_lo_fail_counter + SIM_PERIOD
-	elseif eng_cyl_temp > eng_cyl_temp_green_hi then
+	elseif eng_cyl_temp > eng_cyl_temp_green_hi+35 then
 		eng_hi_fail_counter = eng_hi_fail_counter + SIM_PERIOD
 	else
 		if eng_hi_fail_counter > 0 then

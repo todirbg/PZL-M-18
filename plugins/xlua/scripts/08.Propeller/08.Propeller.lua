@@ -41,6 +41,12 @@ primed_ratio = find_dataref("custom/dromader/engine/primed_ratio")
 mixture_eng = find_dataref("sim/flightmodel/engine/ENGN_mixt[0]")
 flooded = find_dataref("custom/dromader/engine/flooded")
 
+function prop_speed_handler()
+		
+end
+
+prop_speed_lever = create_dataref("custom/dromader/engine/prop_speed_lever","number", prop_speed_handler)
+
 function prop_angle_handler()
 	if prop_angle_dromader > prop_rotation_angle_deg then
 		primed_ratio = math.max(0, primed_ratio - (prop_angle_dromader - prop_rotation_angle_deg)*0.001*throttle_ratio)
