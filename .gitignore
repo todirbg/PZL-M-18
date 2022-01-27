@@ -7,5 +7,6 @@ objects/Paint_devel
 Paint/
 Zips/
 fmod/
+plugins/xlua/scripts/Dromader
 StackTracePlus.lua
 init_debug.lua

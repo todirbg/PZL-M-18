@@ -106,7 +106,7 @@ end
 
 local prop_angle_prev = 0
 function after_physics()
-local prop_speed_now = prop_rotation_speed_rad_sec
+local prop_speed_now = prop_rotation_speed_rad_sec * 57.2957795130824
 
     if prop_rotation_angle_deg > 360 then
 
@@ -122,9 +122,9 @@ local prop_speed_now = prop_rotation_speed_rad_sec
 local prop_angle_now = prop_rotation_angle_deg
 local side_angle_now = side_angle
 
-prop_rotation_angle_deg = prop_angle_now + (prop_speed_now * 57.2957795130824 * SIM_PERIOD) 
-side_angle = side_angle_now + (prop_speed_now * 57.2957795130824 * SIM_PERIOD) 
-    if prop_speed_now > 20 then
+prop_rotation_angle_deg = prop_angle_now + (prop_speed_now * SIM_PERIOD) 
+side_angle = side_angle_now + (prop_speed_now * SIM_PERIOD) 
+    if prop_rotation_speed_rad_sec > 20 then
         prop_is_disc = 1
     else
         prop_is_disc = 0

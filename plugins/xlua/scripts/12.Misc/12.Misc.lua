@@ -93,6 +93,8 @@ startup_running = find_dataref("sim/operation/prefs/startup_running")
 
 spd_dr = find_dataref("sim/flightmodel/position/groundspeed")
 
+boom_hide = find_dataref("custom/dromader/spray/boom_hide")
+
 water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
 acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
 acf_weight_total = find_dataref("sim/flightmodel/weight/m_total")
@@ -360,6 +362,11 @@ function aircraft_load()
 end
 
 function flight_start()
+	if boom_hide == 0 then
+		foaming_quantity = 0
+	else
+		foaming_quantity = 60
+	end	
 	tension_handle = 0.5
 	static_heat = 0
 	audio_com1 = 1
@@ -479,7 +486,7 @@ autostart = wrap_command("sim/operation/auto_start", dummy, auto_start_after)
 
 
 function fire_app()
-	boom_hide = find_dataref("custom/dromader/spray/boom_hide")
+	
 	agequiptogcmd = find_command("custom/dromader/spray/ag_equip_tog_cmd")
 	if boom_hide == 0 then
 		agequiptogcmd:once()
@@ -493,7 +500,6 @@ function aircraft_unload()
 end
 
 function compute_cg()
-		--local water_shift = 0
 		local fuel_moment = fuel_weight*0.97
 		local water_moment = water_quantity*0.8
 		local foaming_moment = foaming_quantity*0.72

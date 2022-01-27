@@ -167,12 +167,13 @@ function hydraulic_drop()
 					foaming_quantity = foaming_quantity - water_drop_speed
 				end
 			end
-			if water_quantity > 0 and hyd_drop > 0 then
+			if water_quantity > 0 then
 				water_drop_anim = hyd_drop
 			else
 				water_drop_anim = 0
 			end			
 		end
+		if hyd_drop == 0 and water_drop_speed ~= 0 then water_drop_speed = 0 end
 end
 
 function emergency_drop()
@@ -207,10 +208,11 @@ function emergency_drop()
 					foaming_quantity = foaming_quantity - water_drop_speed
 				end
 			end
-			if water_quantity > 0 and em_drop > 0 then
+			if water_quantity > 0 then
 				water_drop_em_anim = em_drop
 			else
 				water_drop_em_anim = 0
+				water_drop_speed = 0
 			end			
 		end
 end
