@@ -58,7 +58,7 @@ em_drop = create_dataref("custom/dromader/water/emergency_drop","number", em_dro
 em_drop_handle = create_dataref("custom/dromader/water/emergency_drop_handle","number", em_drop_handle_handler)
 water_drop_speed = create_dataref("custom/dromader/water/water_drop_speed","number", water_drop_speed_handler)
 foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", foaming_quantity_handler)
-foaming_fuse = create_dataref("custom/dromader/water/foaming_fuse","number", dummy)
+foam_switch = create_dataref("custom/dromader/water/foaming_fuse","number", dummy)
 foam_add = create_dataref("custom/dromader/water/foam_add","number", dummy)
 
 foaming_qty_ind = create_dataref("custom/dromader/water/foaming_qty_ind","array[7]", dummy)
@@ -81,17 +81,21 @@ end
 
 dropwatercmd = create_command("custom/dromader/water/hyd_drop_toggle","Drop water hydraulic", hyd_drop_toggle_cmd)
 
-function foaming_fuse_toggle_cmd(phase, duration)
-	if phase == 0 then
-		if foaming_fuse == 0 then
-			foaming_fuse = 1
-		else
-			foaming_fuse = 0
+local foam_added = 0 --create_dataref("custom/dromader/water/foam_added","number", dummy)
+function foam_switch_toggle_cmd(phase, duration)
+	if phase <= 1 then
+		foam_switch = 1
+		
+		if foaming_quantity > 0 then
+			foam_added = foam_added + SIM_PERIOD
+			foaming_quantity = math.max(0 ,foaming_quantity - SIM_PERIOD)
 		end
+	else
+		foam_switch = 0
 	end
 end
 
-foamingcmd = create_command("custom/dromader/water/foaming_fuse_cmd","Toggle foaming agent", foaming_fuse_toggle_cmd)
+foamingcmd = create_command("custom/dromader/water/foaming_fuse_cmd","Toggle foaming agent", foam_switch_toggle_cmd)
 
 function water_drop_toggle_cmd(phase, duration)
 	if phase == 0 then
@@ -146,10 +150,10 @@ function flight_start()
 	--foaming_quantity = 60
 	--acf_weight = foaming_quantity
 	if startup_running == 1 then
-		foaming_fuse = 1
+		--foam_switch = 1
 		hyd_dump_fuse = 1
 	else
-		foaming_fuse = 0
+		--foam_switch = 0
 		hyd_dump_fuse = 0
 	end
 end
@@ -161,12 +165,7 @@ function hydraulic_drop()
 		if hyd_drop > 0 and em_drop == 0 then 
 			water_drop_speed = math.min(1, hyd_drop*SIM_PERIOD)
 			water_quantity = math.max(0 ,water_quantity - water_drop_speed*200)
-			if foaming_fuse == 1 and water_quantity > 0  then
-				foaming_quantity = math.max(0 ,foaming_quantity - water_drop_speed)
-				if foaming_quantity > 0 then
-					foaming_quantity = foaming_quantity - water_drop_speed
-				end
-			end
+			foam_added = (foam_add/200)*water_quantity
 			if water_quantity > 0 then
 				water_drop_anim = hyd_drop
 			else
@@ -202,12 +201,8 @@ function emergency_drop()
 		if em_drop > 0 then 
 			water_drop_speed = math.min(1, em_drop*SIM_PERIOD)
 			water_quantity = math.max(0 ,water_quantity - water_drop_speed*2000)
-			if foaming_fuse == 1 and water_quantity > 0 then
-				foaming_quantity = math.max(0 ,foaming_quantity - water_drop_speed*10)
-				if foaming_quantity > 0 then
-					foaming_quantity = foaming_quantity - water_drop_speed
-				end
-			end
+			foam_added = (foam_add/200)*water_quantity 
+
 			if water_quantity > 0 then
 				water_drop_em_anim = em_drop
 			else
@@ -225,7 +220,9 @@ function after_physics()
 	end
 	if foam_quantity_handle > 0.1 and em_drop == 0 and hyd_drop == 0 then
 		foaming_quantity =  math.min(60, foaming_quantity + 3*foam_quantity_handle*SIM_PERIOD)
-		--foaming_quantity = foaming_quantity + 3*foam_quantity_handle*SIM_PERIOD
+	end
+	if water_quantity > 0 then
+		foam_add = ((foam_added/water_quantity)*100)*2	
 	end
 	if bus_volt > 18 then
 		for i = 0, 6 do
@@ -240,12 +237,6 @@ function after_physics()
 		for i = 0, 6 do
 			foaming_qty_ind[i] = 0
 		end
-	end
-	
-	if foaming_fuse == 1 and foaming_quantity > 0 then
-		foam_add = 1
-	else 
-		foam_add = 0
 	end
 		
 end
@@ -265,7 +256,7 @@ function after_replay()
 			foaming_qty_ind[i] = 0
 		end
 	end
-	
+
 	if hyd_drop > 0 and em_drop == 0 then 
 		water_drop_speed = math.min(1, hyd_drop*SIM_PERIOD)
 		if water_quantity > 0 and hyd_drop > 0 then
@@ -283,10 +274,5 @@ function after_replay()
 			water_drop_em_anim = 0
 		end			
 	end
-	
-	if foaming_fuse == 1 and foaming_quantity > 0 then
-		foam_add = 1
-	else 
-		foam_add = 0
-	end
+
 end
