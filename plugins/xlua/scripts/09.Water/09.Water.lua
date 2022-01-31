@@ -16,48 +16,18 @@ function dummy()
 
 end
 
-function hyd_drop_handler()
 
-end
-
-function em_drop_handler()
-
-end
-
-function em_drop_handle_handler()
-
-end
-
-function water_drop_speed_handler()
-
-end
-
-function foaming_quantity_handler()
-
-end
-
-function foaming_quantity_handler()
-
-end
-
-function foam_qty_handle_handler()
-
-end
-
-function water_qty_handle_handler()
-
-end
 
 
 dropping_water_hyd = create_dataref("custom/dromader/water/dropping_water_hyd","number", dummy)
 dropping_water_em = create_dataref("custom/dromader/water/dropping_water_em","number", dummy)
 
-hyd_drop = create_dataref("custom/dromader/water/hyd_drop","number", hyd_drop_handler)
+hyd_drop = create_dataref("custom/dromader/water/hyd_drop","number", dummy)
 
-em_drop = create_dataref("custom/dromader/water/emergency_drop","number", em_drop_handler)
-em_drop_handle = create_dataref("custom/dromader/water/emergency_drop_handle","number", em_drop_handle_handler)
-water_drop_speed = create_dataref("custom/dromader/water/water_drop_speed","number", water_drop_speed_handler)
-foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", foaming_quantity_handler)
+em_drop = create_dataref("custom/dromader/water/emergency_drop","number", dummy)
+em_drop_handle = create_dataref("custom/dromader/water/emergency_drop_handle","number", dummy)
+water_drop_speed = create_dataref("custom/dromader/water/water_drop_speed","number", dummy)
+foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", dummy)
 foam_switch = create_dataref("custom/dromader/water/foaming_fuse","number", dummy)
 foam_add = create_dataref("custom/dromader/water/foam_add","number", dummy)
 
@@ -68,8 +38,8 @@ water_drop_em_anim = create_dataref("custom/dromader/water/water_drop_em_anim","
 
 hyd_dump_fuse = create_dataref("custom/dromader/water/hyd_dump_fuse","number", dummy)
 
-foam_quantity_handle = create_dataref("custom/dromader/water/foam_quantity_handle","number", foam_qty_handle_handler)
-water_quantity_handle = create_dataref("custom/dromader/water/water_quantity_handle","number", water_qty_handle_handler)
+foam_quantity_handle = create_dataref("custom/dromader/water/foam_quantity_handle","number", dummy)
+water_quantity_handle = create_dataref("custom/dromader/water/water_quantity_handle","number", dummy)
 
 function hyd_drop_toggle_cmd(phase, duration)
 	if phase == 1 then

@@ -8,6 +8,9 @@ vru_set = find_dataref("custom/dromader/spray/vru_set")
 pump_press = find_dataref("custom/dromader/spray/pump_press_set")
 bat_con = find_dataref("sim/operation/failures/rel_batter0")
 show_pilot = find_dataref("custom/dromader/misc/show_pilot","number")
+foaming_quantity = find_dataref("custom/dromader/water/foaming_quantity")
+boom_fuse = find_dataref("custom/dromader/spray/boom_fuse")
+startup_running = find_dataref("sim/operation/prefs/startup_running")
 
 
 local values = {}
@@ -37,6 +40,14 @@ function flight_start()
 	pump_press = values["pump_press"]
 	bat_con = values["bat_con"]
 	show_pilot = values["show_pilot"]
+	if boom_hide == 0 then
+		foaming_quantity = 0
+		if startup_running == 1 then
+			boom_fuse = 1
+		end
+	else
+		foaming_quantity = 60
+	end
 end
 
 function aircraft_unload()

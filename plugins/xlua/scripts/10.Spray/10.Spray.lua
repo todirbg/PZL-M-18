@@ -93,12 +93,7 @@ end
 boomfusecmd = create_command("custom/dromader/spray/boom_fuse_cmd","Toggle boom fuse", boom_fuse_toggle_cmd)
 
 function flight_start()
-	if boom_hide == 0 then
-		--acf_cd = acf_cd_save*3
-		if startup_running == 1 then
-			boom_fuse = 1
-		end
-	end	
+
 end
 
 function after_physics()

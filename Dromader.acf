@@ -148,7 +148,7 @@ P _gear/0/_lonE 5.0
 P _gear/0/_lonN 5.0
 P _gear/0/_lonR 0.0
 P _gear/0/_scon 27304.578125000
-P _gear/0/_stat_def 0.190692186
+P _gear/0/_stat_def 0.190692216
 P _gear/0/_steerdeg_hispeed 0.0
 P _gear/0/_steerdeg_lospeed 0.0
 P _gear/0/_strut_comp 0.0
@@ -182,7 +182,7 @@ P _gear/1/_lonE 5.0
 P _gear/1/_lonN 5.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 27304.578125000
-P _gear/1/_stat_def 0.190692186
+P _gear/1/_stat_def 0.190692216
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 0.0
@@ -216,7 +216,7 @@ P _gear/2/_lonE -20.0
 P _gear/2/_lonN -20.0
 P _gear/2/_lonR -100.0
 P _gear/2/_scon 27304.578125000
-P _gear/2/_stat_def 0.046557307
+P _gear/2/_stat_def 0.046557304
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 0.0
@@ -39485,7 +39485,7 @@ P acf/_num_generators 1
 P acf/_num_inverters 1
 P acf/_num_prop 1
 P acf/_num_xmsn 1
-P acf/_nw_side_k 0.0
+P acf/_nw_side_k 1.0
 P acf/_o2_bottle_liter 0
 P acf/_oilT_is_C 1
 P acf/_ott_asi_kts_off_for_full_def 20.0
@@ -39859,7 +39859,7 @@ P acf/_stab_trim_dn 0.0
 P acf/_stab_trim_up 0.0
 P acf/_stab_with_Vind 0.0
 P acf/_stab_with_flap 0.0
-P acf/_stall_warn_aoa 14.0
+P acf/_stall_warn_aoa 13.0
 P acf/_stall_warn_is_variable 0
 P acf/_start_on_water 0
 P acf/_starter_engages_fuel 0
@@ -39869,7 +39869,7 @@ P acf/_starter_engages_ignition 0
 P acf/_starter_is_air_driven 0
 P acf/_starter_max_rpm_rat 0.150000006
 P acf/_starter_torque_rat 0.300000012
-P acf/_steerdeg_castor 0.0
+P acf/_steerdeg_castor 90.0
 P acf/_stickshaker 0
 P acf/_studio todirbg
 P acf/_sweep_extend_protect 0

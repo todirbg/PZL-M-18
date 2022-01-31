@@ -7,10 +7,6 @@ function dummy()
 
 end
 
-function tension_handle_handler()
-
-end
-
 audio_vol_com1 = find_dataref("sim/cockpit2/radios/actuators/audio_volume_com1")
 audio_vol_nav1 = find_dataref("sim/cockpit2/radios/actuators/audio_volume_nav1")
 
@@ -30,7 +26,7 @@ right_brake = find_dataref("sim/cockpit2/controls/right_brake_ratio")
 audio_com1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_com1")
 audio_nav1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_nav1")
 
-tension_handle = create_dataref("custom/dromader/misc/tension_handle","number", tension_handle_handler)
+tension_handle = create_dataref("custom/dromader/misc/tension_handle","number", dummy)
 
 audio_sw = create_dataref("custom/dromader/misc/audio_sw","number", dummy)
 audio_vol = create_dataref("custom/dromader/misc/audio_vol","number", audio_vol_handler)
@@ -99,12 +95,16 @@ water_quantity = find_dataref("sim/flightmodel/weight/m_jettison")
 acf_weight = find_dataref("sim/flightmodel/weight/m_fixed")
 acf_weight_total = find_dataref("sim/flightmodel/weight/m_total")
 fuel_weight = find_dataref("sim/flightmodel/weight/m_fuel_total")
-ag_eqipment = find_dataref("custom/dromader/spray/boom_hide")
+
 foaming_quantity = find_dataref("custom/dromader/water/foaming_quantity")
 cg = find_dataref("sim/flightmodel/misc/cgz_ref_to_default")
 cgm = create_dataref("custom/dromader/misc/CG_meters","number")
 cgp = create_dataref("custom/dromader/misc/CG_percent","number")
 moment_tot = create_dataref("custom/dromader/misc/CG_moment","number")
+
+vx = find_dataref("sim/flightmodel/position/local_vx")
+vy = find_dataref("sim/flightmodel/position/local_vy")
+vz = find_dataref("sim/flightmodel/position/local_vz")
 
 local acf_moment = 1465
 local oil_moment = -30
@@ -202,12 +202,12 @@ function cmd_chocks_tog(phase, duration)
 	if phase == 0 and spd_dr< 0.1 then
 		if chocks == 0 then
 			chocks = 1
-			park_brake = 1
+			--park_brake = 1
 		else
 			chocks = 0
-			if left_brake == 0 and right_brake == 0 then
-				park_brake = 0
-			end
+			--if left_brake == 0 and right_brake == 0 then
+			--	park_brake = 0
+			--end
 		end
 	end
 end
@@ -362,11 +362,7 @@ function aircraft_load()
 end
 
 function flight_start()
-	if boom_hide == 0 then
-		foaming_quantity = 0
-	else
-		foaming_quantity = 60
-	end	
+
 	tension_handle = 0.5
 	static_heat = 0
 	audio_com1 = 1
@@ -503,7 +499,7 @@ function compute_cg()
 		local fuel_moment = fuel_weight*0.97
 		local water_moment = water_quantity*0.8
 		local foaming_moment = foaming_quantity*0.72
-		if ag_eqipment == 0 then ag_eqipment_moment = 240 end
+		if boom_hide == 0 then ag_eqipment_moment = 240 end
 		moment_tot = (acf_moment + fuel_moment + water_moment + ag_eqipment_moment + fire_eq_moment + oil_moment + pilot_moment + foaming_moment)
 		local psca = (moment_tot/acf_weight_total)*(100/lsca) - 0.17
 		cgm = (lsca*psca)/100
@@ -514,7 +510,7 @@ end
 function show_head()
 	if ext_view == 1 then return end
 	if pilot_show_int == 1 then
-		if ( 0-pilot_head_x )^2 + (1.92024-pilot_head_y)^2 + (1.892808-pilot_head_z)^2 > 0.0169 then 
+		if (( 0-pilot_head_x )^2 + (1.49352-pilot_head_y)^2 + (2.069592-pilot_head_z)^2) > 0.0169 then 
 			pilot_show_head = 1
 		else
 			pilot_show_head = 0
@@ -546,6 +542,9 @@ function after_physics()
 	end
 	
 	if chocks == 1 then
+		vx = 0
+		vy = 0
+		vz = 0
 		park_brake = 1	
 	end
 end
