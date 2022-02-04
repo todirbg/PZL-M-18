@@ -545,7 +545,7 @@ function after_physics()
 		vx = 0
 		vy = 0
 		vz = 0
-		park_brake = 1	
+		--park_brake = 1	
 	end
 end
 

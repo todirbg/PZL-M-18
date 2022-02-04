@@ -162,7 +162,7 @@ function check_eng()
 	if oil_rad_fail == 1 then 
 		oil_temp_max = 300
 	else
-		oil_temp_max = (200/(1+oil_flap) )
+	oil_temp_max = ((150+oat)/(1+oil_flap) )
 	end
 	
 	if oil_temp > 100 then
