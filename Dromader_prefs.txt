@@ -1,6 +1,6 @@
 I
 10 Version
-_hobs_time 871203.394590
+_hobs_time 873299.588992
 _livery_req 4
 _track_up_0 1
 _data_fields_0 0
@@ -25,10 +25,10 @@ _wind_display_2 0
 _inset_map_2 1
 _dg_lat_adjust_0 0.000000
 _dg_lat_adjust_1 0.000000
-_dg_lat_adjust_2 41.978855
-_dg_lat_adjust_3 41.978855
-_dg_lat_adjust_4 41.978855
-_dg_lat_adjust_5 41.978855
+_dg_lat_adjust_2 41.875530
+_dg_lat_adjust_3 41.875530
+_dg_lat_adjust_4 41.875530
+_dg_lat_adjust_5 41.875530
 atc/_acf_make_ PZL-MIELEC
 atc/_acf_model_ Dromader
 atc/_acf_tailnumber_ M18
