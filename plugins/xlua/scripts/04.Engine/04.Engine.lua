@@ -252,6 +252,7 @@ function flight_start()
 	else 
 		eng_cowl = 1
 	end
+	if oil_flap == 0 then oil_flap = 0.5 end
 	math.randomseed( os.clock( ) )
 end
 

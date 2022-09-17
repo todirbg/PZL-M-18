@@ -17,6 +17,7 @@ disc_alpha_front = find_dataref("sim/flightmodel2/engines/prop_disc/disc_alpha_f
 disc_alpha_side = find_dataref("sim/flightmodel2/engines/prop_disc/disc_alpha_side[0]")
 disc_alpha_inside = find_dataref("sim/flightmodel2/engines/prop_disc/disc_alpha_inside[0]")
 disc_width = find_dataref("sim/flightmodel2/engines/prop_disc/disc_width[0]")
+disc_length_ratio = find_dataref("sim/flightmodel2/engines/prop_disc/disc_length_ratio[0]")
 
 side_width = find_dataref("sim/flightmodel2/engines/prop_disc/side_width[0]")
 side_number_of_blades = find_dataref("sim/flightmodel2/engines/prop_disc/side_number_of_blades[0]")
@@ -26,6 +27,7 @@ side_alpha_front = find_dataref("sim/flightmodel2/engines/prop_disc/side_alpha_f
 side_alpha_side = find_dataref("sim/flightmodel2/engines/prop_disc/side_alpha_side[0]")
 side_alpha_inside = find_dataref("sim/flightmodel2/engines/prop_disc/side_alpha_inside[0]")
 side_angle = find_dataref("sim/flightmodel2/engines/prop_disc/side_angle[0]")
+side_length_ratio = find_dataref("sim/flightmodel2/engines/prop_disc/side_length_ratio[0]")
 
 side_is_billboard = find_dataref("sim/flightmodel2/engines/prop_disc/side_is_billboard[0]")
 
@@ -51,7 +53,7 @@ function prop_angle_handler()
 	if prop_angle_dromader > prop_rotation_angle_deg then
 		primed_ratio = math.max(0, primed_ratio - (prop_angle_dromader - prop_rotation_angle_deg)*0.001*throttle_ratio)
 		if primed_ratio < 1 then
-      primed_ratio = 0
+			primed_ratio = 0
 			flooded = 0
 		end
 	else
@@ -77,65 +79,68 @@ function interp(in1, out1, in2, out2, x)
 
 end
 
-function aircraft_load()
-	prop_disc_ovrd = 1
-end
+ function aircraft_load()
+	 prop_disc_ovrd = 1
+ end
 
-function flight_start()
-    disc_s_dim = 4
-    disc_t_dim = 1
-    disc_alpha_front = 1
-    disc_alpha_side = 0.1
-    disc_alpha_inside = 1
-    disc_width = 0.05
+ function flight_start()
+     disc_s_dim = 4
+     disc_t_dim = 1
+     disc_alpha_front = 1
+     disc_alpha_side = 0.2
+     disc_alpha_inside = 1
+     disc_width = 0.05
+     disc_length_ratio = 1
 
-    side_width = 0.5
-    side_number_of_blades = 4
-    side_s_dim = 16
-    side_t_dim = 1
-    side_alpha_front = 0
-    side_alpha_side = 1
-    side_alpha_inside = 0.5
-    side_is_billboard = 0
-end
+     side_width = 0.5
+     side_number_of_blades = 4
+     side_s_dim = 16
+     side_t_dim = 1
+     side_alpha_front = 0
+     side_alpha_side = 1
+     side_alpha_inside = 0
+     side_is_billboard = 0
+     side_length_ratio = 1
+ end
 
-function aircraft_unload()
-	prop_disc_ovrd = 0
-end
+ function aircraft_unload()
+	 prop_disc_ovrd = 0
+ end
 
 
-local prop_angle_prev = 0
-function after_physics()
-local prop_speed_now = prop_rotation_speed_rad_sec * 57.2957795130824
+ local prop_angle_prev = 0
 
-    if prop_rotation_angle_deg > 360 then
+ function after_physics()
+ local prop_speed_now = prop_rotation_speed_rad_sec * 57.2957795130824
 
-        prop_rotation_angle_deg =  prop_rotation_angle_deg - 360
+     if prop_rotation_angle_deg > 360 then
 
-    end
-    if side_angle > 360 then
+         prop_rotation_angle_deg =  prop_rotation_angle_deg - 360
 
-        side_angle = side_angle - 360
+     end
+     if side_angle > 360 then
 
-    end
+         side_angle = side_angle - 360
 
-local prop_angle_now = prop_rotation_angle_deg
-local side_angle_now = side_angle
+     end
 
-prop_rotation_angle_deg = prop_angle_now + (prop_speed_now * SIM_PERIOD) 
-side_angle = side_angle_now + (prop_speed_now * SIM_PERIOD) 
-    if prop_rotation_speed_rad_sec > 20 then
-        prop_is_disc = 1
-    else
-        prop_is_disc = 0
-    end
+ local prop_angle_now = prop_rotation_angle_deg
+ local side_angle_now = side_angle
 
-disc_s = interp(20,0,240,2, prop_speed_now)
-side_s = interp(0,12,90,14, prop_pitch_deg)
-prop_angle_dromader = prop_rotation_angle_deg
+ prop_rotation_angle_deg = prop_angle_now + (prop_speed_now * SIM_PERIOD) 
+ side_angle = side_angle_now + (prop_speed_now * SIM_PERIOD) 
+     if prop_rotation_speed_rad_sec > 20 then
+         prop_is_disc = 1
+     else
+         prop_is_disc = 0
+     end
+
+ disc_s = interp(3200,0,8600,2, prop_speed_now)
+ side_s = interp(0,12,45,14, prop_pitch_deg)
+ prop_angle_dromader = prop_rotation_angle_deg
 	
-end
+ end
 
-function after_replay()
-	after_physics()
-end
+ function after_replay()
+	 after_physics()
+ end

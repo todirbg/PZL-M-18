@@ -141,6 +141,16 @@ custom/dromader/spray/pump_press_set
 custom/dromader/misc/tension_handle
 custom/dromader/misc/pitot_cover
 custom/dromader/misc/chocks
+custom/dromader/misc/sunshade
+custom/dromader/misc/control_lock
+custom/dromader/misc/control_lock_catch
+custom/dromader/misc/CG_meters
+custom/dromader/misc/CG_percent
+custom/dromader/misc/CG_moment
+#controls
+custom/dromader/controls/stick_pitch_ratio
+custom/dromader/controls/stick_roll_ratio
+custom/dromader/controls/yaw_ratio
 #LiteStar IV
 custom/dromader/litestar/fuse
 custom/dromader/litestar/power_sw

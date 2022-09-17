@@ -27,7 +27,9 @@ hyd_drop = create_dataref("custom/dromader/water/hyd_drop","number", dummy)
 em_drop = create_dataref("custom/dromader/water/emergency_drop","number", dummy)
 em_drop_handle = create_dataref("custom/dromader/water/emergency_drop_handle","number", dummy)
 water_drop_speed = create_dataref("custom/dromader/water/water_drop_speed","number", dummy)
-foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", dummy)
+--foaming_quantity = create_dataref("custom/dromader/water/foaming_quantity","number", dummy)
+--sim/flightmodel/weight/m_stations[1]
+foaming_quantity = find_dataref("sim/flightmodel/weight/m_stations[1]")
 foam_switch = create_dataref("custom/dromader/water/foaming_fuse","number", dummy)
 foam_add = create_dataref("custom/dromader/water/foam_add","number", dummy)
 
@@ -108,7 +110,7 @@ function hyd_dump_fuse_toggle_cmd(phase, duration)
 	end
 end
 
-hyddumpfusecmd = create_command("custom/dromader/water/hyd_dump_fuse_cmd","Toggle foaming agent", hyd_dump_fuse_toggle_cmd)
+hyddumpfusecmd = create_command("custom/dromader/water/hyd_dump_fuse_cmd","Toggle hydraulic dump fuse", hyd_dump_fuse_toggle_cmd)
 
 function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
   if math.abs(reference_value - animated_VALUE) < 0.01 then return reference_value end
@@ -119,6 +121,9 @@ end
 function flight_start()
 	--foaming_quantity = 60
 	--acf_weight = foaming_quantity
+	if foaming_quantity > 60 then 
+		foaming_quantity = 60
+	end
 	if startup_running == 1 then
 		--foam_switch = 1
 		hyd_dump_fuse = 1
