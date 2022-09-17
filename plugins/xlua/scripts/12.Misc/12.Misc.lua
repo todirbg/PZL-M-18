@@ -68,20 +68,20 @@ oil_rad_cover = create_dataref("custom/dromader/misc/oil_radiator_cover","number
 oil_rad_fail = find_dataref("custom/dromader/engine/oil_rad_fail")
 
 ail_right_lock = create_dataref("custom/dromader/misc/right_aeleron_lock","number", dummy)
-ail_right_fail = find_dataref("sim/operation/failures/rel_ail_R")
+ail_right_fail = find_dataref("sim/operation/failures/rel_fc_ail_R")
 
 ail_left_lock = create_dataref("custom/dromader/misc/left_aeleron_lock","number", dummy)
-ail_left_fail = find_dataref("sim/operation/failures/rel_ail_L")
+ail_left_fail = find_dataref("sim/operation/failures/rel_fc_ail_L")
 
 elev_right_lock = create_dataref("custom/dromader/misc/right_elevator_lock","number", dummy)
-elev_up_fail = find_dataref("sim/operation/failures/rel_elv_U")
+elev_up_fail = find_dataref("sim/operation/failures/rel_fc_elv_U")
 
 elev_left_lock = create_dataref("custom/dromader/misc/left_elevator_lock","number", dummy)
-elev_down_fail = find_dataref("sim/operation/failures/rel_elv_D")
+elev_down_fail = find_dataref("sim/operation/failures/rel_fc_elv_D")
 
 rudder_lock = create_dataref("custom/dromader/misc/rudder_lock","number", dummy)
-rudder_L_fail = find_dataref("sim/operation/failures/rel_rud_L")
-rudder_R_fail = find_dataref("sim/operation/failures/rel_rud_R")
+rudder_L_fail = find_dataref("sim/operation/failures/rel_fc_rud_L")
+rudder_R_fail = find_dataref("sim/operation/failures/rel_fc_rud_R")
 
 elev_trim_fail = find_dataref("sim/operation/failures/rel_trim_elv")
 ail_trim_fail = find_dataref("sim/operation/failures/rel_trim_ail")
