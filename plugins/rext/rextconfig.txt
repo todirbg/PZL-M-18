@@ -34,15 +34,30 @@ sim/cockpit2/radios/actuators/gps_power
 sim/cockpit2/engine/actuators/cowl_flap_ratio[0]
 sim/cockpit2/engine/actuators/carb_heat_ratio[0]
 sim/cockpit/g430/g430_nav_com_sel[0]
+#sim/flightmodel2/engines/prop_is_disc[0]
+#sim/flightmodel2/engines/prop_disc/side_angle[0]
+#sim/flightmodel2/engines/prop_disc/disc_s[0]
+#sim/flightmodel2/engines/prop_disc/side_s[0]
 #custom datarefs
 #water
+#custom/dromader/water/water_drop_em_anim
+#custom/dromader/water/water_drop_anim
 custom/dromader/water/emergency_drop
 custom/dromader/water/water_quantity_handle
 custom/dromader/water/foam_quantity_handle
 custom/dromader/water/hyd_drop
+#custom/dromader/water/water_drop_speed
+#custom/dromader/water/foam_add
 custom/dromader/water/emergency_drop_handle
 custom/dromader/water/foaming_fuse
 custom/dromader/water/hyd_dump_fuse
+#custom/dromader/water/foaming_qty_ind[0]
+#custom/dromader/water/foaming_qty_ind[1]
+#custom/dromader/water/foaming_qty_ind[2]
+#custom/dromader/water/foaming_qty_ind[3]
+#custom/dromader/water/foaming_qty_ind[4]
+#custom/dromader/water/foaming_qty_ind[5]
+#custom/dromader/water/foaming_qty_ind[6]
 custom/dromader/water/dropping_water_hyd
 custom/dromader/water/dropping_water_em
 #electrical
@@ -87,6 +102,10 @@ custom/dromader/radios/string_sby
 custom/dromader/radios/string_gnd
 custom/dromader/radios/string_on
 custom/dromader/radios/string_r
+#custom/dromader/radios/transponder_rot[0]
+#custom/dromader/radios/transponder_rot[1]
+#custom/dromader/radios/transponder_rot[2]
+#custom/dromader/radios/transponder_rot[3]
 custom/dromader/radios/transponder_mode
 #engine
 custom/dromader/electrical/starter_fuse
@@ -108,6 +127,8 @@ custom/dromader/gns430/knob_big_r_ang
 custom/dromader/gns430/knob_small_l_ang
 custom/dromader/gns430/knob_small_r_ang
 #spray
+#custom/dromader/spray/atom_prop_ang
+#custom/dromader/spray/pump_prop_ang
 custom/dromader/spray/boom_press
 custom/dromader/spray/boom_hide
 custom/dromader/spray/boom_fuse
@@ -120,6 +141,16 @@ custom/dromader/spray/pump_press_set
 custom/dromader/misc/tension_handle
 custom/dromader/misc/pitot_cover
 custom/dromader/misc/chocks
+custom/dromader/misc/sunshade
+custom/dromader/misc/control_lock
+custom/dromader/misc/control_lock_catch
+custom/dromader/misc/CG_meters
+custom/dromader/misc/CG_percent
+custom/dromader/misc/CG_moment
+#controls
+custom/dromader/controls/stick_pitch_ratio
+custom/dromader/controls/stick_roll_ratio
+custom/dromader/controls/yaw_ratio
 #LiteStar IV
 custom/dromader/litestar/fuse
 custom/dromader/litestar/power_sw

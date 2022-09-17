@@ -41,6 +41,12 @@ primed_ratio = find_dataref("custom/dromader/engine/primed_ratio")
 mixture_eng = find_dataref("sim/flightmodel/engine/ENGN_mixt[0]")
 flooded = find_dataref("custom/dromader/engine/flooded")
 
+function prop_speed_handler()
+		
+end
+
+prop_speed_lever = create_dataref("custom/dromader/engine/prop_speed_lever","number", prop_speed_handler)
+
 function prop_angle_handler()
 	if prop_angle_dromader > prop_rotation_angle_deg then
 		primed_ratio = math.max(0, primed_ratio - (prop_angle_dromader - prop_rotation_angle_deg)*0.001*throttle_ratio)
@@ -79,7 +85,7 @@ function flight_start()
     disc_s_dim = 4
     disc_t_dim = 1
     disc_alpha_front = 1
-    disc_alpha_side = 0.1
+    disc_alpha_side = 0.2
     disc_alpha_inside = 1
     disc_width = 0.05
 
@@ -89,7 +95,7 @@ function flight_start()
     side_t_dim = 1
     side_alpha_front = 0
     side_alpha_side = 1
-    side_alpha_inside = 0.5
+    side_alpha_inside = 0
     side_is_billboard = 0
 end
 
@@ -100,7 +106,7 @@ end
 
 local prop_angle_prev = 0
 function after_physics()
-local prop_speed_now = prop_rotation_speed_rad_sec
+local prop_speed_now = prop_rotation_speed_rad_sec * 57.2957795130824
 
     if prop_rotation_angle_deg > 360 then
 
@@ -116,16 +122,16 @@ local prop_speed_now = prop_rotation_speed_rad_sec
 local prop_angle_now = prop_rotation_angle_deg
 local side_angle_now = side_angle
 
-prop_rotation_angle_deg = prop_angle_now + (prop_speed_now * 57.2957795130824 * SIM_PERIOD) 
-side_angle = side_angle_now + (prop_speed_now * 57.2957795130824 * SIM_PERIOD) 
-    if prop_speed_now > 20 then
+prop_rotation_angle_deg = prop_angle_now + (prop_speed_now * SIM_PERIOD) 
+side_angle = side_angle_now + (prop_speed_now * SIM_PERIOD) 
+    if prop_rotation_speed_rad_sec > 20 then
         prop_is_disc = 1
     else
         prop_is_disc = 0
     end
 
-disc_s = interp(20,0,240,2, prop_speed_now)
-side_s = interp(0,12,90,14, prop_pitch_deg)
+ disc_s = interp(3200,0,8600,2, prop_speed_now)
+ side_s = interp(0,12,45,14, prop_pitch_deg)
 prop_angle_dromader = prop_rotation_angle_deg
 	
 end
