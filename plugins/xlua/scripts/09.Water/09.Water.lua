@@ -108,7 +108,7 @@ function hyd_dump_fuse_toggle_cmd(phase, duration)
 	end
 end
 
-hyddumpfusecmd = create_command("custom/dromader/water/hyd_dump_fuse_cmd","Toggle foaming agent", hyd_dump_fuse_toggle_cmd)
+hyddumpfusecmd = create_command("custom/dromader/water/hyd_dump_fuse_cmd","Toggle hydraulic dump fuse", hyd_dump_fuse_toggle_cmd)
 
 function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
   if math.abs(reference_value - animated_VALUE) < 0.01 then return reference_value end

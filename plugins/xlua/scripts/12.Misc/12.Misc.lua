@@ -7,6 +7,12 @@ function dummy()
 
 end
 
+function func_animate_slowly(reference_value, animated_VALUE, anim_speed)
+  if math.abs(reference_value - animated_VALUE) < 0.1 then return reference_value end
+  animated_VALUE = animated_VALUE + ((reference_value - animated_VALUE) * (anim_speed * SIM_PERIOD))
+  return animated_VALUE
+end
+
 audio_vol_com1 = find_dataref("sim/cockpit2/radios/actuators/audio_volume_com1")
 audio_vol_nav1 = find_dataref("sim/cockpit2/radios/actuators/audio_volume_nav1")
 
@@ -62,20 +68,20 @@ oil_rad_cover = create_dataref("custom/dromader/misc/oil_radiator_cover","number
 oil_rad_fail = find_dataref("custom/dromader/engine/oil_rad_fail")
 
 ail_right_lock = create_dataref("custom/dromader/misc/right_aeleron_lock","number", dummy)
-ail_right_fail = find_dataref("sim/operation/failures/rel_fc_ail_R")
+ail_right_fail = find_dataref("sim/operation/failures/rel_ail_R")
 
 ail_left_lock = create_dataref("custom/dromader/misc/left_aeleron_lock","number", dummy)
-ail_left_fail = find_dataref("sim/operation/failures/rel_fc_ail_L")
+ail_left_fail = find_dataref("sim/operation/failures/rel_ail_L")
 
 elev_right_lock = create_dataref("custom/dromader/misc/right_elevator_lock","number", dummy)
-elev_up_fail = find_dataref("sim/operation/failures/rel_fc_elv_U")
+elev_up_fail = find_dataref("sim/operation/failures/rel_elv_U")
 
 elev_left_lock = create_dataref("custom/dromader/misc/left_elevator_lock","number", dummy)
-elev_down_fail = find_dataref("sim/operation/failures/rel_fc_elv_D")
+elev_down_fail = find_dataref("sim/operation/failures/rel_elv_D")
 
 rudder_lock = create_dataref("custom/dromader/misc/rudder_lock","number", dummy)
-rudder_L_fail = find_dataref("sim/operation/failures/rel_fc_rud_L")
-rudder_R_fail = find_dataref("sim/operation/failures/rel_fc_rud_R")
+rudder_L_fail = find_dataref("sim/operation/failures/rel_rud_L")
+rudder_R_fail = find_dataref("sim/operation/failures/rel_rud_R")
 
 elev_trim_fail = find_dataref("sim/operation/failures/rel_trim_elv")
 ail_trim_fail = find_dataref("sim/operation/failures/rel_trim_ail")
@@ -83,7 +89,7 @@ rud_trim_fail = find_dataref("sim/operation/failures/rel_trim_rud")
 
 stick_roll = find_dataref("sim/joystick/yoke_roll_ratio")
 stick_pitch = find_dataref("sim/joystick/yoke_pitch_ratio")
-pedals_yaw = find_dataref("sim/joystick/yoke_heading_ratio")
+yoke_heading_ratio = find_dataref("sim/joystick/yoke_heading_ratio")
 
 startup_running = find_dataref("sim/operation/prefs/startup_running")
 
@@ -98,13 +104,137 @@ fuel_weight = find_dataref("sim/flightmodel/weight/m_fuel_total")
 
 foaming_quantity = find_dataref("custom/dromader/water/foaming_quantity")
 cg = find_dataref("sim/flightmodel/misc/cgz_ref_to_default")
-cgm = create_dataref("custom/dromader/misc/CG_meters","number")
-cgp = create_dataref("custom/dromader/misc/CG_percent","number")
-moment_tot = create_dataref("custom/dromader/misc/CG_moment","number")
+cgm = create_dataref("custom/dromader/misc/CG_meters","number", dummy)
+cgp = create_dataref("custom/dromader/misc/CG_percent","number", dummy)
+moment_tot = create_dataref("custom/dromader/misc/CG_moment","number", dummy)
 
 vx = find_dataref("sim/flightmodel/position/local_vx")
 vy = find_dataref("sim/flightmodel/position/local_vy")
 vz = find_dataref("sim/flightmodel/position/local_vz")
+
+
+yoke_pitch_ratio = find_dataref("sim/joystick/yoke_pitch_ratio")
+yoke_roll_ratio = find_dataref("sim/joystick/yoke_roll_ratio")
+
+stick_pitch_ratio =	create_dataref("custom/dromader/controls/stick_pitch_ratio","number", dummy)
+stick_roll_ratio = create_dataref("custom/dromader/controls/stick_roll_ratio","number", dummy)
+rud_ratio = create_dataref("custom/dromader/controls/yaw_ratio","number", dummy)
+
+sunshade = create_dataref("custom/dromader/misc/sunshade","number", dummy)
+control_lock = create_dataref("custom/dromader/misc/control_lock","number", dummy)
+control_lock_catch = create_dataref("custom/dromader/misc/control_lock_catch","number", dummy)
+override_joystick = find_dataref("sim/operation/override/override_joystick")
+
+has_crashed = find_dataref("sim/flightmodel2/misc/has_crashed")
+gear_retract = find_dataref("sim/aircraft/gear/acf_gear_retract")
+
+local control_lock_engage = 0
+local control_lock_disengage = 0
+
+function stick_lock_engage(phase, duration)
+	if phase == 0 and spd_dr< 0.1 and control_lock_engage == 0 and control_lock == 0 then
+		
+		if elev_left_lock == 0 and elev_right_lock == 0 and ail_left_lock == 0 and ail_right_lock == 0 then
+			control_lock_engage = 1
+			override_joystick = 1
+		end
+		
+	end
+end
+
+
+cmdcsutomsticklockengage = create_command("custom/dromader/misc/stick_lock_engage","Engage stick lock",stick_lock_engage)
+
+function stick_lock_disengage(phase, duration)
+	if phase == 0 and spd_dr< 0.1 and control_lock_disengage == 0   and control_lock == 1 then
+		if elev_right_lock == 0 and elev_right_lock == 0 and ail_left_lock == 0 and ail_right_lock == 0  then
+			control_lock_disengage = 1
+			override_joystick = 1
+		end
+	end
+end
+
+
+cmdcsutomsticklockdisengage = create_command("custom/dromader/misc/stick_lock_disengage","Release stick lock",stick_lock_disengage)
+
+function control_lock_disengage_fn(phase)
+		
+	if phase == 1 then
+		control_lock_catch = 1
+		elev_up_fail = 0
+		elev_down_fail = 0
+		ail_left_fail = 0
+		ail_right_fail = 0	
+		yoke_pitch_ratio = func_animate_slowly(0.5, yoke_pitch_ratio, 3)
+		
+
+		control_lock = 1.005 - yoke_pitch_ratio/8
+
+		if control_lock <= 1 then
+			control_lock_disengage = 2
+		end
+	elseif phase == 2 then
+		yoke_roll_ratio = func_animate_slowly(-0.9, yoke_roll_ratio, 8)
+		yoke_pitch_ratio = func_animate_slowly(0.5, yoke_pitch_ratio, 8)
+
+		control_lock = 1 - (yoke_pitch_ratio + math.pow(-1.7*yoke_roll_ratio,4) )/8
+		
+		if control_lock < 0.35 then
+			control_lock_catch = 0
+			control_lock_disengage = 3
+		end
+	elseif phase == 3 then
+		yoke_pitch_ratio = func_animate_slowly(0, yoke_pitch_ratio, 8)
+		yoke_roll_ratio = func_animate_slowly(0, yoke_roll_ratio, 8)
+		control_lock = func_animate_slowly(0, control_lock, 15)
+		if yoke_pitch_ratio == 0 and yoke_roll_ratio == 0 and control_lock == 0 then
+			control_lock_disengage = 0
+			override_joystick = 0
+		end
+	end
+		
+end
+
+function control_lock_engage_fn(phase)
+
+	if phase == 1 then
+		yoke_roll_ratio = func_animate_slowly(-0.9, yoke_roll_ratio, 5)
+		yoke_pitch_ratio = func_animate_slowly(0.5, yoke_pitch_ratio, 5)
+		if yoke_pitch_ratio > 0 and yoke_roll_ratio < 0 then
+			control_lock = (yoke_pitch_ratio + math.pow(-1.7*yoke_roll_ratio,4) )/8
+		end
+		if control_lock > 0.35 then
+			control_lock_catch = 1
+			control_lock_engage = 2
+		end
+	elseif phase == 2 then
+		
+		yoke_roll_ratio = func_animate_slowly(0, yoke_roll_ratio, 5)
+		yoke_pitch_ratio = func_animate_slowly(0.01, yoke_pitch_ratio, 5)
+
+		control_lock = 1.005 - (yoke_pitch_ratio + math.pow(-1.7*yoke_roll_ratio,4) )/8	
+		
+		if yoke_roll_ratio == 0 then
+			control_lock_engage = 3
+		end
+	elseif phase == 3 then
+		
+		yoke_pitch_ratio = func_animate_slowly(0, yoke_pitch_ratio, 3)
+		control_lock = func_animate_slowly(1, control_lock, 1)
+		if yoke_pitch_ratio == 0 then
+			control_lock_catch = 0
+			control_lock = 1
+			control_lock_engage = 0
+			override_joystick = 0
+			elev_down_fail = 6
+			elev_up_fail = 6
+			ail_left_fail = 6
+			ail_right_fail = 6	
+		end
+	end
+
+end
+
 
 local acf_moment = 1465
 local oil_moment = -30
@@ -265,7 +395,7 @@ function cmd_ailr_lock_tog(phase, duration)
 			ail_trim_fail = 6
 		else
 			ail_right_lock = 0
-			if ail_left_lock == 0 then
+			if ail_left_lock == 0 and control_lock == 0 then
 				ail_right_fail = 0
 				ail_left_fail = 0	
 				ail_trim_fail = 0
@@ -285,7 +415,7 @@ function cmd_aill_lock_tog(phase, duration)
 			ail_trim_fail = 6
 		else
 			ail_left_lock = 0
-			if ail_right_lock == 0 then
+			if ail_right_lock == 0 and control_lock == 0  then
 				ail_right_fail = 0
 				ail_left_fail = 0	
 				ail_trim_fail = 0
@@ -305,7 +435,7 @@ function cmd_elevr_lock_tog(phase, duration)
 			elev_trim_fail = 6
 		else
 			elev_right_lock = 0
-			if elev_left_lock == 0 then
+			if elev_left_lock == 0 and control_lock == 0  then
 				elev_up_fail = 0
 				elev_down_fail = 0	
 				elev_trim_fail = 0
@@ -325,7 +455,7 @@ function cmd_elevl_lock_tog(phase, duration)
 				elev_trim_fail = 6
 		else
 			elev_left_lock = 0
-			if elev_right_lock == 0 then
+			if elev_right_lock == 0 and control_lock == 0 then
 				elev_up_fail = 0
 				elev_down_fail = 0		
 				elev_trim_fail = 0
@@ -343,6 +473,7 @@ function cmd_rud_lock_tog(phase, duration)
 			rudder_L_fail = 6
 			rudder_R_fail = 6
 			rud_trim_fail = 6
+			rud_ratio = 0
 		else
 			rudder_lock = 0
 			rudder_L_fail = 0
@@ -376,6 +507,7 @@ function flight_start()
 	right_brake = park_brake
 	park_brake = 0
 	if startup_running == 0 then
+		control_lock = 1
 		chocks = 1
 		pitot_cover = 1
 		pitot_fail = 6
@@ -422,6 +554,7 @@ function auto_board()
 		elev_trim_fail = 0
 		ail_trim_fail = 0
 		rud_trim_fail = 0
+		control_lock_disengage = 1
 end
 autoboard = replace_command("sim/operation/auto_board", auto_board)
 
@@ -521,6 +654,29 @@ function show_head()
 end
 
 function after_physics()
+		if control_lock == 1 then
+			stick_pitch_ratio = 0
+			stick_roll_ratio = 0
+		else
+			if elev_left_lock == 0 and elev_right_lock == 0 then
+				stick_pitch_ratio = yoke_pitch_ratio
+			end
+			if ail_left_lock == 0 and ail_right_lock == 0 then
+				stick_roll_ratio = yoke_roll_ratio	
+			end
+		end
+		if rudder_lock == 1 then
+			rud_ratio = 0
+		else
+			rud_ratio = yoke_heading_ratio
+		end
+		
+	if control_lock_disengage > 0 then
+		control_lock_disengage_fn(control_lock_disengage)
+	elseif control_lock_engage > 0 then
+		control_lock_engage_fn(control_lock_engage)
+	end
+		
 	compute_cg()
 	if ail_left_fail == 6 or ail_right_fail == 6 then
 		stick_roll  = 0
@@ -529,7 +685,7 @@ function after_physics()
 		stick_pitch = 0
 	end
 	if rudder_L_fail == 6 or rudder_R_fail == 6 then
-		pedals_yaw = 0
+		yoke_heading_ratio = 0
 	end
 	show_head()
 	if compass_lock_knob == 1 then
@@ -547,8 +703,28 @@ function after_physics()
 		vz = 0
 		--park_brake = 1	
 	end
+	
+	if has_crashed == 1 and gear_retract == 0 then --workaround gear does not collapse on chrash although collapse drefs are 6
+		gear_retract = 1
+	end
 end
 
 function after_replay()
 	show_head()
+	if(control_lock == 1) then
+		stick_pitch_ratio = 0
+		stick_roll_ratio = 0
+	else
+		if elev_left_lock == 0 and elev_right_lock == 0 then
+			stick_pitch_ratio = yoke_pitch_ratio
+		end
+		if ail_left_lock == 0 and ail_right_lock == 0 then
+			stick_roll_ratio = yoke_roll_ratio	
+		end
+	end
+	if rudder_lock == 1 then
+		rud_ratio = 0
+	else
+		rud_ratio = yoke_heading_ratio
+	end
 end

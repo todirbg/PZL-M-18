@@ -2,17 +2,16 @@
 -- https://github.com/ignacio/StackTracePlus
 
 -- Grab STP conditionally, do not squawk if it is missing.
-	--[[
-if pcall(
-	function()
-		local STP_chunk = XLuaGetCode("../../StackTracePlus.lua")
-		local STP = STP_chunk()
-		debug.traceback = STP.stacktrace
-	end)
-then
-	--print("Using STP as debugger.")
-end
---]]
+--if pcall(
+--	function()
+--		local STP_chunk = XLuaGetCode("../../StackTracePlus.lua")
+--		local STP = STP_chunk()
+--		debug.traceback = STP.stacktrace
+--	end)
+--then
+--	print("Using STP as debugger.")
+--end
+
 
 
 function dump(o)
