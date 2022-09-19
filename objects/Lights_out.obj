@@ -166,7 +166,7 @@ POINT_COUNTS	0	0	0	0
 						ANIM_rotate_end
 							ANIM_begin
 							ANIM_hide	6	6	sim/operation/failures/rel_mwing1
-							LIGHT_PARAM	airplane_nav_right_size -0.023891822 0.39998227 -0.68282205 1.5 0
+							LIGHT_PARAM	airplane_nav_right_size -0.023891926 0.39998227 -0.68282104 1.5 0
 							ANIM_end
 						ANIM_end
 					ANIM_end

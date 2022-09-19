@@ -5216,7 +5216,7 @@ P _obja/31/_v10_att_y_acf_prt_ref 0.000000000
 P _obja/31/_v10_att_z_acf_prt_ref 0.000000000
 P _obja/31/_v10_is_internal 195466800
 P _obja/31/_v10_steers_with_gear 0
-P _obja/4/_obj_flags 6
+P _obja/4/_obj_flags 8198
 P _obja/4/_v10_att_body -1
 P _obja/4/_v10_att_file_stl Glass_out.obj
 P _obja/4/_v10_att_gear -1
@@ -33899,7 +33899,7 @@ P acf/_rad_alt_sens_xyz/0 0.000000000
 P acf/_rad_alt_sens_xyz/1 0.000000000
 P acf/_rad_alt_sens_xyz/2 8.109999657
 P acf/_rad_alt_sens_xyz/count 3
-P acf/_radiator_cd 1.200000048
+P acf/_radiator_cd 1.000000000
 P acf/_radiator_duct_expansion 1.000000000
 P acf/_radiator_frontal_area 6.000000000
 P acf/_radiator_in_propwash 1
@@ -34394,7 +34394,7 @@ P acf/_wiper_ang1/1 0.000000000
 P acf/_wiper_ang1/2 0.000000000
 P acf/_wiper_ang1/3 0.000000000
 P acf/_wiper_ang1/count 4
-P acf/_wiper_ang2/0 120.000000000
+P acf/_wiper_ang2/0 160.000000000
 P acf/_wiper_ang2/1 0.000000000
 P acf/_wiper_ang2/2 0.000000000
 P acf/_wiper_ang2/3 0.000000000
