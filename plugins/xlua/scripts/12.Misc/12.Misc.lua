@@ -122,6 +122,7 @@ yoke_roll_ratio = find_dataref("sim/joystick/yoke_roll_ratio")
 stick_pitch_ratio =	create_dataref("custom/dromader/controls/stick_pitch_ratio","number", dummy)
 stick_roll_ratio = create_dataref("custom/dromader/controls/stick_roll_ratio","number", dummy)
 
+rud_ratio = create_dataref("custom/dromader/controls/yaw_ratio","number", dummy)
 
 
 sunshade = create_dataref("custom/dromader/misc/sunshade","number", dummy)
@@ -141,9 +142,13 @@ gear1_on_ground = find_dataref("sim/flightmodel2/gear/on_ground[0]")
 gear2_on_ground = find_dataref("sim/flightmodel2/gear/on_ground[1]")
 gear3_on_ground = find_dataref("sim/flightmodel2/gear/on_ground[2]")
 
+oat = find_dataref("sim/cockpit2/temperature/outside_air_temp_degc")
+heater = find_dataref("custom/dromader/electrical/heater")
+window_temp = create_dataref("custom/dromader/misc/window_temp","number", dummy)
+
 local ground_control = 0
 
-rud_ratio = create_dataref("custom/dromader/controls/yaw_ratio","number", dummy)
+
 
 local control_lock_engage = 0
 local control_lock_disengage = 0
@@ -155,13 +160,12 @@ function ground_control_fn(phase, duration)
 		else
 			ground_control = 0
 		end
-		print("Ground Control - " .. ground_control)
 	
 	end
 end
 
 
-cmdgroundcontrol = create_command("custom/dromader/misc/ground_control","~Rud controls diff brakes", ground_control_fn)
+cmdgroundcontrol = create_command("custom/dromader/misc/ground_control","Rud controls diff brakes", ground_control_fn)
 
 function stick_lock_engage(phase, duration)
 	if phase == 0 and spd_dr< 0.1 and control_lock_engage == 0 and control_lock == 0 then
@@ -556,6 +560,7 @@ function flight_start()
 	left_brake = parking_brake_ratio
 	right_brake = parking_brake_ratio
 	--parking_brake_ratio = 0
+	window_temp = oat
 	if startup_running == 0 then
 		control_lock = 1
 		chocks = 1
@@ -771,6 +776,7 @@ function after_physics()
 			end
 		end	
 
+	window_temp = func_animate_slowly(oat+heater*15, window_temp, 0.02)
 	
 end
 

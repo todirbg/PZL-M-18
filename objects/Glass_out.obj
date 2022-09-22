@@ -6,7 +6,9 @@ GLOBAL_cockpit_lit
 TEXTURE	Glass_out_base.png
 TEXTURE_NORMAL	Glass_out_nor.png
 NORMAL_METALNESS
+THERMAL_texture	glass_thermal_gradient.png
 WIPER_texture	wiper_gradient_texture.png
+THERMAL_source	custom/dromader/misc/window_temp    custom/dromader/electrical/heater
 WIPER_param	sim/flightmodel2/misc/wiper_angle_deg[0]    0.0   160.0    0.20000000298023224
 GLOBAL_specular	1
 BLEND_GLASS
