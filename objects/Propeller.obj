@@ -35828,8 +35828,6 @@ IDX10	24587	24586	23573	23570	24587	23573	23074	24587	23570	23075
 IDX	23074
 IDX	23570
 
-		ANIM_begin
-		ANIM_hide	6	6	sim/operation/failures/rel_engsep0
 			ANIM_begin
 			ANIM_trans	-0	0	-0.037760001	-0	0	-0.037760001
 			ANIM_rotate	1	0	0	90.00021	90.00021
@@ -35895,11 +35893,10 @@ IDX	23570
 				ANIM_end
 				TRIS	56136 13056
 			ANIM_end
-		ANIM_end
 	ANIM_begin
 	ANIM_hide	0	0	none
 	ANIM_show	6	6	sim/operation/failures/rel_engsep0
 	TRIS	0 56136
 	ANIM_end
 
-# Build with Blender 2.91.0 (build b'0f45cab862b8'). Exported with XPlane2Blender 4.2.0-alpha.1+101.20211103174028
+# Build with Blender 2.91.0 (build b'0f45cab862b8'). Exported with XPlane2Blender 4.2.0-rc.2+117.20220419015723

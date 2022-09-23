@@ -24,7 +24,7 @@ end
 draw_fires = find_dataref("sim/graphics/settings/draw_forestfires")
 static_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 
-park_brake = find_dataref("sim/cockpit2/controls/parking_brake_ratio")
+parking_brake_ratio = find_dataref("sim/cockpit2/controls/parking_brake_ratio")
 left_brake = find_dataref("sim/cockpit2/controls/left_brake_ratio")
 right_brake = find_dataref("sim/cockpit2/controls/right_brake_ratio")
 
@@ -128,9 +128,34 @@ override_joystick = find_dataref("sim/operation/override/override_joystick")
 has_crashed = find_dataref("sim/flightmodel2/misc/has_crashed")
 gear_retract = find_dataref("sim/aircraft/gear/acf_gear_retract")
 
+l_brake_add = find_dataref("sim/flightmodel/controls/l_brake_add")
+r_brake_add = find_dataref("sim/flightmodel/controls/r_brake_add")
+
+gear1_on_ground = find_dataref("sim/flightmodel2/gear/on_ground[0]")
+gear2_on_ground = find_dataref("sim/flightmodel2/gear/on_ground[1]")
+gear3_on_ground = find_dataref("sim/flightmodel2/gear/on_ground[2]")
+
+oat = find_dataref("sim/cockpit2/temperature/outside_air_temp_degc")
+heater = find_dataref("custom/dromader/electrical/heater")
+window_temp = create_dataref("custom/dromader/misc/window_temp","number", dummy)
+
+local ground_control = 0
 local control_lock_engage = 0
 local control_lock_disengage = 0
 
+function ground_control_fn(phase, duration)
+	if phase == 0 then
+		if ground_control == 0 then
+			ground_control = 1
+		else
+			ground_control = 0
+		end
+	
+	end
+end
+
+
+cmdgroundcontrol = create_command("custom/dromader/misc/ground_control","Rud controls diff brakes", ground_control_fn)
 function stick_lock_engage(phase, duration)
 	if phase == 0 and spd_dr< 0.1 and control_lock_engage == 0 and control_lock == 0 then
 		
@@ -262,8 +287,23 @@ emer_handle_L = create_dataref("custom/dromader/misc/emer_handle_L","number", em
 
 
 function brake_cmd_after(phase, duration)
-	left_brake = park_brake
-	right_brake = park_brake
+	if (phase == 1 or phase == 0) and ground_control == 1 then
+		if rud_ratio == 0 then
+			left_brake = parking_brake_ratio
+			right_brake = parking_brake_ratio
+		else
+			if rud_ratio > 0 then
+				right_brake = math.min(1, parking_brake_ratio + rud_ratio/2)
+				left_brake = parking_brake_ratio --math.max(0, parking_brake_ratio - rud_ratio/2)
+			elseif rud_ratio < 0 then
+				right_brake = parking_brake_ratio --	math.max(0, parking_brake_ratio + rud_ratio/2)
+				left_brake = math.min(1, parking_brake_ratio + rud_ratio/-2)
+			end
+		end
+	else
+		left_brake = parking_brake_ratio
+		right_brake = parking_brake_ratio	
+	end
 end
 
 cmdcsutombrakeregtog = wrap_command("sim/flight_controls/brakes_toggle_regular", dummy, brake_cmd_after)
@@ -332,11 +372,11 @@ function cmd_chocks_tog(phase, duration)
 	if phase == 0 and spd_dr< 0.1 then
 		if chocks == 0 then
 			chocks = 1
-			--park_brake = 1
+			--parking_brake_ratio = 1
 		else
 			chocks = 0
 			--if left_brake == 0 and right_brake == 0 then
-			--	park_brake = 0
+			--	parking_brake_ratio = 0
 			--end
 		end
 	end
@@ -503,9 +543,10 @@ function flight_start()
 	audio_vol_com1 = audio_vol
 	audio_vol_nav1 = audio_vol
 	compass_lock_knob = 0
-	left_brake = park_brake
-	right_brake = park_brake
-	park_brake = 0
+	left_brake = parking_brake_ratio
+	right_brake = parking_brake_ratio
+	--parking_brake_ratio = 0
+	window_temp = oat
 	if startup_running == 0 then
 		control_lock = 1
 		chocks = 1
@@ -701,12 +742,28 @@ function after_physics()
 		vx = 0
 		vy = 0
 		vz = 0
-		--park_brake = 1	
+		--parking_brake_ratio = 1	
 	end
 	
 	if has_crashed == 1 and gear_retract == 0 then --workaround gear does not collapse on chrash although collapse drefs are 6
 		gear_retract = 1
 	end
+	
+		if ground_control == 1 and (gear1_on_ground == 1 or gear2_on_ground == 1) then
+			if rud_ratio > 0 then
+				r_brake_add = math.min(1 , parking_brake_ratio + rud_ratio/3 * (1 - (math.min( 1 , spd_dr/20))))
+				l_brake_add = parking_brake_ratio
+			elseif rud_ratio < 0 then
+				l_brake_add = math.min(1, parking_brake_ratio + rud_ratio/-3  * (1 - (math.min( 1 , spd_dr/20))))
+				r_brake_add = parking_brake_ratio
+			elseif rud_ratio == 0 and (right_brake ~= parking_brake_ratio or left_brake ~= parking_brake_ratio) then
+				  l_brake_add = parking_brake_ratio
+				  r_brake_add = parking_brake_ratio
+			end
+		end	
+
+	window_temp = func_animate_slowly(oat+heater*15, window_temp, 0.02)
+	
 end
 
 function after_replay()

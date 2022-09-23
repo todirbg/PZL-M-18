@@ -17,6 +17,7 @@ disc_alpha_front = find_dataref("sim/flightmodel2/engines/prop_disc/disc_alpha_f
 disc_alpha_side = find_dataref("sim/flightmodel2/engines/prop_disc/disc_alpha_side[0]")
 disc_alpha_inside = find_dataref("sim/flightmodel2/engines/prop_disc/disc_alpha_inside[0]")
 disc_width = find_dataref("sim/flightmodel2/engines/prop_disc/disc_width[0]")
+disc_length_ratio = find_dataref("sim/flightmodel2/engines/prop_disc/disc_length_ratio[0]")
 
 side_width = find_dataref("sim/flightmodel2/engines/prop_disc/side_width[0]")
 side_number_of_blades = find_dataref("sim/flightmodel2/engines/prop_disc/side_number_of_blades[0]")
@@ -26,6 +27,7 @@ side_alpha_front = find_dataref("sim/flightmodel2/engines/prop_disc/side_alpha_f
 side_alpha_side = find_dataref("sim/flightmodel2/engines/prop_disc/side_alpha_side[0]")
 side_alpha_inside = find_dataref("sim/flightmodel2/engines/prop_disc/side_alpha_inside[0]")
 side_angle = find_dataref("sim/flightmodel2/engines/prop_disc/side_angle[0]")
+side_length_ratio = find_dataref("sim/flightmodel2/engines/prop_disc/side_length_ratio[0]")
 
 side_is_billboard = find_dataref("sim/flightmodel2/engines/prop_disc/side_is_billboard[0]")
 
@@ -88,6 +90,7 @@ function flight_start()
     disc_alpha_side = 0.2
     disc_alpha_inside = 1
     disc_width = 0.05
+     disc_length_ratio = 1
 
     side_width = 0.5
     side_number_of_blades = 4
@@ -97,6 +100,7 @@ function flight_start()
     side_alpha_side = 1
     side_alpha_inside = 0
     side_is_billboard = 0
+     side_length_ratio = 1
 end
 
 function aircraft_unload()
