@@ -27,8 +27,6 @@ static_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 parking_brake_ratio = find_dataref("sim/cockpit2/controls/parking_brake_ratio")
 left_brake = find_dataref("sim/cockpit2/controls/left_brake_ratio")
 right_brake = find_dataref("sim/cockpit2/controls/right_brake_ratio")
-parkbrake = find_dataref("sim/flightmodel/controls/parkbrake")
-
 
 
 audio_com1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_com1")

@@ -4854,7 +4854,7 @@ P _gear/2/_steerdeg_lospeed 0.000000000
 P _gear/2/_strut_comp 0.000000000
 P _gear/2/_strut_max_wgt_def 0.200000003
 P _gear/2/_strut_max_wgt_frc 723.326171875
-P _gear/2/_strut_preload_def 0.012523989
+P _gear/2/_strut_preload_def 0.029999999
 P _gear/2/_strut_preload_frc 50.000000000
 P _gear/2/_strut_s1 0.000000000
 P _gear/2/_strut_s2 0.015625000
@@ -33320,7 +33320,7 @@ P acf/_feathered_pitch 7.500000000
 P acf/_ff_rat_idle_JET 0.100000001
 P acf/_ff_rat_idle_PRP 0.050000001
 P acf/_ff_rat_idle_turbo 0.050000001
-P acf/_file_writer_version 120040
+P acf/_file_writer_version 120041
 P acf/_fixed_max/0 250.000000000
 P acf/_fixed_max/1 132.300003052
 P acf/_fixed_max/2 361.500000000
@@ -33574,7 +33574,7 @@ P acf/_ground_pwr/2 18.500000000
 P acf/_ground_pwr/count 3
 P acf/_gyro_spooldown_time 60.000000000
 P acf/_gyro_spoolup_time 5.000000000
-P acf/_h_eqlbm 6.291502953
+P acf/_h_eqlbm 6.294314861
 P acf/_has_ADG 0
 P acf/_has_APU_bleed_air 0
 P acf/_has_APU_generator 0
@@ -33632,6 +33632,7 @@ P acf/_hud_panel_bottom_px 0.000000000
 P acf/_hud_panel_left_px 0.000000000
 P acf/_hud_panel_right_px 0.000000000
 P acf/_hud_panel_top_px 0.000000000
+P acf/_hud_region_index 0
 P acf/_hud_tapes_track_vector 0
 P acf/_hyd_PTU_type 0
 P acf/_hyd_brakes 3
@@ -34301,7 +34302,7 @@ P acf/_tank_xyz_full/8,1 0.000000000
 P acf/_tank_xyz_full/8,2 0.000000000
 P acf/_tank_xyz_full/i_count 9
 P acf/_tank_xyz_full/j_count 3
-P acf/_the_eqlbm 12.849349976
+P acf/_the_eqlbm 12.777862549
 P acf/_thro_non_vect_props_at_sin_vect 0
 P acf/_thro_x_ctr 0.000000000
 P acf/_throt_max_fwd_emr 1.000000000
@@ -34400,6 +34401,7 @@ P acf/_wiper_ang2/2 0.000000000
 P acf/_wiper_ang2/3 0.000000000
 P acf/_wiper_ang2/count 4
 P acf/_wiper_max_cycles_second 2.000000000
+P acf/_xmsn_is_C 0
 P acf/_xmsn_of_engn/0 0
 P acf/_xmsn_of_engn/1 0
 P acf/_xmsn_of_engn/10 0
