@@ -199,6 +199,9 @@ function control_lock_disengage_fn(phase)
 		elev_down_fail = 0
 		ail_left_fail = 0
 		ail_right_fail = 0	
+		ail_right_fail = 0	
+		elev_trim_fail = 0
+		ail_trim_fail = 0
 		yoke_pitch_ratio = func_animate_slowly(0.5, yoke_pitch_ratio, 3)
 		
 
@@ -264,6 +267,9 @@ function control_lock_engage_fn(phase)
 			elev_up_fail = 6
 			ail_left_fail = 6
 			ail_right_fail = 6	
+			ail_right_fail = 6	
+			elev_trim_fail = 6
+			ail_trim_fail = 6
 		end
 	end
 

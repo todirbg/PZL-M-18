@@ -1675,7 +1675,7 @@ P _blad/0/_locked/9,9 0
 P _blad/0/_locked/i_count 20
 P _blad/0/_locked/j_count 18
 P _blad/0/_part_phi 0.000000000
-P _blad/0/_part_psi 4.000000000
+P _blad/0/_part_psi 3.599999905
 P _blad/0/_part_specs_eq 0
 P _blad/0/_part_specs_invis 1
 P _blad/0/_part_specs_rmod 1
@@ -4759,7 +4759,7 @@ P _engn/0/_exhaust_os_xyz/0 2.900000095
 P _engn/0/_exhaust_os_xyz/1 -0.349999994
 P _engn/0/_exhaust_os_xyz/2 3.099999905
 P _engn/0/_exhaust_os_xyz/count 3
-P _engn/0/_part_psi 4.000000000
+P _engn/0/_part_psi 3.599999905
 P _engn/0/_part_the 0.000000000
 P _engn/0/_part_x 0.000000000
 P _engn/0/_part_y 0.000000000
@@ -4781,10 +4781,10 @@ P _gear/0/_gear_x -5.900000095
 P _gear/0/_gear_y -2.269999981
 P _gear/0/_gear_z 7.429999828
 P _gear/0/_latE 0.000000000
-P _gear/0/_latR 100.000000000
+P _gear/0/_latR 0.000000000
 P _gear/0/_leg_len 3.885206223
 P _gear/0/_lonE 10.000000000
-P _gear/0/_lonR 0.000000000
+P _gear/0/_lonR 10.000000000
 P _gear/0/_steerdeg_hispeed 0.000000000
 P _gear/0/_steerdeg_lospeed 0.000000000
 P _gear/0/_strut_comp 0.000000000
@@ -4813,10 +4813,10 @@ P _gear/1/_gear_x 5.900000095
 P _gear/1/_gear_y -2.269999981
 P _gear/1/_gear_z 7.429999828
 P _gear/1/_latE 0.000000000
-P _gear/1/_latR -100.000000000
+P _gear/1/_latR 0.000000000
 P _gear/1/_leg_len 3.885206223
 P _gear/1/_lonE 10.000000000
-P _gear/1/_lonR 0.000000000
+P _gear/1/_lonR 10.000000000
 P _gear/1/_steerdeg_hispeed 0.000000000
 P _gear/1/_steerdeg_lospeed 0.000000000
 P _gear/1/_strut_comp 0.000000000
@@ -4848,7 +4848,7 @@ P _gear/2/_latE 0.000000000
 P _gear/2/_latR 0.000000000
 P _gear/2/_leg_len 2.957528830
 P _gear/2/_lonE -10.000000000
-P _gear/2/_lonR -100.000000000
+P _gear/2/_lonR -10.000000000
 P _gear/2/_steerdeg_hispeed 0.000000000
 P _gear/2/_steerdeg_lospeed 0.000000000
 P _gear/2/_strut_comp 0.000000000
@@ -27600,7 +27600,7 @@ P _wing/8/_elev2/8 0
 P _wing/8/_elev2/9 0
 P _wing/8/_elev2/count 10
 P _wing/8/_elev2_hyd0123 0
-P _wing/8/_els 8
+P _wing/8/_els 6
 P _wing/8/_engn_for_body -2
 P _wing/8/_flap1/0 0
 P _wing/8/_flap1/1 0
@@ -29213,7 +29213,7 @@ P _wing/8/_rudd2/8 0
 P _wing/8/_rudd2/9 0
 P _wing/8/_rudd2/count 10
 P _wing/8/_rudd2_hyd0123 0
-P _wing/8/_s_dim 16
+P _wing/8/_s_dim 12
 P _wing/8/_sbrk1/0 0
 P _wing/8/_sbrk1/1 0
 P _wing/8/_sbrk1/2 0
@@ -29403,7 +29403,7 @@ P _wing/9/_elev2/8 0
 P _wing/9/_elev2/9 0
 P _wing/9/_elev2/count 10
 P _wing/9/_elev2_hyd0123 0
-P _wing/9/_els 8
+P _wing/9/_els 6
 P _wing/9/_engn_for_body -2
 P _wing/9/_flap1/0 0
 P _wing/9/_flap1/1 0
@@ -31016,7 +31016,7 @@ P _wing/9/_rudd2/8 0
 P _wing/9/_rudd2/9 0
 P _wing/9/_rudd2/count 10
 P _wing/9/_rudd2_hyd0123 0
-P _wing/9/_s_dim 16
+P _wing/9/_s_dim 12
 P _wing/9/_sbrk1/0 0
 P _wing/9/_sbrk1/1 0
 P _wing/9/_sbrk1/2 0
@@ -33761,7 +33761,7 @@ P acf/_m_shift 0.000000000
 P acf/_m_shift_dx 0.000000000
 P acf/_m_shift_dz 0.000000000
 P acf/_manual_rad_gyr 0
-P acf/_manual_reversion_rat 0.000000000
+P acf/_manual_reversion_rat 0.250000000
 P acf/_manufacturer PZL-Mielec
 P acf/_mast_bump_cyclic_ailn 0.000000000
 P acf/_mast_bump_cyclic_roll 0.000000000
