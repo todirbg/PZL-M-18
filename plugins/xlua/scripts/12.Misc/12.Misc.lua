@@ -190,6 +190,8 @@ function control_lock_disengage_fn(phase)
 		elev_down_fail = 0
 		ail_left_fail = 0
 		ail_right_fail = 0	
+		elev_trim_fail = 0
+		ail_trim_fail = 0
 		yoke_pitch_ratio = func_animate_slowly(0.5, yoke_pitch_ratio, 3)
 		
 
@@ -255,6 +257,8 @@ function control_lock_engage_fn(phase)
 			elev_up_fail = 6
 			ail_left_fail = 6
 			ail_right_fail = 6	
+			elev_trim_fail = 6
+			ail_trim_fail = 6
 		end
 	end
 
@@ -475,7 +479,7 @@ function cmd_elevr_lock_tog(phase, duration)
 			elev_trim_fail = 6
 		else
 			elev_right_lock = 0
-			if elev_left_lock == 0 and control_lock == 0  then
+			if elev_left_lock == 0 then --and control_lock == 0  
 				elev_up_fail = 0
 				elev_down_fail = 0	
 				elev_trim_fail = 0
