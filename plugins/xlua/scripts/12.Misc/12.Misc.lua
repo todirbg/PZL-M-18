@@ -27,8 +27,6 @@ static_heat = find_dataref("sim/cockpit/switches/static_heat_on")
 parking_brake_ratio = find_dataref("sim/cockpit2/controls/parking_brake_ratio")
 left_brake = find_dataref("sim/cockpit2/controls/left_brake_ratio")
 right_brake = find_dataref("sim/cockpit2/controls/right_brake_ratio")
-parkbrake = find_dataref("sim/flightmodel/controls/parkbrake")
-
 
 
 audio_com1 = find_dataref("sim/cockpit2/radios/actuators/audio_selection_com1")
@@ -85,10 +83,6 @@ rudder_lock = create_dataref("custom/dromader/misc/rudder_lock","number", dummy)
 rudder_L_fail = find_dataref("sim/operation/failures/rel_rud_L")
 rudder_R_fail = find_dataref("sim/operation/failures/rel_rud_R")
 
-elev_trim_fail = find_dataref("sim/operation/failures/rel_trim_elv")
-ail_trim_fail = find_dataref("sim/operation/failures/rel_trim_ail")
-rud_trim_fail = find_dataref("sim/operation/failures/rel_trim_rud")
-
 stick_roll = find_dataref("sim/joystick/yoke_roll_ratio")
 stick_pitch = find_dataref("sim/joystick/yoke_pitch_ratio")
 yoke_heading_ratio = find_dataref("sim/joystick/yoke_heading_ratio")
@@ -106,10 +100,6 @@ fuel_weight = find_dataref("sim/flightmodel/weight/m_fuel_total")
 
 --foaming_quantity = find_dataref("custom/dromader/water/foaming_quantity")
 foaming_quantity = find_dataref("sim/flightmodel/weight/m_stations[1]")
-cg = find_dataref("sim/flightmodel/misc/cgz_ref_to_default")
-cgm = create_dataref("custom/dromader/misc/CG_meters","number", dummy)
-cgp = create_dataref("custom/dromader/misc/CG_percent","number", dummy)
-moment_tot = create_dataref("custom/dromader/misc/CG_moment","number", dummy)
 
 vx = find_dataref("sim/flightmodel/position/local_vx")
 vy = find_dataref("sim/flightmodel/position/local_vy")
@@ -201,6 +191,8 @@ function control_lock_disengage_fn(phase)
 		elev_down_fail = 0
 		ail_left_fail = 0
 		ail_right_fail = 0	
+		ail_right_fail = 0	
+
 		yoke_pitch_ratio = func_animate_slowly(0.5, yoke_pitch_ratio, 3)
 		
 
@@ -266,6 +258,8 @@ function control_lock_engage_fn(phase)
 			elev_up_fail = 6
 			ail_left_fail = 6
 			ail_right_fail = 6	
+			ail_right_fail = 6	
+
 		end
 	end
 
@@ -443,13 +437,11 @@ function cmd_ailr_lock_tog(phase, duration)
 			ail_right_lock = 1
 			ail_right_fail = 6
 			ail_left_fail = 6
-			ail_trim_fail = 6
 		else
 			ail_right_lock = 0
 			if ail_left_lock == 0 and control_lock == 0 then
 				ail_right_fail = 0
 				ail_left_fail = 0	
-				ail_trim_fail = 0
 			end
 		end
 	end
@@ -463,13 +455,11 @@ function cmd_aill_lock_tog(phase, duration)
 			ail_left_lock = 1
 			ail_right_fail = 6
 			ail_left_fail = 6
-			ail_trim_fail = 6
 		else
 			ail_left_lock = 0
 			if ail_right_lock == 0 and control_lock == 0  then
 				ail_right_fail = 0
 				ail_left_fail = 0	
-				ail_trim_fail = 0
 			end
 		end
 	end
@@ -483,13 +473,11 @@ function cmd_elevr_lock_tog(phase, duration)
 			elev_right_lock = 1
 			elev_up_fail = 6
 			elev_down_fail = 6
-			elev_trim_fail = 6
 		else
 			elev_right_lock = 0
 			if elev_left_lock == 0 and control_lock == 0  then
 				elev_up_fail = 0
 				elev_down_fail = 0	
-				elev_trim_fail = 0
 			end
 		end
 	end
@@ -503,13 +491,11 @@ function cmd_elevl_lock_tog(phase, duration)
 			elev_left_lock = 1
 				elev_up_fail = 6
 				elev_down_fail = 6
-				elev_trim_fail = 6
 		else
 			elev_left_lock = 0
 			if elev_right_lock == 0 and control_lock == 0 then
 				elev_up_fail = 0
 				elev_down_fail = 0		
-				elev_trim_fail = 0
 			end
 		end
 	end
@@ -523,25 +509,17 @@ function cmd_rud_lock_tog(phase, duration)
 			rudder_lock = 1
 			rudder_L_fail = 6
 			rudder_R_fail = 6
-			rud_trim_fail = 6
 			rud_ratio = 0
 		else
 			rudder_lock = 0
 			rudder_L_fail = 0
 			rudder_R_fail = 0
-			rud_trim_fail = 0
 		end
 	end
 end
 
 cmdcsutomrudlocktog = create_command("custom/dromader/misc/rudder_lock_tog","Toggle rudder lock",cmd_rud_lock_tog)
 
---local fires_temp = draw_fires
-
-function aircraft_load()
-	--draw_fires = 1
-	--compute_cg()
-end
 
 function flight_start()
 
@@ -581,9 +559,6 @@ function flight_start()
 		rudder_lock = 1
 		rudder_L_fail = 6
 		rudder_R_fail = 6
-		elev_trim_fail = 6
-		ail_trim_fail = 6
-		rud_trim_fail = 6
 	end
 end
 
@@ -606,9 +581,6 @@ function auto_board()
 		rudder_lock = 0
 		rudder_L_fail = 0
 		rudder_R_fail = 0
-		elev_trim_fail = 0
-		ail_trim_fail = 0
-		rud_trim_fail = 0
 		control_lock_disengage = 1
 end
 autoboard = replace_command("sim/operation/auto_board", auto_board)
@@ -669,32 +641,6 @@ quickstart = wrap_command("sim/operation/quick_start", dummy, auto_start_after)
 autostart = wrap_command("sim/operation/auto_start", dummy, auto_start_after)
 
 
--- function fire_app()
-	
-	-- agequiptogcmd = find_command("custom/dromader/spray/ag_equip_tog_cmd")
-	-- if boom_hide == 0 then
-		-- agequiptogcmd:once()
-	-- end
--- end
-
---fireapp = wrap_command("sim/operation/Forest_Fire_Approach", fire_app, dummy)
-
--- function aircraft_unload()
-	-- draw_fires = fires_temp
--- end
-
-function compute_cg()
-		local fuel_moment = fuel_weight*0.97
-		local water_moment = water_quantity*0.8
-		local foaming_moment = foaming_quantity*0.72
-		if boom_hide == 0 then ag_eqipment_moment = 240 end
-		moment_tot = (acf_moment + fuel_moment + water_moment + ag_eqipment_moment + fire_eq_moment + oil_moment + pilot_moment + foaming_moment)
-		local psca = (moment_tot/acf_weight_total)*(100/lsca) - 0.17
-		cgm = (lsca*psca)/100
-		cgp = psca
-		cg = cgm - defpos
-end
-
 function show_head()
 	if ext_view == 1 then return end
 	if pilot_show_int == 1 then
@@ -732,7 +678,6 @@ function after_physics()
 		control_lock_engage_fn(control_lock_engage)
 	end
 		
-	--compute_cg()
 	if ail_left_fail == 6 or ail_right_fail == 6 then
 		stick_roll  = 0
 	end

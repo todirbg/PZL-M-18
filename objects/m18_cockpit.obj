@@ -3,6 +3,7 @@ I
 OBJ
 
 GLOBAL_cockpit_lit
+#GLOBAL_luminance	10000
 POINT_COUNTS	9850	0	0	17439
 
 VT	-0.064154543	0.68728799	3.7669785	0	-0.79867274	-0.60176557	0.85355341	0.85355335
@@ -11767,7 +11768,7 @@ IDX	9848
 			TRIS	5595 84
 			ATTR_manip_none
 			ATTR_draw_enable
-			ATTR_cockpit
+			ATTR_cockpit	7000
 			TRIS	10137 84
 			ATTR_draw_disable
 			ATTR_no_cockpit
@@ -11803,7 +11804,7 @@ IDX	9848
 			TRIS	5679 84
 			ATTR_manip_none
 			ATTR_draw_enable
-			ATTR_cockpit
+			ATTR_cockpit	7000
 			TRIS	10371 6
 	ANIM_begin
 	ANIM_hide	1	1	custom/dromader/spray/boom_hide
@@ -12223,7 +12224,6 @@ IDX	9848
 		ANIM_rotate_key	360	-360.00026
 		ANIM_rotate_key	720	-719.99997
 		ANIM_rotate_end
-		ANIM_hide	6	6	sim/operation/failures/rel_engsep0
 			ANIM_begin
 			ANIM_hide	0.0099999998	1	sim/flightmodel/engine/ENGN_running[0]
 			ANIM_hide	0.0099999998	1	sim/flightmodel2/position/groundspeed
@@ -13207,7 +13207,7 @@ IDX	9848
 							TRIS	10029 42
 						ATTR_manip_none
 						ATTR_draw_enable
-						ATTR_cockpit
+						ATTR_cockpit	7000
 						TRIS	10071 6
 					ATTR_draw_disable
 					ATTR_no_cockpit
@@ -13217,7 +13217,7 @@ IDX	9848
 		ANIM_hide	1	1	custom/dromader/spray/boom_hide
 		ATTR_manip_none
 		ATTR_draw_enable
-		ATTR_cockpit
+		ATTR_cockpit	7000
 		TRIS	10077 54
 		ANIM_end
 	ANIM_begin
@@ -13243,7 +13243,7 @@ IDX	9848
 	ANIM_hide	0	0	custom/dromader/water/foam_quantity_handle
 	ATTR_manip_none
 	ATTR_draw_enable
-	ATTR_cockpit
+	ATTR_cockpit	7000
 	TRIS	10335 6
 	ANIM_end
 	ANIM_begin
@@ -13271,4 +13271,4 @@ IDX	9848
 	ATTR_solid_camera
 	TRIS	12573 4620
 
-# Build with Blender 2.91.0 (build b'0f45cab862b8'). Exported with XPlane2Blender 4.2.0-rc.2+117.NO_BUILD_NUMBR
+# Build with Blender 2.91.0 (build b'0f45cab862b8'). Exported with XPlane2Blender 4.2.0-rc.2+117.20220419015723
