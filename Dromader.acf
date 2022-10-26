@@ -4770,7 +4770,7 @@ P _engn/count 16
 P _gear/0/_axiE 0.000000000
 P _gear/0/_axiR 0.000000000
 P _gear/0/_cyc_time 0.100000001
-P _gear/0/_damp 727.562744141
+P _gear/0/_damp 615.392456055
 P _gear/0/_eagle_claw_deg 0.000000000
 P _gear/0/_gear_brakes 1
 P _gear/0/_gear_can_retract 0
@@ -4789,7 +4789,7 @@ P _gear/0/_steerdeg_hispeed 0.000000000
 P _gear/0/_steerdeg_lospeed 0.000000000
 P _gear/0/_strut_comp 0.000000000
 P _gear/0/_strut_max_wgt_def 0.750000000
-P _gear/0/_strut_max_wgt_frc 5456.720703125
+P _gear/0/_strut_max_wgt_frc 4615.443359375
 P _gear/0/_strut_preload_def 0.100000001
 P _gear/0/_strut_preload_frc 2500.000000000
 P _gear/0/_strut_s1 0.000000000
@@ -4802,7 +4802,7 @@ P _gear/0/_tire_swidth 0.600000024
 P _gear/1/_axiE 0.000000000
 P _gear/1/_axiR 0.000000000
 P _gear/1/_cyc_time 0.100000001
-P _gear/1/_damp 727.562744141
+P _gear/1/_damp 615.392456055
 P _gear/1/_eagle_claw_deg 0.000000000
 P _gear/1/_gear_brakes 1
 P _gear/1/_gear_can_retract 0
@@ -4821,7 +4821,7 @@ P _gear/1/_steerdeg_hispeed 0.000000000
 P _gear/1/_steerdeg_lospeed 0.000000000
 P _gear/1/_strut_comp 0.000000000
 P _gear/1/_strut_max_wgt_def 0.750000000
-P _gear/1/_strut_max_wgt_frc 5456.720703125
+P _gear/1/_strut_max_wgt_frc 4615.443359375
 P _gear/1/_strut_preload_def 0.100000001
 P _gear/1/_strut_preload_frc 2500.000000000
 P _gear/1/_strut_s1 0.000000000
@@ -4834,7 +4834,7 @@ P _gear/1/_tire_swidth 0.600000024
 P _gear/2/_axiE 0.000000000
 P _gear/2/_axiR 0.000000000
 P _gear/2/_cyc_time 0.100000001
-P _gear/2/_damp 385.529174805
+P _gear/2/_damp 1226.806884766
 P _gear/2/_eagle_claw_deg 0.000000000
 P _gear/2/_gear_brakes 0
 P _gear/2/_gear_can_retract 0
@@ -4853,7 +4853,7 @@ P _gear/2/_steerdeg_hispeed 0.000000000
 P _gear/2/_steerdeg_lospeed 0.000000000
 P _gear/2/_strut_comp 0.000000000
 P _gear/2/_strut_max_wgt_def 0.200000003
-P _gear/2/_strut_max_wgt_frc 771.058349609
+P _gear/2/_strut_max_wgt_frc 2453.613769531
 P _gear/2/_strut_preload_def 0.029999999
 P _gear/2/_strut_preload_frc 50.000000000
 P _gear/2/_strut_s1 0.000000000
@@ -32153,6 +32153,7 @@ P acf/_cgY 0.000000000
 P acf/_cgZ 8.130000114
 P acf/_cgZ_aft 8.720000267
 P acf/_cgZ_fwd 8.130000114
+P acf/_cg_in_mac 0
 P acf/_chaff_max 0
 P acf/_chute_line_len/0 0.000000000
 P acf/_chute_line_len/1 0.000000000
@@ -32992,6 +32993,7 @@ P acf/_drone_FBW_washout_lin_throttles 0
 P acf/_drone_FBW_washout_sqrt_throttle 0
 P acf/_drone_FBW_washout_sqrt_throttles 0
 P acf/_drone_FBW_washout_vert_component 0
+P acf/_drone_FBW_washout_with_KEAS 0
 P acf/_drud_sbrk 0.000000000
 P acf/_dual_control_split_force_rat 0.000000000
 P acf/_dual_control_type 0
@@ -33322,7 +33324,7 @@ P acf/_feathered_pitch 7.500000000
 P acf/_ff_rat_idle_JET 0.100000001
 P acf/_ff_rat_idle_PRP 0.050000001
 P acf/_ff_rat_idle_turbo 0.050000001
-P acf/_file_writer_version 120043
+P acf/_file_writer_version 120046
 P acf/_fixed_max/0 250.000000000
 P acf/_fixed_max/1 132.300003052
 P acf/_fixed_max/2 361.500000000
@@ -33578,7 +33580,7 @@ P acf/_ground_pwr/2 18.500000000
 P acf/_ground_pwr/count 3
 P acf/_gyro_spooldown_time 60.000000000
 P acf/_gyro_spoolup_time 5.000000000
-P acf/_h_eqlbm 6.356776237
+P acf/_h_eqlbm 6.189404011
 P acf/_has_ADG 0
 P acf/_has_APU_bleed_air 0
 P acf/_has_APU_generator 0
@@ -34307,7 +34309,7 @@ P acf/_tank_xyz_full/8,1 0.000000000
 P acf/_tank_xyz_full/8,2 0.000000000
 P acf/_tank_xyz_full/i_count 9
 P acf/_tank_xyz_full/j_count 3
-P acf/_the_eqlbm 12.932914734
+P acf/_the_eqlbm 11.469292641
 P acf/_thro_non_vect_props_at_sin_vect 0
 P acf/_thro_x_ctr 0.000000000
 P acf/_throt_max_fwd_emr 1.000000000
