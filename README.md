@@ -2,7 +2,7 @@
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=KDP7Q5DY8R59W&item_name=Development+of+PZL+M-18B+Dromader+for+X-Plane&currency_code=EUR)
 
- PZL M-18 Dromader for X-Plane 11
+ PZL M-18 Dromader for X-Plane 11/12
  
  Contributors please fork and create pull requests.
 
